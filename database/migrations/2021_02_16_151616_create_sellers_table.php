@@ -24,6 +24,7 @@ class CreateSellersTable extends Migration
             $table->string("city");
             $table->string("state")->nullable();
             $table->string("postal_code")->nullable();
+            $table->string("company_name")->nullable();
             $table->string("company_logo")->nullable();
             $table->string("company_address");
             $table->integer('status')->default(1);
