@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
 //     return view('welcome');
+
 // });
 
 // Auth::routes();
@@ -64,7 +65,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
         
        Route::resource('variation_option', App\Http\Controllers\Admin\ProductAttributeOptionController::class);
 
-       // ppom flieds
+       // vendor 
+       Route::resource('vendor', App\Http\Controllers\Admin\VendorController::class);
        
         
 });
