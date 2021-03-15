@@ -479,7 +479,7 @@
 
                                                 {{-- vendor menu --}}
 
-          {{-- <li class="nav-item d-none d-lg-block btn">
+          <li class="nav-item d-none d-lg-block btn">
             <a class="nav-link" data-toggle="collapse" href="#vendors" aria-expanded="false" aria-controls="vendors">
               <i class="fas fa-store menu-icon"></i>
               
@@ -493,7 +493,7 @@
                 <li class="nav-item"> <a class="nav-link" href="{{url('admin/company')}}">Vendor Companies</a></li>
               </ul>
             </div>
-          </li> --}}
+          </li>
 
                                           {{-- orders menu --}}
 
