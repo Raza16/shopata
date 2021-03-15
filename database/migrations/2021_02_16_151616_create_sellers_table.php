@@ -18,6 +18,7 @@ class CreateSellersTable extends Migration
             $table->string("first_name");
             $table->string("last_name");
             $table->string('username')->unique();
+            $table->string('company_email')->unique();
             $table->string('mobile')->unique();
             $table->string('image')->nullable();
             $table->string("country");
