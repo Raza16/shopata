@@ -489,8 +489,8 @@
             <div class="collapse" id="vendors">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="{{url('admin/vendor')}}">Vendor list</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{url('admin/vendor/product')}}">Vendor Products</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{url('admin/company')}}">Vendor Companies</a></li>
+                {{-- <li class="nav-item"> <a class="nav-link" href="{{url('admin/vendor/product')}}">Vendor Products</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{url('admin/company')}}">Vendor Companies</a></li> --}}
               </ul>
             </div>
           </li>
