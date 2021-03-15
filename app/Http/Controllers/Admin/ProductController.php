@@ -226,7 +226,7 @@ class ProductController extends Controller
             'name' => 'required',
             'image'=>  'image|mimes:png,jpeg,webp,jpg',
             // 'product_documents' => 'file|max:500',
-            'document.*' => 'mimes:pdf,doc,docx|max:500000',
+            'document.*' => 'mimes:pdf,doc,docx',
             // 'quantity' => 'numeric',
             'slug' =>   'required',
             'product_type' => 'required',
