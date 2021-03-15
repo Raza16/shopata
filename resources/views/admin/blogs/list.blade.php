@@ -26,7 +26,7 @@
 
 
   <div class="container">
-    <a type="button" class="btn btn-md btn-primary" href="blog/create">Add Blog</a>
+    <a type="button" class="btn btn-md btn-primary" href="{{url('blog/create')}}">Add Blog</a>
     <br>
   </div>
   <br>
