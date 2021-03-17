@@ -81,7 +81,7 @@
             </div>
           </li>
 
-          <li class="nav-item dropdown">
+          {{-- <li class="nav-item dropdown">
             <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
               <i class="fas fa-bell mx-0"></i>
               <span class="count">16</span>
@@ -191,11 +191,11 @@
                 </div>
               </a>
             </div>
-          </li>
+          </li> --}}
 
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-              <img src="{{asset('backend/images/faces/face5.jpg')}}" alt="profile"/>
+              <img src="{{asset('backend/images/logo.svg')}}" alt="profile"/>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
               <a class="dropdown-item" href="{{url('admin/settings')}}">
@@ -234,6 +234,7 @@
             
             </div>
           </li>
+
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
           <span class="fas fa-bars"></span>
@@ -419,7 +420,7 @@
           <li class="nav-item nav-profile">
             <div class="nav-link">
               <div class="profile-image">
-                <img src="{{asset('backend/images/faces/face5.jpg')}}" alt="image"/>
+                <img src="{{asset('backend/images/logo.svg')}}" alt="image"/>
               </div>
               <div class="profile-name">
                 <p class="name" style="text-transform: uppercase">
@@ -442,7 +443,7 @@
           <li class="nav-item d-none d-lg-block btn {{ request()->is('admin/blog') || request()->is('admin/blog/create') ? 'active' : '' }}">
             <a class="nav-link" data-toggle="collapse" href="#blogs" aria-expanded="false" aria-controls="blogs">
               <i class="fab fa-blogger-b"></i>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <span class="menu-title">Blogs</span>
               <i class="menu-arrow"></i>
             </a>  
