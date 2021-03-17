@@ -132,11 +132,11 @@
 									@if(!empty($item->sale_price))
 									<span class="new_price">$48.00</span>
 									@endif
-									<span class="{{$item->sale_price ? 'old_price' : 'new_price'}}">$60.00</span>
+									<span class="{{$item->sale_price ? 'old_price' : 'new_price'}}">${{$item->regular_price}}</span>
 								</div>
 								<ul>
 									<li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
-									<li><a href="compare/compare.html" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to compare"><i class="ti-control-shuffle"></i><span>Add to compare</span></a></li>
+									<li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to compare"><i class="ti-control-shuffle"></i><span>Add to compare</span></a></li>
 									<li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a></li>
 								</ul>
 							</div>
@@ -149,25 +149,11 @@
 				</div>
 				<!-- /container -->
 
-				{{-- <div class="t_banner" style="">
-					<div class="d-flex align-items-center">
-					</div>
-					<img src="{{asset('frontend/img/ad.png')}}" class="img-fluid" alt="">
-			</div> --}}
-
-				<div class="featured lazy" data-bg="url({{asset('frontend/img/ad.png')}})">
-					<div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.5)">
-						<div class="container margin_60">
-							<div class="row justify-content-center justify-content-md-start">
-								<div class="col-lg-6 wow" data-wow-offset="150">
-									{{-- <div class="feat_text_block">
-										<a class="btn_1" href="{{url('shop')}}" role="button">Shop Now</a>
-									</div> --}}
-								</div>
+						<div class="t_banner" style="" >
+							<div class="d-flex align-items-center" >
 							</div>
+							<img src="{{asset('frontend/img/add.png')}}" class="img-fluid" alt=" image">
 						</div>
-					</div>
-				</div>
 				<!-- /featured -->
 
 				<div class="container margin_60_35">
@@ -183,7 +169,7 @@
 								<span class="ribbon new">New</span>
 								<figure>
 									<a href="{{url('shop/'.$feature->slug)}}">
-										<img class="owl-lazy" style="width:auto; height:250px;" src="{{asset('backend/images/products/'.$feature->product_image)}}" data-src="{{asset('backend/images/products/'.$feature->product_image)}}" alt="">
+										<img class="owl-lazy" style="width:auto; height:250px;" src="{{$item->product_image ? asset('backend/images/products/'.$item->product_image) : asset('frontend/img/product_placeholder.jpg') }}" data-src="{{$item->product_image ? asset('backend/images/products/'.$item->product_image) : asset('frontend/img/product_placeholder.jpg') }}" alt="">
 									</a>
 								</figure>
 								<div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
