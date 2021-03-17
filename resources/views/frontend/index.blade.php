@@ -263,7 +263,7 @@
 
 @section('pop')
 	<div id="toTop"></div><!-- Back to top button -->
-			<div class="popup_wrapper">
+			{{-- <div class="popup_wrapper">
 				<div class="popup_content newsletter">
 					<span class="popup_close">Close</span>
 					<div class="row no-gutters">
@@ -295,7 +295,16 @@
 						</div>
 					<!-- row -->
 				</div>
+			</div> --}}
+			<div class="popup_wrapper">
+				<div class="popup_content">
+					<span class="popup_close">Close</span>
+					<a href="{{url('shop')}}">
+						<img class="img-fluid" src="{{asset('frontend/img/newsletter.png')}}" alt="" width="500" 	height="500">
+					</a>
+				</div>
 			</div>
+			
 @endsection
 
 
