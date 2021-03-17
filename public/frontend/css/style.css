@@ -7295,3 +7295,36 @@ img.mfp-img {
 }
 
 /*store directory*/
+
+/*-------- 1.5 Top banner --------*/
+.t_banner {
+  height: 800px;
+  overflow:hidden;
+  position: relative;
+
+}
+@media (max-width: 767px) {
+  .t_banner {
+    height: 200px;
+  }
+}
+.t_banner img {
+  z-index: 1;
+  width: 100%;
+  height: auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+@media (max-width: 575px) {
+  .t_banner img {
+    height: auto;
+    width: auto !important;
+    max-width: 375px !important;
+  }
+}
