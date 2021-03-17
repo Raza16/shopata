@@ -6095,7 +6095,7 @@ a.social_bt.google:before {
   z-index: 9999999;
 }
 .popup_wrapper .popup_content {
-  background-color: #fff;
+  /* background-color: #ff; */
   top: 50%;
   left: 50%;
   right: 0;
