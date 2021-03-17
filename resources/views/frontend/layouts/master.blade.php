@@ -65,12 +65,6 @@
 								<ul>
 									<li >
 										<a href="{{('/')}}">Home</a>
-										<!-- <ul>
-											<li><a href="index.html">Slider</a></li>
-											<li><a href="index-2.html">Video Background</a></li>
-											<li><a href="index-3.html">Vertical Slider</a></li>
-											<li><a href="index-4.html">GDPR Cookie Bar</a></li>
-										</ul> -->
 									</li>
 									<li class="megamenu submenu">
 										<a href="javascript:void(0);" class="show-submenu-mega">Products</a>
@@ -78,15 +72,15 @@
 											<div class="row small-gutters">
 												<div class="col-lg-3">
 													<h3>New Arrivals</h3>
-													{{-- <ul>
+													<ul>
 														<li><a href="{{url('shop')}}">Shop</a></li>
-														<li><a href="">Headphones</a></li>
+														{{-- <li><a href="">Headphones</a></li>
 														<li><a href="">Makeup Brushes</a></li>
 														<li><a href="">iPhone Tempered Glass</a></li>
 														<li><a href="">Necklace</a></li>
 														<li><a href="">Nail Stickers</a></li>
-														<li><a href="">Product Sticky Info</a></li>
-													</ul> --}}
+														<li><a href="">Product Sticky Info</a></li> --}}
+													</ul>
 												</div>
 												<div class="col-lg-3">
 													<h3>Top Selling</h3>
@@ -148,7 +142,7 @@
 							<!--/main-menu -->
 						</nav>
 						<div class="col-xl-3 col-lg-2 d-lg-flex align-items-center justify-content-end text-right">
-							<a class="phone_top" href="tel://9438843343"><strong><span>Need Help?</span>718-412-1413</strong></a>
+							<a class="phone_top" href="#"><img src="{{asset('frontend/img/app.png')}}" width="200px" height="auto"> </a>
 						</div>
 					</div>
 					<!-- /row -->
@@ -335,7 +329,7 @@
 						</div>
 						<div class="col-xl-3 col-lg-2 col-md-3">
 							<ul class="top_tools">
-								<li>
+								{{-- <li>
 									<div class="dropdown dropdown-cart">
 										<a href="cart.html" class="cart_bt"><strong>2</strong></a>
 										<div class="dropdown-menu">
@@ -362,7 +356,7 @@
 										</div>
 									</div>
 									<!-- /dropdown-cart-->
-								</li>
+								</li> --}}
 								<li>
 									<a href="#0" class="wishlist"><span>Wishlist</span></a>
 								</li>
