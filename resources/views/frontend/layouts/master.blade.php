@@ -369,14 +369,14 @@
 												<li>
 													<a href="{{url('track_order')}}"><i class="ti-truck"></i>Track your Order</a>
 												</li>
-												<li>
+												{{-- <li>
 													<a href="account.html"><i class="ti-package"></i>My Orders</a>
+												</li> --}}
+												<li>
+													<a href="{{url('account')}}"><i class="ti-user"></i>My Profile</a>
 												</li>
 												<li>
-													<a href="account.html"><i class="ti-user"></i>My Profile</a>
-												</li>
-												<li>
-													<a href="help.html"><i class="ti-help-alt"></i>Help and Faq</a>
+													<a href="{{url('help')}}"><i class="ti-help-alt"></i>Help and Faq</a>
 												</li>
 											</ul>
 										</div>
@@ -436,14 +436,14 @@
 				<div class="col-lg-3 col-md-6">
 					<h3 data-target="#collapse_2">Categories</h3>
 					<div class="collapse dont-collapse-sm links" id="collapse_2">
-						<ul>
+						{{-- <ul>
 							<li><a href="#">Clothes</a></li>
 							<li><a href="#">Electronics</a></li>
 							<li><a href="#">Furniture</a></li>
 							<li><a href="#">Glasses</a></li>
 							<li><a href="#">Shoes</a></li>
 							<li><a href="#">Watches</a></li>
-						</ul>
+						</ul> --}}
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6">
