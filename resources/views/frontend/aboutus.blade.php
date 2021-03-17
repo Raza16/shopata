@@ -130,12 +130,12 @@
       
       <div class="container margin_60">
         
-        <div class="main_title">
+        {{-- <div class="main_title">
           <h2>Meet ShopataClick Staff</h2>
           <p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
-        </div>
+        </div> --}}
 
-        <div class="owl-carousel owl-theme carousel_centered owl-loaded owl-drag">
+        {{-- <div class="owl-carousel owl-theme carousel_centered owl-loaded owl-drag">
 
           <div class="owl-stage-outer">
 
@@ -301,7 +301,7 @@
             
           </div>
 
-        </div>
+        </div> --}}
         
       </div>
   
