@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
+		@yield('meta')
     <meta name="author" content="Ansonika">
     <title>@yield('title')</title> 
 
@@ -78,7 +78,7 @@
 											<div class="row small-gutters">
 												<div class="col-lg-3">
 													<h3>New Arrivals</h3>
-													<ul>
+													{{-- <ul>
 														<li><a href="{{url('shop')}}">Shop</a></li>
 														<li><a href="">Headphones</a></li>
 														<li><a href="">Makeup Brushes</a></li>
@@ -86,11 +86,11 @@
 														<li><a href="">Necklace</a></li>
 														<li><a href="">Nail Stickers</a></li>
 														<li><a href="">Product Sticky Info</a></li>
-													</ul>
+													</ul> --}}
 												</div>
 												<div class="col-lg-3">
 													<h3>Top Selling</h3>
-													<ul>
+													{{-- <ul>
 														<li><a href="">iPhone Case</a></li>
 														<li><a href="">Headphones</a></li>
 														<li><a href="">Makeup Brushes</a></li>
@@ -98,11 +98,11 @@
 														<li><a href="">Necklace</a></li>
 														<li><a href="">Nail Stickers</a></li>
 														<li><a href="">Product Sticky Info</a></li>
-													</ul>
+													</ul> --}}
 												</div>
 												<div class="col-lg-3">
 													<h3>Featured Product</h3>
-													<ul>
+													{{-- <ul>
 														<li><a href="">iPhone Case</a></li>
 														<li><a href="">Headphones</a></li>
 														<li><a href="">Makeup Brushes</a></li>
@@ -110,7 +110,7 @@
 														<li><a href="">Necklace</a></li>
 														<li><a href="">Nail Stickers</a></li>
 														<li><a href="">Product Sticky Info</a></li>
-													</ul>
+													</ul> --}}
 												</div>
 												<div class="col-lg-3 d-xl-block d-lg-block d-md-none d-sm-none d-none">
 													<div class="banner_menu">

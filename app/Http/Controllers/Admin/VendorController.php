@@ -36,7 +36,7 @@ class VendorController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
+     *php 
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */

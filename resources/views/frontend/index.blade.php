@@ -149,18 +149,20 @@
 				</div>
 				<!-- /container -->
 
-				<div class="featured lazy" data-bg="url({{asset('frontend/img/banners/banner.png')}})">
+				{{-- <div class="t_banner" style="">
+					<div class="d-flex align-items-center">
+					</div>
+					<img src="{{asset('frontend/img/ad.png')}}" class="img-fluid" alt="">
+			</div> --}}
+
+				<div class="featured lazy" data-bg="url({{asset('frontend/img/ad.png')}})">
 					<div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.5)">
 						<div class="container margin_60">
 							<div class="row justify-content-center justify-content-md-start">
 								<div class="col-lg-6 wow" data-wow-offset="150">
-									<h3>Atm machines
-									</h3>
-									<p>All Types Of ATM machines are availible at Reasable lowest price.</p>
-									<div class="feat_text_block">
-										
+									{{-- <div class="feat_text_block">
 										<a class="btn_1" href="{{url('shop')}}" role="button">Shop Now</a>
-									</div>
+									</div> --}}
 								</div>
 							</div>
 						</div>
