@@ -1,1 +1,7 @@
 shopata.zip
+.env
+/public/frontend/img
+/images
+/backend/images
+/backend/product_document
+
