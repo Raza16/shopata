@@ -18417,7 +18417,7 @@ input:focus {
 /* Sidebar */
 .sidebar {
   min-height: calc(100vh - 70px);
-  background: #ffffff;
+  background: #ffff;
   font-family: "PTSans", sans-serif;
   font-weight: 400;
   padding: 0;
@@ -18508,10 +18508,11 @@ input:focus {
 .sidebar .nav .nav-item .nav-link .menu-title {
   color: inherit;
   display: inline-block;
-  font-size: 0.875rem;
+  /* font-size: 0.875rem; */
+  font-size: 20px;
   line-height: 1;
   vertical-align: middle;
-  font-weight: 400;
+  font-weight: 800;
 }
 
 .sidebar .nav .nav-item .nav-link .badge {
@@ -18527,7 +18528,7 @@ input:focus {
   background: inherit;
 }
 
-.sidebar .nav .nav-item.active > .nav-link {
+.sidebar .nav .nav-item > .nav-link {
   position: relative;
 }
 
@@ -18631,6 +18632,8 @@ input:focus {
   line-height: 1;
   height: auto;
   border-top: 0;
+  font-size:15px;
+  font-weight:600;
 }
 
 .sidebar .nav.sub-menu .nav-item .nav-link:before {
@@ -18877,7 +18880,7 @@ input:focus {
 }
 
 .navbar.default-layout-navbar .navbar-brand-wrapper {
-  background: #ffffff;
+  background-color: #fefeff;
   transition: width 0.25s ease, background 0.25s ease;
   -webkit-transition: width 0.25s ease, background 0.25s ease;
   -moz-transition: width 0.25s ease, background 0.25s ease;
@@ -18902,6 +18905,7 @@ input:focus {
   line-height: 48px;
   margin-right: 0;
   padding: .25rem 0;
+  
 }
 
 .navbar.default-layout-navbar .navbar-brand-wrapper .navbar-brand:active, .navbar.default-layout-navbar .navbar-brand-wrapper .navbar-brand:focus, .navbar.default-layout-navbar .navbar-brand-wrapper .navbar-brand:hover {
@@ -29041,7 +29045,7 @@ div.tagsinput span.tag a {
 /* === Landing screens === */
 /* Auth */
 .auth .login-half-bg {
-  background: url("../images/auth/login-bg.jpg");
+  background: url("../images/login-bg.svg");
   background-size: cover;
 }
 
@@ -29369,5 +29373,10 @@ div.tagsinput span.tag a {
   font-size: 43px;
   margin-right: 0;
 }
+
+
+small{
+ font-size:15px;
+ }
 
 /*# sourceMappingURL=maps/style.css.map */

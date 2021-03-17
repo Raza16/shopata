@@ -2089,7 +2089,6 @@ header .main_header a.phone_top strong span {
     top: -27px;
     z-index: 2;
   }
-
   header .main_header a.phone_top strong {
     display: none;
   }
@@ -2104,13 +2103,6 @@ header .main_header a.phone_top strong span {
     display: inline-block;
   }
 }
-
-@media (max-width: 575px) {
-  header .main_header a.phone_top {
-    display:none;
-  }
-}
-
 header .main_header nav a.open_close {
   position: absolute;
   top: -26px;
@@ -2684,7 +2676,7 @@ header.version_1 .main-menu > ul > li:hover > a {
 @media (max-width: 991px) {
   .main-menu ul > li.submenu > a:after {
     font-size: 14px !important;
-    font-size: 14px !important;
+    font-size: 14px !important/16pxrem;
     float: right;
   }
 }
@@ -6103,7 +6095,7 @@ a.social_bt.google:before {
   z-index: 9999999;
 }
 .popup_wrapper .popup_content {
-  /* background-color: #ff; */
+  background-color: #fff;
   top: 50%;
   left: 50%;
   right: 0;
@@ -7303,36 +7295,3 @@ img.mfp-img {
 }
 
 /*store directory*/
-
-/*-------- 1.5 Top banner --------*/
-.t_banner {
-  height: 800px;
-  overflow:hidden;
-  position: relative;
-
-}
-@media (max-width: 767px) {
-  .t_banner {
-    height: 200px;
-  }
-}
-.t_banner img {
-  z-index: 1;
-  width: 100%;
-  height: auto;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
-@media (max-width: 575px) {
-  .t_banner img {
-    height: auto;
-    width: auto !important;
-    max-width: 375px !important;
-  }
-}
