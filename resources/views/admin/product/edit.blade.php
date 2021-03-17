@@ -243,7 +243,7 @@
                 </div>
 
                                                           {{-- variation --}}
-                <div class="form-group">
+                {{-- <div class="form-group">
                   <div class="card" style="background-color: #f7f7f0">
                     <div class="card-header bg-primary" role="tab" id="heading-13">
                       <h6 class="mb-0">
@@ -272,13 +272,6 @@
                                 </div>
                                 @endif
 
-                                {{-- <div class="form-group col-6">
-                                  <label for="quantity">Stock</label>
-                                  <select name="stock" id="stock" class="form-control">
-                                    <option value="instock" {{$product->stock == "instock" ? 'selected' : ' '}}>In stock</option>
-                                    <option value="outstock" {{$product->stock == "outstock" ? 'selected' : ' '}}>Out of stock</option>
-                                  </select>
-                                </div> --}}
 
                               </div>
 
@@ -286,7 +279,7 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> --}}
             
           </div>
         </div>
@@ -317,14 +310,11 @@
                               display:block;" class="for-image" src="{{asset('backend/images/products/'.$product->product_image)}}"/>
                               @endif
                                 <button type="button" style="background:#d9dee4; border-radius:0px;width:200px;cursor:pointer;font-size:12px;font-weight:600;" class="upload-button btn btn-default"><i style="font-size:14px;" class="fa fa-upload" aria-hidden="true"></i> &nbsp;Upload Image</button>
-                                <input style="display:none;" class="file-upload" type="file" name="image" accept="image/*"/>
-                                @error('image')
-                                  <p><small class="text-danger">{{ $errors->first('image') }}</small></p>
-                                @enderror
+                                <input style="display:none;" class="file-upload" onchange="validateImage()" type="file" name="image" accept="image/*" id="img"/>
+                                {{-- @error('image') --}}
+                                  <p class="text-danger" id="error" style="display:none">Use validate Image | jpg | jpeg | png | webp</p>
+                                {{-- @enderror --}}
                             </div>
-                            @error('profile_image')
-                                <p><small class="text-danger">{{ $errors->first('profile_image') }}</small></p>
-                            @enderror 
                           </div>
                             {{-- product image end --}}
                             <hr>
@@ -380,7 +370,7 @@
                                             </td>
 
                                             <td>
-                                              <button type="button"  class="deletegallery delete" data-id="{{url('admin/product/gallerydelete/'.$item->id)}}" ><i style="color:red;" class="fa fa-trash"></i></button>
+                                              <button type="button" class="deletegallery delete" data-id="{{url('admin/product/gallerydelete/'.$item->id)}}" ><i style="color:red;" class="fa fa-trash"></i></button>
                                             </td>
                                           
                                         </tr>
@@ -390,7 +380,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                  <input type="file" name="gallery_image[]" class="form-control" id="images" multiple="multiple"/>
+                                  <input type="file" name="gallery_image[]"  class="form-control"
+                                   id="images" multiple="multiple" />
                                 </div>
                               
                                 @error('gallery_image')
@@ -417,6 +408,35 @@
 
 @section('script')
 
+
+{{-- image validation--}}
+<script type="text/javascript">
+
+  function validateImage() {
+      var formData = new FormData();
+  
+      var file = document.getElementById("img").files[0];
+  
+      formData.append("Filedata", file);
+      var t = file.type.split('/').pop().toLowerCase();
+      if (t != "jpeg" && t != "jpg" && t != "png" && t != "webp") {
+          // alert('Please select a valid image file jpeg | jpg | png | webp');
+          $("#error").slideDown();;
+          
+          document.getElementById("img").value = '';
+          return false;
+      }
+      return true;
+  }
+
+  $('#images').MultiFile({
+
+      accept:'gif|jpg|png'
+
+  });
+
+  </script>
+{{-- image validation end--}}
  
 {{-- slug --}}
   <script>
@@ -442,6 +462,7 @@
         }
     
         $(".file-upload").on('change', function(){
+          // validateImage();
             readURL(this);
         });
     
@@ -453,31 +474,40 @@
     });
   </script>
 {{-- image garllery --}}
+
+
+
+
 <script>
+
   $(function() {
-  // Multiple images preview with JavaScript
-  var multiImgPreview = function(input, imgPreviewPlaceholder) {
+    // Multiple images preview with JavaScript
+    var multiImgPreview = function(input, imgPreviewPlaceholder) {
 
-      if (input.files) {
-          var filesAmount = input.files.length;
+          if (input.files) {
+              var filesAmount = input.files.length;
+              // var filepath    = input.files.val();
+              // alert(filepath);
+              
+              for (i = 0; i < filesAmount; i++) {
+                  var reader = new FileReader();
 
-          for (i = 0; i < filesAmount; i++) {
-              var reader = new FileReader();
+                  reader.onload = function(event) {
+                      $($.parseHTML('<img width="80px" height="80px">')).attr('src', event.target.result).appendTo(imgPreviewPlaceholder);
+                  }
 
-              reader.onload = function(event) {
-                  $($.parseHTML('<img width="80px" height="80px">')).attr('src', event.target.result).appendTo(imgPreviewPlaceholder);
+                  reader.readAsDataURL(input.files[i]);
               }
-
-              reader.readAsDataURL(input.files[i]);
           }
-      }
 
-  };
+    };
 
-  $('#images').on('change', function() {
-      multiImgPreview(this, 'div.imgPreview');
-  });
+      $('#images').on('change', function() {
+          multiImgPreview(this, 'div.imgPreview');
+      });
+
   });    
+
 </script>
 
   {{-- ckeditor --}}
@@ -525,6 +555,7 @@
   });
   });    
 </script> --}}
+
 {{-- document tr loop end--}}
 
 <script>
