@@ -22,7 +22,7 @@ class ShopController extends Controller
        # code...
        $blog    =Blog::orderBy('updated_at','DESC')->get();
        $product        = Product::all()->take(20);
-       $product_featured = Product::all()->take(4);
+       $product_featured = Product::all()->take(8);
        $setting     = Setting::where('id',1);
 
        return view('frontend.index',compact('blog','product','product_featured','setting'));
