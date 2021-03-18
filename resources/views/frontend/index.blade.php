@@ -166,10 +166,10 @@
 						@foreach($product_featured as $feature)
 						<div class="item">
 							<div class="grid_item">
-								<span class="ribbon new">New</span>
+								{{-- <span class="ribbon new">{{$feature->}}</span> --}}
 								<figure>
 									<a href="{{url('shop/'.$feature->slug)}}">
-										<img class="owl-lazy" style="width:auto; height:250px;" src="{{$item->product_image ? asset('backend/images/products/'.$item->product_image) : asset('frontend/img/product_placeholder.jpg') }}" data-src="{{$item->product_image ? asset('backend/images/products/'.$item->product_image) : asset('frontend/img/product_placeholder.jpg') }}" alt="">
+										<img class="owl-lazy" style="width:auto; height:250px;" src="{{$feature->product_image ? asset('backend/images/products/'.$feature->product_image) : asset('frontend/img/product_placeholder.jpg')}}" data-src="{{$feature->product_image ? asset('backend/images/products/'.$feature->product_image) : asset('frontend/img/product_placeholder.jpg')}}" alt="">
 									</a>
 								</figure>
 								<div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
@@ -200,28 +200,28 @@
 					<div class="container margin_30">
 						<div id="brands" class="owl-carousel owl-theme">
 							<div class="item">
-								<a href="#0"><img src="{{asset('frontend/img/brands/placeholder_brands.png')}}" data-src="frontend/img/brands/logo_1.png" alt="" class="owl-lazy"></a>
+								<a href="#0"><img src="{{asset('frontend/img/brands/placeholder_brands.png')}}" data-src="{{asset('frontend/img/brands/placeholder_brands.png')}}" alt="" class="owl-lazy"></a>
 							</div><!-- /item -->
 							<div class="item">
-								<a href="#0"><img src="{{asset('frontend/img/brands/placeholder_brands.png')}}" data-src="frontend/img/brands/logo_2.png" alt="" class="owl-lazy"></a>
+								<a href="#0"><img src="{{asset('frontend/img/brands/placeholder_brands.png')}}" data-src="{{asset('frontend/img/brands/placeholder_brands.png')}}" alt="" class="owl-lazy"></a>
 							</div><!-- /item -->
 							<div class="item">
-								<a href="#0"><img src="{{asset('frontend/img/brands/placeholder_brands.png')}}" data-src="frontend/img/brands/logo_3.png" alt="" class="owl-lazy"></a>
+								<a href="#0"><img src="{{asset('frontend/img/brands/placeholder_brands.png')}}" data-src="{{asset('frontend/img/brands/placeholder_brands.png')}}" alt="" class="owl-lazy"></a>
 							</div><!-- /item -->
 							<div class="item">
-								<a href="#0"><img src="{{asset('frontend/img/brands/placeholder_brands.png')}}" data-src="frontend/img/brands/logo_4.png" alt="" class="owl-lazy"></a>
+								<a href="#0"><img src="{{asset('frontend/img/brands/placeholder_brands.png')}}" data-src="{{asset('frontend/img/brands/placeholder_brands.png')}}" alt="" class="owl-lazy"></a>
 							</div><!-- /item -->
 							<div class="item">
-								<a href="#0"><img src="{{asset('frontend/img/brands/placeholder_brands.png')}}" data-src="frontend/img/brands/logo_5.png" alt="" class="owl-lazy"></a>
+								<a href="#0"><img src="{{asset('frontend/img/brands/placeholder_brands.png')}}" data-src="{{asset('frontend/img/brands/placeholder_brands.png')}}" alt="" class="owl-lazy"></a>
 							</div><!-- /item -->
 							<div class="item">
-								<a href="#0"><img src="{{asset('frontend/img/brands/placeholder_brands.png')}}" data-src="frontend/img/brands/logo_6.png" alt="" class="owl-lazy"></a>
+								<a href="#0"><img src="{{asset('frontend/img/brands/placeholder_brands.png')}}" data-src="{{asset('frontend/img/brands/placeholder_brands.png')}}" alt="" class="owl-lazy"></a>
 							</div><!-- /item --> 
 						</div><!-- /carousel -->
 					</div><!-- /container -->
 				</div>
 				<!-- /bg_gray -->
-
+				@if($blog)
 				<div class="container margin_60_35">
 					<div class="main_title">
 						<h2>Latest News</h2>
@@ -229,11 +229,11 @@
 						{{-- <p>Cum doctus civibus efficiantur in imperdiet deterruisset</p> --}}
 					</div>	
 					<div class="row">
-						@if($blog)
+					
 						@foreach ($blog as $item)
 								
 							<div class="col-lg-6">
-								<a class="box_news" href="blog.html">
+								<a class="box_news" href="{{url('blog')}}">
 									<figure>
 										<img src="{{asset('backend/images/blogs/feature_image/'.$item->image)}}" data-src="backend/images/blogs/feature_image/{{$item->image}}" alt="" width="400" height="266" class="lazy">
 										<figcaption><strong>{{$item->created_at->format('d')}}</strong>{{$item->created_at->format('M')}}</figcaption>
@@ -248,7 +248,7 @@
 							</div>
 
 						@endforeach
-						@endif
+					
 
 											<!-- /box_news -->
 
@@ -256,6 +256,7 @@
 					</div>
 					<!-- /row -->
 				</div>
+				@endif
 		<!-- /container -->
 		</main>
 
