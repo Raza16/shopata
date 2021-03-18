@@ -71,40 +71,9 @@
 					<div id="icon_drag_mobile"></div>
 				</div>
 
-<<<<<<< HEAD
 				<!--/carousel-->
 
-				<!-- {{-- <ul id="banners_grid" class="clearfix">
-					<li>
-						<a href="{{url('shop')}}" class="img_container">
-							<img src="{{asset('frontend/img/atm machines.png')}}" data-src="{{asset('frontend/img/atm machines.png')}}" alt="" class="lazy">
-							<div class="short_info opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
-								<h3>ATM machines</h3>
-								<div><span class="btn_1">Shop Now</span></div>
-							</div>
-						</a>
-					</li>
-					<li>
-						<a href="{{url('shop')}}" class="img_container">
-							<img src="{{asset('frontend/img/credit card terminal.png')}}" data-src="{{asset('frontend/img/credit card terminal.png')}}" alt="" class="lazy">
-							<div class="short_info opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
-								<h3>credit card terminal</h3>
-								<div><span class="btn_1">Shop Now</span></div>
-							</div>
-						</a>
-					</li>
-					<li>
-						<a href="{{url('shop')}}" class="img_container">
-							<img src="{{asset('frontend/img/banners/pos.png')}}" data-src="{{asset('frontend/img/banners/pos.png')}}" alt="" class="lazy">
-							<div class="short_info opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
-								<h3>POS</h3>
-								<div><span class="btn_1">Shop Now</span></div>
-							</div>
-						</a>
-					</li>
-				</ul> --}} -->
-=======
->>>>>>> 402a8f58437363983c449e1276bfbfbe26215348
+
 				<div class="container" style="margin-top:30px">
 					<div class="row" >
 
@@ -114,7 +83,7 @@
 								<h3>Free shipping</h3>
 								<p>Contact us for more details</p>
 							</div>
-						</div>	
+						</div>
 
 						<div class="col-lg-4 col-md-6">
 							<div class="box_feat">
@@ -188,7 +157,7 @@
 					</div>
 					<div class="row small-gutters">
 						@foreach($product as $item)
-<<<<<<< HEAD
+
                             <div class="col-6 col-md-4 col-xl-3">
                                 <div class="grid_item">
                                     <figure>
@@ -221,7 +190,7 @@
                                 </div>
                                 <!-- /grid_item -->
                             </div>
-=======
+
 						<div class="col-6 col-md-4 col-xl-3">
 							<div class="grid_item">
 								<figure>
@@ -254,7 +223,7 @@
 							</div>
 							<!-- /grid_item -->
 						</div>
->>>>>>> 402a8f58437363983c449e1276bfbfbe26215348
+
 						@endforeach
 
 					</div>
@@ -335,46 +304,16 @@
 				</div>
 				<!-- /bg_gray -->
 				@if($blog)
-<<<<<<< HEAD
-				<div class="container margin_60_35">
-					<div class="main_title">
-						<h2>Latest News</h2>
-						<span>Blog</span>
-						{{-- <p>Cum doctus civibus efficiantur in imperdiet deterruisset</p> --}}
-					</div>
-					<div class="row">
 
-						@foreach ($blog as $item)
-
-							<div class="col-lg-6">
-								<a class="box_news" href="{{url('blog')}}">
-									<figure>
-										<img src="{{asset('backend/images/blogs/feature_image/'.$item->image)}}" data-src="backend/images/blogs/feature_image/{{$item->image}}" alt="" width="400" height="266" class="lazy">
-										<figcaption><strong>{{$item->created_at->format('d')}}</strong>{{$item->created_at->format('M')}}</figcaption>
-									</figure>
-									<ul>
-										{{-- <li>by Mark Twain</li> --}}
-										<li>{{$item->created_at->format('Y,M,d')}}</li>
-									</ul>
-									<h4>{{$item->title}}</h4>
-									{{-- <p>{!! Str::limit($item->description,300,'....') !!}</p> --}}
-								</a>
-							</div>
-
-						@endforeach
-
-
-											<!-- /box_news -->
-=======
 					<div class="container margin_60_35">
 						<div class="main_title">
 							<h2>Latest News</h2>
 							<span>Blog</span>
-						</div>	
+						</div>
 						<div class="row">
-						
+
 							@foreach ($blog as $item)
-									
+
 								<div class="col-lg-6">
 									<a class="box_news" href="{{url('blog')}}">
 										<figure>
@@ -389,10 +328,10 @@
 										{{-- <p>{!! Str::limit($item->description,300,'....') !!}</p> --}}
 									</a>
 								</div>
->>>>>>> 402a8f58437363983c449e1276bfbfbe26215348
+
 
 							@endforeach
-						
+
 						</div>
 						<!-- /row -->
 					</div>
