@@ -1,7 +1,9 @@
 @extends('frontend.layouts.master')
 
 @section('title','Shop ata Click')
-    
+@section('pagecss')
+<link rel="stylesheet" href="{{asset('frontend/css/about.css')}}">
+@endsection
 @section('content')
 
 
@@ -9,50 +11,13 @@
 
 				<div id="carousel-home">
 					<div class="owl-carousel owl-theme">
-						<div class="owl-slide cover" style="background-image: url('{{asset('frontend/img/atm machines.png')}}');">
-							<div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(255, 255, 255, 0.)">
-								<div class="container">
+						<div class="owl-slide cover" style="background-image: url('{{asset('frontend/img/banners/sm1.png')}}');">
+							<div class="opacity-mask d-block align-items-center" >
+								{{-- <div class="container">
 									<div class="row justify-content-center justify-content-md-start">
 										<div class="col-lg-12 static">
 											<div class="slide-text text-center black">
-												{{-- <h2 class="owl-slide-animated owl-slide-title">Men's HIIT Class Shoe<br>New Collection</h2>
-												<p class="owl-slide-animated owl-slide-subtitle">
-													High Quality Fabric in Lowest Price
-												</p> --}}
-												<div class="owl-slide-animated owl-slide-cta"><a class="btn_1" href="listing-grid-1-full.html" role="button">Shop Now</a></div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!--/owl-slide-->
-						</div>
-						<!--/owl-slide-->
-						<div class="owl-slide cover" style="background-image: url('{{asset('frontend/img/credit card terminal.png')}}');">
-							<div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.0)">
-								<div class="container">
-									<div class="row justify-content-center justify-content-md-start">
-										<div class="col-lg-6 static">
-											<div class="slide-text black">
-												{{-- <h2 class="owl-slide-animated owl-slide-title">Designed with<br>your heart in mind.</h2>
-												<p class="owl-slide-animated owl-slide-subtitle">
-													Limited‑time offer
-												</p> --}}
-												<div class="owl-slide-animated owl-slide-cta"><a class="btn_1" href="listing-grid-1-full.html" role="button">Shop Now</a></div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!--/owl-slide-->
-						{{-- <div class="owl-slide cover" style="background-image: url({{asset('frontend/img/slides/slider_2.png')}});">
-							<div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(255, 255, 255, 0.5)">
-								<div class="container">
-									<div class="row justify-content-center justify-content-md-start">
-										<div class="col-lg-12 static">
-											<div class="slide-text text-center black">
-												<h2 class="owl-slide-animated owl-slide-title">Mens<br>New Collections</h2>
+												<h2 class="owl-slide-animated owl-slide-title">Men's HIIT Class Shoe<br>New Collection</h2>
 												<p class="owl-slide-animated owl-slide-subtitle">
 													High Quality Fabric in Lowest Price
 												</p>
@@ -60,10 +25,47 @@
 											</div>
 										</div>
 									</div>
-								</div>
+								</div> --}}
 							</div>
 							<!--/owl-slide-->
-						</div> --}}
+						</div>
+						<!--/owl-slide-->
+						<div class="owl-slide cover" style="background-image: url('{{asset('frontend/img/banners/sm2.png')}}');">
+							<div class="opacity-mask d-block align-items-center">
+								{{-- <div class="container">
+									<div class="row justify-content-center justify-content-md-start">
+										<div class="col-lg-6 static">
+											<div class="slide-text black">
+												<h2 class="owl-slide-animated owl-slide-title">Designed with<br>your heart in mind.</h2>
+												<p class="owl-slide-animated owl-slide-subtitle">
+													Limited‑time offer
+												</p>
+												<div class="owl-slide-animated owl-slide-cta"><a class="btn_1" href="listing-grid-1-full.html" role="button">Shop Now</a></div>
+											</div>
+										</div>
+									</div>
+								</div> --}}
+							</div>
+						</div>
+						<!--/owl-slide-->
+						<div class="owl-slide cover" style="background-image: url({{asset('frontend/img/banners/sm3.png')}});">
+							<div class="opacity-mask d-block align-items-center">
+								{{-- <div class="container">
+									<div class="row justify-content-center justify-content-md-start">
+										<div class="col-lg-12 static">
+											<div class="slide-text text-center black">
+												<h2 class="owl-slide-animated owl-slide-title">Mens<br>New Collections</h2>
+												<p class="owl-slide-animated owl-slide-subtitle">
+													High Quality Fabric in Lowest Price
+												</p> 
+												 <div class="owl-slide-animated owl-slide-cta"><a class="btn_1" href="listing-grid-1-full.html" role="button">Shop Now</a></div>
+											</div>
+										</div>
+									</div>
+								</div> --}}
+							</div>
+							<!--/owl-slide-->
+						</div>
 						
 					</div>
 					<div id="icon_drag_mobile"></div>
@@ -71,7 +73,7 @@
 
 				<!--/carousel-->
 			
-				<ul id="banners_grid" class="clearfix">
+				{{-- <ul id="banners_grid" class="clearfix">
 					<li>
 						<a href="{{url('shop')}}" class="img_container">
 							<img src="{{asset('frontend/img/atm machines.png')}}" data-src="{{asset('frontend/img/atm machines.png')}}" alt="" class="lazy">
@@ -99,8 +101,81 @@
 							</div>
 						</a>
 					</li>
-				</ul>
+				</ul> --}}
+				<div class="container" style="margin-top:30px">
+					<div class="row" >
+
+						<div class="col-lg-4 col-md-6">
+							<div class="box_feat">
+								<i class="fas fa-truck-loading"></i>
+								<h3>Free shipping</h3>
+								<p>Contact us for more details</p>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-6">
+							<div class="box_feat">	
+								<i class="fas fa-headset"></i>
+								<h3>30 Days Return</h3>
+								<p>ShopataClick is committed to excellence both with</p>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-6">
+							<div class="box_feat">
+								<i class="fas fa-cart-arrow-down"></i>
+								<h3>Safe Shopping</h3>
+								<p>Variety of security measures implemented!</p>
+							</div>
+						</div>
+
+					</div>
+				</div>
 				<!--/banners_grid -->
+				<!--/slider conte -->
+				<div class="container himb" style=" background-image: url({{asset('frontend/img/vlb.png')}}); background-size:cover; background-repeat:no-repeat">
+					<div class="row">
+					<div class="col-6">
+						<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+							<div class="carousel-inner">
+								<div class="carousel-item active">
+									<img class="d-block w-100" src="{{asset('frontend/img/VL1.png')}}" alt="First slide">
+								</div>
+								<div class="carousel-item">
+									<img class="d-block w-100" src="{{asset('frontend/img/VL2.png')}}" alt="Second slide">
+								</div>
+								<div class="carousel-item">
+									<img class="d-block w-100" src="{{asset('frontend/img/VL3.png')}}" alt="Third slide">
+								</div>
+							</div>
+							<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+								<span class="sr-only">Previous</span>
+							</a>
+							<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+								<span class="carousel-control-next-icon" aria-hidden="true"></span>
+								<span class="sr-only">Next</span>
+							</a>
+						</div>
+					</div>
+					<div class="col-6" style="margin:auto; padding:auto;" >
+						<h1 style="font-size:80px; color:#fff;">VL100</h1>
+						<h1>The Ultimate Desktop Solution</h1>
+						<p style="font-size:18px; color:#fff;">Packed with the latest PCI certification, the classic and robust D210 can ensure your transaction throughout the day, which is a preferred choice for merchant who requires portability, large battery capacity and affordable.</p>
+						<ul style="font-size:18px; color:#000;">
+							<li>Desktop POS</li>
+								<li>Ethernet, Wi-Fi, and Dial-Up Connectivity</li>
+									<li>Large Scale Touch Screen Display</li>
+										<li>Signature Capture</li>
+						</ul>
+						<button  type="submit" class="btn_1 mt-2 mb-4" >GET IT NOW</button>
+
+					</div>
+
+				</div>
+			</div>
+
+					<!--/slider conte -->
 				
 				<div class="container margin_60_35">
 					<div class="main_title">
