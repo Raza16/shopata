@@ -71,37 +71,6 @@
 					<div id="icon_drag_mobile"></div>
 				</div>
 
-				<!--/carousel-->
-			
-				{{-- <ul id="banners_grid" class="clearfix">
-					<li>
-						<a href="{{url('shop')}}" class="img_container">
-							<img src="{{asset('frontend/img/atm machines.png')}}" data-src="{{asset('frontend/img/atm machines.png')}}" alt="" class="lazy">
-							<div class="short_info opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
-								<h3>ATM machines</h3>
-								<div><span class="btn_1">Shop Now</span></div>
-							</div>
-						</a>
-					</li>
-					<li>
-						<a href="{{url('shop')}}" class="img_container">
-							<img src="{{asset('frontend/img/credit card terminal.png')}}" data-src="{{asset('frontend/img/credit card terminal.png')}}" alt="" class="lazy">
-							<div class="short_info opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
-								<h3>credit card terminal</h3>
-								<div><span class="btn_1">Shop Now</span></div>
-							</div>
-						</a>
-					</li>
-					<li>
-						<a href="{{url('shop')}}" class="img_container">
-							<img src="{{asset('frontend/img/banners/pos.png')}}" data-src="{{asset('frontend/img/banners/pos.png')}}" alt="" class="lazy">
-							<div class="short_info opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
-								<h3>POS</h3>
-								<div><span class="btn_1">Shop Now</span></div>
-							</div>
-						</a>
-					</li>
-				</ul> --}}
 				<div class="container" style="margin-top:30px">
 					<div class="row" >
 
@@ -111,7 +80,7 @@
 								<h3>Free shipping</h3>
 								<p>Contact us for more details</p>
 							</div>
-						</div>
+						</div>	
 
 						<div class="col-lg-4 col-md-6">
 							<div class="box_feat">	
@@ -168,7 +137,7 @@
 									<li>Large Scale Touch Screen Display</li>
 										<li>Signature Capture</li>
 						</ul>
-						<button  type="submit" class="btn_1 mt-2 mb-4" >GET IT NOW</button>
+						<a href="{{url('shop/valor-vl100-tabletop-terminal')}}" style="color:#fff" class="btn_1 mt-2 mb-4" >GET IT NOW</a>
 
 					</div>
 
@@ -192,7 +161,7 @@
 									<span class="ribbon off">-30%</span>
 									@endif
 									<a href="{{url('shop/'.$item->slug)}}">
-										<img class="img-fluid lazy" style="image-size:contain; height:300px !important; width:auto;"  src="{{$item->product_image ? asset('backend/images/products/'.$item->product_image) : asset('frontend/img/product_placeholder.jpg') }}" data-src="{{$item->product_image ? asset('backend/images/products/'.$item->product_image) : asset('frontend/img/product_placeholder.jpg') }}" alt="">
+										<img class="img-fluid lazy" style="image-size:contain; height:200px !important; width:auto;"  src="{{$item->product_image ? asset('backend/images/products/'.$item->product_image) : asset('frontend/img/product_placeholder.jpg') }}" data-src="{{$item->product_image ? asset('backend/images/products/'.$item->product_image) : asset('frontend/img/product_placeholder.jpg') }}" alt="">
 										<img class="img-fluid lazy" style="image-size:contain;"  src="{{asset('backend/images/products/'.$item->product_image)}}" data-src="{{asset('backend/images/products/'.$item->product_image)}}" alt="">
 									</a>
 									@if($item->sale_price)
@@ -297,40 +266,35 @@
 				</div>
 				<!-- /bg_gray -->
 				@if($blog)
-				<div class="container margin_60_35">
-					<div class="main_title">
-						<h2>Latest News</h2>
-						<span>Blog</span>
-						{{-- <p>Cum doctus civibus efficiantur in imperdiet deterruisset</p> --}}
-					</div>	
-					<div class="row">
-					
-						@foreach ($blog as $item)
-								
-							<div class="col-lg-6">
-								<a class="box_news" href="{{url('blog')}}">
-									<figure>
-										<img src="{{asset('backend/images/blogs/feature_image/'.$item->image)}}" data-src="backend/images/blogs/feature_image/{{$item->image}}" alt="" width="400" height="266" class="lazy">
-										<figcaption><strong>{{$item->created_at->format('d')}}</strong>{{$item->created_at->format('M')}}</figcaption>
-									</figure>
-									<ul>
-										{{-- <li>by Mark Twain</li> --}}
-										<li>{{$item->created_at->format('Y,M,d')}}</li>
-									</ul>
-									<h4>{{$item->title}}</h4>
-									{{-- <p>{!! Str::limit($item->description,300,'....') !!}</p> --}}
-								</a>
-							</div>
+					<div class="container margin_60_35">
+						<div class="main_title">
+							<h2>Latest News</h2>
+							<span>Blog</span>
+						</div>	
+						<div class="row">
+						
+							@foreach ($blog as $item)
+									
+								<div class="col-lg-6">
+									<a class="box_news" href="{{url('blog')}}">
+										<figure>
+											<img src="{{asset('backend/images/blogs/feature_image/'.$item->image)}}" data-src="backend/images/blogs/feature_image/{{$item->image}}" alt="" width="400" height="266" class="lazy">
+											<figcaption><strong>{{$item->created_at->format('d')}}</strong>{{$item->created_at->format('M')}}</figcaption>
+										</figure>
+										<ul>
+											{{-- <li>by Mark Twain</li> --}}
+											<li>{{$item->created_at->format('Y,M,d')}}</li>
+										</ul>
+										<h4>{{$item->title}}</h4>
+										{{-- <p>{!! Str::limit($item->description,300,'....') !!}</p> --}}
+									</a>
+								</div>
 
-						@endforeach
-					
-
-											<!-- /box_news -->
-
-						<!-- /box_news -->
+							@endforeach
+						
+						</div>
+						<!-- /row -->
 					</div>
-					<!-- /row -->
-				</div>
 				@endif
 		<!-- /container -->
 		</main>
