@@ -1,8 +1,11 @@
 shopata.zip
 Product Variation Variation Option.txt
 .env
-# /public/frontend/img
-# /images
-# /backend/images
-# /backend/product_document
- 
+shopataclick
+shopataclick.pub
+/backend/images/brands
+/backend/images/blogs/feature_image
+/backend/images/category
+/backend/images/product_gallery
+/backend/images/products
+/backend/product_document
