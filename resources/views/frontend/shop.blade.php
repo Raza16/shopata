@@ -131,7 +131,9 @@
 
                   @endif
 
-                  <div class="pagination__wrapper">
+                    {{-- {{$product}} --}}
+
+                  {{-- <div class="pagination__wrapper">
                     <ul class="pagination">
                       <li><a href="#0" class="prev" title="previous page">❮</a></li>
                       <li>
@@ -148,7 +150,7 @@
                       </li>
                       <li><a href="#0" class="next" title="next page">❯</a></li>
                     </ul>
-                  </div>
+                  </div> --}}
 
                 </div>
               
