@@ -231,7 +231,7 @@
 				</div>
 				<!-- /container -->
 
-						<div class="t_banner" style="" >
+						<div class="t_banner" >
 							<div class="d-flex align-items-center" >
 							</div>
 							<img src="{{asset('frontend/img/add.png')}}" class="container" alt=" image">
@@ -343,39 +343,7 @@
 
 @section('pop')
 	<div id="toTop"></div><!-- Back to top button -->
-			{{-- <div class="popup_wrapper">
-				<div class="popup_content newsletter">
-					<span class="popup_close">Close</span>
-					<div class="row no-gutters">
-								<div class="col-md-5 d-none d-md-flex align-items-center justify-content-center">
-										<figure><img src="{{asset('frontend/img/atm machines.png')}}" alt=""></figure>
-								</div>
-								<div class="col-md-7">
-						<div class="content">
-							<div class="wrapper">
-							<img src="{{asset('frontend/img/logo_black.png')}}" alt="" width="auto" height="50">
-							<h3>Sign up our newsletter</h3>
-							<p>Ne qui aliquam probatus moderatius, ad sint cotidieque qui, sea id cetero laoreet principes.</p>
-							<form action="#">
-								<div class="form-group">
-									<input type="email" class="form-control" placeholder="Enter your email address">
-								</div>
-
-								<button type="submit" class="btn_1 mt-2 mb-4">Subscribe</button>
-									<div class="form-group">
-										<label class="container_check d-inline">Don't show this PopUp again
-											<input type="checkbox">
-											<span class="checkmark"></span>
-										</label>
-									</div>
-							</form>
-							</div>
-						</div>
-								</div>
-						</div>
-					<!-- row -->
-				</div>
-			</div> --}}
+		
 			<div class="popup_wrapper">
 				<div class="popup_content">
 					<span class="popup_close">Close</span>
