@@ -71,6 +71,7 @@
 					<div id="icon_drag_mobile"></div>
 				</div>
 
+<<<<<<< HEAD
 				<!--/carousel-->
 
 				<!-- {{-- <ul id="banners_grid" class="clearfix">
@@ -102,6 +103,8 @@
 						</a>
 					</li>
 				</ul> --}} -->
+=======
+>>>>>>> 402a8f58437363983c449e1276bfbfbe26215348
 				<div class="container" style="margin-top:30px">
 					<div class="row" >
 
@@ -111,7 +114,7 @@
 								<h3>Free shipping</h3>
 								<p>Contact us for more details</p>
 							</div>
-						</div>
+						</div>	
 
 						<div class="col-lg-4 col-md-6">
 							<div class="box_feat">
@@ -168,7 +171,7 @@
 									<li>Large Scale Touch Screen Display</li>
 										<li>Signature Capture</li>
 						</ul>
-						<button  type="submit" class="btn_1 mt-2 mb-4" >GET IT NOW</button>
+						<a href="{{url('shop/valor-vl100-tabletop-terminal')}}" style="color:#fff" class="btn_1 mt-2 mb-4" >GET IT NOW</a>
 
 					</div>
 
@@ -185,6 +188,7 @@
 					</div>
 					<div class="row small-gutters">
 						@foreach($product as $item)
+<<<<<<< HEAD
                             <div class="col-6 col-md-4 col-xl-3">
                                 <div class="grid_item">
                                     <figure>
@@ -217,6 +221,40 @@
                                 </div>
                                 <!-- /grid_item -->
                             </div>
+=======
+						<div class="col-6 col-md-4 col-xl-3">
+							<div class="grid_item">
+								<figure>
+									@if($item->sale_price)
+									<span class="ribbon off">-30%</span>
+									@endif
+									<a href="{{url('shop/'.$item->slug)}}">
+										<img class="img-fluid lazy" style="image-size:contain; height:200px !important; width:auto;"  src="{{$item->product_image ? asset('backend/images/products/'.$item->product_image) : asset('frontend/img/product_placeholder.jpg') }}" data-src="{{$item->product_image ? asset('backend/images/products/'.$item->product_image) : asset('frontend/img/product_placeholder.jpg') }}" alt="">
+										<img class="img-fluid lazy" style="image-size:contain;"  src="{{asset('backend/images/products/'.$item->product_image)}}" data-src="{{asset('backend/images/products/'.$item->product_image)}}" alt="">
+									</a>
+									@if($item->sale_price)
+									<div data-countdown="2019/05/15" class="countdown"></div>
+									@endif
+								</figure>
+								<div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
+								<a href="{{url('shop/'.$item->slug)}}">
+									<h3>{{$item->name}}</h3>
+								</a>
+								<div class="price_box">
+									@if(!empty($item->sale_price))
+									<span class="new_price">$48.00</span>
+									@endif
+									<span class="{{$item->sale_price ? 'old_price' : 'new_price'}}">${{$item->regular_price}}</span>
+								</div>
+								<ul>
+									<li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
+									<li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to compare"><i class="ti-control-shuffle"></i><span>Add to compare</span></a></li>
+									<li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a></li>
+								</ul>
+							</div>
+							<!-- /grid_item -->
+						</div>
+>>>>>>> 402a8f58437363983c449e1276bfbfbe26215348
 						@endforeach
 
 					</div>
@@ -297,6 +335,7 @@
 				</div>
 				<!-- /bg_gray -->
 				@if($blog)
+<<<<<<< HEAD
 				<div class="container margin_60_35">
 					<div class="main_title">
 						<h2>Latest News</h2>
@@ -326,11 +365,37 @@
 
 
 											<!-- /box_news -->
+=======
+					<div class="container margin_60_35">
+						<div class="main_title">
+							<h2>Latest News</h2>
+							<span>Blog</span>
+						</div>	
+						<div class="row">
+						
+							@foreach ($blog as $item)
+									
+								<div class="col-lg-6">
+									<a class="box_news" href="{{url('blog')}}">
+										<figure>
+											<img src="{{asset('backend/images/blogs/feature_image/'.$item->image)}}" data-src="backend/images/blogs/feature_image/{{$item->image}}" alt="" width="400" height="266" class="lazy">
+											<figcaption><strong>{{$item->created_at->format('d')}}</strong>{{$item->created_at->format('M')}}</figcaption>
+										</figure>
+										<ul>
+											{{-- <li>by Mark Twain</li> --}}
+											<li>{{$item->created_at->format('Y,M,d')}}</li>
+										</ul>
+										<h4>{{$item->title}}</h4>
+										{{-- <p>{!! Str::limit($item->description,300,'....') !!}</p> --}}
+									</a>
+								</div>
+>>>>>>> 402a8f58437363983c449e1276bfbfbe26215348
 
-						<!-- /box_news -->
+							@endforeach
+						
+						</div>
+						<!-- /row -->
 					</div>
-					<!-- /row -->
-				</div>
 				@endif
 		<!-- /container -->
 		</main>
