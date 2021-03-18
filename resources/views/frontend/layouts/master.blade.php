@@ -17,7 +17,9 @@
     <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="{{asset('frontend/img/apple-touch-icon-144x144-precomposed.png')}}">
 	
     <!-- GOOGLE WEB FONT -->
+		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <!-- BASE CSS -->
     <link href="{{asset('frontend/css/bootstrap.custom.min.css')}}" rel="stylesheet">
@@ -141,8 +143,8 @@
 							</div>
 							<!--/main-menu -->
 						</nav>
-						<div class="col-xl-3 col-lg-2 d-lg-flex align-items-center justify-content-end text-right">
-							<a class="phone_top" href="#"><img src="{{asset('frontend/img/app.png')}}" width="200px" height="auto"> </a>
+						<div class="col-xl-3 col-lg-2 d-lg-flex align-items-center justify-content-end text-right igm">
+							<a class="phone_top " href="#"><img src="{{asset('frontend/img/app.png')}}" width="200px" height="auto"> </a>
 						</div>
 					</div>
 					<!-- /row -->
