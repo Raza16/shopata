@@ -2,7 +2,7 @@
 
 
   @section('title','Shop | '.$product->name)
-    
+
   @section('pagecss')
   <link href="{{asset('frontend/css/product_page.css')}}" rel="stylesheet">
   @endsection
@@ -62,7 +62,7 @@
                       <small>{{$product->stock}}</small><br>
                       {!! $product->short_description !!}
                     </p>
-                    
+
                     <div class="prod_options">
                         {{-- <div class="row">
                             <label class="col-xl-5 col-lg-5  col-md-6 col-6 pt-0"><strong>Color</strong></label>
@@ -128,7 +128,7 @@
         <!-- /row -->
     </div>
     <!-- /container -->
-    
+
     <div class="tabs_product">
         <div class="container">
             <ul class="nav nav-tabs" role="tablist">
@@ -159,7 +159,7 @@
                                 <div class="col-lg-6">
                                     {!! $product->long_description !!}
                                 </div>
-                                
+
                                 <div class="col-lg-5">
                                     <h3>Specifications</h3>
                                     <div class="table-responsive">
@@ -286,7 +286,7 @@
                         <span class="ribbon new">New</span>
                         <figure>
                             <a href="product-detail-1.html">
-                        <img class="owl-lazy" src="{{asset('backend/images/products/'.$p_related->product_image)}}" data-src="{{asset('backend/images/products/'.$p_related->product_image)}}" alt="">
+                        <img class="owl-lazy" src="{{asset('backend/images/products/'.$p_related->product_image)}}" style="height:200px; width:auto; margin:auto;" data-src="{{asset('backend/images/products/'.$p_related->product_image)}}" alt="">
                             </a>
                         </figure>
                         <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
@@ -311,7 +311,7 @@
                     <!-- /grid_item -->
                 </div>
             @endforeach
-            
+
         </div>
         <!-- /products_carousel -->
     </div>

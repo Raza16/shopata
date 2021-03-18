@@ -57,7 +57,7 @@
 												<h2 class="owl-slide-animated owl-slide-title">Mens<br>New Collections</h2>
 												<p class="owl-slide-animated owl-slide-subtitle">
 													High Quality Fabric in Lowest Price
-												</p> 
+												</p>
 												 <div class="owl-slide-animated owl-slide-cta"><a class="btn_1" href="listing-grid-1-full.html" role="button">Shop Now</a></div>
 											</div>
 										</div>
@@ -66,14 +66,14 @@
 							</div>
 							<!--/owl-slide-->
 						</div>
-						
+
 					</div>
 					<div id="icon_drag_mobile"></div>
 				</div>
 
 				<!--/carousel-->
-			
-				{{-- <ul id="banners_grid" class="clearfix">
+
+				<!-- {{-- <ul id="banners_grid" class="clearfix">
 					<li>
 						<a href="{{url('shop')}}" class="img_container">
 							<img src="{{asset('frontend/img/atm machines.png')}}" data-src="{{asset('frontend/img/atm machines.png')}}" alt="" class="lazy">
@@ -101,7 +101,7 @@
 							</div>
 						</a>
 					</li>
-				</ul> --}}
+				</ul> --}} -->
 				<div class="container" style="margin-top:30px">
 					<div class="row" >
 
@@ -114,7 +114,7 @@
 						</div>
 
 						<div class="col-lg-4 col-md-6">
-							<div class="box_feat">	
+							<div class="box_feat">
 								<i class="fas fa-headset"></i>
 								<h3>30 Days Return</h3>
 								<p>ShopataClick is committed to excellence both with</p>
@@ -176,7 +176,7 @@
 			</div>
 
 					<!--/slider conte -->
-				
+
 				<div class="container margin_60_35">
 					<div class="main_title">
 						<h2>Top Selling</h2>
@@ -185,40 +185,40 @@
 					</div>
 					<div class="row small-gutters">
 						@foreach($product as $item)
-						<div class="col-6 col-md-4 col-xl-3">
-							<div class="grid_item">
-								<figure>
-									@if($item->sale_price)
-									<span class="ribbon off">-30%</span>
-									@endif
-									<a href="{{url('shop/'.$item->slug)}}">
-										<img class="img-fluid lazy" style="image-size:contain; height:300px !important; width:auto;"  src="{{$item->product_image ? asset('backend/images/products/'.$item->product_image) : asset('frontend/img/product_placeholder.jpg') }}" data-src="{{$item->product_image ? asset('backend/images/products/'.$item->product_image) : asset('frontend/img/product_placeholder.jpg') }}" alt="">
-										<img class="img-fluid lazy" style="image-size:contain;"  src="{{asset('backend/images/products/'.$item->product_image)}}" data-src="{{asset('backend/images/products/'.$item->product_image)}}" alt="">
-									</a>
-									@if($item->sale_price)
-									<div data-countdown="2019/05/15" class="countdown"></div>
-									@endif
-								</figure>
-								<div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
-								<a href="{{url('shop/'.$item->slug)}}">
-									<h3>{{$item->name}}</h3>
-								</a>
-								<div class="price_box">
-									@if(!empty($item->sale_price))
-									<span class="new_price">$48.00</span>
-									@endif
-									<span class="{{$item->sale_price ? 'old_price' : 'new_price'}}">${{$item->regular_price}}</span>
-								</div>
-								<ul>
-									<li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
-									<li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to compare"><i class="ti-control-shuffle"></i><span>Add to compare</span></a></li>
-									<li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a></li>
-								</ul>
-							</div>
-							<!-- /grid_item -->
-						</div>
+                            <div class="col-6 col-md-4 col-xl-3">
+                                <div class="grid_item">
+                                    <figure>
+                                        @if($item->sale_price)
+                                        <span class="ribbon off">-30%</span>
+                                        @endif
+                                        <a href="{{url('shop/'.$item->slug)}}">
+                                            <img class="img-fluid lazy pmv" style="image-size:contain; height:200px; width:auto; margin:auto; padding:auto;"  src="{{$item->product_image ? asset('backend/images/products/'.$item->product_image) : asset('frontend/img/product_placeholder.jpg') }}" data-src="{{$item->product_image ? asset('backend/images/products/'.$item->product_image) : asset('frontend/img/product_placeholder.jpg') }}" alt="">
+                                            <img class="img-fluid lazy pmv" style="image-size:contain; height:300px; width:auto; margin:auto; padding:auto;"  src="{{asset('backend/images/products/'.$item->product_image)}}" data-src="{{asset('backend/images/products/'.$item->product_image)}}" alt="">
+                                        </a>
+                                        @if($item->sale_price)
+                                        <div data-countdown="2019/05/15" class="countdown"></div>
+                                        @endif
+                                    </figure>
+                                    <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
+                                    <a href="{{url('shop/'.$item->slug)}}">
+                                        <h3>{{$item->name}}</h3>
+                                    </a>
+                                    <div class="price_box">
+                                        @if(!empty($item->sale_price))
+                                        <span class="new_price">$48.00</span>
+                                        @endif
+                                        <span class="{{$item->sale_price ? 'old_price' : 'new_price'}}">${{$item->regular_price}}</span>
+                                    </div>
+                                    <ul>
+                                        <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
+                                        <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to compare"><i class="ti-control-shuffle"></i><span>Add to compare</span></a></li>
+                                        <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a></li>
+                                    </ul>
+                                </div>
+                                <!-- /grid_item -->
+                            </div>
 						@endforeach
-					
+
 					</div>
 					<!-- /row -->
 				</div>
@@ -227,7 +227,7 @@
 						<div class="t_banner" style="" >
 							<div class="d-flex align-items-center" >
 							</div>
-							<img src="{{asset('frontend/img/add.png')}}" class="img-fluid" alt=" image">
+							<img src="{{asset('frontend/img/add.png')}}" class="container" alt=" image">
 						</div>
 				<!-- /featured -->
 
@@ -244,7 +244,7 @@
 								{{-- <span class="ribbon new">{{$feature->}}</span> --}}
 								<figure>
 									<a href="{{url('shop/'.$feature->slug)}}">
-										<img class="owl-lazy" style="width:auto; height:250px;" src="{{$feature->product_image ? asset('backend/images/products/'.$feature->product_image) : asset('frontend/img/product_placeholder.jpg')}}" data-src="{{$feature->product_image ? asset('backend/images/products/'.$feature->product_image) : asset('frontend/img/product_placeholder.jpg')}}" alt="">
+										<img class="owl-lazy" style="width:auto; height:200px; margin:auto;" src="{{$feature->product_image ? asset('backend/images/products/'.$feature->product_image) : asset('frontend/img/product_placeholder.jpg')}}" data-src="{{$feature->product_image ? asset('backend/images/products/'.$feature->product_image) : asset('frontend/img/product_placeholder.jpg')}}" alt="">
 									</a>
 								</figure>
 								<div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
@@ -264,13 +264,13 @@
 						</div>
 						@endforeach
 						<!-- /item -->
-						
+
 						<!-- /item -->
 					</div>
 					<!-- /products_carousel -->
 				</div>
 				<!-- /container -->
-				
+
 				<div class="bg_gray">
 					<div class="container margin_30">
 						<div id="brands" class="owl-carousel owl-theme">
@@ -291,7 +291,7 @@
 							</div><!-- /item -->
 							<div class="item">
 								<a href="#0"><img src="{{asset('frontend/img/brands/placeholder_brands.png')}}" data-src="{{asset('frontend/img/brands/placeholder_brands.png')}}" alt="" class="owl-lazy"></a>
-							</div><!-- /item --> 
+							</div><!-- /item -->
 						</div><!-- /carousel -->
 					</div><!-- /container -->
 				</div>
@@ -302,11 +302,11 @@
 						<h2>Latest News</h2>
 						<span>Blog</span>
 						{{-- <p>Cum doctus civibus efficiantur in imperdiet deterruisset</p> --}}
-					</div>	
+					</div>
 					<div class="row">
-					
+
 						@foreach ($blog as $item)
-								
+
 							<div class="col-lg-6">
 								<a class="box_news" href="{{url('blog')}}">
 									<figure>
@@ -323,7 +323,7 @@
 							</div>
 
 						@endforeach
-					
+
 
 											<!-- /box_news -->
 
@@ -356,7 +356,7 @@
 								<div class="form-group">
 									<input type="email" class="form-control" placeholder="Enter your email address">
 								</div>
-								
+
 								<button type="submit" class="btn_1 mt-2 mb-4">Subscribe</button>
 									<div class="form-group">
 										<label class="container_check d-inline">Don't show this PopUp again
@@ -380,11 +380,11 @@
 					</a>
 				</div>
 			</div>
-			
+
 @endsection
 
 
 {{-- @section('phone','phone'.$setting->title) --}}
-		
+
 
 
