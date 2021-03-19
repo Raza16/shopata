@@ -133,6 +133,8 @@
 
                     {{-- {{$product}} --}}
 
+                    {{ $product->links('frontend.layouts.pagination') }}
+
                   {{-- <div class="pagination__wrapper">
                     <ul class="pagination">
                       <li><a href="#0" class="prev" title="previous page">❮</a></li>

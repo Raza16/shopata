@@ -47,7 +47,7 @@ class ShopController extends Controller
  
             $brand          = Brand::all();
             $category       = Category::all();
-            $product        = Product::all();
+            $product        = Product::paginate(12);
 
             // response->json($product);
         return view ('frontend.shop',compact('brand','category','product'));
