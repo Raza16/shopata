@@ -164,7 +164,7 @@
 													@if($item->sale_price)
 													<span class="ribbon off">-30%</span>
 													@endif
-													<a href="{{url('shop/'.$item->slug)}}">
+													<a href="{{$item->type =='simple' ? url('shop/'.$item->slug) : url('digital') }}">
 															<img class="img-fluid lazy pmv" style="image-size:contain; height:200px; width:auto; margin:auto; padding:auto;"  src="{{$item->product_image ? asset('backend/images/products/'.$item->product_image) : asset('frontend/img/product_placeholder.jpg') }}" data-src="{{$item->product_image ? asset('backend/images/products/'.$item->product_image) : asset('frontend/img/product_placeholder.jpg') }}" alt="">
 															<img class="img-fluid lazy pmv" style="image-size:contain; height:300px; width:auto; margin:auto; padding:auto;"  src="{{asset('backend/images/products/'.$item->product_image)}}" data-src="{{asset('backend/images/products/'.$item->product_image)}}" alt="">
 													</a>
@@ -173,7 +173,7 @@
 													@endif
 											</figure>
 											<div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
-											<a href="{{url('shop/'.$item->slug)}}">
+											<a href="{{$item->type =='simple' ? url('shop/'.$item->slug) : url('digital') }}">
 													<h3>{{$item->name}}</h3>
 											</a>
 											<div class="price_box">
@@ -206,6 +206,45 @@
 						</div>
 				<!-- /featured -->
 
+				{{-- digital product --}}
+				<div class="container margin_60_35">
+					<div class="main_title">
+						<h2>Digital</h2>
+						<span>Products</span>
+					</div>
+					<div class="owl-carousel owl-theme products_carousel">
+						@foreach($product_digital as $digital)
+						<div class="item">
+							<div class="grid_item">
+								{{-- <span class="ribbon new">{{$feature->}}</span> --}}
+								<figure>
+									<a href="{{$digital->type =='simple' || $digital->type =='variable'  ? url('shop/'.$digital->slug) : url('digital/'.$digital->slug) }}">
+										<img class="owl-lazy" style="width:auto; height:200px; margin:auto;" src="{{$digital->product_image ? asset('backend/images/products/'.$digital->product_image) : asset('frontend/img/product_placeholder.jpg')}}" data-src="{{$digital->product_image ? asset('backend/images/products/'.$digital->product_image) : asset('frontend/img/product_placeholder.jpg')}}" alt="">
+									</a>
+								</figure>
+								<div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
+								<a href="{{$digital->type =='simple' || $digital->type =='variable'  ? url('shop/'.$digital->slug) : url('digital/'.$digital->slug) }}">
+									<h3>{{$digital->name}}</h3>
+								</a>
+								<div class="price_box">
+									<span class="new_price">{{$digital->regular_price ? '$'.$digital->regular_price : ''}}</span>
+								</div>
+								<ul>
+									<li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
+									<li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to compare"><i class="ti-control-shuffle"></i><span>Add to compare</span></a></li>
+									<li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a></li>
+								</ul>
+							</div>
+							<!-- /grid_item -->
+						</div>
+						@endforeach
+						<!-- /item -->
+
+						<!-- /item -->
+					</div>
+					<!-- /products_carousel -->
+				</div>
+				{{-- digital product --}}
 				<div class="container margin_60_35">
 					<div class="main_title">
 						<h2>Featured</h2>
