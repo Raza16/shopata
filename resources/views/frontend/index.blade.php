@@ -280,7 +280,7 @@
 
 				<div class="bg_gray">
 					<div class="container margin_30">
-						<div id="brands" class="owl-carousel owl-theme">
+						<div id="brands" class="owl-carousel owl-theme ">
 							<div class="item">
 								<a href="#0"><img src="{{asset('frontend/img/brands/placeholder_brands.png')}}" data-src="{{asset('frontend/img/brands/placeholder_brands.png')}}" alt="" class="owl-lazy"></a>
 							</div><!-- /item -->

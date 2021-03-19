@@ -7343,7 +7343,7 @@ img.mfp-img {
 /*store directory*/
 /*-------- 1.5 Top banner --------*/
 .t_banner {
-  height: 800px;
+  height: 500px;
   overflow:hidden;
   position: relative;
 
@@ -7371,6 +7371,7 @@ img.mfp-img {
     height: auto;
     width: auto !important;
     max-width: 375px !important;
+
   }
 }
 
@@ -7389,4 +7390,10 @@ img.mfp-img {
 
   .container{
       max-width:1300px;
+  }
+/* Selects any disabled <input> */
+.owl-dots{
+    visibility:hidden !important;
+    display:none !important;
+
   }
