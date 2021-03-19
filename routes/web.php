@@ -102,6 +102,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
  Route::get('shop/{slug}',[App\Http\Controllers\frontend\ShopController::class,'singleshop']);
 //  download
  Route::get('shop/download/{id}',[App\Http\Controllers\frontend\ShopController::class,'getDownload']);
+//  leave review
+ Route::get('leave/{slug}',[App\Http\Controllers\frontend\ShopController::class, 'leave_review']);
 // categoryController
 Route::get('shops/{category}',[App\Http\Controllers\frontend\ShopController::class,'categories']);
 

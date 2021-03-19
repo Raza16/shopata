@@ -69,9 +69,17 @@ class ShopController extends Controller
         // document
         $product_documents  =Product::find($gall)->document_product;
         // related
-        $product_related  = Product::where('category_id',$category)->take(8)->get();
+        $product_related  = Product::where('category_id',$category)->get();
 
         return view('frontend.product_details',compact('product','product_grallery','product_related','product_documents'));
+    }
+
+    public function leave_review($slug)
+    {
+        # code...
+        $review =Product::where('slug',$slug)->first();
+
+        return view ('frontend.leave_review',compact('review'));
     }
 
     //store directroy
@@ -117,28 +125,6 @@ class ShopController extends Controller
         return view ('frontend.single_blog',compact('blog','latest'));
     }
 
-    // public function blog_search(Request $request){
-    //     if($request->ajax()) {
-    //         $data = Blog::where('title', 'LIKE', $request->title.'%')
-    //             ->get();
-    //          $output = '';
-
-    //          if (count($data)>0) {
-    //             $output = '<ul class="list-group" style="display: block; position: relative; z-index: 1">';
-    //             foreach ($data as $row){
-                   
-    //                 $output .= '<li class="list-group-item">'.$row->title.'</li>';
-    //             }
-    //             $output .= '</ul>';
-    //         }
-    //         else {
-             
-    //             $output .= '<li class="list-group-item">'.'No results'.'</li>';
-    //         }
-
-    //         return $output;
-
-    //     }
-    // }
+    
 
 }
