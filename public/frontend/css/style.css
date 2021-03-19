@@ -7343,7 +7343,7 @@ img.mfp-img {
 /*store directory*/
 /*-------- 1.5 Top banner --------*/
 .t_banner {
-  height: 800px;
+  height: 500px;
   overflow:hidden;
   position: relative;
   margin:auto !important;
@@ -7390,4 +7390,10 @@ img.mfp-img {
 
   .container{
       max-width:1300px;
+  }
+
+  .owl-dots{
+    visibility:hidden !important;
+    display:none !important;
+
   }
