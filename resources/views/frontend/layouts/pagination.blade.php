@@ -30,7 +30,7 @@
                     @if ($paginator->hasMorePages())
                         <li><a href="{{ $paginator->nextPageUrl() }}" class="next" title="next page" rel="next">❯</a></li>
                       @else
-                        <li class="disabled"><span>❯</span></li>
+                        <li class="disabled"><a class="next"><span>❯</span></a></li>
                     @endif
                   </ul>
                 @endif
