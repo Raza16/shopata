@@ -82,11 +82,11 @@
                             <span class="ribbon off">{{$item->sale_price}}</span>
                             @endif
                             <figure>
-                              <a href="{{url('shop/'.$item->slug)}}">
+                              <a href="{{$item->type =='simple' || $item->type =='variable' ? url('shop/'.$item->slug) : url('digital/'.$item->slug) }}">
                                 <img class="img-fluid lazy loaded" style="image-size: contain; height:250px; width:auto;" src="{{$item->product_image ? asset('backend/images/products/'.$item->product_image) : asset('frontend/img/product_placeholder.jpg') }}" data-src="{{ $item->product_image ? asset('backend/images/products/'.$item->product_image) : 'https://via.placeholder.com/200x200?text=Product Image'}}" alt="" data-was-processed="true">
                               </a>
                             </figure>
-                            <a href="{{url('shop/'.$item->slug)}}">
+                            <a href="{{$item->type =='simple' || $item->type =='variable'  ? url('shop/'.$item->slug) : url('digital/'.$item->slug) }}">
                               <h3>{{$item->name}}</h3>
                             </a>
                             <div class="price_box">
@@ -131,7 +131,11 @@
 
                   @endif
 
-                  <div class="pagination__wrapper">
+                    {{-- {{$product}} --}}
+
+                    {{ $product->links('frontend.layouts.pagination') }}
+
+                  {{-- <div class="pagination__wrapper">
                     <ul class="pagination">
                       <li><a href="#0" class="prev" title="previous page">❮</a></li>
                       <li>
@@ -148,7 +152,7 @@
                       </li>
                       <li><a href="#0" class="next" title="next page">❯</a></li>
                     </ul>
-                  </div>
+                  </div> --}}
 
                 </div>
               

@@ -158,62 +158,76 @@
 					<div class="row small-gutters">
 						@foreach($product as $item)
 
-                            <div class="col-6 col-md-4 col-xl-3">
-                                <div class="grid_item">
-                                    <figure>
-                                        @if($item->sale_price)
-                                        <span class="ribbon off">-30%</span>
-                                        @endif
-                                        <a href="{{url('shop/'.$item->slug)}}">
-                                            <img class="img-fluid lazy pmv" style="image-size:contain; height:200px; width:auto; margin:auto; padding:auto;"  src="{{$item->product_image ? asset('backend/images/products/'.$item->product_image) : asset('frontend/img/product_placeholder.jpg') }}" data-src="{{$item->product_image ? asset('backend/images/products/'.$item->product_image) : asset('frontend/img/product_placeholder.jpg') }}" alt="">
-                                            <img class="img-fluid lazy pmv" style="image-size:contain; height:300px; width:auto; margin:auto; padding:auto;"  src="{{asset('backend/images/products/'.$item->product_image)}}" data-src="{{asset('backend/images/products/'.$item->product_image)}}" alt="">
-                                        </a>
-                                        @if($item->sale_price)
-                                        <div data-countdown="2019/05/15" class="countdown"></div>
-                                        @endif
-                                    </figure>
-                                    <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
-                                    <a href="{{url('shop/'.$item->slug)}}">
-                                        <h3>{{$item->name}}</h3>
-                                    </a>
-                                    <div class="price_box">
-                                        @if(!empty($item->sale_price))
-                                        <span class="new_price">$48.00</span>
-                                        @endif
-                                        <span class="{{$item->sale_price ? 'old_price' : 'new_price'}}">${{$item->regular_price}}</span>
-                                    </div>
-                                    <ul>
-                                        <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
-                                        <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to compare"><i class="ti-control-shuffle"></i><span>Add to compare</span></a></li>
-                                        <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a></li>
-                                    </ul>
-                                </div>
-                                <!-- /grid_item -->
-                            </div>
+							<div class="col-6 col-md-4 col-xl-3">
+									<div class="grid_item">
+											<figure>
+													@if($item->sale_price)
+													<span class="ribbon off">-30%</span>
+													@endif
+													<a href="{{$item->type =='simple' ? url('shop/'.$item->slug) : url('digital') }}">
+															<img class="img-fluid lazy pmv" style="image-size:contain; height:200px; width:auto; margin:auto; padding:auto;"  src="{{$item->product_image ? asset('backend/images/products/'.$item->product_image) : asset('frontend/img/product_placeholder.jpg') }}" data-src="{{$item->product_image ? asset('backend/images/products/'.$item->product_image) : asset('frontend/img/product_placeholder.jpg') }}" alt="">
+															<img class="img-fluid lazy pmv" style="image-size:contain; height:300px; width:auto; margin:auto; padding:auto;"  src="{{asset('backend/images/products/'.$item->product_image)}}" data-src="{{asset('backend/images/products/'.$item->product_image)}}" alt="">
+													</a>
+													@if($item->sale_price)
+													<div data-countdown="2019/05/15" class="countdown"></div>
+													@endif
+											</figure>
+											<div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
+											<a href="{{$item->type =='simple' ? url('shop/'.$item->slug) : url('digital') }}">
+													<h3>{{$item->name}}</h3>
+											</a>
+											<div class="price_box">
+													@if(!empty($item->sale_price))
+													<span class="new_price">$48.00</span>
+													@endif
+													<span class="{{$item->sale_price ? 'old_price' : 'new_price'}}">${{$item->regular_price}}</span>
+											</div>
+											<ul>
+													<li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
+													<li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to compare"><i class="ti-control-shuffle"></i><span>Add to compare</span></a></li>
+													<li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a></li>
+											</ul>
+									</div>
+									<!-- /grid_item -->
+							</div>
 
-						<div class="col-6 col-md-4 col-xl-3">
+
+						@endforeach
+
+					</div>
+					<!-- /row -->
+				</div>
+				<!-- /container -->
+
+						<div class="t_banner" >
+							<div class="d-flex align-items-center" >
+							</div>
+							<img src="{{asset('frontend/img/add.png')}}" class="container" alt=" image">
+						</div>
+				<!-- /featured -->
+
+				{{-- digital product --}}
+				<div class="container margin_60_35">
+					<div class="main_title">
+						<h2>Digital</h2>
+						<span>Products</span>
+					</div>
+					<div class="owl-carousel owl-theme products_carousel">
+						@foreach($product_digital as $digital)
+						<div class="item">
 							<div class="grid_item">
+								{{-- <span class="ribbon new">{{$feature->}}</span> --}}
 								<figure>
-									@if($item->sale_price)
-									<span class="ribbon off">-30%</span>
-									@endif
-									<a href="{{url('shop/'.$item->slug)}}">
-										<img class="img-fluid lazy" style="image-size:contain; height:200px !important; width:auto;"  src="{{$item->product_image ? asset('backend/images/products/'.$item->product_image) : asset('frontend/img/product_placeholder.jpg') }}" data-src="{{$item->product_image ? asset('backend/images/products/'.$item->product_image) : asset('frontend/img/product_placeholder.jpg') }}" alt="">
-										<img class="img-fluid lazy" style="image-size:contain;"  src="{{asset('backend/images/products/'.$item->product_image)}}" data-src="{{asset('backend/images/products/'.$item->product_image)}}" alt="">
+									<a href="{{$digital->type =='simple' || $digital->type =='variable'  ? url('shop/'.$digital->slug) : url('digital/'.$digital->slug) }}">
+										<img class="owl-lazy" style="width:auto; height:200px; margin:auto;" src="{{$digital->product_image ? asset('backend/images/products/'.$digital->product_image) : asset('frontend/img/product_placeholder.jpg')}}" data-src="{{$digital->product_image ? asset('backend/images/products/'.$digital->product_image) : asset('frontend/img/product_placeholder.jpg')}}" alt="">
 									</a>
-									@if($item->sale_price)
-									<div data-countdown="2019/05/15" class="countdown"></div>
-									@endif
 								</figure>
 								<div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
-								<a href="{{url('shop/'.$item->slug)}}">
-									<h3>{{$item->name}}</h3>
+								<a href="{{$digital->type =='simple' || $digital->type =='variable'  ? url('shop/'.$digital->slug) : url('digital/'.$digital->slug) }}">
+									<h3>{{$digital->name}}</h3>
 								</a>
 								<div class="price_box">
-									@if(!empty($item->sale_price))
-									<span class="new_price">$48.00</span>
-									@endif
-									<span class="{{$item->sale_price ? 'old_price' : 'new_price'}}">${{$item->regular_price}}</span>
+									<span class="new_price">{{$digital->regular_price ? '$'.$digital->regular_price : ''}}</span>
 								</div>
 								<ul>
 									<li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
@@ -223,21 +237,14 @@
 							</div>
 							<!-- /grid_item -->
 						</div>
-
 						@endforeach
+						<!-- /item -->
 
+						<!-- /item -->
 					</div>
-					<!-- /row -->
+					<!-- /products_carousel -->
 				</div>
-				<!-- /container -->
-
-						<div class="t_banner" style="" >
-							<div class="d-flex align-items-center" >
-							</div>
-							<img src="{{asset('frontend/img/add.png')}}" class="container" alt=" image">
-						</div>
-				<!-- /featured -->
-
+				{{-- digital product --}}
 				<div class="container margin_60_35">
 					<div class="main_title">
 						<h2>Featured</h2>
@@ -303,7 +310,7 @@
 					</div><!-- /container -->
 				</div>
 				<!-- /bg_gray -->
-				@if($blog)
+				{{-- @if($blog)
 
 					<div class="container margin_60_35">
 						<div class="main_title">
@@ -321,11 +328,11 @@
 											<figcaption><strong>{{$item->created_at->format('d')}}</strong>{{$item->created_at->format('M')}}</figcaption>
 										</figure>
 										<ul>
-											{{-- <li>by Mark Twain</li> --}}
+										
 											<li>{{$item->created_at->format('Y,M,d')}}</li>
 										</ul>
 										<h4>{{$item->title}}</h4>
-										{{-- <p>{!! Str::limit($item->description,300,'....') !!}</p> --}}
+									
 									</a>
 								</div>
 
@@ -335,7 +342,7 @@
 						</div>
 						<!-- /row -->
 					</div>
-				@endif
+				@endif --}}
 		<!-- /container -->
 		</main>
 
@@ -343,39 +350,7 @@
 
 @section('pop')
 	<div id="toTop"></div><!-- Back to top button -->
-			{{-- <div class="popup_wrapper">
-				<div class="popup_content newsletter">
-					<span class="popup_close">Close</span>
-					<div class="row no-gutters">
-								<div class="col-md-5 d-none d-md-flex align-items-center justify-content-center">
-										<figure><img src="{{asset('frontend/img/atm machines.png')}}" alt=""></figure>
-								</div>
-								<div class="col-md-7">
-						<div class="content">
-							<div class="wrapper">
-							<img src="{{asset('frontend/img/logo_black.png')}}" alt="" width="auto" height="50">
-							<h3>Sign up our newsletter</h3>
-							<p>Ne qui aliquam probatus moderatius, ad sint cotidieque qui, sea id cetero laoreet principes.</p>
-							<form action="#">
-								<div class="form-group">
-									<input type="email" class="form-control" placeholder="Enter your email address">
-								</div>
-
-								<button type="submit" class="btn_1 mt-2 mb-4">Subscribe</button>
-									<div class="form-group">
-										<label class="container_check d-inline">Don't show this PopUp again
-											<input type="checkbox">
-											<span class="checkmark"></span>
-										</label>
-									</div>
-							</form>
-							</div>
-						</div>
-								</div>
-						</div>
-					<!-- row -->
-				</div>
-			</div> --}}
+		
 			<div class="popup_wrapper">
 				<div class="popup_content">
 					<span class="popup_close">Close</span>

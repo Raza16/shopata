@@ -5,6 +5,7 @@
 
   @section('pagecss')
   <link href="{{asset('frontend/css/product_page.css')}}" rel="stylesheet">
+
   @endsection
 
 
@@ -23,11 +24,12 @@
                     <div class="slider">
                         <div class="owl-carousel owl-theme main">
                           {{-- @foreach($product as $image) --}}
-                            <div style="background-image: url('{{asset('backend/images/products/'.$product->product_image)}}');" class="item-box"></div>
-                          {{-- @endforeach --}}
+                            <div style="background-image: url('{{$product->product_image ? asset('backend/images/products/'.$product->product_image) : asset('frontend/img/product_placeholder.jpg')}}');" class="item-box"></div>
+                    
                           @foreach($product_grallery as $image)
                             <div style="background-image: url('{{asset('backend/images/product_gallery/'.$image->image)}}');" class="item-box"></div>
                             @endforeach
+
                         </div>
                         <div class="left nonl"><i class="ti-angle-left"></i></div>
                         <div class="right"><i class="ti-angle-right"></i></div>
@@ -35,6 +37,7 @@
                     <div class="slider-two">
                         <div class="owl-carousel owl-theme thumbs">
                             <div style="background-image: url('{{asset('backend/images/products/'.$product->product_image)}}');" class="item active"></div>
+
                           @foreach($product_grallery as $image)
                            <div style="background-image: url('{{asset('backend/images/product_gallery/'.$image->image)}}');" class="item"></div>
                           @endforeach
@@ -48,9 +51,11 @@
             <div class="col-md-6">
                 <div class="breadcrumbs">
                     <ul>
-                        <li><a href="#">Home</a></li>
+                        <li><a href="{{url('/')}}">Home</a></li>
                         <li><a href="#">Category</a></li>
                         <li>{{$product->category_id ? $product->category->title : "Uncategories"}}</li>
+                        <li>{{$product->name }}</li>
+                        <li style="text-transform: uppercase">{{$product->type }}</li>
                     </ul>
                 </div>
                 <!-- /page_header -->
@@ -58,12 +63,15 @@
                     <h1>{{$product->name}}</h1>
                     <span class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i><em>4 reviews</em></span>
                     <p>
-                      <small>SKU: {{$product->product_code}}</small><br>
-                      <small>{{$product->stock}}</small><br>
+                    
+                      <small>{{$product->product_code ? 'SKU:'.$product->product_code : ''}}</small><br>
+                      <small style="text-transform: uppercase">{{$product->stock}}</small><br>
                       {!! $product->short_description !!}
+                 
                     </p>
 
                     <div class="prod_options">
+                        {{-- attributes --}}
                         {{-- <div class="row">
                             <label class="col-xl-5 col-lg-5  col-md-6 col-6 pt-0"><strong>Color</strong></label>
                             <div class="col-xl-4 col-lg-5 col-md-6 col-6 colors">
@@ -158,48 +166,51 @@
                             <div class="row justify-content-between">
                                 <div class="col-lg-6">
                                     {!! $product->long_description !!}
+                                    {{-- {!! Str::limit($product->long_description, 700, '') !!} --}}
+                                    {{-- @if (strlen($product->long_description) > 700)
+                                        <span id="dots">.....</span>
+                                        <span id="more"></span>
+                                        <br>
+                                    @endif --}}
+                                  
+                                    {{-- <button onclick="myFunction()" id="myBtn" class="btn btn-primary">Read more</button>    --}}
                                 </div>
 
-                                <div class="col-lg-5">
-                                    <h3>Specifications</h3>
-                                    <div class="table-responsive">
-                                        <table class="table table-sm table-striped">
-                                            <tbody>
-                                                {{-- <tr>
-                                                    <td><strong>Color</strong></td>
-                                                    <td>Blue, Purple</td>
-                                                </tr> --}}
-                                                <tr>
-                                                    <td><strong>Size</strong></td>
-                                                    <td>150x100x100</td>
-                                                </tr>
-                                                <tr>
-                                                  @if(empty($product->weight))
-                                                    <td><strong>Weight</strong></td>
-                                                    <td>{{$product->weight ? $product->weight : ' '}}</td>
-                                                  @endif
-                                                </tr>
-                                                <tr>
-                                                    <td><strong>Manifacturer</strong></td>
-                                                    <td>Manifacturer</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                 
+
+                                @if(!empty($product->weight))
+                                    <div class="col-lg-5">
+                                        <h3>Specifications</h3>
+                                        <div class="table-responsive">
+                                            <table class="table table-sm table-striped">
+                                                <tbody>
+                                                    <tr>
+                                                    @if(!empty($product->weight))
+                                                        <td><strong>Weight</strong></td>
+                                                        <td>{{$product->weight ? $product->weight : ' '}}</td>
+                                                    @endif
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- /table-responsive -->
                                     </div>
-                                    <!-- /table-responsive -->
-                                </div>
+                                @endif
+
                             </div>
+
                             @if($product_documents)
                                 <div class="row">
                                     @foreach($product_documents as $document)
                                     <div class="col-4">
                                         <div class="col-lg-4 col-md-6">
-                                        <div class="download"><a href="{{url('shop/download/'.$document->id)}}" class="btn_1">{{$document->document}}</a></div>
+                                        <div class="download"><a href="{{url('shop/download/'.$document->id)}}" class="btn_1">Download</a></div>
                                         </div>
                                     </div>
                                     @endforeach
                                 </div>
                             @endif
+
                         </div>
                     </div>
                 </div>
@@ -260,7 +271,7 @@
                                 </div>
                             </div>
                             <!-- /row -->
-                            <p class="text-right"><a href="leave-review.html" class="btn_1">Leave a review</a></p>
+                            <p class="text-right"><a href="{{url('leave/'.$product->slug)}}" class="btn_1">Leave a review</a></p>
                         </div>
                         <!-- /card-body -->
                     </div>
@@ -283,15 +294,15 @@
             @foreach($product_related as $p_related)
                 <div class="item">
                     <div class="grid_item">
-                        <span class="ribbon new">New</span>
+                        <span class="ribbon new">{{$product->category_id ? $product->category->title : "Uncategories"}}</span>
                         <figure>
-                            <a href="product-detail-1.html">
+                            <a href="{{url('shop/'.$p_related->slug)}}">
                         <img class="owl-lazy" src="{{asset('backend/images/products/'.$p_related->product_image)}}" style="height:200px; width:auto; margin:auto;" data-src="{{asset('backend/images/products/'.$p_related->product_image)}}" alt="">
                             </a>
                         </figure>
                         <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
-                        <a href="product-detail-1.html">
-                            <h3>{{$p_related->nmae}}</h3>
+                        <a href="{{url('shop/'.$p_related->slug)}}">
+                            <h3>{{$p_related->name}}</h3>
                         </a>
                         <div class="price_box">
                             <span class="new_price">${{$p_related->regular_price}}</span>
@@ -356,8 +367,109 @@
 
   @endsection
 
+@section('pop')
+<div id="toTop"></div><!-- Back to top button -->
 
+    <div class="top_panel">
+        <div class="container header_panel">
+            <a href="#0" class="btn_close_top_panel"><i class="ti-close"></i></a>
+            <label>1 product added to cart</label>
+        </div>
+        <!-- /header_panel -->
+        <div class="item">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="item_panel">
+                            <figure>
+                                <img src="{{asset('backend/images/products/'.$product->product_image)}}" data-src="{{asset('backend/images/products/'.$product->product_image)}}" class="lazy" alt="">
+                            </figure>
+                            <h4>{{$product->name}}</h4>
+                          
+                            <div class="price_panel">
+                                <span class="{{$product->sale_price ? 'new_price' : ''}}">{{$product->sale_price ? '$'.$product->sale_price : ' '}}</span>
+                                {{-- <span class="percentage">-20%</span>  --}}
+                                <span class="{{$product->sale_price ? 'old_price' : 'new_price'}}">${{$product->regular_price}}</span></div>
+                            </div>
+                    </div>
+                    <div class="col-md-5 btn_panel">
+                        <a href="#" class="btn_1 outline">View cart</a> <a href="#" class="btn_1">Checkout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /item -->
+        {{-- <div class="container related">
+            <h4>Who bought this product also bought</h4>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="item_panel">
+                        <a href="#0">
+                            <figure>
+                                <img src="img/products/product_placeholder_square_small.jpg" data-src="img/products/shoes/2.jpg" alt="" class="lazy">
+                            </figure>
+                        </a>
+                        <a href="#0">
+                            <h5>Armor Okwahn II</h5>
+                        </a>
+                        <div class="price_panel"><span class="new_price">$90.00</span></div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="item_panel">
+                        <a href="#0">
+                            <figure>
+                                <img src="img/products/product_placeholder_square_small.jpg" data-src="img/products/shoes/3.jpg" alt="" class="lazy">
+                            </figure>
+                        </a>
+                        <a href="#0">
+                            <h5>Armor Air Wildwood ACG</h5>
+                        </a>
+                        <div class="price_panel"><span class="new_price">$75.00</span><span class="percentage">-20%</span> <span class="old_price">$155.00</span></div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="item_panel">
+                        <a href="#0">
+                            <figure>
+                                <img src="img/products/product_placeholder_square_small.jpg" data-src="img/products/shoes/4.jpg" alt="" class="lazy">
+                            </figure>
+                        </a>
+                        <a href="#0">
+                            <h5>Armor ACG React Terra</h5>
+                        </a>
+                        <div class="price_panel"><span class="new_price">$110.00</span></div>
+                    </div>
+                </div>
+            </div>
+        </div> --}}
+        <!-- /related -->
+    </div>
+
+@endsection
 
   @section('script')
+
+  {{-- <script>
+    function myFunction() {
+        var dots = document.getElementById("dots");
+        var moreText = document.getElementById("more");
+        var btnText = document.getElementById("myBtn");
+
+        if (dots.style.display === "none") {
+            dots.style.display = "inline";
+            btnText.innerHTML = "Read more";
+            moreText.style.display = "none";
+        } else {
+            dots.style.display = "none";
+            btnText.innerHTML = "Read less";
+            moreText.style.display = "inline";
+          
+            }
+    }
+  </script> --}}
+
   <script src="{{asset('frontend/js/carousel_with_thumbs.js')}}"></script>
+
+ 
   @endsection

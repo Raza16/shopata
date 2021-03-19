@@ -7346,6 +7346,7 @@ img.mfp-img {
   height: 500px;
   overflow:hidden;
   position: relative;
+  margin:auto !important;
 
 }
 @media (max-width: 767px) {

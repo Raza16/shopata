@@ -15,8 +15,8 @@
 			<div class="row justify-content-center">
 				<div class="col-lg-8">
 					<div class="write_review">
-						<h1>Write a review for Armor Air X Fear</h1>
-						<div class="rating_submit">
+						<h1>Write a review for {{$review->name}}</h1>
+						<div class="rating_submit"> 	
 							<div class="form-group">
 							<label class="d-block">Overall rating</label>
 							<span class="rating mb-0">
