@@ -285,12 +285,12 @@
                     <div class="grid_item">
                         <span class="ribbon new">{{$product->category_id ? $product->category->title : "Uncategories"}}</span>
                         <figure>
-                            <a href="{{('shop/'.$p_related->slug)}}">
+                            <a href="{{url('shop/'.$p_related->slug)}}">
                         <img class="owl-lazy" src="{{asset('backend/images/products/'.$p_related->product_image)}}" style="height:200px; width:auto; margin:auto;" data-src="{{asset('backend/images/products/'.$p_related->product_image)}}" alt="">
                             </a>
                         </figure>
                         <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
-                        <a href="{{('shop/'.$p_related->slug)}}">
+                        <a href="{{url('shop/'.$p_related->slug)}}">
                             <h3>{{$p_related->name}}</h3>
                         </a>
                         <div class="price_box">
