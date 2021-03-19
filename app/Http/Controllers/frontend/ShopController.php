@@ -16,10 +16,10 @@ use DB;
 
 class ShopController extends Controller
 {
-    //
+    //index page
    public function home()
    {
-       # code...
+
        $blog    =Blog::orderBy('updated_at','DESC')->get();
        $product        = Product::all()->take(20);
        $product_featured = Product::all()->take(8);
@@ -28,22 +28,10 @@ class ShopController extends Controller
        return view('frontend.index',compact('blog','product','product_featured','setting'));
    }
 
+    // shop page 
     public function shop(Request $request)
     {
      
-        
-
-        // if(isset($request->category) ){
-        //     $brand          = Brand::all();
-        //     $category       = Category::all();
-        //      $categories = $request->category;
-        //      $product = DB::table("products")->whereIn("category_id",explode( ',', $categories))->paginate(6);
-        //     // $product    =Product::whereIn('category_id',$categories);
-
-        //     //  dd($product);
-        //     response->json($product);
-        //     return view ('frontend.shop',compact('brand','category','product'));
-        // }
  
             $brand          = Brand::all();
             $category       = Category::all();
@@ -68,19 +56,27 @@ class ShopController extends Controller
         ]);
         // return view ('frontend.category');
     }
-
+    // product details
     public function singleshop($slug)
     {
         $product    =Product::where('slug',$slug)->first();
+        // gallery 
         $gall = $product->id;
+        //category 
+        $category= $product->category_id;
+        //grallery 
         $product_grallery = Product::find($gall)->product_grallery;
+        // document
         $product_documents  =Product::find($gall)->document_product;
-        $product_related  = Product::all()->take(4);
+        // related
+        $product_related  = Product::where('category_id',$category)->take(8)->get();
+
         return view('frontend.product_details',compact('product','product_grallery','product_related','product_documents'));
     }
 
     //store directroy
 
+    // download product document
     public function getDownload($id)
     {
         $document = ProductDocument::find($id);
@@ -97,21 +93,22 @@ class ShopController extends Controller
 
 
     public function store(){
+
         $category   =Category::all();
         
         return view('frontend.store_directory',compact('category'));
     }
 
+    // blog page
     public function blog()  
     {
         $blog       = Blog::orderBy('updated_at','DESC')->get();
         $latest     = Blog::orderBy('updated_at','DESC')->take(5)->get();
         $category   = Category::all()->take(7);
-        // $category_id   = Blog::all();
-        // dd($blog);
+     
         return view ('frontend.blog',compact('blog','latest'));
     }
-
+    // single blog 
     public function single_blog($slug)
     {
         $blog   = Blog::where('slug',$slug)->first();
@@ -120,28 +117,28 @@ class ShopController extends Controller
         return view ('frontend.single_blog',compact('blog','latest'));
     }
 
-    public function blog_search(Request $request){
-        if($request->ajax()) {
-            $data = Blog::where('title', 'LIKE', $request->title.'%')
-                ->get();
-             $output = '';
+    // public function blog_search(Request $request){
+    //     if($request->ajax()) {
+    //         $data = Blog::where('title', 'LIKE', $request->title.'%')
+    //             ->get();
+    //          $output = '';
 
-             if (count($data)>0) {
-                $output = '<ul class="list-group" style="display: block; position: relative; z-index: 1">';
-                foreach ($data as $row){
+    //          if (count($data)>0) {
+    //             $output = '<ul class="list-group" style="display: block; position: relative; z-index: 1">';
+    //             foreach ($data as $row){
                    
-                    $output .= '<li class="list-group-item">'.$row->title.'</li>';
-                }
-                $output .= '</ul>';
-            }
-            else {
+    //                 $output .= '<li class="list-group-item">'.$row->title.'</li>';
+    //             }
+    //             $output .= '</ul>';
+    //         }
+    //         else {
              
-                $output .= '<li class="list-group-item">'.'No results'.'</li>';
-            }
+    //             $output .= '<li class="list-group-item">'.'No results'.'</li>';
+    //         }
 
-            return $output;
+    //         return $output;
 
-        }
-    }
+    //     }
+    // }
 
 }

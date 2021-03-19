@@ -169,10 +169,10 @@
                                                     <td><strong>Color</strong></td>
                                                     <td>Blue, Purple</td>
                                                 </tr> --}}
-                                                <tr>
+                                                {{-- <tr>
                                                     <td><strong>Size</strong></td>
                                                     <td>150x100x100</td>
-                                                </tr>
+                                                </tr> --}}
                                                 <tr>
                                                   @if(empty($product->weight))
                                                     <td><strong>Weight</strong></td>
@@ -283,15 +283,15 @@
             @foreach($product_related as $p_related)
                 <div class="item">
                     <div class="grid_item">
-                        <span class="ribbon new">New</span>
+                        <span class="ribbon new">{{$product->category_id ? $product->category->title : "Uncategories"}}</span>
                         <figure>
-                            <a href="product-detail-1.html">
+                            <a href="{{('shop/'.$p_related->slug)}}">
                         <img class="owl-lazy" src="{{asset('backend/images/products/'.$p_related->product_image)}}" style="height:200px; width:auto; margin:auto;" data-src="{{asset('backend/images/products/'.$p_related->product_image)}}" alt="">
                             </a>
                         </figure>
                         <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
-                        <a href="product-detail-1.html">
-                            <h3>{{$p_related->nmae}}</h3>
+                        <a href="{{('shop/'.$p_related->slug)}}">
+                            <h3>{{$p_related->name}}</h3>
                         </a>
                         <div class="price_box">
                             <span class="new_price">${{$p_related->regular_price}}</span>
