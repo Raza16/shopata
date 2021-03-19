@@ -166,7 +166,7 @@
 													@endif
 													<a href="{{$item->type =='simple' ? url('shop/'.$item->slug) : url('digital') }}">
 															<img class="img-fluid lazy pmv" style="image-size:contain; height:200px; width:auto; margin:auto; padding:auto;"  src="{{$item->product_image ? asset('backend/images/products/'.$item->product_image) : asset('frontend/img/product_placeholder.jpg') }}" data-src="{{$item->product_image ? asset('backend/images/products/'.$item->product_image) : asset('frontend/img/product_placeholder.jpg') }}" alt="">
-															<img class="img-fluid lazy pmv" style="image-size:contain; height:300px; width:auto; margin:auto; padding:auto;"  src="{{asset('backend/images/products/'.$item->product_image)}}" data-src="{{asset('backend/images/products/'.$item->product_image)}}" alt="">
+
 													</a>
 													@if($item->sale_price)
 													<div data-countdown="2019/05/15" class="countdown"></div>
@@ -328,11 +328,11 @@
 											<figcaption><strong>{{$item->created_at->format('d')}}</strong>{{$item->created_at->format('M')}}</figcaption>
 										</figure>
 										<ul>
-										
+
 											<li>{{$item->created_at->format('Y,M,d')}}</li>
 										</ul>
 										<h4>{{$item->title}}</h4>
-									
+
 									</a>
 								</div>
 
@@ -350,7 +350,7 @@
 
 @section('pop')
 	<div id="toTop"></div><!-- Back to top button -->
-		
+
 			<div class="popup_wrapper">
 				<div class="popup_content">
 					<span class="popup_close">Close</span>
