@@ -22,10 +22,11 @@ class ShopController extends Controller
 
        $blog    =Blog::orderBy('updated_at','DESC')->get();
        $product        = Product::all()->take(20);
+       $product_digital        = Product::where('type','digital')->get();
        $product_featured = Product::all()->take(8);
        $setting     = Setting::where('id',1);
 
-       return view('frontend.index',compact('blog','product','product_featured','setting'));
+       return view('frontend.index',compact('blog','product','product_featured','setting','product_digital'));
    }
 
     // shop page 
@@ -71,7 +72,12 @@ class ShopController extends Controller
         // related
         $product_related  = Product::where('category_id',$category)->get();
 
-        return view('frontend.product_details',compact('product','product_grallery','product_related','product_documents'));
+        if($product->type == 'simple' || $product->type == 'variable'){
+            return view('frontend.product_details',compact('product','product_grallery','product_related','product_documents'));
+        }else{
+            return view('frontend.digital_product',compact('product','product_grallery','product_related','product_documents'));
+
+        }
     }
 
     public function leave_review($slug)

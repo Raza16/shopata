@@ -88,19 +88,16 @@
 .all .slider .item-box,
 .all .slider-two .item-box {
   overflow: hidden;
-  max-width: auto;
-  height: 400px;
+  width: 100%;
+  height: 450px;
   position: relative;
-  background-size: contain;
+  background-size: cover;
   background-position: center center;
-  margin: auto;
-  padding:auto;
-  background-repeat: no-repeat;
 }
 @media (max-width: 767px) {
   .all .slider .item-box,
   .all .slider-two .item-box {
-    height: 100px;
+    height: 350px;
   }
 }
 .all .slider .left,
@@ -678,6 +675,3 @@
 .table.sizes tr th {
   white-space: nowrap;
 }
-
-p
-@media

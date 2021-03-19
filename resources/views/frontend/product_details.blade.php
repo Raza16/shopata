@@ -5,9 +5,7 @@
 
   @section('pagecss')
   <link href="{{asset('frontend/css/product_page.css')}}" rel="stylesheet">
-  <style>
-     #more  {display:  none;}
-  </style>
+
   @endsection
 
 
@@ -26,11 +24,12 @@
                     <div class="slider">
                         <div class="owl-carousel owl-theme main">
                           {{-- @foreach($product as $image) --}}
-                            <div style="background-image: url('{{asset('backend/images/products/'.$product->product_image)}}');" class="item-box"></div>
-                          {{-- @endforeach --}}
+                            <div style="background-image: url('{{$product->product_image ? asset('backend/images/products/'.$product->product_image) : asset('frontend/img/product_placeholder.jpg')}}');" class="item-box"></div>
+                    
                           @foreach($product_grallery as $image)
                             <div style="background-image: url('{{asset('backend/images/product_gallery/'.$image->image)}}');" class="item-box"></div>
                             @endforeach
+
                         </div>
                         <div class="left nonl"><i class="ti-angle-left"></i></div>
                         <div class="right"><i class="ti-angle-right"></i></div>
@@ -38,6 +37,7 @@
                     <div class="slider-two">
                         <div class="owl-carousel owl-theme thumbs">
                             <div style="background-image: url('{{asset('backend/images/products/'.$product->product_image)}}');" class="item active"></div>
+
                           @foreach($product_grallery as $image)
                            <div style="background-image: url('{{asset('backend/images/product_gallery/'.$image->image)}}');" class="item"></div>
                           @endforeach
@@ -63,7 +63,8 @@
                     <h1>{{$product->name}}</h1>
                     <span class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i><em>4 reviews</em></span>
                     <p>
-                      <small>SKU: {{$product->product_code}}</small><br>
+                    
+                      <small>{{$product->product_code ? 'SKU:'.$product->product_code : ''}}</small><br>
                       <small style="text-transform: uppercase">{{$product->stock}}</small><br>
                       {!! $product->short_description !!}
                  
