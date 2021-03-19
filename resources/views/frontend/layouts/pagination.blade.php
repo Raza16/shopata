@@ -1,10 +1,10 @@
-  
+
               <div class="pagination__wrapper">
                 @if ($paginator->hasPages())
                   <ul class="pagination">
                     @if ($paginator->onFirstPage())
                         {{-- <li class="disabled"><span>← Previous</span></li> --}}
-                        <li class="prev disabled"><span>❮</span></li>
+                        <li class="disabled"><a class="prev"><span>❮</span></a></li>
                       @else
                         <li><a href="{{ $paginator->previousPageUrl() }}" class="prev" title="previous page" rel="prev">❮</a></li>
                         {{-- <li><a href="{{ $paginator->previousPageUrl() }}" rel="prev">← Previous</a></li> --}}
