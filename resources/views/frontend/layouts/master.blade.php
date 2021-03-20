@@ -76,8 +76,13 @@
 													<h3>New Arrivals</h3>
 													<ul>
 														<li><a href="{{url('shop')}}">Shop</a></li>
-														{{-- <li><a href="">Headphones</a></li>
-														<li><a href="">Makeup Brushes</a></li>
+														@if(count($cat)>0)
+														@foreach ($cat as $ca)
+														<li><a href="">{{$ca->title}}</a></li>
+														@endforeach
+													
+														@endif
+														{{-- <li><a href="">Makeup Brushes</a></li>
 														<li><a href="">iPhone Tempered Glass</a></li>
 														<li><a href="">Necklace</a></li>
 														<li><a href="">Nail Stickers</a></li>
@@ -438,14 +443,13 @@
 				<div class="col-lg-3 col-md-6">
 					<h3 data-target="#collapse_2">Categories</h3>
 					<div class="collapse dont-collapse-sm links" id="collapse_2">
-						{{-- <ul>
-							<li><a href="#">Clothes</a></li>
-							<li><a href="#">Electronics</a></li>
-							<li><a href="#">Furniture</a></li>
-							<li><a href="#">Glasses</a></li>
-							<li><a href="#">Shoes</a></li>
-							<li><a href="#">Watches</a></li>
-						</ul> --}}
+						<ul>
+							@if(count($cat)>0)
+								@foreach($cat as $ca)
+									<li><a href="#">{{$ca->title}}</a></li>
+								@endforeach
+							@endif
+						</ul>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6">

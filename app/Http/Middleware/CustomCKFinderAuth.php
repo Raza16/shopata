@@ -23,3 +23,4 @@ class CustomCKFinderAuth
         return $next($request);
         
     }
+}

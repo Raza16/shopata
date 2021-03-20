@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
+use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Admin\Brand;
@@ -131,6 +132,11 @@ class ShopController extends Controller
         return view ('frontend.single_blog',compact('blog','latest'));
     }
 
+    public function compose(View $view)
+    {
+        $cat    = Category::select('id','title')->get(['id','title']);
+        $view->with("cat",$cat);
+    }
     
 
 }

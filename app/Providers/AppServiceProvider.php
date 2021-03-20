@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
-// use App\Models\Admin\Setting;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,11 +25,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
-        // View::composer('frontend.layouts.master', function($setting){
-        //     $setting->with('setting', Setting::find('id',1));
-        //     // $view->with('menus', Menu::all());
-        // });
+        View::composer(
+            // link of show category            call function on this Controller
+            'frontend.layouts.master', 'App\Http\Controllers\frontend\ShopController'
+        );
      
     }
 }
