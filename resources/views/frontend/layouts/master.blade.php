@@ -76,12 +76,12 @@
 													<h3>New Arrivals</h3>
 													<ul>
 														<li><a href="{{url('shop')}}">Shop</a></li>
-														@if(count($cat)>0)
+														{{-- @if(count($cat)>0)
 														@foreach ($cat as $ca)
 														<li><a href="">{{$ca->title}}</a></li>
 														@endforeach
 													
-														@endif
+														@endif --}}
 														{{-- <li><a href="">Makeup Brushes</a></li>
 														<li><a href="">iPhone Tempered Glass</a></li>
 														<li><a href="">Necklace</a></li>

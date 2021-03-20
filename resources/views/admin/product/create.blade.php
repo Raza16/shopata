@@ -5,10 +5,19 @@
     
   @section('pageheadlinks')
   <script src="{{asset('backend/plugins/ckeditor/ckeditor.js')}}"></script>
-  {{-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.7/css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css"/> --}}
+ 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <style>
+    .select2-container--default .select2-selection--single .select2-selection__rendered{
+      color: #444;
+      line-height: 18px;
+      margin-top: -9px;
+      margin-left: -20px
+    }
+  </style>
   @endsection
   
 @section('content')
@@ -46,6 +55,12 @@
                 <div class="form-group">
                  <label for="short_description"><h5>Short Descripton</h5></label>
                   <textarea type="text" class="form-control" id="short_description" name="short_description">{{old('short_description')}}</textarea>
+                </div>
+
+                <div class="form-group">
+                  <label for="document">Document Attach</label>
+                  <input type="file" multiple="multiple" name="document[]" class="form-control document_name" id="document">
+                
                 </div>
                                                                               {{-- seo tab --}}
               <div class="form-group">
@@ -161,11 +176,6 @@
             </div>
 
                                                           {{-- product variation end --}}
-               
-  
-              
-  
-  
               
             
           </div>
@@ -205,24 +215,25 @@
                             <div class="form-group">
                               <label class="col-8 col-form-label">Brands</label>
                               <div class="col-sm-9">
-                                <select class="form-control" name="brand_id">
+                                <select class="form-control select2" name="brand_id">
                                   <option value="" selected>Uncategories</option>
                                   @foreach ($brand as $item)
-                                  <option value="{{$item->id}}">{{$item->title}}</option>
+                                    <option value="{{$item->id}}">{{$item->title}}</option>
                                   @endforeach
                                 </select>
                               </div>
                             </div>
+                            
                               {{-- product brand end --}}
 
                              {{-- product categories --}}
                             <div class="form-group">
                               <label class="col-8 col-form-label">Categories</label>
                               <div class="col-sm-9">
-                                <select class="form-control" name="category_id">
+                                <select class="form-control select2" name="category_id">
                                   <option value="" selected >Uncategories</option>
                                   @foreach ($category as $item)
-                                  <option value="{{$item->id}}">{{$item->title}}</option>
+                                    <option value="{{$item->id}}">{{$item->title}}</option>
                                   @endforeach
                                   
                                 </select>
@@ -271,6 +282,9 @@
 
 @section('script')
 
+<script>
+  $(".select2").select2();
+</script>
  
 {{-- slug --}}
   <script>
@@ -348,6 +362,8 @@
     });
 
   </script>
+
+
 
       {{-- //editor --}}
       <script src="{{asset('backend/js/editorDemo.js')}}"></script>

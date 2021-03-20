@@ -2,7 +2,20 @@
 
 
 @section('title','Category Add')
-    
+
+@section('pageheadlinks')
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<style>
+  .select2-container--default .select2-selection--single .select2-selection__rendered{
+    color: #444;
+    line-height: 18px;
+    margin-top: -9px;
+    margin-left: -20px
+  }
+</style>
+@endsection
+
 @section('content')
   
 <div class="col-12 grid-margin stretch-card">
@@ -34,8 +47,8 @@
               @if ($category > 0)
               <div class="form-group">
                 <label for="parentid">Parent Category</label>
-                <select class="form-control" name="parent_id" id="parent_id">
-                  <option value="">Parent Category</option>                        
+                <select class="form-control select2" name="parent_id" id="parent_id">
+                  <option value="">UnCategories</option>                        
                 @foreach ($parent_id as $item)
                         <option value="{{$item->id}}">{{$item->title}}</option>                        
                     @endforeach
@@ -85,6 +98,11 @@
     });
     </script>
 
+    <script>
+
+      $(".select2").select2();
+
+    </script>
 
     <script>
       // image show in div
