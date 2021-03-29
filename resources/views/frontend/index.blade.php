@@ -199,11 +199,11 @@
 				</div>
 				<!-- /container -->
 
-						<div class="t_banner" >
+						{{-- <div class="t_banner" >
 							<div class="d-flex align-items-center" >
 							</div>
 							<img src="{{asset('frontend/img/add.png')}}" class="container" alt=" image">
-						</div>
+						</div> --}}
 				<!-- /featured -->
 
 				{{-- digital product --}}
