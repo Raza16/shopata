@@ -11,7 +11,7 @@
 
 				<div id="carousel-home">
 					<div class="owl-carousel owl-theme">
-						<div class="owl-slide cover" style="background-image: url('{{asset('frontend/img/banners/sm1.png')}}');">
+						<div class="owl-slide cover" style="background-image: url('{{asset('frontend/img/banners/sm1.png')}}')">
 							<div class="opacity-mask d-block align-items-center" >
 								{{-- <div class="container">
 									<div class="row justify-content-center justify-content-md-start">
@@ -161,7 +161,7 @@
 							<div class="col-6 col-md-4 col-xl-3">
 									<div class="grid_item">
 											<figure>
-													@if($item->sale_price)
+													@if($item->sale_price > 0 )
 													<span class="ribbon off">-30%</span>
 													@endif
 													<a href="{{$item->type =='simple' ? url('shop/'.$item->slug) : url('digital') }}">
