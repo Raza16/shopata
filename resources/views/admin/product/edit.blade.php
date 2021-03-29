@@ -7,6 +7,19 @@
   <script src="{{asset('backend/plugins/ckeditor/ckeditor.js')}}"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <style>
+
+    .select2-container--default .select2-selection--single .select2-selection__rendered {
+      color: #444;
+      line-height: 20px;
+      margin-top: -10px;
+      margin-left: -19px;
+        }
+
+  </style>
+
   @endsection
   
 @section('content')
@@ -322,7 +335,7 @@
                             <div class="form-group">
                               <label class="col-8 col-form-label">Brands</label>
                               <div class="col-sm-9">
-                                <select class="form-control" name="brand_id">
+                                <select class="form-control" name="brand_id" id="brand">
                                   <option value="" selected>UnCategories</option>
                                   @foreach ($brand as $item)
                                   <option value="{{$item->id}}" {{ $item->id == $product->brand_id ? 'selected' : ''}}>{{$item->title}}</option>
@@ -336,7 +349,7 @@
                             <div class="form-group">
                               <label class="col-8 col-form-label">Categories</label>
                               <div class="col-sm-9">
-                                <select class="form-control" name="category_id">
+                                <select class="form-control" name="category_id" id="category">
                                   <option value="" selected>UnCategories</option>
                                   @foreach ($category as $item)
                                   <option value="{{$item->id}}" {{ $item->id == $product->category_id ? 'selected' : '' }}>{{$item->title}}</option>
@@ -408,6 +421,18 @@
 
 @section('script')
 
+
+  <script>
+    $('#category').select2({
+      selectOnClose: true
+    });
+  </script>
+
+  <script>
+    $('#brand').select2({
+      selectOnClose: true
+    });
+  </script>
 
 {{-- image validation--}}
 <script type="text/javascript">

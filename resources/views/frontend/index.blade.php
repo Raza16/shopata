@@ -161,7 +161,7 @@
 							<div class="col-6 col-md-4 col-xl-3">
 									<div class="grid_item">
 											<figure>
-													@if($item->sale_price > 0 )
+													@if($item->sale_price)
 													<span class="ribbon off">-30%</span>
 													@endif
 													<a href="{{$item->type =='simple' ? url('shop/'.$item->slug) : url('digital') }}">

@@ -2,7 +2,22 @@
 
 
 @section('title','Category Edit')
-    
+
+  @section('pageheadlinks')
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <style>
+
+      .select2-container--default .select2-selection--single .select2-selection__rendered {
+        color: #444;
+        line-height: 10px;
+        margin-top: -4px;
+        margin-left: -19px;
+          }
+
+    </style>
+  @endsection
+
 @section('content')
   
 <div class="col-12 grid-margin stretch-card">
@@ -34,7 +49,7 @@
               @if ($count > 1)
               <div class="form-group">
                 <label for="parentid">Parent Category</label>
-                <select class="form-control" name="parent_id" id="parent_id">
+                <select class="form-control" name="parent_id" id="parentcat">
                   <option value="none" disabled>Parent Category</option>
                 @foreach ($parent_id as $item)
                         
@@ -105,6 +120,13 @@
 @endsection
 
 @section('script')
+
+  <script>
+    $('#parentcat').select2({
+      selectOnClose: true
+    });
+  </script>
+
     <script>
 
     $("#title").keyup(function(){
