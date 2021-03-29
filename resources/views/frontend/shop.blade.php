@@ -168,14 +168,17 @@
                       <h4><a href="#filter_1" data-toggle="collapse" class="opened">Categories</a></h4>
                       <div class="collapse show" id="filter_1">
                         <ul>
-                          @foreach($category as $citem)
-                          <li>
-                          <label class="container_check">{{$citem->title}} <small>{{$citem->product->count()}}</small>
-                          <input type="checkbox">
-                          <span class="checkmark"></span>
-                          </label>
-                          </li>
-                          @endforeach
+                        
+                            @foreach($category as $citem)
+                            <li>
+                            <label class="container_check">{{$citem->title}} <small>{{$citem->product->count()}}</small>
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                            </label>
+                            </li>
+                            @endforeach
+                     
+                         
                         </ul>
                       </div>
 
