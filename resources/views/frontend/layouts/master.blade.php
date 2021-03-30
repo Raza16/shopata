@@ -446,8 +446,10 @@
 						<ul>
 							@if(count($cat)>0)
 								@foreach($cat as $ca)
-									<li><a href="#">{{$ca->title}}</a></li>
+									<li><a href="#" {{$ca->products->count() != 0 ? '' : 'hidden'}}>{{$ca->products->count() != 0 ? $ca->title : ''}}</a></li>
 								@endforeach
+							@else
+
 							@endif
 						</ul>
 					</div>
