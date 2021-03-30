@@ -33,14 +33,13 @@ class ShopController extends Controller
     // shop page 
     public function shop(Request $request)
     {
-     
  
             $brand          = Brand::all();
-            $category       = Category::all();
+            $category       = Category::with('products')->get();
             $product        = Product::paginate(12);
 
-            // response->json($product);
-        return view ('frontend.shop',compact('brand','category','product'));
+           
+            return view ('frontend.shop',compact('brand','category','product'));
         
     }
 
@@ -50,7 +49,7 @@ class ShopController extends Controller
         $categorys      = Category::all();
         $brand          = Brand::all();
 
-        $category = Category::with('product')->findOrFail( $category );
+        $category = Category::with('products')->findOrFail( $category );
         return view('frontend.category', [
             'category' => $category,
             'categorys'=> $categorys,

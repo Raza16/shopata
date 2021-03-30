@@ -2,7 +2,7 @@
 
 
     @section('title','Shop Buy')
-      
+
     @section('pagecss')
     <link href="{{asset('frontend/css/listing.css')}}" rel="stylesheet">
     <style id="theia-sticky-sidebar-stylesheet-TSS">.theiaStickySidebar:after {content: ""; display: table; clear: both;}</style>
@@ -11,8 +11,8 @@
     @section('content')
 
     <main style="margin-bottom: 390px; transform: none;">
-      
-          <div class="top_banner">
+
+          {{-- <div class="top_banner">
 
             <div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.3)" style="background-color: rgba(0, 0, 0, 0.3);">
               <div class="container">
@@ -20,18 +20,17 @@
                   <ul>
                     <li><a href="{{url('/')}}">Home</a></li>
                     <li><a href="#">Category</a></li>
-                    {{-- <li>Page active</li> --}}
                   </ul>
                 </div>
                 <h1>Shop</h1>
               </div>
             </div>
-            <img src="{{asset('frontend/img/bg_cat_shoes.jpg')}}" class="img-fluid" alt="">
-          </div>
-          
+            <img src="https://via.placeholder.com/200x200?text=S" class="img-fluid" alt="">
+          </div> --}}
+
           <div id="stick_here" style="height: 0px;"></div>
 
-          <div class="toolbox elemento_stick">
+          {{-- <div class="toolbox elemento_stick">
 
             <div class="container">
 
@@ -50,11 +49,6 @@
                   </div>
                 </li>
 
-                {{-- <li>
-                  <a href="#0"><i class="ti-view-grid"></i></a>
-                  <a href="listing-row-2-sidebar-right.html"><i class="ti-view-list"></i></a>
-                </li> --}}
-
                 <li>
                   <a href="#0" class="open_filters">
                   <i class="ti-filter"></i><span>Filters</span>
@@ -65,12 +59,12 @@
 
             </div>
 
-          </div>
-          
+          </div> --}}
+
           <div class="container margin_30" style="transform: none;">
             <div class="row" style="transform: none;">
                 <div class="col-lg-9">
-                  @if(!empty($product))  
+                  @if(!empty($product))
 
                     <div class="row small-gutters">
 
@@ -119,14 +113,14 @@
 
                         </div>
                       @endforeach
-                        
+
                     </div>
-  
+
                   @else
                   <div class="row small-gutters">
-                    
+
                       <h1 style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif"><b>Product Not Found</b></h1>
-                    
+
                   </div>
 
                   @endif
@@ -155,32 +149,35 @@
                   </div> --}}
 
                 </div>
-              
+
               <aside class="col-lg-3" id="sidebar_fixed" style="position: relative; overflow: visible; box-sizing: border-box; min-height: 1px;">
-              
+
               <div class="theiaStickySidebar" style="padding-top: 0px; padding-bottom: 1px; position: static; transform: none; left: 994.5px; top: 0px;">
 
                 <div class="filter_col">
-                    
+
                     <div class="inner_bt"><a href="#" class="open_filters"><i class="ti-close"></i></a></div>
 
                     <div class="filter_type version_2">
                       <h4><a href="#filter_1" data-toggle="collapse" class="opened">Categories</a></h4>
                       <div class="collapse show" id="filter_1">
                         <ul>
-                          @foreach($category as $citem)
-                          <li>
-                          <label class="container_check">{{$citem->title}} <small>{{$citem->product->count()}}</small>
-                          <input type="checkbox">
-                          <span class="checkmark"></span>
-                          </label>
-                          </li>
-                          @endforeach
+                          
+                            @foreach($category as $citem)
+                            <li>
+                            <label class="container_check" {{$citem->products->count() != 0  ? '' : 'hidden' }}>{{$citem->title}} <small {{$citem->products->count() != 0 ? $citem->products->count() : 'hidden' }}>{{$citem->products->count()}}</small>
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                            </label>
+                            </li>
+                            @endforeach
+                     
+                         
                         </ul>
                       </div>
-                    
+
                     </div>
-                    
+
                     {{-- <div class="filter_type version_2">
                       <h4><a href="#filter_2" data-toggle="collapse" class="opened">Color</a></h4>
                       <div class="collapse show" id="filter_2">
@@ -212,7 +209,7 @@
                         </ul>
                       </div>
                     </div> --}}
-                    
+
                     <div class="filter_type version_2">
                       <h4><a href="#filter_3" data-toggle="collapse" class="closed">Brands</a></h4>
                       <div class="collapse" id="filter_3">
@@ -228,7 +225,7 @@
                         </ul>
                       </div>
                     </div>
-                    
+
                     {{-- <div class="filter_type version_2">
                       <h4><a href="#filter_4" data-toggle="collapse" class="closed">Price</a></h4>
                       <div class="collapse" id="filter_4">
@@ -260,7 +257,7 @@
                         </ul>
                       </div>
                     </div> --}}
-                    
+
                       {{-- <div class="buttons">
                         <a href="#0" class="btn_1">Filter</a> <a href="#0" class="btn_1 gray">Reset</a>
                       </div> --}}
@@ -270,21 +267,21 @@
                     <div class="resize-sensor-expand" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;">
 
                     <div style="position: absolute; left: 0px; top: 0px; transition: all 0s ease 0s; width: 315px; height: 1208px;"></div>
-                    
+
                     </div>
                     <div class="resize-sensor-shrink" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;">
                       <div style="position: absolute; left: 0; top: 0; transition: 0s; width: 200%; height: 200%">
                       </div>
                     </div>
                   </div>
-                  
+
                 </div>
                 </aside>
-            
+
             </div>
-            
+
           </div>
-      
+
     </main>
 
 

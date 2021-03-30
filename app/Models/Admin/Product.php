@@ -31,5 +31,6 @@ class Product extends Model
     public function document_product(){
         return $this->hasMany(ProductDocument::class);
     }
+
     
 }

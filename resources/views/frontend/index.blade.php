@@ -11,7 +11,7 @@
 
 				<div id="carousel-home">
 					<div class="owl-carousel owl-theme">
-						<div class="owl-slide cover" style="background-image: url('{{asset('frontend/img/banners/sm1.png')}}');">
+						<div class="owl-slide cover" style="background-image: url('{{asset('frontend/img/banners/sm1.png')}}')">
 							<div class="opacity-mask d-block align-items-center" >
 								{{-- <div class="container">
 									<div class="row justify-content-center justify-content-md-start">
@@ -166,7 +166,7 @@
 													@endif
 													<a href="{{$item->type =='simple' ? url('shop/'.$item->slug) : url('digital') }}">
 															<img class="img-fluid lazy pmv" style="image-size:contain; height:200px; width:auto; margin:auto; padding:auto;"  src="{{$item->product_image ? asset('backend/images/products/'.$item->product_image) : asset('frontend/img/product_placeholder.jpg') }}" data-src="{{$item->product_image ? asset('backend/images/products/'.$item->product_image) : asset('frontend/img/product_placeholder.jpg') }}" alt="">
-															<img class="img-fluid lazy pmv" style="image-size:contain; height:300px; width:auto; margin:auto; padding:auto;"  src="{{asset('backend/images/products/'.$item->product_image)}}" data-src="{{asset('backend/images/products/'.$item->product_image)}}" alt="">
+
 													</a>
 													@if($item->sale_price)
 													<div data-countdown="2019/05/15" class="countdown"></div>
@@ -199,11 +199,11 @@
 				</div>
 				<!-- /container -->
 
-						<div class="t_banner" >
+						{{-- <div class="t_banner" >
 							<div class="d-flex align-items-center" >
 							</div>
 							<img src="{{asset('frontend/img/add.png')}}" class="container" alt=" image">
-						</div>
+						</div> --}}
 				<!-- /featured -->
 
 				{{-- digital product --}}
@@ -287,7 +287,7 @@
 
 				<div class="bg_gray">
 					<div class="container margin_30">
-						<div id="brands" class="owl-carousel owl-theme">
+						<div id="brands" class="owl-carousel owl-theme ">
 							<div class="item">
 								<a href="#0"><img src="{{asset('frontend/img/brands/placeholder_brands.png')}}" data-src="{{asset('frontend/img/brands/placeholder_brands.png')}}" alt="" class="owl-lazy"></a>
 							</div><!-- /item -->
@@ -328,11 +328,11 @@
 											<figcaption><strong>{{$item->created_at->format('d')}}</strong>{{$item->created_at->format('M')}}</figcaption>
 										</figure>
 										<ul>
-										
+
 											<li>{{$item->created_at->format('Y,M,d')}}</li>
 										</ul>
 										<h4>{{$item->title}}</h4>
-									
+
 									</a>
 								</div>
 
@@ -350,7 +350,7 @@
 
 @section('pop')
 	<div id="toTop"></div><!-- Back to top button -->
-		
+
 			<div class="popup_wrapper">
 				<div class="popup_content">
 					<span class="popup_close">Close</span>

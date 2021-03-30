@@ -7,12 +7,23 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <style>
+<<<<<<< HEAD
       .select2-container--default .select2-selection--single .select2-selection__rendered{
         color: #444;
         line-height: 18px;
         margin-top: -9px;
         margin-left: -20px
       }
+=======
+
+      .select2-container--default .select2-selection--single .select2-selection__rendered {
+        color: #444;
+        line-height: 10px;
+        margin-top: -4px;
+        margin-left: -19px;
+          }
+
+>>>>>>> dev
     </style>
   @endsection
 
@@ -47,8 +58,13 @@
               @if ($count > 1)
               <div class="form-group">
                 <label for="parentid">Parent Category</label>
+<<<<<<< HEAD
                 <select class="form-control select2" name="parent_id" id="parent_id">
                     <option>UnCategories</option>
+=======
+                <select class="form-control" name="parent_id" id="parentcat">
+                  <option value="">Parent Category</option>
+>>>>>>> dev
                 @foreach ($parent_id as $item)
                         
                         <option value="{{$item->id}}" {{$category->parent_id == $item->id ? 'selected' : ''}}
@@ -119,6 +135,13 @@
 @endsection
 
 @section('script')
+
+  <script>
+    $('#parentcat').select2({
+      selectOnClose: true
+    });
+  </script>
+
     <script>
 
     $("#title").keyup(function(){
