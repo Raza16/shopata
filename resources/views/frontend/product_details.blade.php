@@ -24,10 +24,11 @@
                     <div class="slider">
                         <div class="owl-carousel owl-theme main">
                           {{-- @foreach($product as $image) --}}
-                            <div style="background-image: url('{{$product->product_image ? asset('backend/images/products/'.$product->product_image) : asset('frontend/img/product_placeholder.jpg')}}');" class="item-box"></div>
+                            <div style="background-image: url('{{$product->product_image ? asset('backend/images/products/'.$product->product_image) : asset('frontend/img/product_placeholder.jpg')}}'); background-size: contain;
+                                margin: auto; background-repeat: no-repeat;" class="item-box"></div>
                     
                           @foreach($product_grallery as $image)
-                            <div style="background-image: url('{{asset('backend/images/product_gallery/'.$image->image)}}');" class="item-box"></div>
+                            <div style="background-image: url('{{asset('backend/images/product_gallery/'.$image->image)}}');background-size: contain;margin: auto;background-repeat: no-repeat;" class="item-box"></div>
                             @endforeach
 
                         </div>
