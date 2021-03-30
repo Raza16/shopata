@@ -446,7 +446,7 @@
 						<ul>
 							@if(count($cat)>0)
 								@foreach($cat as $ca)
-									<li><a href="#" {{$ca->products->count() != 0 ? '' : 'hidden'}}>{{$ca->products->count() != 0 ? $ca->title : ''}}</a></li>
+									<li><a href="#" {{$ca->products->count() != 0 ? '' : 'hidden'}}>{{$ca->title}}</a></li>
 								@endforeach
 							@else
 
@@ -459,7 +459,8 @@
 					<div class="collapse dont-collapse-sm contacts" id="collapse_3">
 						<ul>
 							<li><i class="ti-home"></i>182 Bay Ridge Avenue <br>
-              Brooklyn, New York 11209</li>
+              					Brooklyn, New York 11209
+							</li>
 							<li><i class="ti-headphone-alt"></i>718-412-1413</li>
 							<li><i class="ti-email"></i><a href="#0">support@shopataclick.com </a></li>
 						</ul>
