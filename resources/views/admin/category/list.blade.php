@@ -104,4 +104,16 @@
 
 @endsection
 
+
 {{-- script section use =======================>   @section('script') --}}
+
+@section('script')
+    <script>
+      //--------------------------- Alert message
+        $(document).ready(function() {
+            $("#alert").fadeTo(500, 100).fadeOut(500, function(){
+                $("#alert").alert('close');
+            });
+        });
+    </script>
+@endsection

@@ -38,8 +38,17 @@ class ShopController extends Controller
             $category       = Category::with('product')->get();
             $product        = Product::paginate(12);
             
-            // response->json($product);
-        return view ('frontend.shop',compact('brand','category','product'));
+            if($category){
+
+            foreach ($category as $item) {
+                # code...
+                printf($item->title."<br>");
+            }
+           }else{
+               printf("not product");
+           }
+
+            return view ('frontend.shop',compact('brand','category','product'));
      
 
         

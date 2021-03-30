@@ -50,7 +50,7 @@
               <div class="form-group">
                 <label for="parentid">Parent Category</label>
                 <select class="form-control" name="parent_id" id="parentcat">
-                  <option value="none" disabled>Parent Category</option>
+                  <option value="">Parent Category</option>
                 @foreach ($parent_id as $item)
                         
                         <option value="{{$item->id}}" {{$category->parent_id == $item->id ? 'selected' : ''}}
