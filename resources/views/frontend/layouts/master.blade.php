@@ -515,9 +515,9 @@
 				</div>
 				<div class="col-lg-6">
 					<ul class="additional_links">
-						<li><a href="terms-&-conditions.html">Terms and conditions</a></li>
-						<li><a href="privacy-policy.html">Privacy Policy</a></li>
-						<li><span>© 2020 ShopataClick</span></li>
+						<li><a href="{{'privacypolicy'}}">Terms and conditions</a></li>
+						<li><a href="{{'privacypolicy'}}">Privacy Policy</a></li>
+						<li><a href="{{'/'}}"><span>© 2020 ShopataClick</span></a></li>
 					</ul>
 				</div>
 			</div>
