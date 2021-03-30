@@ -12,7 +12,7 @@
 
     <main style="margin-bottom: 390px; transform: none;">
 
-          <div class="top_banner">
+          {{-- <div class="top_banner">
 
             <div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.3)" style="background-color: rgba(0, 0, 0, 0.3);">
               <div class="container">
@@ -20,18 +20,17 @@
                   <ul>
                     <li><a href="{{url('/')}}">Home</a></li>
                     <li><a href="#">Category</a></li>
-                    {{-- <li>Page active</li> --}}
                   </ul>
                 </div>
                 <h1>Shop</h1>
               </div>
             </div>
-            <img src="{{asset('frontend/img/bg_cat_shoes.jpg')}}" class="img-fluid" alt="">
-          </div>
+            <img src="https://via.placeholder.com/200x200?text=S" class="img-fluid" alt="">
+          </div> --}}
 
           <div id="stick_here" style="height: 0px;"></div>
 
-          <div class="toolbox elemento_stick">
+          {{-- <div class="toolbox elemento_stick">
 
             <div class="container">
 
@@ -50,11 +49,6 @@
                   </div>
                 </li>
 
-                {{-- <li>
-                  <a href="#0"><i class="ti-view-grid"></i></a>
-                  <a href="listing-row-2-sidebar-right.html"><i class="ti-view-list"></i></a>
-                </li> --}}
-
                 <li>
                   <a href="#0" class="open_filters">
                   <i class="ti-filter"></i><span>Filters</span>
@@ -65,7 +59,7 @@
 
             </div>
 
-          </div>
+          </div> --}}
 
           <div class="container margin_30" style="transform: none;">
             <div class="row" style="transform: none;">
@@ -168,10 +162,10 @@
                       <h4><a href="#filter_1" data-toggle="collapse" class="opened">Categories</a></h4>
                       <div class="collapse show" id="filter_1">
                         <ul>
-                        
+                          
                             @foreach($category as $citem)
                             <li>
-                            <label class="container_check">{{$citem->title}} <small>{{$citem->product->count()}}</small>
+                            <label class="container_check" {{$citem->products->count() != 0  ? '' : 'hidden' }}>{{$citem->title}} <small {{$citem->products->count() != 0 ? $citem->products->count() : 'hidden' }}>{{$citem->products->count()}}</small>
                             <input type="checkbox">
                             <span class="checkmark"></span>
                             </label>
