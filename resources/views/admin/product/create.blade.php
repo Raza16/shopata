@@ -2,10 +2,10 @@
 
 
 @section('title','Product Add')
-    
+
   @section('pageheadlinks')
   <script src="{{asset('backend/plugins/ckeditor/ckeditor.js')}}"></script>
- 
+
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <<<<<<< HEAD
 
@@ -74,7 +74,7 @@
                 <div class="form-group">
                   <label for="document">Document Attach</label>
                   <input type="file" multiple="multiple" name="document[]" class="form-control document_name" id="document">
-                
+
                 </div>
                                                                               {{-- seo tab --}}
               <div class="form-group">
@@ -120,14 +120,14 @@
                 <div class="card-header bg-primary" role="tab" id="heading-13">
                   <h6 class="mb-0">
                     <a data-toggle="collapse" href="#genral-13" aria-expanded="false" aria-controls="collapse-13" class="collapsed" style="text-decoration: none;color: #FFFFFF;">
-                      General 
+                      General
                     </a>
                   </h6>
-                </div>  
+                </div>
                   <div id="genral-13" class="collapse" role="tabpanel" aria-labelledby="heading-13" data-parent="#accordion-5" style="">
                     <div class="card-body">
                       <div class="row">
-                      
+
 
                         <div class="form-group col-6">
                           <label for="quantity">Product Type</label>
@@ -202,19 +202,19 @@
                           @enderror
                         </div>
 
-                    </div>  
+                    </div>
                   </div>
               </div>
             </div>
             </div>
                                                           {{-- product variation end --}}
-              
-            
+
+
           </div>
         </div>
     </div>
 
-                                              
+
     <div class="col-4 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
@@ -239,7 +239,7 @@
                             </div>
                             @error('profile_image')
                                 <p><small class="text-danger">{{ $errors->first('profile_image') }}</small></p>
-                            @enderror 
+                            @enderror
                           </div>
                             {{-- product image end --}}
 
@@ -247,11 +247,7 @@
                             <div class="form-group">
                               <label class="col-8 col-form-label">Brands</label>
                               <div class="col-sm-9">
-<<<<<<< HEAD
                                 <select class="form-control select2" name="brand_id">
-=======
-                                <select class="form-control " name="brand_id" id="brand">
->>>>>>> dev
                                   <option value="" selected>Uncategories</option>
                                   @foreach ($brand as $item)
                                     <option value="{{$item->id}}">{{$item->title}}</option>
@@ -259,49 +255,45 @@
                                 </select>
                               </div>
                             </div>
-                            
+
                               {{-- product brand end --}}
 
                              {{-- product categories --}}
                             <div class="form-group">
                               <label class="col-8 col-form-label">Categories</label>
                               <div class="col-sm-9">
-<<<<<<< HEAD
                                 <select class="form-control select2" name="category_id">
-=======
-                                <select class="form-control" name="category_id" id="category">
->>>>>>> dev
                                   <option value="" selected >Uncategories</option>
                                   @foreach ($category as $item)
                                     <option value="{{$item->id}}">{{$item->title}}</option>
                                   @endforeach
-                                  
+
                                 </select>
                               </div>
 
                             </div>
                               {{-- product category end --}}
 
-                              
+
                               {{-- product grallery image --}}
                               <div class="form-group">
-                              
+
                                 <label>Product Grallery</label>
-                        
+
                                 <div class="user-image mb-3 text-center">
                                   <div class="imgPreview"> </div>
-                                </div>            
-                  
+                                </div>
+
                                 <div class="custom-file">
                                     <input type="file" name="gallery_image[]" class="custom-file-input" id="images" multiple="multiple">
                                     <label class="custom-file-label" for="images">Choose image</label>
                                 </div>
                                     {{-- <input  class="file-upload" type="file" multiple name="gallery_image[]" accept="image/*"/> --}}
-                              
+
                                 @error('gallery_image')
                                     <p><small class="text-danger">{{ $errors->first('gallery_image') }}</small></p>
-                                @enderror 
-                              
+                                @enderror
+
                               </div>
                               {{-- product grallery image end--}}
 
@@ -309,13 +301,13 @@
         </div>
       </div>
   </div>
-    
+
   <div class="col-12 form-group">
     <button type="submit" name="submit" class="col-12 btn btn-primary mr-2">Submit</button>
   </div>
    </form>
 
-</div>  
+</div>
 
 
 @endsection
@@ -339,7 +331,7 @@
       });
     </script>
 >>>>>>> dev
- 
+
 
 {{-- slug --}}
   <script>
@@ -364,16 +356,16 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
-    
+
         $(".file-upload").on('change', function(){
             readURL(this);
         });
-    
+
         $(".upload-button").on('click', function() {
            $(".file-upload").click();
         });
-    
-        
+
+
     });
   </script>
 {{-- multi image --}}
@@ -402,11 +394,11 @@
     $('#images').on('change', function() {
         multiImgPreview(this, 'div.imgPreview');
     });
-    });    
+    });
 </script>
 {{-- add custome product attribute --}}
   <script>
-    
+
     CKEDITOR.replace( 'description', {
 
     });
@@ -429,6 +421,6 @@
       <script src="{{asset('backend/js/dropify.js')}}"></script>
       <script src="{{asset('backend/js/dropzone.js')}}"></script>
       <script src="{{asset('backend/js/jquery-file-upload.js')}}"></script>
-     
+
 
 @endsection
