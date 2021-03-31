@@ -10,7 +10,6 @@
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   <style>
-<<<<<<< HEAD
     .select2-container--default .select2-selection--single .select2-selection__rendered{
       color: #444;
       line-height: 18px;
@@ -18,18 +17,6 @@
       margin-left: -20px
     }
   </style>
-=======
-
-    .select2-container--default .select2-selection--single .select2-selection__rendered {
-      color: #444;
-      line-height: 20px;
-      margin-top: -10px;
-      margin-left: -19px;
-        }
-
-  </style>
-
->>>>>>> dev
   @endsection
 
   @section('content')
@@ -89,21 +76,6 @@
                         </tbody>
                       </table>
                     </div>
-
-                    {{-- <div class="form-group document_add">
-                      <table>
-                        <tbody>
-                            <tr>
-                              <td>
-                                <td>
-                                
-                              </td>
-                              </td>
-                          
-                            </tr> 
-                        </tbody>
-                      </table>
-                    </div> --}}
 
 
 
@@ -297,7 +269,6 @@
 
                                 
                           </div>
-<<<<<<< HEAD
                         </div>
                       </div>
                     </div> --}}
@@ -316,54 +287,29 @@
                                 <select name="status" class="form-control">
                                   <option value="1" {{$product->status == 1 ? 'selected' : ''}} class="form-group">Active</option>
                                   <option value="0" {{$product->status == 0 ? 'selected' : ''}} class="form-group">Inactive</option>
-=======
-                            {{-- product image end --}}
-                            <hr>
-                              {{-- product brand --}}
-                            <div class="form-group">
-                              <label class="col-8 col-form-label">Brands</label>
-                              <div class="col-sm-9">
-                                <select class="form-control" name="brand_id" id="brand">
-                                  <option value="" selected>UnCategories</option>
-                                  @foreach ($brand as $item)
-                                  <option value="{{$item->id}}" {{ $item->id == $product->brand_id ? 'selected' : ''}}>{{$item->title}}</option>
-                                  @endforeach
-                                </select>
-                              </div>
-                            </div>
-                              {{-- product brand end --}}
-                            <hr>
-                             {{-- product categories --}}
-                            <div class="form-group">
-                              <label class="col-8 col-form-label">Categories</label>
-                              <div class="col-sm-9">
-                                <select class="form-control" name="category_id" id="category">
-                                  <option value="" selected>UnCategories</option>
-                                  @foreach ($category as $item)
-                                  <option value="{{$item->id}}" {{ $item->id == $product->category_id ? 'selected' : '' }}>{{$item->title}}</option>
-                                  @endforeach
-                                  
->>>>>>> dev
                                 </select>
                               </div>
 
                                   {{-- product image --}}
                               <div class="form-group">
                                 <label>Product Image</label>
+
                                 <div style="width:200px; border:1px solid #d9dee4;">
-                                  @if(!$product->product_image)
+                                  
                                   <img style="max-width:200px;max-height:200px;
-                                  display:block;" class="for-image" src="https://via.placeholder.com/200x200?text=200+x+200"/>
-                                  @else
-                                  <img style="max-width:200px;max-height:200px;
-                                  display:block;" class="for-image" src="{{asset('backend/images/products/'.$product->product_image)}}"/>
-                                  @endif
-                                    <button type="button" style="background:#d9dee4; border-radius:0px;width:200px;cursor:pointer;font-size:12px;font-weight:600;" class="upload-button btn btn-default"><i style="font-size:14px;" class="fa fa-upload" aria-hidden="true"></i> &nbsp;Upload Image</button>
+                                  display:block;" class="for-image" src="{{$product->image ? asset('backend/images/products/'.$product->product_image) : 'https://via.placeholder.com/200x200?text=200+x+200'}}"/>
+                                
+                                    <button type="button" style="background:#d9dee4; border-radius:0px;width:200px;cursor:pointer;font-size:12px;font-weight:600;" class="upload-button btn btn-default">
+                                      <i style="font-size:14px;" class="fa fa-upload" aria-hidden="true"></i> &nbsp;Upload Image</button>
+                                    
                                     <input style="display:none;" class="file-upload" onchange="validateImage()" type="file" name="image" accept="image/*" id="img"/>
+
                                     {{-- @error('image') --}}
                                       <p class="text-danger" id="error" style="display:none">Use validate Image | jpg | jpeg | png | webp</p>
                                     {{-- @enderror --}}
+
                                 </div>
+
                               </div>
                                 {{-- product image end --}}
                                 <hr>

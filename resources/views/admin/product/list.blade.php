@@ -74,7 +74,7 @@
                     <td>{{$item->brand_id ? $item->brand->title : "Null"}}</td>
                     <td style="text-transform: uppercase">{{$item->user->name}}</td>
                     <td>
-                      <a href="{{url('shop/'.$item->slug)}}" style="padding:10px" class="btn btn-md btn-success btn-icon-text">
+                      <a href="{{url('shop/'.$item->slug)}}" style="padding:10px" target="_blank" class="btn btn-md btn-success btn-icon-text">
                           View
                       </a>
                     </td>

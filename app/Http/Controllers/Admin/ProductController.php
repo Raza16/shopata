@@ -226,7 +226,7 @@ class ProductController extends Controller
             'name' => 'required',
             'image'=>  'image|mimes:png,jpeg,webp,jpg',
             // 'product_documents' => 'file|max:500',
-            'document.*' => 'mimes:pdf,doc,docx',
+            // 'document.*' => 'mimes:pdf,doc,docx',
             // 'quantity' => 'numeric',
             'slug' =>   'required',
             'product_type' => 'required',
@@ -234,7 +234,7 @@ class ProductController extends Controller
             'status' => 'required'
 
         ]);
-                        $product            =       Product::find($id);
+                        $product                        =   Product::find($id);
                         $product->user_id               =   Auth::user()->id;
                         $product->name  	            =   $request->name;
                         $product->slug                  =   $request->slug;
@@ -260,17 +260,17 @@ class ProductController extends Controller
                         // category
                         $product->category_id           =   $request->category_id;
 
-                        // dd($product);
+                        // dd($product);    
                         if ($request->hasFile('image')) {
                             $image = $request->file('image');
                             $name = time().'_'.$image->getClientOriginalName();
                             $destinationPath = public_path('/backend/images/products');
                             $imagePath = $destinationPath. "/".  $name;
-                            $image->move($destinationPath, $name);
+                            $image->move($imagePath, $name);
                             $product->product_image = $name;
                         }
 
-                        // dd($product->type);
+                        dd($product->product_image);
                        
 
                         if($product->save()){
@@ -279,7 +279,7 @@ class ProductController extends Controller
                                 $filename =  time().'_'.$file->getClientOriginalName();
                                 $destinationPath = public_path('/backend/images/product_gallery');
                                 $filePath = $destinationPath. "/". $filename;
-                                $file->move($destinationPath, $filename);
+                                $file->move($filePath, $filename);
                                 DB::table('product_gralleries')->insert([
                                     'product_id' => $product->id,
                                     'image' => $filename
