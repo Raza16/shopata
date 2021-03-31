@@ -7,7 +7,6 @@
   <script src="{{asset('backend/plugins/ckeditor/ckeditor.js')}}"></script>
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-<<<<<<< HEAD
 
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
@@ -18,19 +17,6 @@
       margin-top: -9px;
       margin-left: -20px
     }
-=======
-  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-  <style>
-
-    .select2-container--default .select2-selection--single .select2-selection__rendered {
-      color: #444;
-      line-height: 10px;
-      margin-top: -4px;
-      margin-left: -19px;
-        }
-
->>>>>>> dev
   </style>
   @endsection
 
