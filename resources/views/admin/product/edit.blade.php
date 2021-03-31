@@ -297,7 +297,7 @@
                                 <div style="width:200px; border:1px solid #d9dee4;">
                                   
                                   <img style="max-width:200px;max-height:200px;
-                                  display:block;" class="for-image" src="{{$product->image ? asset('backend/images/products/'.$product->product_image) : 'https://via.placeholder.com/200x200?text=200+x+200'}}"/>
+                                  display:block;" class="for-image" src="{{$product->product_image ? asset('backend/images/products/'.$product->product_image) : 'https://via.placeholder.com/200x200?text=200+x+200'}}"/>
                                 
                                     <button type="button" style="background:#d9dee4; border-radius:0px;width:200px;cursor:pointer;font-size:12px;font-weight:600;" class="upload-button btn btn-default">
                                       <i style="font-size:14px;" class="fa fa-upload" aria-hidden="true"></i> &nbsp;Upload Image</button>
