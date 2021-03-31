@@ -4,7 +4,6 @@
 @section('title','Category Add')
 
 @section('pageheadlinks')
-<<<<<<< HEAD
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <style>
@@ -17,28 +16,6 @@
 </style>
 @endsection
 
-=======
-<script src="{{asset('backend/plugins/ckeditor/ckeditor.js')}}"></script>
-{{-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.7/css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css"/> --}}
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-<style>
-
-  .select2-container--default .select2-selection--single .select2-selection__rendered {
-    color: #444;
-    line-height: 20px;
-    margin-top: -10px;
-    margin-left: -19px;
-      }
-
-</style>
-@endsection
-
-
->>>>>>> dev
 @section('content')
   
 <div class="col-12 grid-margin stretch-card">
@@ -70,13 +47,8 @@
               @if ($category > 0)
               <div class="form-group">
                 <label for="parentid">Parent Category</label>
-<<<<<<< HEAD
                 <select class="form-control select2" name="parent_id" id="parent_id">
                   <option value="">UnCategories</option>                        
-=======
-                <select class="form-control" name="parent_id" id="parentcat">
-                  <option value="">Parent Category</option>                        
->>>>>>> dev
                 @foreach ($parent_id as $item)
                         <option value="{{$item->id}}">{{$item->title}}</option>                        
                     @endforeach

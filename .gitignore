@@ -4,9 +4,9 @@ Product Variation Variation Option.txt
 .vscode/
 shopataclick
 shopataclick.pub
-/backend/images/brands
-/backend/images/blogs/feature_image
-/backend/images/category
-/backend/images/product_gallery
-/backend/images/products
-/backend/product_document
+public/backend/images/brands
+public/backend/images/blogs/feature_image
+public/backend/images/category
+public/backend/images/product_gallery
+public/backend/images/products
+public/backend/product_document

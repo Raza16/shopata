@@ -66,7 +66,7 @@
                           @foreach ($product_documents as $document)
                             <tr>
                               <td>
-                                  <input type="text" value="{{$document->document}}" name="document[]"  class="form-control">
+                                  <input type="text" value="{{$document->document}}" name="document[]" readonly class="form-control">
                               </td>
                               <td>
                                   <button type="button" class="deletedocument deletedoc" data-id="{{url('admin/product/documentdelete/'.$document->id)}}" ><i style="color:red;" class="fa fa-trash"></i></button>
@@ -77,13 +77,26 @@
                       </table>
                     </div>
 
-
-
                     <div class="form-group">
-                      <label for="document">Document Attach</label>
-                      <input type="file" multiple="multiple" name="document[]" class="form-control document_name" id="document">
-                    
+                      <table>
+                        <tbody  class="new_document">
+                          
+                        </tbody>
+                      </table>
                     </div>
+                   
+
+                    {{-- <div class="form-group">
+                      <label for="document">Document Attach</label>
+
+                      <input type="file" multiple="multiple" name="document[]" class="form-control document_name" id="document_add">
+                    
+                    </div> --}}
+                
+                    <div class="form-group">
+                      <input type="button" class="form-control btn btn-primary btn-4p" id="add_btn" value="Add File">
+                    </div>
+
 
                                                                                   {{-- seo tab --}}
                     <div class="form-group">
@@ -400,6 +413,24 @@
   @endsection
 
 @section('script')
+
+
+{{-- // multiple file document  --}}
+   <script>
+    $('#add_btn').on('click', function(){
+        var tr = '<tr>'+
+                '<td style="padding-right:10px;"><input type="text" name="documentname[]" class="form-control"/></td>'+
+                '<td style="padding-right:10px;"><input type="file" name="document[]" class="form-control"/></td>'+
+                '<td><button type="button" class="delete-row btn btn-primary"><i style="color:red;" class="fa fa-trash"></i></button></td>'+
+                '</tr>';
+            $('.new_document').append(tr);
+    });
+
+    $('.new_document').on('click', '.delete-row', function(){
+         $(this).parent().parent().remove();
+    });
+
+  </script>
 
 
   <script>

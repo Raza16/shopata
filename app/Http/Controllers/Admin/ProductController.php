@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use DB;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use App\Models\User;
 use App\Models\Admin\ProductAttribute;
 use App\Models\Admin\Brand;
@@ -16,7 +17,7 @@ use App\Models\Admin\Sku;
 use App\Models\Admin\ProductVariation;
 use App\Models\Admin\ProductGallery;
 use App\Models\Admin\ProductDocument;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 
 class ProductController extends Controller
@@ -270,7 +271,7 @@ class ProductController extends Controller
                             $product->product_image = $name;
                         }
 
-                        dd($product->product_image);
+                        // dd($product->product_image);
                        
 
                         if($product->save()){
@@ -279,25 +280,32 @@ class ProductController extends Controller
                                 $filename =  time().'_'.$file->getClientOriginalName();
                                 $destinationPath = public_path('/backend/images/product_gallery');
                                 $filePath = $destinationPath. "/". $filename;
-                                $file->move($filePath, $filename);
+                                $file->move($destinationPath, $filename);
                                 DB::table('product_gralleries')->insert([
                                     'product_id' => $product->id,
                                     'image' => $filename
                                 ]);
                             }
 
-                            foreach ($request->document ? : [] as $file) {
-                                $filename =  time().'_'.$file->getClientOriginalName();
-                                $destinationPath = public_path('/backend/product_document');
-                                $filePath = $destinationPath. "/". $filename;
-                                $file->move($destinationPath, $filename);
-                                DB::table('product_documents')->insert([
-                                    'product_id' => $product->id,
-                                    'document' => $filename
-                                ]);
-                            }
+                                foreach ($request->file('document') ? : [] as $file ) {
+                                    $filename =  time().'_'.$file->getClientOriginalName();
+                                    $destinationPath = public_path('/backend/product_document');
+                                    $filePath = $destinationPath. "/". $filename;
+                                    $file->move($destinationPath, $filename);
+                                    DB::table('product_documents')->insert([
+                                        'product_id' => $product->id,
+                                        'document' => $filename,
+                                        'name'     =>   $request->documentname
+                                    ]);
+                                }
 
                         }
+
+                        // foreach($request->title as $key => $value){
+                        //     $data = [
+                        //         'department_id' => $department->id,
+                        //         'title' => $request->title[$key],
+                        //     ];
 
                     session()->flash('update', 'Record has been Updated');
 
@@ -339,7 +347,7 @@ class ProductController extends Controller
         $product = ProductDocument::find($id);
         $product->delete();
         
-        // Storage::disk('document-product')->delete($product->document);
+        Storage::disk('document-product')->delete($product->document);
         // return redirect('admin/product');
         return response()->json(['success'=>'Document Record has been deleted']);
     }
