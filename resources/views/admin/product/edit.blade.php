@@ -25,7 +25,7 @@
             <div class="card">
               <div class="card-body">
                 <h3 class="card-title">Product Edit</h3>
-                <form class="forms-sample" action="{{url('admin/product/'.$product->id)}}" method="POST" enctype="multipart/form-data">
+                <form class="forms-sample" action="{{url('admin/product/'.$product->id)}}" method="POST" enctype="multipart/form-data" id="productadd">
                     @csrf
                     @method('PUT')
 
@@ -69,7 +69,7 @@
                                   <input type="text" value="{{$document->document}}" name="document[]" readonly class="form-control">
                               </td>
                               <td>
-                                  <button type="button" class="deletedocument deletedoc btn-sm btn-primary form-control" data-id="{{url('admin/product/documentdelete/'.$document->id)}}" ><i style="color:red;" class="fa fa-trash"></i></button>
+                                  <button type="button" class="deletedocument deletedoc btn-sm btn-default form-control" data-id="{{url('admin/product/documentdelete/'.$document->id)}}" ><i style="color:red;" class="fa fa-trash"></i></button>
                               </td>
                             </tr>
                               @endforeach
@@ -86,6 +86,8 @@
                     </div>
 
 
+
+
                     {{-- <div class="form-group">
                       <label for="document">Document Attach</label>
 
@@ -94,7 +96,7 @@
                     </div> --}}
 
                     <div class="form-group">
-                      <input type="button" class="form-control btn btn-primary btn-4p" id="add_btn" value="Add File">
+                      <input type="button" class="form-control btn btn-primary btn-4p" id="add_file" value="Add File">
                     </div>
 
 
@@ -318,7 +320,7 @@
                                     <input style="display:none;" class="file-upload" onchange="validateImage()" type="file" name="image" accept="image/*" id="img"/>
 
                                     {{-- @error('image') --}}
-                                      <p class="text-danger" id="error" style="display:none">Use validate Image | jpg | jpeg | png | webp</p>
+                                      <p class="text-danger" id="error" style="display:none;">Use validate Image <span class="form-control text-danger"> | jpg | jpeg | png | webp </span></p>
                                     {{-- @enderror --}}
 
                                 </div>
@@ -333,7 +335,7 @@
                                     <select class="form-control select2" name="brand_id">
                                       <option value="" selected>UnCategories</option>
                                       @foreach ($brand as $item)
-                                      <option value="{{$item->id}}" {{ $item->id == $product->brand_id ? 'selected' : ''}}>{{$item->title}}</option>
+                                        <option value="{{$item->id}}" {{ $item->id == $product->brand_id ? 'selected' : ''}}>{{$item->title}}</option>
                                       @endforeach
                                     </select>
                                   </div>
@@ -415,35 +417,127 @@
 @section('script')
 
 
+
+
 {{-- // multiple file document  --}}
-   <script>
-    $('#add_btn').on('click', function(){
-        var tr = '<tr>'+
-                '<td style="padding-right:10px;"><input type="text" name="documentname[]" placeholder="Enter File Name" class="form-control"/></td>'+
-                '<td style="padding-right:10px;"><input type="file" name="document[]" class="form-control"/></td>'+
-                '<td><button type="button" class="delete-row btn btn-primary btn-sm"><i style="color:red;" class="fa fa-trash"></i></button></td>'+
-                '</tr>';
-            $('.new_document').append(tr);
-    });
+    {{-- <script>
+        $('#add_document').on('change', function(){
 
-    $('.new_document').on('click', '.delete-row', function(){
-         $(this).parent().parent().remove();
-    });
+            $('.new_document').empty();
 
-  </script>
+            var fp = $('#add_document');
+
+            var lg = fp[0].files.length;
+            var items = fp[0].files;
+
+            var  tr ="";
+
+            if(lg > 0){
+
+                for(var i = 0; i < lg ; i++ ){
+
+                    var fileName = items[i].name;
+                     tr += '<tr>'+
+                            '<td style="padding-right:10px;"><input type="text" name="title[]" class="form-control" value='+fileName+' ></td>'+
+                            '<td><button type="button" class="delete-row btn btn-default"><i style="color:red;" class="fa fa-trash"></i></button></td>'+
+                            '</tr>';
+
+                }
+
+                    $('.new_document').append(tr);
 
 
-  <script>
-    $('#category').select2({
-      selectOnClose: true
-    });
-  </script>
+                    $('.new_document').on('click', '.delete-row', function(){
+                        $(this).parent().parent().remove();
+                    });
 
-  <script>
-    $('#brand').select2({
-      selectOnClose: true
-    });
-  </script>
+            }
+        });
+
+
+
+    </script> --}}
+
+    <script>
+        $('#add_file').on('click', function(){
+            var tr = '<tr>'+
+                    '<td style="padding-right:10px;"><input type="text" name="title[]" class="form-control"/></td>'+
+                    '<td style="margin:10px"><input type="file" name="document[]" class="form-control"/></td>'+
+                    '<td><button type="button" class="delete-row btn btn-default"><i style="color:red;" class="fa fa-trash"></i></button></td>'+
+                    '</tr>';
+                $('.new_document').append(tr);
+        });
+
+        $('.new_document').on('click', '.delete-row', function(){
+             $(this).parent().parent().remove();
+        });
+
+    </script>
+
+      {{-- delete product document --}}
+        <script>
+            $(".deletedocument").click('.deletedoc',function(){
+
+                var dataId = $(this).attr("data-id");
+                var del = this;
+                // console.log(id);
+                // alert(dataId);
+
+                if(confirm("Do you really want to delete document")){
+
+                    $.ajax({
+                    url:dataId,
+                    type:'DELETE',
+                    data:{
+                        _token : $("input[name=_token]").val()
+
+                        },
+                    success:function(response){
+                        $(del).closest( "tr" ).remove();
+                        alert(response.success);
+                    }
+                    });
+
+                }
+                });
+        </script>
+      {{-- delete product document end--}}
+
+
+          {{-- document tr loop --}}
+    {{-- <script>
+        $(function() {
+        // Multiple images preview with JavaScript
+        var multidocument = function(input, docPreviewPlaceholder) {
+
+            if (input.files) {
+                var filesAmount = input.files.length;
+
+                for (i = 0; i < filesAmount; i++) {
+                    var reader = new FileReader();
+                    // var fileName = e.target.files[0].name
+
+                    reader.onload = function(event) {
+                    // <input type="text" value="" name="document[]"  class="form-control" >
+                        $($.parseHTML('<input type="text" name="document[]"  class="form-control col-4" >')).attr('value', event.target.result).appendTo(docPreviewPlaceholder);
+                        // alert(filename);
+                    }
+
+                    reader.readAsDataURL(input.files[i]);
+                }
+            }
+
+        };
+
+        $('#document').on('change', function() {
+        multidocument(this, 'div.document_add');
+        });
+        });
+    </script> --}}
+
+  {{-- document tr loop end--}}
+
+
 
 {{-- image validation--}}
   <script type="text/javascript">
@@ -474,15 +568,7 @@
   </script>
   {{-- image validation end--}}
 
-  {{-- slug --}}
-  <script>
-    $("#name").keyup(function(){
-      var str = $(this).val();
-      var trims = $.trim(str)
-      var slug = trims.replace(/[^a-z0-9]/gi, '-').replace(/-+/g, '-').replace(/^-|-$/g, '')
-      $("#slug").val(slug.toLowerCase());
-    });
-  </script>
+
   {{-- image div --}}
   <script>
       // image show in div
@@ -546,6 +632,61 @@
 
 </script>
 
+    {{-- delete gallery image --}}
+
+    <script>
+
+        $(".deletegallery").click('.delete',function(){
+
+        var dataId = $(this).attr("data-id");
+        var del = this;
+        // console.log(id);
+        // alert(dataId);
+        if(confirm("Do you really want to delete")){
+
+            $.ajax({
+                url:dataId,
+                type:'DELETE',
+                data:{
+                _token : $("input[name=_token]").val()
+
+                },
+                success:function(response){
+                $(del).closest( "tr" ).remove();
+                alert(response.success);
+                }
+            });
+
+        }
+        });
+
+    </script>
+
+    {{-- delete gallery image end--}}
+
+    <script>
+        $('#category').select2({
+          selectOnClose: true
+        });
+      </script>
+
+      <script>
+        $('#brand').select2({
+          selectOnClose: true
+        });
+      </script>
+
+
+     {{-- slug --}}
+    <script>
+        $("#name").keyup(function(){
+        var str = $(this).val();
+        var trims = $.trim(str)
+        var slug = trims.replace(/[^a-z0-9]/gi, '-').replace(/-+/g, '-').replace(/^-|-$/g, '')
+        $("#slug").val(slug.toLowerCase());
+        });
+    </script>
+
   {{-- ckeditor --}}
   <script>
 
@@ -561,96 +702,6 @@
   </script>
   {{-- delete gallery image --}}
 
-  {{-- document tr loop --}}
-  {{-- <script>
-    $(function() {
-    // Multiple images preview with JavaScript
-    var multidocument = function(input, docPreviewPlaceholder) {
-
-        if (input.files) {
-            var filesAmount = input.files.length;
-
-            for (i = 0; i < filesAmount; i++) {
-                var reader = new FileReader();
-                // var fileName = e.target.files[0].name
-
-                reader.onload = function(event) {
-                  // <input type="text" value="" name="document[]"  class="form-control" >
-                    $($.parseHTML('<input type="text" name="document[]"  class="form-control col-4" >')).attr('value', event.target.result).appendTo(docPreviewPlaceholder);
-                    // alert(filename);
-                }
-
-                reader.readAsDataURL(input.files[i]);
-            }
-        }
-
-    };
-
-    $('#document').on('change', function() {
-      multidocument(this, 'div.document_add');
-    });
-    });
-  </script> --}}
-
-  {{-- document tr loop end--}}
-
-<script>
-
-  $(".deletegallery").click('.delete',function(){
-
-    var dataId = $(this).attr("data-id");
-    var del = this;
-    // console.log(id);
-    // alert(dataId);
-    if(confirm("Do you really want to delete")){
-
-        $.ajax({
-          url:dataId,
-          type:'DELETE',
-          data:{
-            _token : $("input[name=_token]").val()
-
-            },
-          success:function(response){
-            $(del).closest( "tr" ).remove();
-            alert(response.success);
-          }
-        });
-
-    }
-  });
-
-</script>
-  {{-- delete gallery image end--}}
-
-
-  {{-- delete product document --}}
-<script>
-    $(".deletedocument").click('.deletedoc',function(){
-
-  var dataId = $(this).attr("data-id");
-  var del = this;
-// console.log(id);
-// alert(dataId);
-
-if(confirm("Do you really want to delete document")){
-
-    $.ajax({
-      url:dataId,
-      type:'DELETE',
-      data:{
-        _token : $("input[name=_token]").val()
-
-        },
-      success:function(response){
-        $(del).closest( "tr" ).remove();
-        alert(response.success);
-      }
-    });
-
-}
-});
-</script>
 
   {{-- for seraching dropdown seraching --}}
   <script>

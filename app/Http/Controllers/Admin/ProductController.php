@@ -235,6 +235,7 @@ class ProductController extends Controller
             'status' => 'required'
 
         ]);
+
                         $product                        =   Product::find($id);
                         $product->user_id               =   Auth::user()->id;
                         $product->name  	            =   $request->name;
@@ -271,7 +272,8 @@ class ProductController extends Controller
                             $product->product_image = $name;
                         }
 
-                        // dd($product->product_image);
+                        // dd($product->product_image)
+                        ;
 
 
                         if($product->save()){
@@ -287,33 +289,73 @@ class ProductController extends Controller
                                 ]);
                             }
 
-                                foreach ($request->documentname as $key => $value) {
-                                    $data = [
 
-                                                'title' => $request->title[$key],
-                                            ];
+
+                                if($request->document && $request->title)
+                                {
+                                    // foreach($request->title as $title){
+                                    //     printf('sss '.$title.'<br>');
+                                    // }
+                                    foreach ($request->file('document')  as $file => $value ) {
+                                        $filename =  time().'_'.$value->getClientOriginalName();
+                                        $destinationPath = public_path('/backend/product_document');
+                                        $filePath = $destinationPath. "/". $filename;
+                                        $value->move($destinationPath, $filename);
+                                    //     DB::table('product_documents')->insert([
+                                    //         'product_id' => $product->id,
+                                    //         'document'   => $filename,
+                                    //         // 'name'       =>
+                                    //     ]);
+                                        printf($filename.'<br>');
+                                    }
+                                    // foreach($request->title as $title => $value){
+
+                                    //     DB::table('product_documents')->insert([
+                                    //         'product_id' => $product->id,
+                                    //         'name' => $request->title[$title],
+                                    //     ]);
+
+                                    // }
                                 }
 
-                                foreach ($request->file('document') ? : [] as $file ) {
-                                    $filename =  time().'_'.$file->getClientOriginalName();
-                                    $destinationPath = public_path('/backend/product_document');
-                                    $filePath = $destinationPath. "/". $filename;
-                                    $file->move($destinationPath, $filename);
-                                    DB::table('product_documents')->insert([
-                                        'product_id' => $product->id,
-                                        'document' => $filename,
-                                        'name'     =>   $data
-                                    ]);
-                                }
+
+
+                                    // if($request->title)
+                                    // {
+                                    //     foreach($request->title as $key => $value){
+                                    //         $data = [
+                                    //             'product_id' => $product->id,
+                                    //             'name' => $request->title[$key],
+                                    //         ];
+
+
+                                    //     }
+                                    // }
+
+
 
                         }
 
-                        // foreach($request->title as $key => $value){
-                        //     $data = [
-                        //         'department_id' => $department->id,
-                        //         'title' => $request->title[$key],
-                        //     ];
+                        // $this->validate($request, [
+                        //     'name' => 'required',
+                        // ]);
 
+                        // $department = Department::create([
+                        //     'name' => $request->name,
+                        // ]);
+
+                        // if($department)
+                        // {
+                        //     foreach($request->title as $key => $value){
+                        //         $data = [
+                        //             'department_id' => $department->id,
+                        //             'title' => $request->title[$key],
+                        //         ];
+
+                        //         Designation::create($data);
+                        //     }
+                        // }
+                                dd();
                     session()->flash('update', 'Record has been Updated');
 
                     return redirect('admin/product');
@@ -354,7 +396,7 @@ class ProductController extends Controller
         $product = ProductDocument::find($id);
         $product->delete();
 
-        Storage::disk('document-product')->delete($product->document);
+        // Storage::disk('document-product')->delete($product->document);
         // return redirect('admin/product');
         return response()->json(['success'=>'Document Record has been deleted']);
     }
