@@ -91,7 +91,7 @@
                                     @if(empty($item->sale_price == null ))
                                     <span class="new_price">{{$item->sale_price}}</span>
                                     @endif
-                                    <span class=" {{$item->sale_price ? 'old_price' : 'new_price'}} ">{{$item->regular_price == '0.00' ? '' : '$'}}{{$item->regular_price ? $item->regular_price : ''}}</span>
+                                    <span class=" {{$item->sale_price ? 'old_price' : 'new_price'}} ">{{$item->regular_price == 0.00 ? '' : '$'}}{{$item->regular_price ? $item->regular_price : ''}}</span>
                                     </div>
                                     <ul>
                                     <li>
