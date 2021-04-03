@@ -563,9 +563,7 @@
   </script>
   {{-- image validation end--}}
 
-<<<<<<< HEAD
 
-=======
   {{-- slug --}}
   <script>
     $("#name").keyup(function(){
@@ -575,7 +573,6 @@
       $("#slug").val(slug.toLowerCase());
     });
   </script>
->>>>>>> master
   {{-- image div --}}
   <script>
       // image show in div
@@ -639,15 +636,6 @@
 
 </script>
 
-<<<<<<< HEAD
-    {{-- delete gallery image --}}
-=======
-  {{-- ckeditor --}}
-  <script>
-
-    CKEDITOR.replace( 'description', {
->>>>>>> master
-
     <script>
 
         $(".deletegallery").click('.delete',function(){
@@ -678,20 +666,19 @@
 
     {{-- delete gallery image end--}}
 
-    <script>
-        $('#category').select2({
-          selectOnClose: true
-        });
-      </script>
+        <script>
+            $('#category').select2({
+            selectOnClose: true
+            });
+        </script>
 
-      <script>
-        $('#brand').select2({
-          selectOnClose: true
-        });
-      </script>
+        <script>
+            $('#brand').select2({
+            selectOnClose: true
+            });
+        </script>
 
 
-<<<<<<< HEAD
      {{-- slug --}}
     <script>
         $("#name").keyup(function(){
@@ -701,78 +688,17 @@
         $("#slug").val(slug.toLowerCase());
         });
     </script>
-=======
-    $('#document').on('change', function() {
-      multidocument(this, 'div.document_add');
-    });
-    });
-  </script> --}}
->>>>>>> master
 
   {{-- ckeditor --}}
   <script>
 
     CKEDITOR.replace( 'description', {
 
-<<<<<<< HEAD
     });
 
-=======
-  $(".deletegallery").click('.delete',function(){
-
-    var dataId = $(this).attr("data-id");
-    var del = this;
-    // console.log(id);
-    // alert(dataId);
-    if(confirm("Do you really want to delete")){
-
-        $.ajax({
-          url:dataId,
-          type:'DELETE',
-          data:{
-            _token : $("input[name=_token]").val()
-
-            },
-          success:function(response){
-            $(del).closest( "tr" ).remove();
-            alert(response.success);
-          }
-        });
-
-    }
-  });
-
-</script>
-  {{-- delete gallery image end--}}
->>>>>>> master
 
     CKEDITOR.replace( 'short_description', {
 
-<<<<<<< HEAD
-=======
-  {{-- delete product document --}}
-<script>
-    $(".deletedocument").click('.deletedoc',function(){
-
-  var dataId = $(this).attr("data-id");
-  var del = this;
-// console.log(id);
-// alert(dataId);
-
-if(confirm("Do you really want to delete document")){
-
-    $.ajax({
-      url:dataId,
-      type:'DELETE',
-      data:{
-        _token : $("input[name=_token]").val()
-
-        },
-      success:function(response){
-        $(del).closest( "tr" ).remove();
-        alert(response.success);
-      }
->>>>>>> master
     });
 
   </script>
