@@ -296,26 +296,35 @@ class ProductController extends Controller
                                     // foreach($request->title as $title){
                                     //     printf('sss '.$title.'<br>');
                                     // }
-                                    foreach ($request->file('document')  as $file => $value ) {
-                                        $filename =  time().'_'.$value->getClientOriginalName();
+                                    $data=[
+                                        $request->document,
+                                        $request->title
+                                    ];
+
+                                    foreach ($data ? : [] as $file) {
+                                        $filename =  time().'_'.$file->getClientOriginalName();
                                         $destinationPath = public_path('/backend/product_document');
                                         $filePath = $destinationPath. "/". $filename;
-                                        $value->move($destinationPath, $filename);
-                                    //     DB::table('product_documents')->insert([
-                                    //         'product_id' => $product->id,
-                                    //         'document'   => $filename,
-                                    //         // 'name'       =>
-                                    //     ]);
-                                        printf($filename.'<br>');
+                                        // $file->move($destinationPath, $filename);
+                                        // DB::table('product_documents')->insert([
+                                        //     'product_id' => $product->id,
+                                        //     'document' => $filename
+                                        // ]);
+
+                                        printf($data.' => '.$filename.'<br>');
+
                                     }
-                                    // foreach($request->title as $title => $value){
+                                    foreach($request->title as $title => $value){
 
-                                    //     DB::table('product_documents')->insert([
-                                    //         'product_id' => $product->id,
-                                    //         'name' => $request->title[$title],
-                                    //     ]);
+                                        dd("hello");
+                                        DB::table('product_documents')->insert([
+                                            'product_id' => $product->id,
+                                            // 'name' => $request->title[$title],
+                                            'document' => $filename
 
-                                    // }
+                                        ]);
+
+                                    }
                                 }
 
 

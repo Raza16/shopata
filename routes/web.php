@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,7 +27,7 @@ Route::group(['prefix' => '/admin'],function(){
 
 Route::middleware(['auth', 'admin'])->group(function () {
 
-        
+
 
         Route::get('dashboard', [App\Http\Controllers\Admin\AdminController::class,'dashboard']);
        //  settings
@@ -41,14 +41,14 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::get('privacy',[App\Http\Controllers\Admin\SettingController::class,'privacypolicy']);
        //  Terms & Conditions
        Route::get('terms_condition',[App\Http\Controllers\Admin\SettingController::class,'terms_condition']);
-        
-        //settings 
+
+        //settings
         Route::get('settings', [App\Http\Controllers\Admin\AdminController::class,'settings']);
         Route::post('check-current-pwd', [App\Http\Controllers\Admin\AdminController::class,'checkcurrentpwd']);
        //  blogs
        Route::post('upload_image',[App\Http\Controllers\Admin\BlogController::class,'uploadImage'])->name('upload');
        Route::resource('blog', App\Http\Controllers\Admin\BlogController::class);
-       
+
         //brand controller
         Route::resource('brand', App\Http\Controllers\Admin\BrandController::class);
         //category controller
@@ -59,16 +59,16 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::delete('product/documentdelete/{id}',[App\Http\Controllers\Admin\ProductController::class,'deletedocument']);
        // variation
         Route::resource('variation', App\Http\Controllers\Admin\ProductAttributeController::class);
-        
+
         // product attributes option
         Route::get('product_att_option/{id}/product_attribute_option',[App\Http\Controllers\Admin\ProductAttributeOptionController::class,'product_attribute_option'] );
-        
+
        Route::resource('variation_option', App\Http\Controllers\Admin\ProductAttributeOptionController::class);
 
-       // vendor 
+       // vendor
        Route::resource('vendor', App\Http\Controllers\Admin\VendorController::class);
-       
-        
+
+
 });
 
 });
@@ -81,7 +81,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 
  Route::get('/', [App\Http\Controllers\frontend\ShopController::class,'home']);
- 
+
 
 
  Route::get('contactus',function(){
@@ -140,4 +140,3 @@ Route::get('track_order', function () {
 });
 
 Route::get('test',[App\Http\Controllers\testCategory::class,'cate']);
- 

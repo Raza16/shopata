@@ -461,7 +461,7 @@
     <script>
         $('#add_file').on('click', function(){
             var tr = '<tr>'+
-                    '<td style="padding-right:10px;"><input type="text" name="title[]" class="form-control"/></td>'+
+                    '<td style="padding-right:10px;"><input type="text" name="title[]" class="form-control" required/></td>'+
                     '<td style="margin:10px"><input type="file" name="document[]" class="form-control"/></td>'+
                     '<td><button type="button" class="delete-row btn btn-default"><i style="color:red;" class="fa fa-trash"></i></button></td>'+
                     '</tr>';

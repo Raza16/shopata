@@ -349,7 +349,8 @@
 @endsection
 
 @section('pop')
-	<div id="toTop"></div><!-- Back to top button -->
+
+	{{-- <div id="toTop"></div><!-- Back to top button -->
 
 			<div class="popup_wrapper">
 				<div class="popup_content">
@@ -358,7 +359,7 @@
 						<img class="img-fluid" src="{{asset('frontend/img/newsletter.png')}}" alt="" width="500" 	height="500">
 					</a>
 				</div>
-			</div>
+			</div> --}}
 
 @endsection
 
