@@ -69,49 +69,56 @@
                     <div class="row small-gutters">
 
                       @foreach($product as $item)
-                        <div class="col-6 col-md-4" >
 
-                          <div class="grid_item" style="">
-                            @if(empty($item->sale_price == null))
-                            <span class="ribbon off">{{$item->sale_price}}</span>
-                            @endif
-                            <figure>
-                              <a href="{{$item->type =='simple' || $item->type =='variable' ? url('shop/'.$item->slug) : url('digital/'.$item->slug) }}">
-                                <img class="img-fluid lazy loaded" style="image-size: contain; height:250px; width:auto;" src="{{$item->product_image ? asset('backend/images/products/'.$item->product_image) : asset('frontend/img/product_placeholder.jpg') }}" data-src="{{ $item->product_image ? asset('backend/images/products/'.$item->product_image) : 'https://via.placeholder.com/200x200?text=Product Image'}}" alt="" data-was-processed="true">
-                              </a>
-                            </figure>
-                            <a href="{{$item->type =='simple' || $item->type =='variable'  ? url('shop/'.$item->slug) : url('digital/'.$item->slug) }}">
-                              <h3>{{$item->name}}</h3>
-                            </a>
-                            <div class="price_box">
-                              @if(empty($item->sale_price == null ))
-                              <span class="new_price">{{$item->sale_price}}</span>
-                              @endif
-                              <span class=" {{$item->sale_price ? 'old_price' : 'new_price'}} ">{{$item->regular_price == 0 ? ' ' : '$'}}{{$item->regular_price ? $item->regular_price : ' '}}</span>
+                        @if ($item->status == 'publish')
+
+
+                            <div class="col-6 col-md-4" >
+
+                                <div class="grid_item" style="">
+                                    @if(empty($item->sale_price == null))
+                                    <span class="ribbon off">{{$item->sale_price}}</span>
+                                    @endif
+                                    <figure>
+                                    <a href="{{$item->type =='simple' || $item->type =='variable' ? url('shop/'.$item->slug) : url('digital/'.$item->slug) }}">
+                                        <img class="img-fluid lazy loaded" style="image-size: contain; height:250px; width:auto;" src="{{$item->product_image ? asset('backend/images/products/'.$item->product_image) : asset('frontend/img/product_placeholder.jpg') }}" data-src="{{ $item->product_image ? asset('backend/images/products/'.$item->product_image) : 'https://via.placeholder.com/200x200?text=Product Image'}}" alt="" data-was-processed="true">
+                                    </a>
+                                    </figure>
+                                    <a href="{{$item->type =='simple' || $item->type =='variable'  ? url('shop/'.$item->slug) : url('digital/'.$item->slug) }}">
+                                    <h3>{{$item->name}}</h3>
+                                    </a>
+                                    <div class="price_box">
+                                    @if(empty($item->sale_price == null ))
+                                    <span class="new_price">{{$item->sale_price}}</span>
+                                    @endif
+                                    <span class=" {{$item->sale_price ? 'old_price' : 'new_price'}} ">{{$item->regular_price == 0 ? ' ' : '$'}}{{$item->regular_price ? $item->regular_price : ' '}}</span>
+                                    </div>
+                                    <ul>
+                                    <li>
+                                        <a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add to favorites">
+                                        <i class="ti-heart"></i>
+                                        <span>Add to favorites</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add to compare">
+                                        <i class="ti-control-shuffle"></i>
+                                        <span>Add to compare</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add to cart">
+                                        <i class="ti-shopping-cart"></i>
+                                        <span>Add to cart</span>
+                                        </a>
+                                    </li>
+                                    </ul>
+                                </div>
+
                             </div>
-                            <ul>
-                              <li>
-                                <a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add to favorites">
-                                  <i class="ti-heart"></i>
-                                  <span>Add to favorites</span>
-                                </a>
-                              </li>
-                              <li>
-                                <a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add to compare">
-                                  <i class="ti-control-shuffle"></i>
-                                  <span>Add to compare</span>
-                                </a>
-                              </li>
-                              <li>
-                                <a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add to cart">
-                                  <i class="ti-shopping-cart"></i>
-                                  <span>Add to cart</span>
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
 
-                        </div>
+                        @endif
+
                       @endforeach
 
                     </div>
@@ -162,7 +169,7 @@
                       <h4><a href="#filter_1" data-toggle="collapse" class="opened">Categories</a></h4>
                       <div class="collapse show" id="filter_1">
                         <ul>
-                          
+
                             @foreach($category as $citem)
                             <li>
                             <label class="container_check" {{$citem->products->count() != 0  ? '' : 'hidden' }}>{{$citem->title}} <small {{$citem->products->count() != 0 ? $citem->products->count() : 'hidden' }}>{{$citem->products->count()}}</small>
@@ -171,8 +178,8 @@
                             </label>
                             </li>
                             @endforeach
-                     
-                         
+
+
                         </ul>
                       </div>
 

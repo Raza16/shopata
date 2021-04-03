@@ -205,12 +205,12 @@
       <div class="card">
         <div class="card-body">
 
-                                  {{-- active or inactive --}}
+                                  {{-- Publish or Draft --}}
                           <div class="form-group">
-                            <label for="status">Draft</label>
+                            <label for="status">Status</label>
                             <select name="status" class="form-control">
-                              <option value="1" selected class="form-group">Active</option>
-                              <option value="0" class="form-group">Inactive</option>
+                              <option value="publish" selected class="form-group">Publish</option>
+                              <option value="draft" class="form-group">Draft</option>
                             </select>
                           </div>
 
@@ -228,7 +228,6 @@
                             @enderror
                           </div>
                             {{-- product image end --}}
-
                               {{-- product brand --}}
 
                             <div class="form-group">

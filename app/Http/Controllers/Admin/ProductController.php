@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use DB;
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Admin\ProductAttribute;
 use App\Models\Admin\Brand;
@@ -16,7 +16,7 @@ use App\Models\Admin\Sku;
 use App\Models\Admin\ProductVariation;
 use App\Models\Admin\ProductGallery;
 use App\Models\Admin\ProductDocument;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 
 class ProductController extends Controller
@@ -264,7 +264,7 @@ class ProductController extends Controller
                         if ($request->hasFile('image')) {
                             $image = $request->file('image');
                             $name = time().'_'.$image->getClientOriginalName();
-                            $destinationPath = public_path('/backend/images/products');
+                        $destinationPath = public_path('/backend/images/products');
                             $imagePath = $destinationPath. "/".  $name;
                             $image->move($imagePath, $name);
                             $product->product_image = $name;

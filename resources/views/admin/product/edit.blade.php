@@ -150,7 +150,7 @@
                                     </div>
 
                                     <div class="form-group col-6">
-                                      <label for="quantity">Stock</label>
+                                      <label for="stock">Stock</label>
                                       <select name="stock" id="stock" class="form-control">
                                         <option value="instock" {{$product->stock == "instock" ? 'selected' : ''}}>In stock</option>
                                         <option value="outstock" {{$product->stock == "outstock" ? 'selected' : ''}}>Out of stock</option>
@@ -285,8 +285,8 @@
                               <div class="form-group">
                                 <label for="status">Draft</label>
                                 <select name="status" class="form-control">
-                                  <option value="1" {{$product->status == 1 ? 'selected' : ''}} class="form-group">Active</option>
-                                  <option value="0" {{$product->status == 0 ? 'selected' : ''}} class="form-group">Inactive</option>
+                                  <option value="publish" {{$product->status == 'publish' ? 'selected' : ''}} class="form-group">Publish</option>
+                                  <option value="draft" {{$product->status == 'draft' ? 'selected' : ''}} class="form-group">Draft</option>
                                 </select>
                               </div>
 
