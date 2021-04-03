@@ -156,41 +156,45 @@
 						<p>We Provide Best Quality Products</p>
 					</div>
 					<div class="row small-gutters">
+
 						@foreach($product as $item)
 
-							<div class="col-6 col-md-4 col-xl-3">
-									<div class="grid_item">
-											<figure>
-													@if($item->sale_price)
-													<span class="ribbon off">-30%</span>
-													@endif
-													<a href="{{$item->type =='simple' ? url('shop/'.$item->slug) : url('digital') }}">
-															<img class="img-fluid lazy pmv" style="image-size:contain; height:200px; width:auto; margin:auto; padding:auto;"  src="{{$item->product_image ? asset('backend/images/products/'.$item->product_image) : asset('frontend/img/product_placeholder.jpg') }}" data-src="{{$item->product_image ? asset('backend/images/products/'.$item->product_image) : asset('frontend/img/product_placeholder.jpg') }}" alt="">
+                            @if ($item->status == 'publish')
 
-													</a>
-													@if($item->sale_price)
-													<div data-countdown="2019/05/15" class="countdown"></div>
-													@endif
-											</figure>
-											<div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
-											<a href="{{$item->type =='simple' ? url('shop/'.$item->slug) : url('digital') }}">
-													<h3>{{$item->name}}</h3>
-											</a>
-											<div class="price_box">
-													@if(!empty($item->sale_price))
-													<span class="new_price">$48.00</span>
-													@endif
-													<span class="{{$item->sale_price ? 'old_price' : 'new_price'}}">${{$item->regular_price}}</span>
-											</div>
-											<ul>
-													<li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
-													<li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to compare"><i class="ti-control-shuffle"></i><span>Add to compare</span></a></li>
-													<li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a></li>
-											</ul>
-									</div>
-									<!-- /grid_item -->
-							</div>
+                                <div class="col-6 col-md-4 col-xl-3">
+                                    <div class="grid_item">
+                                            <figure>
+                                                    @if($item->sale_price)
+                                                    <span class="ribbon off">-30%</span>
+                                                    @endif
+                                                    <a href="{{$item->type =='simple' ? url('shop/'.$item->slug) : url('digital') }}">
+                                                            <img class="img-fluid lazy pmv" style="image-size:contain; height:200px; width:auto; margin:auto; padding:auto;"  src="{{$item->product_image ? asset('backend/images/products/'.$item->product_image) : asset('frontend/img/product_placeholder.jpg') }}" data-src="{{$item->product_image ? asset('backend/images/products/'.$item->product_image) : asset('frontend/img/product_placeholder.jpg') }}" alt="">
 
+                                                    </a>
+                                                    @if($item->sale_price)
+                                                    <div data-countdown="2019/05/15" class="countdown"></div>
+                                                    @endif
+                                            </figure>
+                                            <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
+                                            <a href="{{$item->type =='simple' ? url('shop/'.$item->slug) : url('digital') }}">
+                                                    <h3>{{$item->name}}</h3>
+                                            </a>
+                                            <div class="price_box">
+                                                    @if(!empty($item->sale_price))
+                                                    <span class="new_price">$48.00</span>
+                                                    @endif
+                                                    <span class="{{$item->sale_price ? 'old_price' : 'new_price'}}">${{$item->regular_price}}</span>
+                                            </div>
+                                            <ul>
+                                                    <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
+                                                    <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to compare"><i class="ti-control-shuffle"></i><span>Add to compare</span></a></li>
+                                                    <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a></li>
+                                            </ul>
+                                    </div>
+                                    <!-- /grid_item -->
+                                </div>
+
+                            @endif
 
 						@endforeach
 
@@ -204,6 +208,7 @@
 							</div>
 							<img src="{{asset('frontend/img/add.png')}}" class="container" alt=" image">
 						</div> --}}
+
 				<!-- /featured -->
 
 				{{-- digital product --}}
@@ -214,29 +219,33 @@
 					</div>
 					<div class="owl-carousel owl-theme products_carousel">
 						@foreach($product_digital as $digital)
-						<div class="item">
-							<div class="grid_item">
-								{{-- <span class="ribbon new">{{$feature->}}</span> --}}
-								<figure>
-									<a href="{{$digital->type =='simple' || $digital->type =='variable'  ? url('shop/'.$digital->slug) : url('digital/'.$digital->slug) }}">
-										<img class="owl-lazy" style="width:auto; height:200px; margin:auto;" src="{{$digital->product_image ? asset('backend/images/products/'.$digital->product_image) : asset('frontend/img/product_placeholder.jpg')}}" data-src="{{$digital->product_image ? asset('backend/images/products/'.$digital->product_image) : asset('frontend/img/product_placeholder.jpg')}}" alt="">
-									</a>
-								</figure>
-								<div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
-								<a href="{{$digital->type =='simple' || $digital->type =='variable'  ? url('shop/'.$digital->slug) : url('digital/'.$digital->slug) }}">
-									<h3>{{$digital->name}}</h3>
-								</a>
-								<div class="price_box">
-									<span class="new_price">{{$digital->regular_price ? '$'.$digital->regular_price : ''}}</span>
-								</div>
-								<ul>
-									<li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
-									<li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to compare"><i class="ti-control-shuffle"></i><span>Add to compare</span></a></li>
-									<li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a></li>
-								</ul>
-							</div>
-							<!-- /grid_item -->
-						</div>
+
+                            @if ($digital->status == 'publish')
+                                <div class="item">
+                                    <div class="grid_item">
+                                        {{-- <span class="ribbon new">{{$feature->}}</span> --}}
+                                        <figure>
+                                            <a href="{{$digital->type =='simple' || $digital->type =='variable'  ? url('shop/'.$digital->slug) : url('digital/'.$digital->slug) }}">
+                                                <img class="owl-lazy" style="width:auto; height:200px; margin:auto;" src="{{$digital->product_image ? asset('backend/images/products/'.$digital->product_image) : asset('frontend/img/product_placeholder.jpg')}}" data-src="{{$digital->product_image ? asset('backend/images/products/'.$digital->product_image) : asset('frontend/img/product_placeholder.jpg')}}" alt="">
+                                            </a>
+                                        </figure>
+                                        <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
+                                        <a href="{{$digital->type =='simple' || $digital->type =='variable'  ? url('shop/'.$digital->slug) : url('digital/'.$digital->slug) }}">
+                                            <h3>{{$digital->name}}</h3>
+                                        </a>
+                                        <div class="price_box">
+                                            <span class="new_price">{{$digital->regular_price ? '$'.$digital->regular_price : ''}}</span>
+                                        </div>
+                                        <ul>
+                                            <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
+                                            <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to compare"><i class="ti-control-shuffle"></i><span>Add to compare</span></a></li>
+                                            <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a></li>
+                                        </ul>
+                                    </div>
+                                    <!-- /grid_item -->
+                                </div>
+                            @endif
+
 						@endforeach
 						<!-- /item -->
 
@@ -253,29 +262,35 @@
 					</div>
 					<div class="owl-carousel owl-theme products_carousel">
 						@foreach($product_featured as $feature)
-						<div class="item">
-							<div class="grid_item">
-								{{-- <span class="ribbon new">{{$feature->}}</span> --}}
-								<figure>
-									<a href="{{url('shop/'.$feature->slug)}}">
-										<img class="owl-lazy" style="width:auto; height:200px; margin:auto;" src="{{$feature->product_image ? asset('backend/images/products/'.$feature->product_image) : asset('frontend/img/product_placeholder.jpg')}}" data-src="{{$feature->product_image ? asset('backend/images/products/'.$feature->product_image) : asset('frontend/img/product_placeholder.jpg')}}" alt="">
-									</a>
-								</figure>
-								<div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
-								<a href="{{url('shop/'.$feature->slug)}}">
-									<h3>{{$feature->name}}</h3>
-								</a>
-								<div class="price_box">
-									<span class="new_price">${{$feature->regular_price}}</span>
-								</div>
-								<ul>
-									<li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
-									<li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to compare"><i class="ti-control-shuffle"></i><span>Add to compare</span></a></li>
-									<li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a></li>
-								</ul>
-							</div>
-							<!-- /grid_item -->
-						</div>
+
+                            @if ($feature->status == 'publish')
+
+                                <div class="item">
+                                    <div class="grid_item">
+                                        {{-- <span class="ribbon new">{{$feature->}}</span> --}}
+                                        <figure>
+                                            <a href="{{url('shop/'.$feature->slug)}}">
+                                                <img class="owl-lazy" style="width:auto; height:200px; margin:auto;" src="{{$feature->product_image ? asset('backend/images/products/'.$feature->product_image) : asset('frontend/img/product_placeholder.jpg')}}" data-src="{{$feature->product_image ? asset('backend/images/products/'.$feature->product_image) : asset('frontend/img/product_placeholder.jpg')}}" alt="">
+                                            </a>
+                                        </figure>
+                                        <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
+                                        <a href="{{url('shop/'.$feature->slug)}}">
+                                            <h3>{{$feature->name}}</h3>
+                                        </a>
+                                        <div class="price_box">
+                                            <span class="new_price">${{$feature->regular_price}}</span>
+                                        </div>
+                                        <ul>
+                                            <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
+                                            <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to compare"><i class="ti-control-shuffle"></i><span>Add to compare</span></a></li>
+                                            <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a></li>
+                                        </ul>
+                                    </div>
+                                    <!-- /grid_item -->
+                                </div>
+
+                            @endif
+
 						@endforeach
 						<!-- /item -->
 
@@ -350,9 +365,9 @@
 
 @section('pop')
 
-	{{-- <div id="toTop"></div><!-- Back to top button -->
+	<div id="toTop"></div><!-- Back to top button -->
 
-			<div class="popup_wrapper">
+			{{-- <div class="popup_wrapper">
 				<div class="popup_content">
 					<span class="popup_close">Close</span>
 					<a href="{{url('shop')}}">

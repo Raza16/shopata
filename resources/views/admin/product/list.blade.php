@@ -2,7 +2,7 @@
 
 
 @section('title','Product list')
-  
+
 
 @section('content')
 
@@ -45,7 +45,7 @@
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">Product List </h4>
-        
+
           {{-- <p class="page-description">Add class <code>.sortable-table</code></p> --}}
           <div class="row">
             <div class="table-sorter-wrapper col-lg-12 table-responsive">
@@ -55,10 +55,12 @@
                 <thead>
                   <tr>
                     <th>#</th>
+                    <th>Image<i class="fa fa-angle-down"></i></th>
                     <th class="sortStyle ascStyle">Title<i class="fa fa-angle-down"></i></th>
                     <th class="sortStyle unsortStyle">Catgeory<i class="fa fa-angle-down"></i></th>
                     <th class="sortStyle unsortStyle">Brand<i class="fa fa-angle-down"></i></th>
                     <th class="sortStyle unsortStyle">Seller<i class="fa fa-angle-down"></i></th>
+                    <th class="sortStyle unsortStyle">Status<i class="fa fa-angle-down"></i></th>
                     <th class="sortStyle unsortStyle">View<i class="fa fa-angle-down"></i></th>
                     <th class="sortStyle unsortStyle">Update<i class="fa fa-angle-down"></i></th>
                     <th class="sortStyle unsortStyle">Delete<i class="fa fa-angle-down"></i></th>
@@ -69,10 +71,12 @@
                   @foreach ($product as $item)
                 <tr>
                     <td>{{$item->id}}</td>
+                    <td><img src="{{asset('backend/images/products/'.$item->product_image)}}" alt=""></td>
                     <td>{{$item->name}}</td>
-                    <td>{{$item->category_id ? $item->category->title : 'Null'}}</td>
-                    <td>{{$item->brand_id ? $item->brand->title : "Null"}}</td>
+                    <td>{{$item->category_id ? $item->category->title : 'Uncategories'}}</td>
+                    <td>{{$item->brand_id ? $item->brand->title : "Uncategories"}}</td>
                     <td style="text-transform: uppercase">{{$item->user->name}}</td>
+                    <td style="text-transform: uppercase">{{$item->status == 'publish' ? 'Publish' : 'Draft'}}</td>
                     <td>
                       <a href="{{url('shop/'.$item->slug)}}" style="padding:10px" target="_blank" class="btn btn-md btn-success btn-icon-text">
                           View
@@ -107,14 +111,13 @@
 
   @section('script')
 
-  <script>  
+  <script>
         //--------------------------- Alert message
     $(document).ready(function() {
         $("#alert").fadeTo(500, 100).fadeOut(500, function(){
             $("#alert").alert('close');
         });
     });
-  </script>  
+  </script>
 
   @endsection
-    

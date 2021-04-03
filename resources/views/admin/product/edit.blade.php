@@ -90,13 +90,8 @@
 
                     {{-- <div class="form-group">
                       <label for="document">Document Attach</label>
+                      <input type="file" multiple="multiple" name="document[]" class="form-control document_name" id="document">
 
-                      <input type="file" multiple="multiple" name="document[]" class="form-control document_name" id="document_add">
-
-                    </div> --}}
-
-                    <div class="form-group">
-                      <input type="button" class="form-control btn btn-primary btn-4p" id="add_file" value="Add File">
                     </div>
 
 
@@ -165,7 +160,7 @@
                                     </div>
 
                                     <div class="form-group col-6">
-                                      <label for="quantity">Stock</label>
+                                      <label for="stock">Stock</label>
                                       <select name="stock" id="stock" class="form-control">
                                         <option value="instock" {{$product->stock == "instock" ? 'selected' : ''}}>In stock</option>
                                         <option value="outstock" {{$product->stock == "outstock" ? 'selected' : ''}}>Out of stock</option>
@@ -300,8 +295,8 @@
                               <div class="form-group">
                                 <label for="status">Draft</label>
                                 <select name="status" class="form-control">
-                                  <option value="1" {{$product->status == 1 ? 'selected' : ''}} class="form-group">Active</option>
-                                  <option value="0" {{$product->status == 0 ? 'selected' : ''}} class="form-group">Inactive</option>
+                                  <option value="publish" {{$product->status == 'publish' ? 'selected' : ''}} class="form-group">Publish</option>
+                                  <option value="draft" {{$product->status == 'draft' ? 'selected' : ''}} class="form-group">Draft</option>
                                 </select>
                               </div>
 
@@ -568,7 +563,19 @@
   </script>
   {{-- image validation end--}}
 
+<<<<<<< HEAD
 
+=======
+  {{-- slug --}}
+  <script>
+    $("#name").keyup(function(){
+      var str = $(this).val();
+      var trims = $.trim(str)
+      var slug = trims.replace(/[^a-z0-9]/gi, '-').replace(/-+/g, '-').replace(/^-|-$/g, '')
+      $("#slug").val(slug.toLowerCase());
+    });
+  </script>
+>>>>>>> master
   {{-- image div --}}
   <script>
       // image show in div
@@ -632,7 +639,14 @@
 
 </script>
 
+<<<<<<< HEAD
     {{-- delete gallery image --}}
+=======
+  {{-- ckeditor --}}
+  <script>
+
+    CKEDITOR.replace( 'description', {
+>>>>>>> master
 
     <script>
 
@@ -677,6 +691,7 @@
       </script>
 
 
+<<<<<<< HEAD
      {{-- slug --}}
     <script>
         $("#name").keyup(function(){
@@ -686,17 +701,78 @@
         $("#slug").val(slug.toLowerCase());
         });
     </script>
+=======
+    $('#document').on('change', function() {
+      multidocument(this, 'div.document_add');
+    });
+    });
+  </script> --}}
+>>>>>>> master
 
   {{-- ckeditor --}}
   <script>
 
     CKEDITOR.replace( 'description', {
 
+<<<<<<< HEAD
     });
 
+=======
+  $(".deletegallery").click('.delete',function(){
+
+    var dataId = $(this).attr("data-id");
+    var del = this;
+    // console.log(id);
+    // alert(dataId);
+    if(confirm("Do you really want to delete")){
+
+        $.ajax({
+          url:dataId,
+          type:'DELETE',
+          data:{
+            _token : $("input[name=_token]").val()
+
+            },
+          success:function(response){
+            $(del).closest( "tr" ).remove();
+            alert(response.success);
+          }
+        });
+
+    }
+  });
+
+</script>
+  {{-- delete gallery image end--}}
+>>>>>>> master
 
     CKEDITOR.replace( 'short_description', {
 
+<<<<<<< HEAD
+=======
+  {{-- delete product document --}}
+<script>
+    $(".deletedocument").click('.deletedoc',function(){
+
+  var dataId = $(this).attr("data-id");
+  var del = this;
+// console.log(id);
+// alert(dataId);
+
+if(confirm("Do you really want to delete document")){
+
+    $.ajax({
+      url:dataId,
+      type:'DELETE',
+      data:{
+        _token : $("input[name=_token]").val()
+
+        },
+      success:function(response){
+        $(del).closest( "tr" ).remove();
+        alert(response.success);
+      }
+>>>>>>> master
     });
 
   </script>

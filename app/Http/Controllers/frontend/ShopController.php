@@ -30,17 +30,17 @@ class ShopController extends Controller
        return view('frontend.index',compact('blog','product','product_featured','setting','product_digital'));
    }
 
-    // shop page 
+    // shop page
     public function shop(Request $request)
     {
- 
+
             $brand          = Brand::all();
             $category       = Category::with('products')->get();
             $product        = Product::paginate(12);
 
-           
+
             return view ('frontend.shop',compact('brand','category','product'));
-        
+
     }
 
     public function categories($category)
@@ -61,11 +61,11 @@ class ShopController extends Controller
     public function singleshop($slug)
     {
         $product    =Product::where('slug',$slug)->first();
-        // gallery 
+        // gallery
         $gall = $product->id;
-        //category 
+        //category
         $category= $product->category_id;
-        //grallery 
+        //grallery
         $product_grallery = Product::find($gall)->product_grallery;
         // document
         $product_documents  =Product::find($gall)->document_product;
@@ -109,20 +109,20 @@ class ShopController extends Controller
     public function store(){
 
         $category   =Category::all();
-        
+
         return view('frontend.store_directory',compact('category'));
     }
 
     // blog page
-    public function blog()  
+    public function blog()
     {
         $blog       = Blog::orderBy('updated_at','DESC')->get();
         $latest     = Blog::orderBy('updated_at','DESC')->take(5)->get();
         $category   = Category::all()->take(7);
-     
+
         return view ('frontend.blog',compact('blog','latest'));
     }
-    // single blog 
+    // single blog
     public function single_blog($slug)
     {
         $blog   = Blog::where('slug',$slug)->first();
@@ -138,6 +138,6 @@ class ShopController extends Controller
 
         $view->with("cat",$cat);
     }
-    
+
 
 }

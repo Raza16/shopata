@@ -205,12 +205,12 @@
       <div class="card">
         <div class="card-body">
 
-                                  {{-- active or inactive --}}
+                                  {{-- Publish or Draft --}}
                           <div class="form-group">
-                            <label for="status">Draft</label>
+                            <label for="status">Status</label>
                             <select name="status" class="form-control">
-                              <option value="1" selected class="form-group">Active</option>
-                              <option value="0" class="form-group">Inactive</option>
+                              <option value="publish" selected class="form-group">Publish</option>
+                              <option value="draft" class="form-group">Draft</option>
                             </select>
                           </div>
 
@@ -219,7 +219,7 @@
                             <label>Product Image</label>
                             <div style="width:200px; border:1px solid #d9dee4;">
                                 <img style="max-width:200px;max-height:200px;
-                                display:block;" class="for-image" src="https://via.placeholder.com/200x200?text=200+x+200"/>
+                                display:block;" class="for-image" src="https://via.placeholder.com/200x200?text=Feature Image"/>
                                 <button type="button" style="background:#d9dee4; border-radius:0px;width:200px;cursor:pointer;font-size:12px;font-weight:600;" class="upload-button btn btn-default"><i style="font-size:14px;" class="fa fa-upload" aria-hidden="true"></i> &nbsp;Upload Image</button>
                                 <input style="display:none;" class="file-upload" type="file" name="image" accept="image/*"/>
                             </div>
@@ -228,8 +228,8 @@
                             @enderror
                           </div>
                             {{-- product image end --}}
-
                               {{-- product brand --}}
+
                             <div class="form-group">
                               <label class="col-8 col-form-label">Brands</label>
                               <div class="col-sm-9">
@@ -300,11 +300,9 @@
 
 @section('script')
 
-<<<<<<< HEAD
 <script>
   $(".select2").select2();
 </script>
-=======
     <script>
       $('#category').select2({
         selectOnClose: true
@@ -316,7 +314,7 @@
         selectOnClose: true
       });
     </script>
->>>>>>> dev
+
 
 
 {{-- slug --}}

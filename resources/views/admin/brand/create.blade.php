@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title','Brand Add')
-  
+
 
 @section('content')
 
@@ -74,14 +74,13 @@
               </div>
               @error('image')
                   <p><small class="text-danger">{{ $errors->first('image') }}</small></p>
-              @enderror 
+              @enderror
             </div>
-           
-          </div>  
+
+          </div>
         </div>
       </div>
       <button type="submit" class="btn btn-primary mr-2">Submit</button>
-      <button class="btn btn-light">Cancel</button>
     </form>
   </div>
 </div>
@@ -102,17 +101,17 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
-    
+
         $(".file-upload").on('change', function(){
             readURL(this);
         });
-    
+
         $(".upload-button").on('click', function() {
            $(".file-upload").click();
         });
-    
-        
+
+
       });
-    
+
     </script>
 @endsection
