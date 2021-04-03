@@ -264,7 +264,7 @@ class ProductController extends Controller
                         if ($request->hasFile('image')) {
                             $image = $request->file('image');
                             $name = time().'_'.$image->getClientOriginalName();
-                            $destinationPath = public_path('/backend/images/products');
+                        $destinationPath = public_path('/backend/images/products');
                             $imagePath = $destinationPath. "/".  $name;
                             $image->move($imagePath, $name);
                             $product->product_image = $name;
