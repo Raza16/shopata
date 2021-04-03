@@ -88,7 +88,7 @@
 
 
 
-                    {{-- <div class="form-group">
+                    <div class="form-group">
                       <label for="document">Document Attach</label>
                       <input type="file" multiple="multiple" name="document[]" class="form-control document_name" id="document">
 

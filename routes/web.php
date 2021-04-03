@@ -57,6 +57,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::resource('product', App\Http\Controllers\Admin\ProductController::class);
         Route::delete('product/gallerydelete/{id}',[App\Http\Controllers\Admin\ProductController::class,'deletegallery']);
         Route::delete('product/documentdelete/{id}',[App\Http\Controllers\Admin\ProductController::class,'deletedocument']);
+        Route::get('variation-get/{id}', [App\Http\Controllers\Admin\ProductController::class,'variationoption'] );
        // variation
         Route::resource('variation', App\Http\Controllers\Admin\ProductAttributeController::class);
 

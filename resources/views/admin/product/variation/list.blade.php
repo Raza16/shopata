@@ -76,7 +76,7 @@
                                       <th class="sortStyle unsortStyle">Terms<i class="fa fa-angle-down"></i></th>
                                     </tr>
                                   </thead>
-                      
+
                                   <tbody>
                                     @foreach ($variation as $item)
                                   <tr>
@@ -101,7 +101,7 @@
                                   </tr>
                                     @endforeach
                                   </tbody>
-                      
+
                             </table>
                         </div>
                       </div>
@@ -112,7 +112,14 @@
 
 @section('script')
 
-
+    <script>
+        //--------------------------- Alert message
+    $(document).ready(function() {
+        $("#alert").fadeTo(500, 100).fadeOut(500, function(){
+            $("#alert").alert('close');
+        });
+    });
+    </script>
 
 <script src="{{asset('backend/js/alerts.js')}}"></script>
 

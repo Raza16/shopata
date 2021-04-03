@@ -40,21 +40,21 @@ class ProductAttributeOptionController extends Controller
     public function store(Request $request)
     {
         //
-        
+
 
        $this->validate($request,[
             // input filed                  //validations
             'name'          =>   'required',
-             
+
        ]);
-        
+
                         $variationOption = new VariationOption;
             //col filed                                     // input filed
             //              product attribute option col add start
             $variationOption->name                   =   $request->name;
             $variationOption->variant_id             =   $request->product_att_id;
             $variationOption->save();
-           return redirect('admin/variation');
+           return redirect()->back();
     }
 
     /**
@@ -99,7 +99,7 @@ class ProductAttributeOptionController extends Controller
         $this->validate($request,[
             // input filed                  //validations
             'name'          =>   'required',
-             
+
        ]);
 
                         $variationOption = VariationOption::find($id);
@@ -108,7 +108,9 @@ class ProductAttributeOptionController extends Controller
             $variationOption->name                   =   $request->name;
             $variationOption->variant_id             =   $request->variant_id;
             $variationOption->save();
-           return redirect('admin/variation');
+
+            return redirect('admin/variation_option/'.$request->variant_id);
+
     }
 
     /**
@@ -123,6 +125,6 @@ class ProductAttributeOptionController extends Controller
         $variation_option = VariationOption::find($id);
         $variation_option->delete();
         session()->flash('delete', 'Record has been Deleted');
-        return redirect('admin/variation');
+        return redirect()->back();
     }
 }

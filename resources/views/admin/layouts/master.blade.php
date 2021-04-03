@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>@yield('title','Dashboard')</title>
   <!-----drop down search------------------------>
- 
+
   <!-------------------drop down serach--------------->
   <!-- plugins:css -->
   <link rel="stylesheet" href="{{asset('backend/vendors/iconfonts/font-awesome/css/all.min.css')}}">
@@ -27,7 +27,7 @@
   <!--ckeditor-->
   <link rel="shortcut icon" href="http://www.urbanui.com/" />
 <!---dropzone plugins using js----->
- <script src="{{asset('backend/js/dropzone_js/dist/dropzone.js')}}"></script> 
+ <script src="{{asset('backend/js/dropzone_js/dist/dropzone.js')}}"></script>
 @yield('pageheadlinks')
 </head>
 
@@ -60,7 +60,7 @@
           </li>
         </ul>
         <ul class="navbar-nav navbar-nav-right">
-       
+
           <li class="nav-item dropdown d-none d-lg-flex">
             <div class="nav-link">
               <span class="dropdown-toggle btn btn-primary" id="languageDropdown" data-toggle="dropdown">Quick Links</span>
@@ -76,7 +76,7 @@
                 <a class="dropdown-item font-weight-medium" href="{{url('admin/category/create')}}">
                   Categroy +
                 </a>
-                
+
               </div>
             </div>
           </li>
@@ -203,23 +203,6 @@
                 Settings
               </a>
               <div class="dropdown-divider"></div>
-              {{-- <a class="dropdown-item">
-                <i class="fas fa-power-off text-primary"></i>
-                Logout
-              </a> --}}
-               <!-- Authentication -->
-               {{-- <a class="dropdown-item" href="{{route('logout')}}" 
-               
-                  onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();>
-                  
-                  <i class="fas fa-sign-out-alt text-primary"></i>
-                
-                Logout
-              </a>
-              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                @csrf
-            </form> --}}
 
                   <a class="dropdown-item" href="{{ route('logout') }}"
                   onclick="event.preventDefault();
@@ -231,7 +214,7 @@
               <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                   @csrf
               </form>
-            
+
             </div>
           </li>
 
@@ -446,7 +429,7 @@
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <span class="menu-title">Blogs</span>
               <i class="menu-arrow"></i>
-            </a>  
+            </a>
             <div class="collapse" id="blogs">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
@@ -458,7 +441,7 @@
               </ul>
             </div>
           </li>
-          
+
                                             {{-- products menu --}}
 
           <li class="nav-item d-none d-lg-block btn">
@@ -466,27 +449,28 @@
               <i><img src="{{asset('backend/images/product.png')}}" style="width:20px ; height:auto" alt=""> </i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <span class="menu-title">Products</span>
               <i class="menu-arrow"></i>
-            </a>  
+            </a>
             <div class="collapse" id="products">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link " href="{{url('admin/product')}}">Products List</a></li>
                 <li class="nav-item"> <a class="nav-link " href="{{url('admin/product/create')}}">Product Add</a></li>
                 <li class="nav-item"> <a class="nav-link" href="{{url('admin/brand')}}">Brands</a></li>
                 <li class="nav-item"> <a class="nav-link" href="{{url('admin/category')}}">Categories</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{url('admin/variation')}}">Variation</a></li>
               </ul>
             </div>
           </li>
-         
+
 
                                                 {{-- vendor menu --}}
 
           <li class="nav-item d-none d-lg-block btn">
             <a class="nav-link" data-toggle="collapse" href="#vendors" aria-expanded="false" aria-controls="vendors">
               <i class="fas fa-store menu-icon"></i>
-              
+
               <span class="menu-title">Vendors</span>
               <i class="menu-arrow"></i>
-            </a>  
+            </a>
             <div class="collapse" id="vendors">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="{{url('admin/vendor')}}">Vendor list</a></li>
@@ -527,16 +511,16 @@
                 </ul>
               </div>
             </li> --}}
-        
+
                                             {{-- websetting --}}
             <li class="nav-item {{ request()->is('admin/websetting') ? 'active' : ' ' }}">
               <a class="nav-link" href="{{url('admin/websetting/1')}}">
                 <i class="fa fa-cog"></i>&nbsp;&nbsp;&nbsp;&nbsp;
                 <span class="menu-title">Web Setting</span>
               </a>
-            </li> 
+            </li>
           {{-- {{ request()->is('admin/blog') ? 'active' : null}} --}}
-        
+
         </ul>
       </nav>
       <!-- partial -->
@@ -559,10 +543,10 @@
     <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
-  
+
   <!-- plugins:js -->
-  
- 
+
+
 
   <script src="{{asset('backend/vendors/js/vendor.bundle.base.js')}}"></script>
   <script src="{{asset('backend/vendors/js/vendor.bundle.addons.js')}}"></script>
@@ -587,7 +571,7 @@
   <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.html5.min.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.colVis.min.js"></script>
   <script src="{{asset('backend/js/data-table.js')}}"></script>
-  
+
   <!-- End custom js for this page-->
  @yield('script')
 </body>
