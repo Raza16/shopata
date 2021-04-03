@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
 use App\Models\User;
 use App\Models\Admin\ProductAttribute;
 use App\Models\Admin\Brand;
@@ -235,7 +234,6 @@ class ProductController extends Controller
             'status' => 'required'
 
         ]);
-
                         $product                        =   Product::find($id);
                         $product->user_id               =   Auth::user()->id;
                         $product->name  	            =   $request->name;
@@ -267,13 +265,12 @@ class ProductController extends Controller
                             $image = $request->file('image');
                             $name = time().'_'.$image->getClientOriginalName();
                             $destinationPath = public_path('/backend/images/products');
-                            $imagePath = $destinationPath. "/".$name;
+                            $imagePath = $destinationPath. "/".  $name;
                             $image->move($imagePath, $name);
                             $product->product_image = $name;
                         }
 
-                        // dd($product->product_image)
-                        ;
+                        // dd($product->product_image);
 
 
                         if($product->save()){
@@ -282,89 +279,26 @@ class ProductController extends Controller
                                 $filename =  time().'_'.$file->getClientOriginalName();
                                 $destinationPath = public_path('/backend/images/product_gallery');
                                 $filePath = $destinationPath. "/". $filename;
-                                $file->move($destinationPath, $filename);
+                                $file->move($filePath, $filename);
                                 DB::table('product_gralleries')->insert([
                                     'product_id' => $product->id,
                                     'image' => $filename
                                 ]);
                             }
 
-
-
-                                if($request->document && $request->title)
-                                {
-                                    // foreach($request->title as $title){
-                                    //     printf('sss '.$title.'<br>');
-                                    // }
-                                    $data=[
-                                        $request->document,
-                                        $request->title
-                                    ];
-
-                                    foreach ($data ? : [] as $file) {
-                                        $filename =  time().'_'.$file->getClientOriginalName();
-                                        $destinationPath = public_path('/backend/product_document');
-                                        $filePath = $destinationPath. "/". $filename;
-                                        // $file->move($destinationPath, $filename);
-                                        // DB::table('product_documents')->insert([
-                                        //     'product_id' => $product->id,
-                                        //     'document' => $filename
-                                        // ]);
-
-                                        printf($data.' => '.$filename.'<br>');
-
-                                    }
-                                    foreach($request->title as $title => $value){
-
-                                        dd("hello");
-                                        DB::table('product_documents')->insert([
-                                            'product_id' => $product->id,
-                                            // 'name' => $request->title[$title],
-                                            'document' => $filename
-
-                                        ]);
-
-                                    }
-                                }
-
-
-
-                                    // if($request->title)
-                                    // {
-                                    //     foreach($request->title as $key => $value){
-                                    //         $data = [
-                                    //             'product_id' => $product->id,
-                                    //             'name' => $request->title[$key],
-                                    //         ];
-
-
-                                    //     }
-                                    // }
-
-
+                            foreach ($request->file('document') ? : [] as $file) {
+                                $filename =  time().'_'.$file->getClientOriginalName();
+                                $destinationPath = public_path('/backend/product_document');
+                                $filePath = $destinationPath. "/". $filename;
+                                $file->move($destinationPath, $filename);
+                                DB::table('product_documents')->insert([
+                                    'product_id' => $product->id,
+                                    'document' => $filename
+                                ]);
+                            }
 
                         }
 
-                        // $this->validate($request, [
-                        //     'name' => 'required',
-                        // ]);
-
-                        // $department = Department::create([
-                        //     'name' => $request->name,
-                        // ]);
-
-                        // if($department)
-                        // {
-                        //     foreach($request->title as $key => $value){
-                        //         $data = [
-                        //             'department_id' => $department->id,
-                        //             'title' => $request->title[$key],
-                        //         ];
-
-                        //         Designation::create($data);
-                        //     }
-                        // }
-                                dd();
                     session()->flash('update', 'Record has been Updated');
 
                     return redirect('admin/product');
