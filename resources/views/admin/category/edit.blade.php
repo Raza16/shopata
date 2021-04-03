@@ -7,28 +7,17 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <style>
-<<<<<<< HEAD
       .select2-container--default .select2-selection--single .select2-selection__rendered{
         color: #444;
         line-height: 18px;
         margin-top: -9px;
         margin-left: -20px
       }
-=======
-
-      .select2-container--default .select2-selection--single .select2-selection__rendered {
-        color: #444;
-        line-height: 10px;
-        margin-top: -4px;
-        margin-left: -19px;
-          }
-
->>>>>>> dev
     </style>
   @endsection
 
 @section('content')
-  
+
 <div class="col-12 grid-margin stretch-card">
   <div class="card">
     <div class="card-body">
@@ -58,27 +47,22 @@
               @if ($count > 1)
               <div class="form-group">
                 <label for="parentid">Parent Category</label>
-<<<<<<< HEAD
                 <select class="form-control select2" name="parent_id" id="parent_id">
                     <option>UnCategories</option>
-=======
-                <select class="form-control" name="parent_id" id="parentcat">
-                  <option value="">Parent Category</option>
->>>>>>> dev
                 @foreach ($parent_id as $item)
-                        
+
                         <option value="{{$item->id}}" {{$category->parent_id == $item->id ? 'selected' : ''}}
-                           @if ($category->id == $item->id) 
-                              {{'hidden'}}                          
+                           @if ($category->id == $item->id)
+                              {{'hidden'}}
                            @endif >
-                           {{$item->title}}</option>                         
-                     
+                           {{$item->title}}</option>
+
                 @endforeach
 
                   </select>
               </div>
               @endif
-              
+
               <div class="form-group">
                 <label for="meta_title">meta keyword</label>
                 <input type="text" class="form-control" id="meta_keyword" name="meta_keyword" placeholder="meta keyword" value="{{old('meta_keyword')}}">
@@ -101,7 +85,7 @@
                 @error('meta_description')
                 <p><small class="text-danger">{{ $errors->first('meta_description') }}</small></p>
                 @enderror
-              </div> 
+              </div>
 
 
         </div>
@@ -119,10 +103,10 @@
               </div>
               @error('image')
                   <p><small class="text-danger">{{ $errors->first('image') }}</small></p>
-              @enderror 
+              @enderror
           </div>
-           
-          </div>  
+
+          </div>
         </div>
       </div>
       <button type="submit" class="btn btn-primary mr-2">Submit</button>
@@ -170,17 +154,17 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
-    
+
         $(".file-upload").on('change', function(){
             readURL(this);
         });
-    
+
         $(".upload-button").on('click', function() {
            $(".file-upload").click();
         });
-    
-        
+
+
     });
-    
+
     </script>
 @endsection

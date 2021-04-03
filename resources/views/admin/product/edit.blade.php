@@ -2,7 +2,7 @@
 
 
 @section('title','Product Edit')
-    
+
   @section('pageheadlinks')
   <script src="{{asset('backend/plugins/ckeditor/ckeditor.js')}}"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -71,7 +71,7 @@
                               <td>
                                   <button type="button" class="deletedocument deletedoc" data-id="{{url('admin/product/documentdelete/'.$document->id)}}" ><i style="color:red;" class="fa fa-trash"></i></button>
                               </td>
-                            </tr> 
+                            </tr>
                               @endforeach
                         </tbody>
                       </table>
@@ -82,7 +82,7 @@
                     <div class="form-group">
                       <label for="document">Document Attach</label>
                       <input type="file" multiple="multiple" name="document[]" class="form-control document_name" id="document">
-                    
+
                     </div>
 
                                                                                   {{-- seo tab --}}
@@ -123,7 +123,7 @@
                                                                                 {{-- seo tab end--}}
 
                                                                                 {{-- general info --}}
-                
+
                     <div class="form-group">
                       <div class="card" style="background-color: #f7f7f0">
                         <div class="card-header bg-primary" role="tab" id="heading-13">
@@ -189,7 +189,7 @@
                                     <p><small class="text-danger">{{ $errors->first('quantity') }}</small></p>
                                     @enderror
                                   </div>
-                                  
+
                                   <div class="row">
 
                                     <div class="form-group col-6">
@@ -267,17 +267,17 @@
 
                                   </div>
 
-                                
+
                           </div>
                         </div>
                       </div>
                     </div> --}}
-                
+
               </div>
             </div>
         </div>
 
-                                                  
+
         <div class="col-4 grid-margin stretch-card">
           <div class="card">
             <div class="card-body">
@@ -295,13 +295,13 @@
                                 <label>Product Image</label>
 
                                 <div style="width:200px; border:1px solid #d9dee4;">
-                                  
+
                                   <img style="max-width:200px;max-height:200px;
-                                  display:block;" class="for-image" src="{{$product->image ? asset('backend/images/products/'.$product->product_image) : 'https://via.placeholder.com/200x200?text=200+x+200'}}"/>
-                                
+                                  display:block;" class="for-image" src="{{$product->product_image ? asset('backend/images/products/'.$product->product_image) : 'https://via.placeholder.com/200x200?text=200+x+200'}}"/>
+
                                     <button type="button" style="background:#d9dee4; border-radius:0px;width:200px;cursor:pointer;font-size:12px;font-weight:600;" class="upload-button btn btn-default">
                                       <i style="font-size:14px;" class="fa fa-upload" aria-hidden="true"></i> &nbsp;Upload Image</button>
-                                    
+
                                     <input style="display:none;" class="file-upload" onchange="validateImage()" type="file" name="image" accept="image/*" id="img"/>
 
                                     {{-- @error('image') --}}
@@ -336,7 +336,7 @@
                                       @foreach ($category as $item)
                                       <option value="{{$item->id}}" {{ $item->id == $product->category_id ? 'selected' : '' }}>{{$item->title}}</option>
                                       @endforeach
-                                      
+
                                     </select>
                                   </div>
 
@@ -345,14 +345,14 @@
                                 <hr>
                                   {{-- product grallery image --}}
                                   <div class="form-group">
-                                  
+
                                     <label>Product Grallery</label>
-                            
+
                                     <div class="user-image mb-3 text-center">
                                       <div class="imgPreview"> </div>
-                                    </div>            
-                                  
-                                  
+                                    </div>
+
+
                                     <div class="form-group">
                                       <table class="table">
                                         <tbody>
@@ -367,7 +367,7 @@
                                                 <td>
                                                   <button type="button" class="deletegallery delete" data-id="{{url('admin/product/gallerydelete/'.$item->id)}}" ><i style="color:red;" class="fa fa-trash"></i></button>
                                                 </td>
-                                              
+
                                             </tr>
                                           @endforeach
                                         </tbody>
@@ -378,11 +378,11 @@
                                       <input type="file" name="gallery_image[]"  class="form-control"
                                       id="images" multiple="multiple" />
                                     </div>
-                                  
+
                                     @error('gallery_image')
                                         <p><small class="text-danger">{{ $errors->first('gallery_image') }}</small></p>
-                                    @enderror 
-                                  
+                                    @enderror
+
                                   </div>
                                   {{-- product grallery image end--}}
 
@@ -419,15 +419,15 @@
 
     function validateImage() {
         var formData = new FormData();
-    
+
         var file = document.getElementById("img").files[0];
-    
+
         formData.append("Filedata", file);
         var t = file.type.split('/').pop().toLowerCase();
         if (t != "jpeg" && t != "jpg" && t != "png" && t != "webp") {
             // alert('Please select a valid image file jpeg | jpg | png | webp');
             $("#error").slideDown();;
-            
+
             document.getElementById("img").value = '';
             return false;
         }
@@ -442,7 +442,7 @@
 
   </script>
   {{-- image validation end--}}
- 
+
   {{-- slug --}}
   <script>
     $("#name").keyup(function(){
@@ -465,17 +465,17 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
-    
+
         $(".file-upload").on('change', function(){
           // validateImage();
             readURL(this);
         });
-    
+
         $(".upload-button").on('click', function() {
            $(".file-upload").click();
         });
-    
-        
+
+
     });
   </script>
   {{-- image garllery --}}
@@ -493,7 +493,7 @@
               var filesAmount = input.files.length;
               // var filepath    = input.files.val();
               // alert(filepath);
-              
+
               for (i = 0; i < filesAmount; i++) {
                   var reader = new FileReader();
 
@@ -511,13 +511,13 @@
           multiImgPreview(this, 'div.imgPreview');
       });
 
-  });    
+  });
 
 </script>
 
   {{-- ckeditor --}}
   <script>
-    
+
     CKEDITOR.replace( 'description', {
 
     });
@@ -558,7 +558,7 @@
     $('#document').on('change', function() {
       multidocument(this, 'div.document_add');
     });
-    });    
+    });
   </script> --}}
 
   {{-- document tr loop end--}}
@@ -578,7 +578,7 @@
           type:'DELETE',
           data:{
             _token : $("input[name=_token]").val()
-             
+
             },
           success:function(response){
             $(del).closest( "tr" ).remove();
@@ -588,7 +588,7 @@
 
     }
   });
- 
+
 </script>
   {{-- delete gallery image end--}}
 
@@ -609,7 +609,7 @@ if(confirm("Do you really want to delete document")){
       type:'DELETE',
       data:{
         _token : $("input[name=_token]").val()
-         
+
         },
       success:function(response){
         $(del).closest( "tr" ).remove();
@@ -636,6 +636,6 @@ if(confirm("Do you really want to delete document")){
       <script src="{{asset('backend/js/dropify.js')}}"></script>
       <script src="{{asset('backend/js/dropzone.js')}}"></script>
       <script src="{{asset('backend/js/jquery-file-upload.js')}}"></script>
-     
+
 
 @endsection
