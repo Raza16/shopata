@@ -63,31 +63,6 @@
               </div>
               @endif
 
-              <div class="form-group">
-                <label for="meta_title">meta keyword</label>
-                <input type="text" class="form-control" id="meta_keyword" name="meta_keyword" placeholder="meta keyword" value="{{old('meta_keyword')}}">
-                @error('meta_keyword')
-                <p><small class="text-danger">{{ $errors->first('meta_keyword') }}</small></p>
-                @enderror
-              </div>
-
-               <div class="form-group">
-                <label for="meta_title">meta title</label>
-                <input type="text" class="form-control" id="meta_title" name="meta_title" placeholder="meta title" value="{{old('meta_title')}}">
-                @error('meta_title')
-                <p><small class="text-danger">{{ $errors->first('meta_title') }}</small></p>
-                @enderror
-              </div>
-
-              <div class="form-group">
-                <label for="title">meta description</label>
-                <textarea type="text" class="form-control" id="meta_description" name="meta_description" placeholder="meta description" rows=5>{{old('meta_description')}}</textarea>
-                @error('meta_description')
-                <p><small class="text-danger">{{ $errors->first('meta_description') }}</small></p>
-                @enderror
-              </div>
-
-
         </div>
 
         <div class="col-4">
@@ -110,7 +85,6 @@
         </div>
       </div>
       <button type="submit" class="btn btn-primary mr-2">Submit</button>
-      <button class="btn btn-light">Cancel</button>
     </form>
   </div>
 </div>

@@ -47,7 +47,7 @@ class ProductController extends Controller
         $variation          =Variation::all();
         $variation_option   =VariationOption::all();
         $product            =Product::all();
-        
+
         return view('admin.product.create',compact('variation','brand','category','variation_option','product'));
     }
 
@@ -123,7 +123,7 @@ class ProductController extends Controller
                         }
 
                         foreach ($request->document ? : [] as $file) {
-                            
+
                             $filename =  time().'_'.$file->getClientOriginalName();
                             $destinationPath = public_path('/backend/product_document');
                             $filePath = $destinationPath. "/". $filename;
@@ -146,7 +146,7 @@ class ProductController extends Controller
 
                                 //  $get_last_id   =  $last_id->id;
 
-                                
+
                         //     $sku            =       new Sku();
                         // //     //tbl                       input filed
                         // $sku->sku_code      =       $request->sku_code;
@@ -154,7 +154,7 @@ class ProductController extends Controller
                         // $sku->product_id    =       $last_id_p->id;
 
                         // dd($sku);
-                            // $sku->save();    
+                            // $sku->save();
                             // $last_id_sku = DB::table('skus')->latest('id')->first();
                             // dd($last_id_sku);
 
@@ -171,8 +171,8 @@ class ProductController extends Controller
                     // dd($product);
 
 
-        
-        
+
+
     }
 
     /**
@@ -201,7 +201,7 @@ class ProductController extends Controller
         $product_grallery   = Product::find($id)->product_grallery;
         $product_documents  =Product::find($id)->document_product;
         $variations         = Variation::all();
-       
+
         return view('admin.product.edit',compact(
             'product',
             'brand',
@@ -209,7 +209,7 @@ class ProductController extends Controller
             'product_grallery',
             'variations',
             'product_documents'));
-           
+
     }
 
     /**
@@ -254,13 +254,13 @@ class ProductController extends Controller
                         $product->tax_status            =   $request->tax_status;
                         $product->tax_class             =   $request->tax_class;
                         $product->type                  =   $request->product_type;
-                        
+
                         // brand
                         $product->brand_id              =   $request->brand_id;
                         // category
                         $product->category_id           =   $request->category_id;
 
-                        // dd($product);    
+                        // dd($product);
                         if ($request->hasFile('image')) {
                             $image = $request->file('image');
                             $name = time().'_'.$image->getClientOriginalName();
@@ -270,8 +270,8 @@ class ProductController extends Controller
                             $product->product_image = $name;
                         }
 
-                        dd($product->product_image);
-                       
+                        // dd($product->product_image);
+
 
                         if($product->save()){
 
@@ -286,7 +286,7 @@ class ProductController extends Controller
                                 ]);
                             }
 
-                            foreach ($request->document ? : [] as $file) {
+                            foreach ($request->file('document') ? : [] as $file) {
                                 $filename =  time().'_'.$file->getClientOriginalName();
                                 $destinationPath = public_path('/backend/product_document');
                                 $filePath = $destinationPath. "/". $filename;
@@ -305,7 +305,7 @@ class ProductController extends Controller
 
     }
 
-    
+
     /**
      * Remove the specified resource from storage.
      *
@@ -321,7 +321,7 @@ class ProductController extends Controller
         return redirect('admin/product');
     }
 
-    
+
     public function deletegallery($id){
 
         // dd("deleted");
@@ -338,7 +338,7 @@ class ProductController extends Controller
         # code...
         $product = ProductDocument::find($id);
         $product->delete();
-        
+
         // Storage::disk('document-product')->delete($product->document);
         // return redirect('admin/product');
         return response()->json(['success'=>'Document Record has been deleted']);
