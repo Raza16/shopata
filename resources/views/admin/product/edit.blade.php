@@ -411,9 +411,6 @@
 
 @section('script')
 
-
-
-
 {{-- // multiple file document  --}}
     {{-- <script>
         $('#add_document').on('change', function(){
@@ -562,7 +559,6 @@
 
   </script>
   {{-- image validation end--}}
-
 
   {{-- slug --}}
   <script>

@@ -58,26 +58,39 @@
     <div class="card">
       <div class="card-body">
 
+        {{-- password update messages --}}
+
         @if(session()->has('error_message'))
-            <div id="alert" class="alert alert-danger alert-dismissible deletefade in mb-1" role="alert">
+            <div id="alert" class="alert alert-danger alert-dismissible in mb-1" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <strong>Incorrect Password</strong> {{session('error_message')}}
+                <strong>Incorrect Password!</strong> {{session('error_message')}}
             </div>
         @endif
 
-          {{-- @if($errors->any())
-          <div class="alert alert-danger">
-            <ul>
-              @foreach($errors->all() as $error)
-              <li>{{$error}}</li>
-              @endforeach
-            </ul>
-          </div>
-          @endif --}}
+        @if(session()->has('confrimpwd'))
+            <div id="alert" class="alert alert-danger alert-dismissible in mb-1" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <strong>Incorrect Password!</strong> {{session('confrimpwd')}}
+            </div>
+        @endif
 
-        <h4 class="card-title">Settings</h4>
+        @if(session()->has('updated'))
+            <div id="alert" class="alert alert-success alert-dismissible  in mb-1" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <strong>Incorrect Password!</strong> {{session('updated')}}
+            </div>
+        @endif
+
+        {{-- password update messages --}}
+
+
+        <h4 class="card-title" style="margin: 10px">Settings</h4>
         {{-- <p class="card-description">
           Basic form layout
         </p> --}}
@@ -93,11 +106,12 @@
           </div>
           <div class="form-group">
             <label for="newpwd">New Password</label>
-            <input type="password" class="form-control" id="newpwd" placeholder="New Password" name="newpwd">
+            <input type="password" class="form-control" id="newpwd" placeholder="New Password" name="newpwd" required>
           </div>
           <div class="form-group">
             <label for="confrimpwd">Confrim Password</label>
-            <input type="password" class="form-control" id="confrimpwd" placeholder="Confrim Password" name="confrimpwd">
+            <input type="password" class="form-control" id="confrimpwd" placeholder="Confrim Password" name="confrimpwd" required>
+            <span id="confrimpassword"></span>
           </div>
           <button type="submit" class="btn btn-primary mr-2">Submit</button>
         </form>
@@ -110,61 +124,53 @@
     <div class="card">
       <div class="card-body">
 
-        @if(Session::has('update_error_message'))
-        <div class="form-group alert-dismissible fade show alert-danger alert-warning">
-            <label id="error_messgae" style="font-size:20px">{{Session::get('error_message')}}</label>
-        </div>
-          @endif
 
-          @if(Session::has('update_success_message'))
-          <div class="form-group alert-dismissible fade show alert-primary alert-warning">
-              <label id="update_success_message" style="font-size:20px">{{Session::get('update_success_message')}}</label>
-          </div>
+            @if(session()->has('update_success_message'))
+                <div id="alert" class="alert alert-success alert-dismissible in mb-1" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong>Updated Details: </strong> {{session('update_success_message')}}
+                </div>
             @endif
 
 
-        <h4 class="card-title">Update Admin Details</h4>
+        <h4 class="card-title" style="margin: 10px">Update Admin Details</h4>
 
         <form class="forms-sample" method="Post" action="{{url('/admin/update-admin-details')}}" name="updateadmindetails" id="updateadmindetails" enctype="multipart/form-data">
 
           @csrf
 
+            {{-- <div class="row">
+                <div class="col-4"></div>
+                <div class="small-12 medium-2 large-2 columns">
+                    <div class="circle">
+                        <!-- User Profile Image -->
+                        <img class="profile-pic" src="https://via.placeholder.com/200x200?text=200+x+200">
 
-          <div class="row">
-              <div class="col-4"></div>
-            <div class="small-12 medium-2 large-2 columns">
-              <div class="circle">
-                <!-- User Profile Image -->
-                <img class="profile-pic" src="https://via.placeholder.com/200x200?text=200+x+200">
-
-                <!-- Default Image -->
-                <!-- <i class="fa fa-user fa-5x"></i> -->
-              </div>
-              <div class="p-image">
-                <i class="fa fa-camera upload-button"></i>
-                 <input class="file-upload" type="file" name="profile_image" accept="image/*"/>
-              </div>
-           </div>
-         </div>
+                        <!-- Default Image -->
+                    </div>
+                    <div class="p-image">
+                        <i class="fa fa-camera upload-button"></i>
+                        <input class="file-upload" type="file" name="profile_image" accept="image/*"/>
+                    </div>
+                </div>
+            </div> --}}
 
           <div class="form-group">
             <label for="exampleInputUsername1">Admin Name</label>
             <input type="text" class="form-control" id="adminname" placeholder="Admin Name" name="name" value="{{ Auth::user()->name}}">
+            @error('name')
+                <p><small class="text-danger">{{ $errors->first('name') }}</small></p>
+            @enderror
           </div>
 
           <div class="form-group">
             <label for="email">Admin Email</label>
-            <input type="email" class="form-control"  placeholder="Email" readonly value="{{  Auth::user()->email}}">
-          </div>
-
-          <div class="form-group">
-            <label for="email">User Type</label>
-            <input type="email" class="form-control" id="admintype" placeholder="Admin Type" name="admintype" readonly value="{{Auth::user()->role->name}}">
-          </div>
-
-          <div class="form-group">
-            <label for="mobile">Mobile</label>
-            <input type="text" class="form-control" id="mobile" placeholder="Mobile" name="mobile" value="{{  Auth::user()->mobile}}">
+            <input type="email" class="form-control" placeholder="Email" name="email" value="{{  Auth::user()->email}}">
+            @error('email')
+            <p><small class="text-danger">{{ $errors->first('email') }}</small></p>
+            @enderror
           </div>
 
           <button type="submit" class="btn btn-primary mr-2">Submit</button>
@@ -224,9 +230,9 @@
                 success:function(resp){
                     // alert(resp);
                     if(resp=="false"){
-                          $("#checkcurrentpwd").html("<font color=red>Current Password is incorrect</font>");
+                          $("#checkcurrentpwd").html("<font color=red>Current password is incorrect</font>");
                     }else if(resp=="true"){
-                      $("#checkcurrentpwd").html("<font color=green>Current Password is correct</font>");
+                      $("#checkcurrentpwd").html("<font color=green>Current password is correct</font>");
                     }
                 },error:function(){
                     alert("Error");
@@ -234,8 +240,18 @@
             });
         });
 
+        $('#confrimpwd').keyup(function(){
 
+            var newpwd =$('#newpwd').val();
+            var confrimpwd =$('#confrimpwd').val();
 
+            if(newpwd == confrimpwd){
+                $('#confrimpassword').html("<font color=green>New password and Confrim password match</font>");
+            }else{
+                $('#confrimpassword').html("<font color=red>Confrim password not match</font>");
+            }
+
+        });
 
   });
 
@@ -243,6 +259,15 @@
 </script>
 
 
+<script>
+    //--------------------------- Alert message
+      $(document).ready(function() {
+          $(".alert-success").fadeTo(500, 100).fadeOut(500, function(){
+              $(".alert-success").alert('close');
+          });
+      });
+
+  </script>
 
 
 

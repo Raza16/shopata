@@ -1,5 +1,6 @@
 <?php
 
+use Facade\FlareClient\Api;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -37,6 +38,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::post('check-current-pwd', [App\Http\Controllers\Admin\AdminController::class,'checkcurrentpwd']);
 
         Route::post('update-current-pwd', [App\Http\Controllers\Admin\AdminController::class,'updatecurrentpwd']);
+
+        Route::post('update-admin-details',[App\Http\Controllers\Admin\AdminController::class,'updatedetails']);
 
         // Route::get('websetting',[App\Http\Controllers\Admin\AdminController::class,'websetting']);
         Route::get('websetting/{id}',[App\Http\Controllers\Admin\AdminController::class,'websetting']);

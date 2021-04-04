@@ -9,7 +9,7 @@ use App\Models\Admin\Product;
 use App\Models\Admin\Setting;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Session;
+
 
 class AdminController extends Controller
 {
@@ -24,12 +24,40 @@ class AdminController extends Controller
 
     public function settings()
     {
-        // Session::put('page','settings');
 
-        // Auth::guard('admin')->user();
         $admindetails =User::where('email',Auth::user()->email)->first();
 
         return view('admin.settings',compact('admindetails'));
+    }
+
+    public function updatedetails(Request $request)
+    {
+
+        $this->validate($request,[
+            'name'  => 'required',
+            'email' =>  'required',
+            'profile_image' => 'image|mimes:png,jpeg,webp,jpg'
+        ]);
+
+                    $user           =   User::where('id',Auth::user()->id)->first();
+
+                    $user->name     =   $request->name;
+                    $user->email    =   $request->email;
+
+                    // if ($request->hasFile('profile_image')) {
+                    //     $image = $request->file('image');
+                    //     $name = time().'_'.$image->getClientOriginalName();
+                    //     $destinationPath = public_path('/backend/images/products');
+                    //     $imagePath = $destinationPath. "/".  $name;
+                    //     $image->move($destinationPath, $name);
+                    //     $user-> = $name;
+                    // }
+
+                            $user->save();
+
+            session()->flash('update_success_message', 'Email and Name Successfully Updated');
+
+            return redirect()->back();
     }
 
 
@@ -49,19 +77,31 @@ class AdminController extends Controller
 
     public function updatecurrentpwd(Request $request)
     {
-        // $this->validate($request,[
-        //     'currentpwd' => 'required',
-        //     'newpwd' => 'required',
-        // ]);
 
         if($request->isMethod('post')){
-            $data = $request->all;
-                # code...
-                // print_r($data.'<br>');die;
+
+            $data = $request->all();
+
             if(Hash::check($data['currentpwd'],Auth::user()->password)){
 
+                if ($data['newpwd'] == $data['confrimpwd']) {
+
+                    User::where('id',Auth::user()->id)->update(['password'=>bcrypt($data['newpwd'])]);
+
+                    session()->flash('updated', 'Password has been updated successfully');
+
+                    return redirect()->back();
+
+                }else{
+
+                    session()->flash('confrimpwd', 'New Password and Confrim Password not match');
+
+                    return redirect()->back();
+                }
             }else{
+
                 session()->flash('error_message', 'Your Current Password is Incorrect');
+
                 return redirect()->back();
             }
         }
