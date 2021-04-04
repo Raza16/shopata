@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Admin\Product;
 use App\Models\Admin\Setting;
-use Auth;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
 {
@@ -16,14 +18,14 @@ class AdminController extends Controller
     {
         $user   =User::all();
         $product    =Product::all();
-        
+
         return view('admin.dashboard',compact('user','product'));
     }
 
     public function settings()
     {
         // Session::put('page','settings');
-        
+
         // Auth::guard('admin')->user();
         $admindetails =User::where('email',Auth::user()->email)->first();
 
@@ -34,18 +36,37 @@ class AdminController extends Controller
     public function checkcurrentpwd(Request $request)
     {
         # code...
-        $data   =$request->all();
-        $va = "hello";
-
-        dd($va);
-        //    echo "<pre>";print_r($data);
-        //      echo Auth::user()->this->password();
-        //  echo "<pre>"; print_r (Auth::user()->password()); die;
+        $data   = $request->all();
+        // echo "<pre>";print_r($data);
+            //  echo Auth::user()->this->password();
+        //  echo "<pre>"; print_r (Auth::user()->password); die;
         if(Hash::check($data['currentpwd'],Auth::user()->password)){
                 echo "true";
         }else{
-            echo "false"; 
+            echo "false";
         }
+    }
+
+    public function updatecurrentpwd(Request $request)
+    {
+        // $this->validate($request,[
+        //     'currentpwd' => 'required',
+        //     'newpwd' => 'required',
+        // ]);
+
+        if($request->isMethod('post')){
+            $data = $request->all;
+                # code...
+                // print_r($data.'<br>');die;
+            if(Hash::check($data['currentpwd'],Auth::user()->password)){
+
+            }else{
+                session()->flash('error_message', 'Your Current Password is Incorrect');
+                return redirect()->back();
+            }
+        }
+
+
     }
 
     public function websetting($id)
@@ -62,8 +83,8 @@ class AdminController extends Controller
         $this->validate($request,[
             'title' => 'required',
             // 'site_url'=>'required',
-            
-            
+
+
         ]);
 
                         $setting    = Setting::find($id);
@@ -94,7 +115,7 @@ class AdminController extends Controller
                             $setting->favicon = $name;
                         }
 
-                        
+
 
                         // dd($setting->logo);
                                 // dd($setting);

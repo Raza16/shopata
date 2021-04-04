@@ -30,10 +30,17 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 
         Route::get('dashboard', [App\Http\Controllers\Admin\AdminController::class,'dashboard']);
-       //  settings
-       // Route::get('websetting',[App\Http\Controllers\Admin\AdminController::class,'websetting']);
-       Route::get('websetting/{id}',[App\Http\Controllers\Admin\AdminController::class,'websetting']);
-       Route::put('websetting/update/{id}',[App\Http\Controllers\Admin\AdminController::class,'websettings']);
+
+        //settings
+        Route::get('settings', [App\Http\Controllers\Admin\AdminController::class,'settings']);
+
+        Route::post('check-current-pwd', [App\Http\Controllers\Admin\AdminController::class,'checkcurrentpwd']);
+
+        Route::post('update-current-pwd', [App\Http\Controllers\Admin\AdminController::class,'updatecurrentpwd']);
+
+        // Route::get('websetting',[App\Http\Controllers\Admin\AdminController::class,'websetting']);
+        Route::get('websetting/{id}',[App\Http\Controllers\Admin\AdminController::class,'websetting']);
+        Route::put('websetting/update/{id}',[App\Http\Controllers\Admin\AdminController::class,'websettings']);
 
               // pages
        Route::get('pages',[App\Http\Controllers\Admin\SettingController::class,'pages']);
@@ -42,22 +49,23 @@ Route::middleware(['auth', 'admin'])->group(function () {
        //  Terms & Conditions
        Route::get('terms_condition',[App\Http\Controllers\Admin\SettingController::class,'terms_condition']);
 
-        //settings
-        Route::get('settings', [App\Http\Controllers\Admin\AdminController::class,'settings']);
-        Route::post('check-current-pwd', [App\Http\Controllers\Admin\AdminController::class,'checkcurrentpwd']);
+
        //  blogs
        Route::post('upload_image',[App\Http\Controllers\Admin\BlogController::class,'uploadImage'])->name('upload');
        Route::resource('blog', App\Http\Controllers\Admin\BlogController::class);
 
         //brand controller
         Route::resource('brand', App\Http\Controllers\Admin\BrandController::class);
+
         //category controller
         Route::resource('category', App\Http\Controllers\Admin\CategoryController::class);
+
         //product controller
         Route::resource('product', App\Http\Controllers\Admin\ProductController::class);
         Route::delete('product/gallerydelete/{id}',[App\Http\Controllers\Admin\ProductController::class,'deletegallery']);
         Route::delete('product/documentdelete/{id}',[App\Http\Controllers\Admin\ProductController::class,'deletedocument']);
         Route::get('variation-get/{id}', [App\Http\Controllers\Admin\ProductController::class,'variationoption'] );
+
        // variation
         Route::resource('variation', App\Http\Controllers\Admin\ProductAttributeController::class);
 
