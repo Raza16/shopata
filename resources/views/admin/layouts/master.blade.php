@@ -464,7 +464,7 @@
 
                                                 {{-- vendor menu --}}
 
-          <li class="nav-item d-none d-lg-block btn">
+          {{-- <li class="nav-item d-none d-lg-block btn">
             <a class="nav-link" data-toggle="collapse" href="#vendors" aria-expanded="false" aria-controls="vendors">
               <i class="fas fa-store menu-icon"></i>
 
@@ -474,11 +474,11 @@
             <div class="collapse" id="vendors">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="{{url('admin/vendor')}}">Vendor list</a></li>
-                {{-- <li class="nav-item"> <a class="nav-link" href="{{url('admin/vendor/product')}}">Vendor Products</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{url('admin/company')}}">Vendor Companies</a></li> --}}
+                <li class="nav-item"> <a class="nav-link" href="{{url('admin/vendor/product')}}">Vendor Products</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{url('admin/company')}}">Vendor Companies</a></li>
               </ul>
             </div>
-          </li>
+          </li> --}}
 
                                           {{-- orders menu --}}
 
@@ -513,12 +513,12 @@
             </li> --}}
 
                                             {{-- websetting --}}
-            <li class="nav-item {{ request()->is('admin/websetting') ? 'active' : ' ' }}">
+            {{-- <li class="nav-item {{ request()->is('admin/websetting') ? 'active' : ' ' }}">
               <a class="nav-link" href="{{url('admin/websetting/1')}}">
                 <i class="fa fa-cog"></i>&nbsp;&nbsp;&nbsp;&nbsp;
                 <span class="menu-title">Web Setting</span>
               </a>
-            </li>
+            </li> --}}
           {{-- {{ request()->is('admin/blog') ? 'active' : null}} --}}
 
         </ul>
