@@ -227,6 +227,19 @@
                                                 </select>
                                             </div>
 
+                                            <div class="form-group col-6" id="variation-option">
+                                                <label for="variation">Variation Option</label>
+                                                <select name="variation" id="variation-option" class="form-control">
+
+                                                    <option value="" selected>--- Custom Variations ---</option>
+
+                                                    @foreach ($variation as $item)
+                                                        <option value="{{$item->id}}">{{$item->name}}</option>
+                                                    @endforeach
+
+                                                </select>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -435,26 +448,44 @@
 
   {{-- ////////////////variation option get /////////////////////////////// --}}
 
-  {{-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  {{-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> --}}
 
-  <script>
+  {{-- <script>
 
       $(document).ready(function () {
 
         $("#variation").change(function(){
 
                 // alert('hello');
-            var id=  $('#variation option:selected').val();
+            var id  =  $('#variation option:selected').val();
+            var url =  "{{url('admin/variation-get')}}/"+id;
+
+            // alert(url);
 
             $.ajax({
-                url:"{{url('admin/variation-get/"+id+"')}}",
+                url:url,
                 type:'GET',
                 datatype:'json',
                 data:{
-                _token : $("#variation option:selected").val()
+                _token : id
                 },
                 success:function(response){
-                    alert(response.success);
+                    // alert(response.success);
+                    var res= response.success;
+
+                    $("#variation-option").append("<label>Variation Option</label>"+
+                                                "<select name='variation' class='form-control'>"+
+                                                "@foreach ($variation_option as $item)"+
+                                                    "<option>{{$item->name}}</option>"+
+                                                "@endforeach"+
+                                                "</select>");
+
+
+
+                    // console.log(res);
+                },
+                error:function(){
+                    alert("error");
                 }
             });
 

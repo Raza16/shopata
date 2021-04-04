@@ -344,13 +344,17 @@ class ProductController extends Controller
         return response()->json(['success'=>'Document Record has been deleted']);
     }
 
-    // public function variationoption($id)
-    // {
-    //     $variation_option = VariationOption::where('variant_id',$id)->get();
+    public function variationoption()
+    {
+        $variation_option = VariationOption::where('variant_id',1)->get();
 
-    //     // return response()->json(['success'=>$variation_option]);
-    //        return response()->json(['success'=>'variation option']);
+        // foreach ($variation_option as $item)s {
+        //     printf($item->name."<br>");
+        // }
 
-    // }
+        // return response()->json(['success'=>$variation_option]);
+           return response()->json(['success'=>$variation_option]);
+
+    }
 
 }
