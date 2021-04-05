@@ -29054,11 +29054,11 @@ div.tagsinput span.tag a {
 }
 
 .auth .forget-half-bg{
-    background: url("../images/forget-password.png");
-    background-size: 50%;
+    background: url("../images/forget-password.svg");
+    background-size: contain;
     background-repeat: no-repeat;
     background-repeat: no-repeat;
-    height: 300px;
+    height: 600px;
     position: relative;
     left: 50px;
 }

@@ -12,6 +12,11 @@
 
                     <div class="row flex-grow custom-center">
 
+                      
+
+                        <div class="col-lg-6 forget-half-bg d-flex flex-row">
+                        </div>
+
                         <div class="col-lg-6 d-flex align-items-center justify-content-center">
 
                             <div class="auth-form-transparent text-left p-3">
@@ -49,7 +54,11 @@
                                             @enderror
 
                                         </div>
-
+                                        @if (session('status'))
+                                            <div class="alert alert-success" style="margin-top: 10px" role="alert">
+                                                {{ session('status') }}
+                                            </div>
+                                        @endif
                                     </div>
 
                                     <div class="my-3">
@@ -60,9 +69,6 @@
 
                             </div>
 
-                        </div>
-
-                        <div class="col-lg-6 forget-half-bg d-flex flex-row">
                         </div>
 
                     </div>
