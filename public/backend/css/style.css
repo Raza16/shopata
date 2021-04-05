@@ -18905,7 +18905,7 @@ input:focus {
   line-height: 48px;
   margin-right: 0;
   padding: .25rem 0;
-  
+
 }
 
 .navbar.default-layout-navbar .navbar-brand-wrapper .navbar-brand:active, .navbar.default-layout-navbar .navbar-brand-wrapper .navbar-brand:focus, .navbar.default-layout-navbar .navbar-brand-wrapper .navbar-brand:hover {
@@ -29049,6 +29049,20 @@ div.tagsinput span.tag a {
   background-size: cover;
 }
 
+.custom-center{
+    align-items:center;
+}
+
+.auth .forget-half-bg{
+    background: url("../images/forget-password.png");
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-repeat: no-repeat;
+    height: 300px;
+    position: relative;
+    left: 50px;
+}
+
 .auth .register-half-bg {
   background: url("../images/auth/register-bg.jpg");
   background-size: cover;
@@ -29179,6 +29193,10 @@ div.tagsinput span.tag a {
     width: 55%;
     margin: auto;
   }
+}
+
+.custom{
+  margin-left:80px;
 }
 
 .auth .brand-logo {

@@ -1,5 +1,7 @@
 @extends('layouts.admin_login')
 
+@section('title','Admin Login')
+
 @section('login')
 
 <div class="container-scroller">
@@ -59,8 +61,8 @@
                           <i class="fa fa-lock text-primary"></i>
                         </span>
                       </div>
-                      <input type="password" name="password" class="form-control form-control-lg border-left-0 @error('password') is-invalid @enderror" id="exampleInputPassword" placeholder="Password">  
-                      
+                      <input type="password" name="password" class="form-control form-control-lg border-left-0 @error('password') is-invalid @enderror" id="exampleInputPassword" placeholder="Password">
+
                     @error('password')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -76,12 +78,12 @@
                         Keep me signed in
                       <i class="input-helper"></i></label>
                     </div>
-                    <a href="#" class="auth-link text-black">Forgot password?</a>
+                    <a href="{{ route('password.request') }}" class="auth-link text-black">Forgot password?</a>
                   </div>
                   <div class="my-3">
-                    <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" type="submit" name="login_btn">LOGIN</button>
+                    <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" style="line-height: 1px" type="submit" name="login_btn">Login</button>
                   </div>
-                 
+
                 </form>
               </div>
             </div>
