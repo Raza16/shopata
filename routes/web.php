@@ -152,7 +152,7 @@ Route::get('track_order', function () {
        return view('frontend.track_order');
 });
 
-Route::get('test',[App\Http\Controllers\testCategory::class,'cate']);
+Route::get('test',[App\Http\Controllers\TestController::class,'cate']);
 
 
-Route::get('test',[App\Http\Controllers\testCategory::class,'cate'])->name('category');
+Route::get('test',[App\Http\Controllers\TestController::class,'cate'])->name('category');

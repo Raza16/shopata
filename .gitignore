@@ -14,4 +14,3 @@ database/migrations/2021_03_12_072950_create_settings_table.php
 app/Http/Controllers/TestController.php
 resources/views/testcategory.blade.php
 resources/views/treeview.blade.php
-

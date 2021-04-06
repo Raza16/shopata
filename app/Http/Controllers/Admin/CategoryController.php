@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin\Category;
-use Auth;
+use Illuminate\Auth;
 
 class CategoryController extends Controller
 {
@@ -56,7 +56,7 @@ class CategoryController extends Controller
             $category->parent_id            =   $request->parent_id;
             $category->user_id              =   Auth::user()->id;
             $category->section_id           =   $request->section_id;
-            
+
             if ($request->hasFile('image')) {
                 $image = $request->file('image');
                 $name = time().'_'.$image->getClientOriginalName();
@@ -65,7 +65,7 @@ class CategoryController extends Controller
                 $image->move($destinationPath, $name);
                 $category->image = $name;
             }
-            
+
             $category->save();
 
             session()->flash('submit', 'Record has been Added');
@@ -94,13 +94,16 @@ class CategoryController extends Controller
     public function edit($id)
     {
         //
-        $category       = Category::find($id);
-        $count          =Category::count();
-        $parent_id      =Category::select('parent_id','id','title')->get();
+        $category       =   Category::find($id);
+
+        $count          =   Category::count();
+
+        $parent_id      =   Category::select('parent_id','id','title')->get();
+
         return view('admin.category.edit',compact('category','count','parent_id'));
     }
 
-    /** 
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -132,7 +135,7 @@ class CategoryController extends Controller
                 $image->move($destinationPath, $name);
                 $category->image = $name;
             }
-            
+
             $category->save();
 
             session()->flash('update', 'Record has been Updated');
@@ -150,8 +153,11 @@ class CategoryController extends Controller
     {
         //
         $category = Category::find($id);
+
         $category->delete();
+
         session()->flash('delete', 'Record has been Deleted');
+
         return redirect('admin/category');
     }
 }
