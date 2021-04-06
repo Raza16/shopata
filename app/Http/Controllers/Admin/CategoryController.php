@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin\Category;
-use Illuminate\Auth;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
