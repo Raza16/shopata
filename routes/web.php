@@ -153,3 +153,6 @@ Route::get('track_order', function () {
 });
 
 Route::get('test',[App\Http\Controllers\testCategory::class,'cate']);
+
+
+Route::get('test',[App\Http\Controllers\testCategory::class,'cate'])->name('category');

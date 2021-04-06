@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		@yield('meta')
     <meta name="author" content="Ansonika">
-    <title>@yield('title')</title> 
+    <title>@yield('title')</title>
 
     <!-- Favicons-->
     <link rel="shortcut icon" href="{{asset('frontend/img/favicon.png')}}" type="image/x-icon">
@@ -15,7 +15,7 @@
     <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="{{asset('frontend/img/apple-touch-icon-72x72-precomposed.png')}}">
     <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="{{asset('frontend/img/apple-touch-icon-114x114-precomposed.png')}}">
     <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="{{asset('frontend/img/apple-touch-icon-144x144-precomposed.png')}}">
-	
+
     <!-- GOOGLE WEB FONT -->
 		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet">
@@ -32,14 +32,14 @@
 		@yield('pagecss')
     <!-- YOUR CUSTOM CSS -->
     <link href="{{asset('frontend/css/custom.css')}}" rel="stylesheet">
-   
+
 
 </head>
 
 <body>
-	
+
 	<div id="page">
-		
+
 		<header class="version_1">
 			<div class="layer"></div><!-- Mobile menu overlay mask -->
 			<div class="main_header">
@@ -80,7 +80,7 @@
 														@foreach ($cat as $ca)
 														<li><a href="">{{$ca->title}}</a></li>
 														@endforeach
-													
+
 														@endif --}}
 														{{-- <li><a href="">Makeup Brushes</a></li>
 														<li><a href="">iPhone Tempered Glass</a></li>
@@ -156,7 +156,7 @@
 				</div>
 			</div>
 			<!-- /main_header -->
-	
+
 			<div class="main_nav Sticky">
 				<div class="container">
 					<div class="row small-gutters">
@@ -417,13 +417,13 @@
 			<!-- /main_nav -->
 		</header>
 		<!-- /header -->
-		
+
 
     @yield('content')
-		
+
 
 	<!-- /main -->
-		
+
 	<footer class="revealed">
 		<div class="container">
 			<div class="row">
@@ -526,16 +526,16 @@
 	<!--/footer-->
 	</div>
 	<div id="toTop" class="visible"></div>
-	
+
 	<!-- page -->
-	
+
     @yield('pop')
 	<!-- /Newsletter Popup -->
-	
+
 	<!-- COMMON SCRIPTS -->
     <script src="{{asset('frontend/js/common_scripts.min.js')}}"></script>
     <script src="{{asset('frontend/js/main.js')}}"></script>
-	
+
 	<!-- SPECIFIC SCRIPTS -->
 	<script src="{{asset('frontend/js/carousel-home.min.js')}}"></script>
 	<script src="{{asset('frontend/js/jquery.cookiebar.js')}}"></script>
@@ -549,7 +549,7 @@
 	</script>
 	 @yield('script')
 <div id="mm-blocker" class="mm-slideout"></div>
- 
+
 
 </body>
 </html>

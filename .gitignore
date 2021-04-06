@@ -10,6 +10,4 @@ public/backend/images/product_gallery
 public/backend/images/products
 public/backend/product_document
 database/migrations/2021_03_12_072950_create_settings_table.php
-resources/views/frontend/test.blade.php
-resources/views/frontend/treeview.blade.php
-app/Http/Controllers/testCategory.php
+

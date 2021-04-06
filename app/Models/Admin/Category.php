@@ -9,6 +9,7 @@ use App\Models\User;
 class Category extends Model
 {
     use HasFactory ;
+    protected $guarded = [];
 
     public function user()
     {
@@ -20,16 +21,16 @@ class Category extends Model
         return $this->hasMany(Category::class);
     }
 
-    public function childrenCategories()
+    public function subcategory()
     {
-        return $this->hasMany(Category::class)->with('categories');
+        return $this->hasMany(Category::class,'parent_id');
     }
 
     public function products()
     {
-      
+
             return $this->hasMany(Product::class);
-        
+
     }
 
 }
