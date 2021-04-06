@@ -133,8 +133,8 @@ class ShopController extends Controller
 
     public function compose(View $view)
     {
-        // $cat    = Category::select('id','title')->get(['id','title'])->take(10);
-        $cat       = Category::with('products')->get();
+
+        $cat       = Category::with('products')->where('parent_id',NUll)->get();
 
         $view->with("cat",$cat);
     }

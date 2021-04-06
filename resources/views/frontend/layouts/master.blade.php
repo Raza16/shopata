@@ -173,159 +173,34 @@
 												Categories
 											</a>
 										</span>
+
 										<div id="menu">
+
 											<ul>
-												{{-- @foreach ($category as $item) --}}
-												{{-- @if(!$item->parent_id == null ) {{$item->title}} @endif --}}
-												<li><span><a href="#">MAchine</a></span>
-													<ul>
-														<li><a href="#">el</a></li>
-														{{-- <li><a href="listing-grid-2-full.html">Life style</a></li>
-														<li><a href="listing-grid-3.html">Running</a></li>
-														<li><a href="listing-grid-4-sidebar-left.html">Training</a></li>
-														<li><a href="listing-grid-1-full.html">Machinery</a></li>
-														<li><a href="listing-grid-2-full.html">Life style</a></li>
-														<li><a href="listing-grid-3.html">Running</a></li>
-														<li><a href="listing-grid-4-sidebar-left.html">Training</a></li>
-														<li><a href="listing-grid-2-full.html">Life style</a></li>
-														<li><a href="listing-grid-3.html">Running</a></li>
-														<li><a href="listing-grid-4-sidebar-left.html">Training</a></li>
-														<li><a href="listing-grid-1-full.html">Machinery</a></li>
-														<li><a href="listing-grid-5-sidebar-right.html">View all Collections</a></li> --}}
-													</ul>
-												</li>
-												{{-- @endforeach --}}
-												{{-- <li><span><a href="#">Consumer Electronics / Home App</a></span>
-													<ul>
-														<li><a href="listing-grid-6-sidebar-left.html">Offers</a></li>
-														<li><a href="listing-grid-7-sidebar-right.html">Shoes</a></li>
-														<li><a href="listing-row-1-sidebar-left.html">Clothing</a></li>
-														<li><a href="listing-row-3-sidebar-left.html">Accessories</a></li>
-														<li><a href="listing-row-4-sidebar-extended.html">Equipment</a></li>
-														<li><a href="listing-grid-6-sidebar-left.html">Offers</a></li>
-														<li><a href="listing-grid-7-sidebar-right.html">Shoes</a></li>
-														<li><a href="listing-row-1-sidebar-left.html">Clothing</a></li>
-														<li><a href="listing-row-3-sidebar-left.html">Accessories</a></li>
-														<li><a href="listing-row-4-sidebar-extended.html">Equipment</a></li>
-														<li><a href="listing-grid-6-sidebar-left.html">Offers</a></li>
-														<li><a href="listing-grid-7-sidebar-right.html">Shoes</a></li>
-														<li><a href="listing-row-1-sidebar-left.html">Clothing</a></li>
-													</ul>
-												</li>
-												<li><span><a href="#">Apparel / Fashion Accessories / Timepieces,Jewelry,Eyewear</a></span>
-													<ul>
-														<li><a href="listing-grid-1-full.html">Best Sellers</a></li>
-														<li><a href="listing-grid-2-full.html">Clothing</a></li>
-														<li><a href="listing-grid-3.html">Accessories</a></li>
-														<li><a href="listing-grid-4-sidebar-left.html">Shoes</a></li>
-														<li><a href="listing-grid-1-full.html">Best Sellers</a></li>
-														<li><a href="listing-grid-2-full.html">Clothing</a></li>
-														<li><a href="listing-grid-3.html">Accessories</a></li>
-														<li><a href="listing-grid-4-sidebar-left.html">Shoes</a></li>
-														<li><a href="listing-grid-1-full.html">Best Sellers</a></li>
-														<li><a href="listing-grid-2-full.html">Clothing</a></li>
-														<li><a href="listing-grid-3.html">Accessories</a></li>
-														<li><a href="listing-grid-4-sidebar-left.html">Shoes</a></li>
-														<li><a href="listing-grid-1-full.html">Best Sellers</a></li>
-													</ul>
-												</li>
-												<li><span><a href="#">Lights & Lighting / Construction & Real Estate</a></span>
-													<ul>
-														<li><a href="listing-grid-6-sidebar-left.html">Easy On Shoes</a></li>
-														<li><a href="listing-grid-7-sidebar-right.html">Clothing</a></li>
-														<li><a href="listing-row-3-sidebar-left.html">Must Have</a></li>
-														<li><a href="listing-row-4-sidebar-extended.html">All Boys</a></li>
-														<li><a href="listing-grid-6-sidebar-left.html">Easy On Shoes</a></li>
-														<li><a href="listing-grid-7-sidebar-right.html">Clothing</a></li>
-														<li><a href="listing-row-3-sidebar-left.html">Must Have</a></li>
-														<li><a href="listing-row-4-sidebar-extended.html">All Boys</a></li>
-														<li><a href="listing-grid-6-sidebar-left.html">Easy On Shoes</a></li>
-														<li><a href="listing-grid-7-sidebar-right.html">Clothing</a></li>
-														<li><a href="listing-row-3-sidebar-left.html">Must Have</a></li>
-														<li><a href="listing-row-4-sidebar-extended.html">All Boys</a></li>
-														<li><a href="listing-grid-7-sidebar-right.html">Clothing</a></li>
-													</ul>
-												</li>
-												<li><span><a href="#">Home & Garden / Furniture</a></span>
-													<ul>
-														<li><a href="listing-grid-1-full.html">New Releases</a></li>
-														<li><a href="listing-grid-2-full.html">Clothing</a></li>
-														<li><a href="listing-grid-3.html">Sale</a></li>
-														<li><a href="listing-grid-4-sidebar-left.html">Best Sellers</a></li>
-														<li><a href="listing-grid-1-full.html">New Releases</a></li>
-														<li><a href="listing-grid-2-full.html">Clothing</a></li>
-														<li><a href="listing-grid-3.html">Sale</a></li>
-														<li><a href="listing-grid-4-sidebar-left.html">Best Sellers</a></li>
-														<li><a href="listing-grid-1-full.html">New Releases</a></li>
-														<li><a href="listing-grid-2-full.html">Clothing</a></li>
-														<li><a href="listing-grid-3.html">Sale</a></li>
-														<li><a href="listing-grid-4-sidebar-left.html">Best Sellers</a></li>
-														<li><a href="listing-grid-2-full.html">Clothing</a></li>
-													</ul>
-												</li>
-												<li><span><a href="#">Fabric & Textiles Raw Material / Home Textiles</a></span>
-													<ul>
-														<li><a href="listing-row-1-sidebar-left.html">For Men</a></li>
-														<li><a href="listing-row-2-sidebar-right.html">For Women</a></li>
-														<li><a href="listing-row-4-sidebar-extended.html">For Boys</a></li>
-														<li><a href="listing-grid-1-full.html">For Girls</a></li>
-													</ul>
-												</li>
-												<li><span><a href="#">Beauty & Personal Care /Medical</a></span>
-													<ul>
-														<li><a href="listing-row-1-sidebar-left.html">For Men</a></li>
-														<li><a href="listing-row-2-sidebar-right.html">For Women</a></li>
-														<li><a href="listing-row-4-sidebar-extended.html">For Boys</a></li>
-														<li><a href="listing-grid-1-full.html">For Girls</a></li>
-														<li><a href="listing-row-1-sidebar-left.html">For Men</a></li>
-														<li><a href="listing-row-2-sidebar-right.html">For Women</a></li>
-														<li><a href="listing-row-4-sidebar-extended.html">For Boys</a></li>
-														<li><a href="listing-grid-1-full.html">For Girls</a></li>
-														<li><a href="listing-row-1-sidebar-left.html">For Men</a></li>
-														<li><a href="listing-row-2-sidebar-right.html">For Women</a></li>
-														<li><a href="listing-row-4-sidebar-extended.html">For Boys</a></li>
-														<li><a href="listing-grid-1-full.html">For Girls</a></li>
-														<li><a href="listing-row-1-sidebar-left.html">For Men</a></li>
-													</ul>
-												</li>
-												<li><span><a href="#">Packaging & Printing / Office & School Supplies</a></span>
-													<ul>
-														<li><a href="listing-row-1-sidebar-left.html">For Men</a></li>
-														<li><a href="listing-row-2-sidebar-right.html">For Women</a></li>
-														<li><a href="listing-row-4-sidebar-extended.html">For Boys</a></li>
-														<li><a href="listing-grid-1-full.html">For Girls</a></li>
-														<li><a href="listing-row-1-sidebar-left.html">For Men</a></li>
-														<li><a href="listing-row-2-sidebar-right.html">For Women</a></li>
-														<li><a href="listing-row-4-sidebar-extended.html">For Boys</a></li>
-														<li><a href="listing-grid-1-full.html">For Girls</a></li>
-														<li><a href="listing-row-1-sidebar-left.html">For Men</a></li>
-														<li><a href="listing-row-2-sidebar-right.html">For Women</a></li>
-														<li><a href="listing-row-4-sidebar-extended.html">For Boys</a></li>
-														<li><a href="listing-grid-1-full.html">For Girls</a></li>
-														<li><a href="listing-row-1-sidebar-left.html">For Men</a></li>
-													</ul>
-												</li>
-												<li><span><a href="#">Electrical Equipment & Supplies</a></span>
-													<ul>
-														<li><a href="listing-row-1-sidebar-left.html">For Men</a></li>
-														<li><a href="listing-row-2-sidebar-right.html">For Women</a></li>
-														<li><a href="listing-row-4-sidebar-extended.html">For Boys</a></li>
-														<li><a href="listing-grid-1-full.html">For Girls</a></li>
-														<li><a href="listing-row-1-sidebar-left.html">For Men</a></li>
-														<li><a href="listing-row-2-sidebar-right.html">For Women</a></li>
-														<li><a href="listing-row-4-sidebar-extended.html">For Boys</a></li>
-														<li><a href="listing-grid-1-full.html">For Girls</a></li>
-														<li><a href="listing-row-1-sidebar-left.html">For Men</a></li>
-														<li><a href="listing-row-2-sidebar-right.html">For Women</a></li>
-														<li><a href="listing-row-4-sidebar-extended.html">For Boys</a></li>
-														<li><a href="listing-grid-1-full.html">For Girls</a></li>
-														<li><a href="listing-row-1-sidebar-left.html">For Men</a></li>
-													</ul>
-												</li> --}}
+
+                                                <li ><span><a href="#">Atm</a></span>
+                                                    <ul>
+                                                        <li><a href=""> Ma</a></li>
+                                                        <li><a>Am</a></li>
+                                                    </ul>
+
+
+												{{-- @foreach ($cat as $item)
+                                                    <li {{$item->products->count() != 0 ? '' : 'hidden'}} ><span><a href="#">{{$item->title}}</a></span>
+                                                        @if(count($item->subcategory))
+                                                            @include('frontend.layouts.multicategory',['subcategories' => $item->subcategory])
+                                                        @endif
+                                                    </li>
+												@endforeach --}}
+
 											</ul>
+
 										</div>
+
 									</li>
+
 								</ul>
+
 							</nav>
 						</div>
 						<div class="col-xl-6 col-lg-7 col-md-6 d-none d-md-block">
