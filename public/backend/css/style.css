@@ -29053,6 +29053,10 @@ div.tagsinput span.tag a {
     align-items:center;
 }
 
+.reset-password-center {
+    margin-left: 90px;
+}
+
 .auth .forget-half-bg{
     background: url("../images/forget-password.svg");
     background-size: contain;

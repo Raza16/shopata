@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
-  
+
       <!-- Required meta tags -->
     <!----------------------Common use--------------------------------->
     <link rel="stylesheet" href="{{asset('backend/vendors/iconfonts/font-awesome/css/all.min.css')}}">
@@ -19,9 +19,9 @@
        <!-----------------Text Editor----------------------------------->
           <link rel="stylesheet" href="{{asset('backend/vendors/summernote/dist/summernote-bs4.css')}}">
        <!------------------------------------------------------>
-  
+
   </head>
 <body>
-  @yield('login')
+  @yield('content')
 </body>
 </html>
