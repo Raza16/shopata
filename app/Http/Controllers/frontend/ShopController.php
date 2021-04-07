@@ -133,10 +133,10 @@ class ShopController extends Controller
 
     public function compose(View $view)
     {
-
+        $product        = Product::where('status','publish')->get();
         $category       = Category::with('products')->where('parent_id',NUll)->get();
         $cat            = Category::with('products')->get();
-        $view->with("category",$category)->with("cat",$cat);
+        $view->with("category",$category)->with("cat",$cat)->with("product",$product);
     }
 
 

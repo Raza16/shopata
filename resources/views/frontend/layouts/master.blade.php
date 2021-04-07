@@ -200,7 +200,7 @@
 						</div>
 						<div class="col-xl-6 col-lg-7 col-md-6 d-none d-md-block">
 							<div class="custom-search-input">
-								<input type="text" placeholder="Search over 10.000 products">
+								<input type="text" placeholder="Search over {{count($product)}} products">
 								<button type="submit"><i class="header-icon_search_custom"></i></button>
 							</div>
 						</div>
