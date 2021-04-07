@@ -134,9 +134,9 @@ class ShopController extends Controller
     public function compose(View $view)
     {
 
-        $cat       = Category::with('products')->where('parent_id',NUll)->get();
-
-        $view->with("cat",$cat);
+        $category       = Category::with('products')->where('parent_id',NUll)->get();
+        $cat            = Category::with('products')->get();
+        $view->with("category",$category)->with("cat",$cat);
     }
 
 

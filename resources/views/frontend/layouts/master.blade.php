@@ -73,9 +73,9 @@
 										<div class="menu-wrapper">
 											<div class="row small-gutters">
 												<div class="col-lg-3">
-													<h3>New Arrivals</h3>
+													<h3><a href="{{url('shop')}}">Shop</a></h3>
 													<ul>
-														<li><a href="{{url('shop')}}">Shop</a></li>
+														{{-- <li><a href="{{url('shop')}}">Shop</a></li> --}}
 														{{-- @if(count($cat)>0)
 														@foreach ($cat as $ca)
 														<li><a href="">{{$ca->title}}</a></li>
@@ -91,19 +91,18 @@
 												</div>
 												<div class="col-lg-3">
 													<h3>Top Selling</h3>
-													{{-- <ul>
-														<li><a href="">iPhone Case</a></li>
-														<li><a href="">Headphones</a></li>
-														<li><a href="">Makeup Brushes</a></li>
-														<li><a href="">iPhone Tempered Glass</a></li>
-														<li><a href="">Necklace</a></li>
-														<li><a href="">Nail Stickers</a></li>
-														<li><a href="">Product Sticky Info</a></li>
-													</ul> --}}
+													<ul>
+                                                        @foreach ($cat as $item)
+
+														<li {{$item->products->count() != 0 ? '' : 'hidden'}}
+                                                            ><a href="">{{$item->title}}</a></li>
+
+                                                        @endforeach
+                                                    </ul>
 												</div>
-												<div class="col-lg-3">
+												{{-- <div class="col-lg-3">
 													<h3>Featured Product</h3>
-													{{-- <ul>
+													<ul>
 														<li><a href="">iPhone Case</a></li>
 														<li><a href="">Headphones</a></li>
 														<li><a href="">Makeup Brushes</a></li>
@@ -111,15 +110,15 @@
 														<li><a href="">Necklace</a></li>
 														<li><a href="">Nail Stickers</a></li>
 														<li><a href="">Product Sticky Info</a></li>
-													</ul> --}}
-												</div>
-												<div class="col-lg-3 d-xl-block d-lg-block d-md-none d-sm-none d-none">
+													</ul>
+												</div> --}}
+												{{-- <div class="col-lg-3 d-xl-block d-lg-block d-md-none d-sm-none d-none">
 													<div class="banner_menu">
 														<a href="#0">
 															<img src="{{asset('frontend/data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==')}}" data-src="{{asset('frontend/img/banner_menu.jpg')}}" width="400" height="550" alt="" class="img-fluid lazy">
 														</a>
 													</div>
-												</div>
+												</div> --}}
 											</div>
 											<!-- /row -->
 										</div>
@@ -176,22 +175,18 @@
 
 										<div id="menu">
 
-											<ul>
+											<ul style="overflow-y:auto;overflow-x:hidden">
 
-                                                <li ><span><a href="#">Atm</a></span>
-                                                    <ul>
-                                                        <li><a href=""> Ma</a></li>
-                                                        <li><a>Am</a></li>
-                                                    </ul>
-
-
-												{{-- @foreach ($cat as $item)
-                                                    <li {{$item->products->count() != 0 ? '' : 'hidden'}} ><span><a href="#">{{$item->title}}</a></span>
-                                                        @if(count($item->subcategory))
-                                                            @include('frontend.layouts.multicategory',['subcategories' => $item->subcategory])
-                                                        @endif
+												@foreach ($category as $item)
+                                                    <li {{$item->products->count() != 0 ? '' : 'hidden'}}
+                                                        ><span><a href="#">{{$item->title}}</a></span>
+                                                        <ul>
+                                                            @if(count($item->subcategory))
+                                                                @include('frontend.layouts.multicategory',['subcategories' => $item->subcategory])
+                                                            @endif
+                                                        </ul>
                                                     </li>
-												@endforeach --}}
+												@endforeach
 
 											</ul>
 
@@ -319,6 +314,7 @@
 					<h3 data-target="#collapse_2">Categories</h3>
 					<div class="collapse dont-collapse-sm links" id="collapse_2">
 						<ul>
+
 							@if(count($cat)>0)
 								@foreach($cat as $ca)
 									<li><a href="#" {{$ca->products->count() != 0 ? '' : 'hidden'}}>{{$ca->title}}</a></li>
@@ -326,6 +322,7 @@
 							@else
 
 							@endif
+
 						</ul>
 					</div>
 				</div>
