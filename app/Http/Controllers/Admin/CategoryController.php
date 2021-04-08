@@ -45,7 +45,7 @@ class CategoryController extends Controller
         //
         $this->validate($request, [
             //input filde
-            'title'             =>  'required|unique:categories',
+            'title'             =>  'required|unique:categories,title',
             'image'             =>  'mimes:jpg,bmp,png,webp'
         ]);
 
@@ -91,6 +91,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function edit($id)
     {
         //
@@ -108,18 +109,20 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, $id)
     {
         //
         $this->validate($request, [
             //input filde
-            'title'             =>  'required|unique:categories',
+            'title'             =>  "required|unique:categories,title,$id",
             'image'             =>  'mimes:jpg,bmp,png,webp'
         ]);
 
                         $category = Category::find($id);
+
         //      tb_col                       input_filed
-                $category->title                =     $request->title;
+                $category->title                =   $request->title;
                 $category->slug                 =   $request->slug;
                 $category->parent_id            =   $request->parent_id;
                 $category->user_id              =   Auth::user()->id;
@@ -147,6 +150,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function destroy($id)
     {
         //
