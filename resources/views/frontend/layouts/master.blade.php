@@ -187,7 +187,7 @@
 												@foreach ($category as $item)
 
                                                     <li {{$item->products->count() != 0 ? '' : 'hidden'}}
-                                                        ><span><a href="#" >{{$item->title}}</a></span>
+                                                        ><span><a href="#" >{{$item->title }}</a></span>
                                                         <ul>
                                                             @if(count($item->subcategory))
                                                                 @include('frontend.layouts.multicategory',['subcategories' => $item->subcategory])
