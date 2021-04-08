@@ -44,23 +44,31 @@
                 @enderror
               </div>
 
-              @if ($count > 1)
-              <div class="form-group">
-                <label for="parentid">Parent Category</label>
-                <select class="form-control select2" name="parent_id" id="parent_id">
-                    <option>UnCategories</option>
-                @foreach ($parent_id as $item)
+              @if ($parent_id->count() > 1)
 
-                        <option value="{{$item->id}}" {{$category->parent_id == $item->id ? 'selected' : ''}}
-                           @if ($category->id == $item->id)
-                              {{'hidden'}}
-                           @endif >
-                           {{$item->title}}</option>
+                <div class="form-group">
 
-                @endforeach
+                    <label for="parentid">Parent Category</label>
 
-                  </select>
-              </div>
+                    <select class="form-control select2" name="parent_id" id="parent_id">
+
+                        <option value="">UnCategories</option>
+
+                            @foreach ($parent_id as $item)
+
+                                    <option value="{{$item->id}}" {{$category->parent_id == $item->id ? 'selected' : ''}} {{$category->id == $item->id ? 'disabled' : ''}}>{{$item->title}}</option>
+
+                                        @if (count($item->subcategory) > 0)
+                                            @include('admin.category.layouts.editmulticategory',['subcategories' => $item->subcategory])
+                                        @endif
+
+                            @endforeach
+
+
+                    </select>
+
+                </div>
+
               @endif
 
         </div>

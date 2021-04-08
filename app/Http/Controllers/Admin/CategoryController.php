@@ -29,9 +29,9 @@ class CategoryController extends Controller
     public function create()
     {
         //
-        $category   =Category::count();
-        $parent_id  =Category::select('parent_id','id','title')->get();
-        return view('admin.category.create',compact('category','parent_id'));
+        // $category   =   Category::count();
+        $parent_id  =   Category::with('subcategory')->where('parent_id',NULL)->get();
+        return view('admin.category.create',compact('parent_id'));
     }
 
     /**
@@ -45,7 +45,7 @@ class CategoryController extends Controller
         //
         $this->validate($request, [
             //input filde
-            'title'             =>  'required',
+            'title'             =>  'required|unique:categories',
             'image'             =>  'mimes:jpg,bmp,png,webp'
         ]);
 
@@ -96,11 +96,9 @@ class CategoryController extends Controller
         //
         $category       =   Category::find($id);
 
-        $count          =   Category::count();
+        $parent_id  =   Category::with('subcategory')->where('parent_id',NULL)->get();
 
-        $parent_id      =   Category::select('parent_id','id','title')->get();
-
-        return view('admin.category.edit',compact('category','count','parent_id'));
+        return view('admin.category.edit',compact('category','parent_id'));
     }
 
     /**
@@ -115,7 +113,7 @@ class CategoryController extends Controller
         //
         $this->validate($request, [
             //input filde
-            'title'             =>  'required',
+            'title'             =>  'required|unique:categories',
             'image'             =>  'mimes:jpg,bmp,png,webp'
         ]);
 

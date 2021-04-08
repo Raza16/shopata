@@ -14,3 +14,9 @@ database/migrations/2021_03_12_072950_create_settings_table.php
 app/Http/Controllers/TestController.php
 resources/views/testcategory.blade.php
 resources/views/treeview.blade.php
+# resources/views/admin/category/layouts/multicategory.blade.php
+# resources/views/admin/category/layouts/multi.blade.php
+# resources/views/admin/category/layouts/editmulticategory.blade.php
+# resources/views/admin/category/layouts/editmulti.blade.php
+
+
