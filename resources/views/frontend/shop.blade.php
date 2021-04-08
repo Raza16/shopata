@@ -223,7 +223,7 @@
                         <ul>
                           @foreach ($brand as $bitem)
                           <li>
-                          <label class="container_check">{{$bitem->title}} <small>{{$bitem->product->count()}}</small>
+                          <label class="container_check">{{$bitem->title}} <small>{{$bitem->products->count()}}</small>
                           <input type="checkbox">
                           <span class="checkmark"></span>
                           </label>

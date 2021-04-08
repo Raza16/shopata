@@ -152,6 +152,9 @@ Route::get('track_order', function () {
        return view('frontend.track_order');
 });
 
+Route::get('shop/category/{cat}',[\App\Http\Controllers\frontend\ShopController::class,'shop']);
+
+
 Route::get('test',[App\Http\Controllers\TestController::class,'cate']);
 
 

@@ -13,7 +13,7 @@ use App\Models\Admin\Product;
 use App\Models\Admin\ProductGallery;
 use App\Models\Admin\ProductDocument;
 use App\Models\Admin\Setting;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class ShopController extends Controller
 {
@@ -31,80 +31,90 @@ class ShopController extends Controller
    }
 
     // shop page
-    public function shop(Request $request)
-    {
+        public function shop(Request $request)
+        {
 
+                $brand          = Brand::with('products')->get();
+                $category       = Category::with('products')->get();
+
+                $product        = Product::paginate(12);
+
+
+                $c_serach   =   Category::with('products')->where('slug',$request->cat)->get();
+
+
+                return view ('frontend.shop',compact('brand','category','product'));
+
+    }
+
+    // store directory
+
+        public function categories($category)
+        {
+            # code...
+            $categorys      = Category::all();
             $brand          = Brand::all();
-            $category       = Category::with('products')->get();
-            $product        = Product::paginate(12);
 
-
-            return view ('frontend.shop',compact('brand','category','product'));
-
+            $category = Category::with('products')->findOrFail( $category );
+            return view('frontend.category', [
+                'category' => $category,
+                'categorys'=> $categorys,
+                'brand'    => $brand
+            ]);
+            // return view ('frontend.category');
     }
 
-    public function categories($category)
-    {
-        # code...
-        $categorys      = Category::all();
-        $brand          = Brand::all();
-
-        $category = Category::with('products')->findOrFail( $category );
-        return view('frontend.category', [
-            'category' => $category,
-            'categorys'=> $categorys,
-            'brand'    => $brand
-        ]);
-        // return view ('frontend.category');
-    }
     // product details
-    public function singleshop($slug)
-    {
-        $product    =Product::where('slug',$slug)->first();
-        // gallery
-        $gall = $product->id;
-        //category
-        $category= $product->category_id;
-        //grallery
-        $product_grallery = Product::find($gall)->product_grallery;
-        // document
-        $product_documents  =Product::find($gall)->document_product;
-        // related
-        $product_related  = Product::where('category_id',$category)->get();
+        public function singleshop($slug)
+        {
+            $product    =Product::where('slug',$slug)->first();
+            // gallery
+            $gall = $product->id;
+            //category
+            $category= $product->category_id;
+            //grallery
+            $product_grallery = Product::find($gall)->product_grallery;
+            // document
+            $product_documents  =Product::find($gall)->document_product;
+            // related
+            $product_related  = Product::where('category_id',$category)->get();
 
-        if($product->type == 'simple' || $product->type == 'variable'){
-            return view('frontend.product_details',compact('product','product_grallery','product_related','product_documents'));
-        }else{
-            return view('frontend.digital_product',compact('product','product_grallery','product_related','product_documents'));
+            if($product->type == 'simple' || $product->type == 'variable'){
+                return view('frontend.product_details',compact('product','product_grallery','product_related','product_documents'));
+            }else{
+                return view('frontend.digital_product',compact('product','product_grallery','product_related','product_documents'));
 
-        }
+            }
     }
 
-    public function leave_review($slug)
-    {
-        # code...
-        $review =Product::where('slug',$slug)->first();
+    // leave_review
 
-        return view ('frontend.leave_review',compact('review'));
+        public function leave_review($slug)
+        {
+            # code...
+            $review =Product::where('slug',$slug)->first();
+
+            return view ('frontend.leave_review',compact('review'));
     }
 
-    //store directroy
 
     // download product document
-    public function getDownload($id)
-    {
-        $document = ProductDocument::find($id);
+        public function getDownload($id)
+        {
+            $document = ProductDocument::find($id);
 
-        $file = public_path()."/backend/product_document/".$document->document;
+            $file = public_path()."/backend/product_document/".$document->document;
 
-        $headers = array(
+            $headers = array(
 
-            'Content-Type: application/*',
-        );
+                'Content-Type: application/*',
+            );
 
-        return response()->download($file, $document->document, $headers);
+            return response()->download($file, $document->document, $headers);
     }
 
+
+    //store directroy
 
     public function store(){
 
@@ -114,29 +124,54 @@ class ShopController extends Controller
     }
 
     // blog page
-    public function blog()
-    {
-        $blog       = Blog::orderBy('updated_at','DESC')->get();
-        $latest     = Blog::orderBy('updated_at','DESC')->take(5)->get();
-        $category   = Category::all()->take(7);
+        public function blog()
+        {
+            $blog       = Blog::orderBy('updated_at','DESC')->get();
+            $latest     = Blog::orderBy('updated_at','DESC')->take(5)->get();
+            $category   = Category::all()->take(7);
 
-        return view ('frontend.blog',compact('blog','latest'));
+            return view ('frontend.blog',compact('blog','latest'));
+        }
+        // single blog
+        public function single_blog($slug)
+        {
+            $blog   = Blog::where('slug',$slug)->first();
+            $latest = Blog::orderBy('updated_at','DESC')->take(7)->get();
+
+            return view ('frontend.single_blog',compact('blog','latest'));
+        }
+
+    //////////////////////// show on master.blade.php
+
+        public function compose(View $view)
+        {
+                $product        = Product::where('status','publish')->get();
+                $category       = Category::with('products')->where('parent_id',NUll)->get();
+                $cat            = Category::with('products')->get();
+                $view->with("category",$category)->with("cat",$cat)->with("product",$product);
     }
-    // single blog
-    public function single_blog($slug)
-    {
-        $blog   = Blog::where('slug',$slug)->first();
-        $latest = Blog::orderBy('updated_at','DESC')->take(7)->get();
 
-        return view ('frontend.single_blog',compact('blog','latest'));
-    }
 
-    public function compose(View $view)
+
+    public function category_search(Request $request)
     {
-        $product        = Product::where('status','publish')->get();
-        $category       = Category::with('products')->where('parent_id',NUll)->get();
-        $cat            = Category::with('products')->get();
-        $view->with("category",$category)->with("cat",$cat)->with("product",$product);
+
+        // $cat = $request->cat;
+
+        // $category = DB::table('products')->join('categories','categories.id','products.category_id')->where('categories.slug',$request->cat)->get();
+
+        // $category = Product::join('categories','categories.id','products.category_id')->where('categories.slug',$request->cat)->get();
+
+        // $brand          = Brand::with('products')->get();
+        // $category       = Category::with('products')->get();
+        // $product        = Product::paginate(12);
+
+        $product   =   Category::with('products')->where('slug',$request->cat)->get();
+
+        return view("frontend.shop",compact('product'));
+
+        // $category = Category::
+
     }
 
 

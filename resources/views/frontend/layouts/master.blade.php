@@ -74,32 +74,22 @@
 											<div class="row small-gutters">
 												<div class="col-lg-3">
 													<h3><a href="{{url('shop')}}">Shop</a></h3>
-													<ul>
-														{{-- <li><a href="{{url('shop')}}">Shop</a></li> --}}
-														{{-- @if(count($cat)>0)
-														@foreach ($cat as $ca)
-														<li><a href="">{{$ca->title}}</a></li>
-														@endforeach
 
-														@endif --}}
-														{{-- <li><a href="">Makeup Brushes</a></li>
-														<li><a href="">iPhone Tempered Glass</a></li>
-														<li><a href="">Necklace</a></li>
-														<li><a href="">Nail Stickers</a></li>
-														<li><a href="">Product Sticky Info</a></li> --}}
-													</ul>
 												</div>
 												<div class="col-lg-3">
+
 													<h3>Top Selling</h3>
+
 													<ul>
                                                         @foreach ($cat as $item)
 
-														<li {{$item->products->count() != 0 ? '' : 'hidden'}}
-                                                            ><a href="">{{$item->title}}</a></li>
+														<li {{$item->products->count() != 0 ? '' : 'hidden'}} id="category-{{$item->slug}}"><a href="#"  >{{$item->title}}</a></li>
 
                                                         @endforeach
                                                     </ul>
+
 												</div>
+
 												{{-- <div class="col-lg-3">
 													<h3>Featured Product</h3>
 													<ul>
@@ -112,6 +102,7 @@
 														<li><a href="">Product Sticky Info</a></li>
 													</ul>
 												</div> --}}
+
 												{{-- <div class="col-lg-3 d-xl-block d-lg-block d-md-none d-sm-none d-none">
 													<div class="banner_menu">
 														<a href="#0">
@@ -119,11 +110,13 @@
 														</a>
 													</div>
 												</div> --}}
+
 											</div>
 											<!-- /row -->
 										</div>
 										<!-- /menu-wrapper -->
 									</li>
+
 									<li class="submenu">
 										<a href="javascript:void(0);" class="show-submenu">Company</a>
 										<ul>
@@ -137,22 +130,33 @@
 										{{-- <li><a href="affiliate-program.html">Become a Supplier</a></li> --}}
 										</ul>
 									</li>
+
 									<li>
 										<a href="{{url('account')}}">Accounts</a>
 									</li>
+
 									<li>
 										<a href="{{url('contactus')}}">Contact Us</a>
 									</li>
+
 								</ul>
+
 							</div>
+
 							<!--/main-menu -->
+
 						</nav>
+
 						<div class="col-xl-3 col-lg-2 d-lg-flex align-items-center justify-content-end text-right igm">
 							<a class="phone_top " href="#"><img src="{{asset('frontend/img/app.png')}}" width="200px" height="auto"> </a>
 						</div>
+
 					</div>
+
 					<!-- /row -->
+
 				</div>
+
 			</div>
 			<!-- /main_header -->
 
@@ -160,9 +164,12 @@
 				<div class="container">
 					<div class="row small-gutters">
 						<div class="col-xl-3 col-lg-3 col-md-3">
+
 							<nav class="categories">
 								<ul class="clearfix">
-									<li><span>
+
+									<li>
+										<span>
 											<a href="#">
 												<span class="hamburger hamburger--spin">
 													<span class="hamburger-box">
@@ -178,14 +185,16 @@
 											<ul style="overflow-y:auto;overflow-x:hidden">
 
 												@foreach ($category as $item)
+
                                                     <li {{$item->products->count() != 0 ? '' : 'hidden'}}
-                                                        ><span><a href="#">{{$item->title}}</a></span>
+                                                        ><span><a href="#" >{{$item->title}}</a></span>
                                                         <ul>
                                                             @if(count($item->subcategory))
                                                                 @include('frontend.layouts.multicategory',['subcategories' => $item->subcategory])
                                                             @endif
                                                         </ul>
                                                     </li>
+
 												@endforeach
 
 											</ul>
@@ -197,13 +206,18 @@
 								</ul>
 
 							</nav>
+
 						</div>
+
 						<div class="col-xl-6 col-lg-7 col-md-6 d-none d-md-block">
+
 							<div class="custom-search-input">
 								<input type="text" placeholder="Search over {{count($product)}} products">
 								<button type="submit"><i class="header-icon_search_custom"></i></button>
 							</div>
+
 						</div>
+
 						<div class="col-xl-3 col-lg-2 col-md-3">
 							<ul class="top_tools">
 								{{-- <li>
@@ -284,8 +298,11 @@
 				</div>
 				<!-- /search_mobile -->
 			</div>
+
 			<!-- /main_nav -->
+
 		</header>
+
 		<!-- /header -->
 
 
@@ -295,24 +312,38 @@
 	<!-- /main -->
 
 	<footer class="revealed">
+
 		<div class="container">
+
 			<div class="row">
+
 				<div class="col-lg-3 col-md-6">
+
 					<h3 data-target="#collapse_1">Quick Links</h3>
+
 					<div class="collapse dont-collapse-sm links" id="collapse_1">
+
 						<ul>
+
 							<li><a href="{{url('aboutus')}}">About us</a></li>
 							<li><a href="{{url('help')}}">Faq</a></li>
 							<li><a href="{{url('help')}}">Help</a></li>
 							<li><a href="{{url('account')}}">My account</a></li>
 							<li><a href="{{url('blog')}}">Blog</a></li>
 							<li><a href="{{url('contactus')}}">Contacts</a></li>
+
 						</ul>
+
 					</div>
+
 				</div>
+
 				<div class="col-lg-3 col-md-6">
+
 					<h3 data-target="#collapse_2">Categories</h3>
+
 					<div class="collapse dont-collapse-sm links" id="collapse_2">
+
 						<ul>
 
 							@if(count($cat)>0)
@@ -324,79 +355,131 @@
 							@endif
 
 						</ul>
+
 					</div>
+
 				</div>
+
 				<div class="col-lg-3 col-md-6">
+
 						<h3 data-target="#collapse_3">Contacts</h3>
+
 					<div class="collapse dont-collapse-sm contacts" id="collapse_3">
+
 						<ul>
+
 							<li><i class="ti-home"></i>182 Bay Ridge Avenue <br>
               					Brooklyn, New York 11209
 							</li>
 							<li><i class="ti-headphone-alt"></i>718-412-1413</li>
 							<li><i class="ti-email"></i><a href="#0">support@shopataclick.com </a></li>
+
 						</ul>
+
 					</div>
+
 				</div>
+
 				<div class="col-lg-3 col-md-6">
+
 						<h3 data-target="#collapse_4">Keep in touch</h3>
+
 					<div class="collapse dont-collapse-sm" id="collapse_4">
+
 						<div id="newsletter">
+
 						    <div class="form-group">
+
 						        <input type="email" name="email_newsletter" id="email_newsletter" class="form-control" placeholder="Your email">
-						        <button type="submit" id="submit-newsletter"><i class="ti-angle-double-right"></i></button>
+
+                                <button type="submit" id="submit-newsletter"><i class="ti-angle-double-right"></i></button>
+
 						    </div>
+
 						</div>
+
 						<div class="follow_us">
+
 							<h5>Follow Us</h5>
+
 							<ul>
 								<li><a href="#0"><img src="{{asset('/data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==')}}" data-src="{{asset('frontend/img/twitter_icon.svg')}}" alt="" class="lazy"></a></li>
 								<li><a href="#0"><img src="{{asset('data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==')}}" data-src="{{asset('frontend/img/facebook_icon.svg')}}" alt="" class="lazy"></a></li>
 								<li><a href="#0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="{{asset('frontend/img/instagram_icon.svg')}}" alt="" class="lazy"></a></li>
 								<li><a href="#0"><img src="{{asset('data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==')}}" data-src="{{asset('frontend/img/youtube_icon.svg')}}" alt="" class="lazy"></a></li>
+
 							</ul>
+
 						</div>
+
 					</div>
+
 				</div>
+
 			</div>
+
 			<!-- /row-->
+
 			<hr>
+
 			<div class="row add_bottom_25">
+
 				<div class="col-lg-6">
+
 					<ul class="footer-selector clearfix">
+
 						<li>
 							<div class="styled-select lang-selector">
+
 								<select>
+
 									<option value="English" selected>English</option>
-									<option value="French">French</option>
+
+									{{-- <option value="French">French</option>
 									<option value="Spanish">Spanish</option>
-									<option value="Russian">Russian</option>
+									<option value="Russian">Russian</option> --}}
+
 								</select>
+
 							</div>
+
 						</li>
+
 						<li>
 							<div class="styled-select currency-selector">
 								<select>
 									<option value="US Dollars" selected>US Dollars</option>
-									<option value="Euro">Euro</option>
+									{{-- <option value="Euro">Euro</option> --}}
 								</select>
 							</div>
 						</li>
+
 						<li><img src="{{asset('data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==')}}" data-src="{{asset('frontend/img/cards_all.svg')}}" alt="" width="198" height="30" class="lazy"></li>
+
 					</ul>
+
 				</div>
+
 				<div class="col-lg-6">
+
 					<ul class="additional_links">
 						<li><a href="{{url('privacypolicy')}}">Terms and conditions</a></li>
 						<li><a href="{{url('privacypolicy')}}">Privacy Policy</a></li>
-						<li><a href="{{url('/')}}"><span>© 2020 ShopataClick</span></a></li>
+						<li><a href="{{url('/')}}"><span>© 2021 ShopataClick</span></a></li>
 					</ul>
+
 				</div>
+
 			</div>
+
 		</div>
+
 	</footer>
+
 	<!--/footer-->
+
 	</div>
+
 	<div id="toTop" class="visible"></div>
 
 	<!-- page -->
@@ -411,6 +494,7 @@
 	<!-- SPECIFIC SCRIPTS -->
 	<script src="{{asset('frontend/js/carousel-home.min.js')}}"></script>
 	<script src="{{asset('frontend/js/jquery.cookiebar.js')}}"></script>
+
 	<script>
 		$(document).ready(function() {
 			'use strict';
@@ -419,7 +503,25 @@
 			});
 		});
 	</script>
+
+    <script>
+        $(document).ready(function(){
+
+            @foreach ($cat as $item)
+
+                $("#category-{{$item->slug}}").click(function(){
+                    // alert('hello');
+                    var id  =   $("#category-{{$item->slug}}").val();
+                    // var url =   ""
+                    alert(id);
+                });
+
+            @endforeach
+        });
+    </script>
+
 	 @yield('script')
+
 <div id="mm-blocker" class="mm-slideout"></div>
 
 
