@@ -18,7 +18,7 @@
 
               <div class="form-group">
                 <label for="title">Title</label>
-                <input type="text" class="form-control" id="title" name="title" placeholder="Brand Name" value="{{$brand->title}}">
+                <input type="text" class="form-control" id="title" name="title" placeholder="Brand Name" value="{{$brand->title}}" required>
                 @error('title')
                 <p><small class="text-danger">{{ $errors->first('title') }}</small></p>
                 @enderror

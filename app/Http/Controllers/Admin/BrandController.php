@@ -41,15 +41,15 @@ class BrandController extends Controller
     public function store(Request $request)
     {
         //
-  
+
           $this->validate($request, [
             //input filde
-            'title'             =>  'required',
+            'title'             =>  'required|unique:brands,title',
             'meta_title'        =>  'max:60',
             'meta_description'  =>  'max:160',
             'image'             =>  'mimes:jpg,bmp,png,webp'
         ]);
-           
+
 
                 $brand = new Brand;
             //      tb_col                       input_filed
@@ -69,14 +69,14 @@ class BrandController extends Controller
                     $image->move($destinationPath, $name);
                     $brand->image = $name;
                 }
-                
+
                 $brand->save();
 
                 session()->flash('submit', 'Record has been Added');
 
                 return redirect('admin/brand');
 
-                
+
     }
 
     /**
@@ -116,12 +116,12 @@ class BrandController extends Controller
         //
         $this->validate($request, [
             //input filde
-            'title'             =>  'required',
+            'title'             =>  "required|unique:brands,title,$id",
             'meta_title'        =>  'max:60',
             'meta_description'  =>  'max:160',
             'image'             =>  'mimes:jpg,bmp,png,webp'
         ]);
-           
+
 
                              $brand = Brand::find($id);
             //      tb_col                       input_filed
@@ -141,7 +141,7 @@ class BrandController extends Controller
                     $image->move($destinationPath, $name);
                     $brand->image = $name;
                 }
-                
+
                 $brand->save();
 
                 session()->flash('updated', 'Record has been Upadated');

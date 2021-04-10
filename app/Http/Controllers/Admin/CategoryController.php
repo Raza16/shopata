@@ -97,7 +97,7 @@ class CategoryController extends Controller
         //
         $category       =   Category::find($id);
 
-        $parent_id  =   Category::with('subcategory')->where('parent_id',NULL)->get();
+        $parent_id      =   Category::with('subcategory')->where('parent_id',NULL)->get();
 
         return view('admin.category.edit',compact('category','parent_id'));
     }

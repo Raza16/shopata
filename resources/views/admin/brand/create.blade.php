@@ -17,9 +17,9 @@
 
               <div class="form-group">
                 <label for="title">Title</label>
-                <input type="text" class="form-control" id="title" name="title" placeholder="Brand Name" value="{{old('title')}}">
+                <input type="text" class="form-control" id="title" name="title" placeholder="Brand Name" value="{{old('title')}}" autofocus required>
                 @error('title')
-                <p><small class="text-danger">{{ $errors->first('title') }}</small></p>
+                    <p><small class="text-danger">{{ $errors->first('title') }}</small></p>
                 @enderror
               </div>
 

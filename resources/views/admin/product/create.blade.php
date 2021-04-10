@@ -33,7 +33,7 @@
 
                         <div class="form-group">
                             <label for="productname"><h5>Product Name</h5></label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Product Name" value="{{old('name')}}" autofocus>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Product Name" value="{{old('name')}}" autofocus required>
                             @error('name')
                                 <p style="font-size:20px"><small class="text-danger">{{ $errors->first('name') }}</small></p>
                             @enderror
@@ -119,7 +119,7 @@
 
 
                                             <div class="form-group col-6">
-                                                <label for="quantity">Product Type</label>
+                                                <label for="product_type">Product Type</label>
                                                 <select name="product_type" id="product_type" class="form-control">
                                                     <option value="simple" selected>Simple</option>
                                                     <option value="digital">Digital Product</option>
@@ -129,7 +129,7 @@
 
                                             <div class="form-group col-6">
                                                 <label for="regular_price">Regular Price</label>
-                                                <input type="number" class="form-control" id="regular_price" name="regular_price" placeholder="$0.00" value="{{old('regular_price')}}">
+                                                <input type="number" step="0.01" class="form-control" id="regular_price" name="regular_price" placeholder="$0.00" value="{{old('regular_price')}}">
                                                 @error('regular_price')
                                                 <p><small class="text-danger">{{ $errors->first('regular_price') }}</small></p>
                                                 @enderror
@@ -137,7 +137,7 @@
 
                                             <div class="form-group col-6">
                                                 <label for="regular_price">Sale Price</label>
-                                                <input type="text" class="form-control" id="sale_price" name="sale_price" placeholder="$0.00" value="{{old('sale_price')}}">
+                                                <input type="number" class="form-control" id="sale_price" name="sale_price" placeholder="$0.00" value="{{old('sale_price')}}">
                                                 @error('sale_price')
                                                 <p><small class="text-danger">{{ $errors->first('sale_price') }}</small></p>
                                                 @enderror
@@ -145,7 +145,7 @@
 
                                             <div class="form-group col-6">
                                                 <label for="quantity">Quantity</label>
-                                                <input type="text" class="form-control" id="quantity" name="quantity" placeholder="Quantity" value="{{old('quantity')}}">
+                                                <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Quantity" value="{{old('quantity')}}">
                                                 @error('quantity')
                                                 <p><small class="text-danger">{{ $errors->first('quantity') }}</small></p>
                                                 @enderror
@@ -154,8 +154,8 @@
                                             <div class="form-group col-6">
                                                 <label for="quantity">Stock</label>
                                                 <select name="stock" id="stock" class="form-control">
-                                                    <option value="instock">In stock</option>
-                                                    <option value="outstock" selected >Out of stock</option>
+                                                    <option value="instock" selected>In stock</option>
+                                                    <option value="outstock"  >Out of stock</option>
                                                 </select>
                                             </div>
 
@@ -302,6 +302,11 @@
                                   <option value="" selected >Uncategories</option>
                                   @foreach ($category as $item)
                                     <option value="{{$item->id}}">{{$item->title}}</option>
+
+                                        @if (count($item->subcategory) > 0)
+                                            @include('admin.product.layouts.multicategory',['subcategories' => $item->subcategory])
+                                        @endif
+
                                   @endforeach
 
                                 </select>
@@ -338,10 +343,10 @@
       </div>
     </div>
 
-  <div class="col-12 form-group">
-    <button type="submit" name="submit" class="col-12 btn btn-primary mr-2">Submit</button>
-  </div>
-   </form>
+    <div class="col-12 form-group">
+        <button type="submit" name="submit" class="col-12 btn btn-primary mr-2">Submit</button>
+    </div>
+    </form>
 
 </div>
 

@@ -43,10 +43,11 @@ class ProductController extends Controller
     {
         //
         $brand              =Brand::all();
-        $category           =Category::all();
-        $variation          =Variation::all();
-        $variation_option   =VariationOption::all();
-        $product            =Product::all();
+        // $category           =Category::all();
+        $category           =   Category::with('subcategory')->where('parent_id',NULL)->get();
+        $variation          =   Variation::all();
+        $variation_option   =   VariationOption::all();
+        $product            =   Product::all();
 
         return view('admin.product.create',compact('variation','brand','category','variation_option','product'));
     }
@@ -195,12 +196,43 @@ class ProductController extends Controller
     public function edit($id)
     {
         //
-        $product    =Product::find($id);
-        $brand      =Brand::all();
-        $category   =Category::all();
-        $product_grallery   = Product::find($id)->product_grallery;
-        $product_documents  =Product::find($id)->document_product;
-        $variations         = Variation::all();
+        $product        =        Product::find($id);
+
+        $brand          =        Brand::with('products')->get();
+
+        // $category   =Category::all();
+        $category           =   Category::with('subcategory')->where('parent_id',NULL)->get();
+
+        $product_grallery   =   Product::find($id)->product_grallery;
+
+        $product_documents  =   Product::find($id)->document_product;
+
+        $variations         =   Variation::all();
+
+
+        // foreach($category as $item){
+
+        //     printf($item->title."<br>");
+
+        //     if (count($item->subcategory) > 0) {
+        //         # code...
+        //         foreach($item->subcategory as $sub)
+        //         {
+        //             printf("=".$sub->title."<br>");
+
+        //             if (count($sub->subcategory) > 0) {
+        //                 # code...
+        //                 foreach($sub->subcategory as $subbb)
+        //                 {
+        //                     printf("==".$subbb->title."<br>");
+        //                 }
+        //             }
+        //         }
+        //     }
+
+
+        // }
+        // dd();
 
         return view('admin.product.edit',compact(
             'product',
@@ -227,11 +259,14 @@ class ProductController extends Controller
             'image'=>  'image|mimes:png,jpeg,webp,jpg',
             // 'product_documents' => 'file|max:500',
             // 'document.*' => 'mimes:pdf,doc,docx',
-            // 'quantity' => 'numeric',
+            'quantity' => 'numeric',
             'slug' =>   'required',
             'product_type' => 'required',
             'stock' => 'required',
-            'status' => 'required'
+            'status' => 'required',
+            // 'regular_price' => 'between:1,10',
+            // 'sale_price' => 'between:1,10'
+
 
         ]);
                         $product                        =   Product::find($id);
@@ -257,6 +292,7 @@ class ProductController extends Controller
 
                         // brand
                         $product->brand_id              =   $request->brand_id;
+                        // dd($product->brand_id);
                         // category
                         $product->category_id           =   $request->category_id;
 

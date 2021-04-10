@@ -134,114 +134,101 @@
 
                                                                                 {{-- general info --}}
 
+
                     <div class="form-group">
-                      <div class="card" style="background-color: #f7f7f0">
-                        <div class="card-header bg-primary" role="tab" id="heading-13">
-                          <h6 class="mb-0">
-                            <a data-toggle="collapse" href="#general-13" aria-expanded="false" aria-controls="collapse-13" class="collapsed" style="text-decoration: none;color: #FFFFFF;">
-                              General Info
-                            </a>
-                          </h6>
+                        <div class="card" style="background-color: #f7f7f0">
+
+                                <div class="card-header bg-primary" role="tab" id="heading-13">
+                                    <h6 class="mb-0">
+                                        <a data-toggle="collapse" href="#genral-13" aria-expanded="false" aria-controls="collapse-13" class="collapsed" style="text-decoration: none;color: #FFFFFF;">
+                                        General
+                                        </a>
+                                    </h6>
+                                </div>
+
+                            <div id="genral-13" class="collapse" role="tabpanel" aria-labelledby="heading-13" data-parent="#accordion-5" style="">
+                                <div class="card-body">
+                                    <div class="row">
+
+
+                                        <div class="form-group col-6">
+                                            <label for="quantity">Product Type</label>
+                                            <select name="product_type" id="product_type" class="form-control">
+                                                <option value="simple" {{$product->type == "simple" ? 'selected' : ''}}>Simple</option>
+                                                <option value="digital" {{$product->type == "digital" ? 'selected' : ''}}>Digital Product</option>
+                                                <option value="variable" {{$product->type == "variable" ? 'selected' : ''}}>Variable</option>
+                                              </select>
+                                        </div>
+
+                                        <div class="form-group col-6">
+                                            <label for="regular_price">Regular Price</label>
+                                            <input type="number" step="0.02" class="form-control" id="regular_price" name="regular_price" placeholder="$0.00" value="{{$product->regular_price}}">
+                                            @error('regular_price')
+                                            <p><small class="text-danger">{{ $errors->first('regular_price') }}</small></p>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group col-6">
+                                            <label for="sale_price">Sale Price</label>
+                                            <input type="number" class="form-control" id="sale_price" name="sale_price" placeholder="$0.00" value="{{$product->sale_price}}">
+                                            @error('sale_price')
+                                            <p><small class="text-danger">{{ $errors->first('sale_price') }}</small></p>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group col-6">
+                                            <label for="quantity">Quantity</label>
+                                            <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Quantity" value="{{$product->quantity}}">
+                                            @error('quantity')
+                                            <p><small class="text-danger">{{ $errors->first('quantity') }}</small></p>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group col-6">
+                                            <label for="quantity">Stock</label>
+                                            <select name="stock" id="stock" class="form-control">
+                                                <option value="instock" {{$product->stock == "instock" ? 'selected' : ''}}>In stock</option>
+                                                <option value="outstock" {{$product->stock == "outstock" ? 'selected' : ''}}>Out of stock</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group col-6">
+                                            <label for="item_weight">Item Weight</label>
+                                            <input type="text" class="form-control" id="item_weight" name="item_weight" placeholder="0.00 kg" value="{{$product->item_weight}}">
+                                            @error('item_weight')
+                                            <p><small class="text-danger">{{ $errors->first('item_weight') }}</small></p>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group col-6">
+                                            <label for="item_dimension">Item Dimension</label>
+                                            <input type="text" class="form-control" id="item_dimension" name="item_dimension" placeholder=" " value="{{$product->item_dimension}}">
+                                            @error('item_dimension')
+                                            <p><small class="text-danger">{{ $errors->first('item_dimension') }}</small></p>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group col-6 ">
+                                            <label for="tax_status">Tax status</label>
+                                            <input type="text" class="form-control" id="tax_status" name="tax_status" placeholder=" " value="{{$product->tax_status}}">
+                                            @error('tax_status')
+                                            <p><small class="text-danger">{{ $errors->first('tax_status') }}</small></p>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group col-6">
+                                            <label for="tax_class">Tax Class</label>
+                                            <input type="text" class="form-control" id="tax_class" name="tax_class" placeholder=" " value="{{$product->tax_class}}">
+                                            @error('tax_class')
+                                            <p><small class="text-danger">{{ $errors->first('tax_class') }}</small></p>
+                                            @enderror
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
-                        <div id="general-13" class="collapse" role="tabpanel" aria-labelledby="heading-13" data-parent="#accordion-5" style="">
-                          <div class="card-body">
-                                  <div class="row">
-                                    {{-- {{$product->type == "variable" ? 'selected' : ''}} --}}
-                                    <div class="form-group col-6">
-                                      <label for="product_type">Product Type</label>
-                                      <select name="product_type" id="product_type" class="form-control">
-                                        <option value="simple" {{$product->type == "simple" ? 'selected' : ''}}>Simple</option>
-                                        <option value="digital" {{$product->type == "digital" ? 'selected' : ''}}>Digital Product</option>
-                                        <option value="variable" {{$product->type == "variable" ? 'selected' : ''}}>Variable</option>
-                                      </select>
-                                      @error('product_type')
-                                      <p><small class="text-danger">{{ $errors->first('product_type') }}</small></p>
-                                      @enderror
-                                    </div>
-
-                                    <div class="form-group col-6">
-                                      <label for="stock">Stock</label>
-                                      <select name="stock" id="stock" class="form-control">
-                                        <option value="instock" {{$product->stock == "instock" ? 'selected' : ''}}>In stock</option>
-                                        <option value="outstock" {{$product->stock == "outstock" ? 'selected' : ''}}>Out of stock</option>
-                                      </select>
-                                      @error('stock')
-                                      <p><small class="text-danger">{{ $errors->first('stock') }}</small></p>
-                                      @enderror
-                                    </div>
-
-                                  </div>
-
-                                  <div class="row">
-
-                                    <div class="form-group col-6">
-                                      <label for="regular_price">Regular Price</label>
-                                      <input type="text" class="form-control" id="regular_price" name="regular_price" placeholder="$0.00" value="{{$product->regular_price}}">
-                                      @error('regular_price')
-                                      <p><small class="text-danger">{{ $errors->first('regular_price') }}</small></p>
-                                      @enderror
-                                    </div>
-
-                                    <div class="form-group col-6">
-                                      <label for="regular_price">Sale Price</label>
-                                      <input type="text" class="form-control" id="sale_price" name="sale_price" placeholder="$0.00" value="{{$product->sale_price}}">
-                                      @error('sale_price')
-                                      <p><small class="text-danger">{{ $errors->first('sale_price') }}</small></p>
-                                      @enderror
-                                    </div>
-
-                                  </div>
-
-                                  <div class="form-group">
-                                    <label for="quantity">Quantity</label>
-                                    <input type="text" class="form-control" id="quantity" name="quantity" placeholder="0" value="{{$product->quantity}}">
-                                    @error('quantity')
-                                    <p><small class="text-danger">{{ $errors->first('quantity') }}</small></p>
-                                    @enderror
-                                  </div>
-
-                                  <div class="row">
-
-                                    <div class="form-group col-6">
-                                      <label for="item_weight">Item Weight</label>
-                                      <input type="text" class="form-control" id="item_weight" name="item_weight" placeholder="0.00 kg" value="{{$product->item_weight}}">
-                                      @error('item_weight')
-                                      <p><small class="text-danger">{{ $errors->first('item_weight') }}</small></p>
-                                      @enderror
-                                    </div>
-
-                                    <div class="form-group col-6">
-                                      <label for="item_dimension">Item Dimension</label>
-                                      <input type="text" class="form-control" id="item_dimension" name="item_dimension" placeholder=" " value="{{$product->item_dimension}}">
-                                      @error('item_dimension')
-                                      <p><small class="text-danger">{{ $errors->first('item_dimension') }}</small></p>
-                                      @enderror
-                                    </div>
-
-                                  </div>
-
-                                  <div class="row">
-
-                                    <div class="form-group col-6">
-                                      <label for="tax_status">Tax status</label>
-                                      <input type="text" class="form-control" id="tax_status" name="tax_status" placeholder=" " value="{{$product->tax_status}}">
-                                      @error('tax_status')
-                                      <p><small class="text-danger">{{ $errors->first('tax_status') }}</small></p>
-                                      @enderror
-                                    </div>
-
-                                    <div class="form-group col-6">
-                                      <label for="tax_class">Tax Class</label>
-                                      <input type="text" class="form-control" id="tax_class" name="tax_class" placeholder=" " value="{{$product->tax_class}}">
-                                      @error('tax_class')
-                                      <p><small class="text-danger">{{ $errors->first('tax_class') }}</small></p>
-                                      @enderror
-                                    </div>
-
-                                  </div>
-                          </div>
-                        </div>
-                      </div>
                     </div>
 
                                                               {{-- variation --}}
@@ -344,7 +331,11 @@
                                     <select class="form-control select2" name="category_id">
                                       <option value="" selected>UnCategories</option>
                                       @foreach ($category as $item)
-                                      <option value="{{$item->id}}" {{ $item->id == $product->category_id ? 'selected' : '' }}>{{$item->title}}</option>
+                                        <option value="{{$item->id}}" {{ $product->category_id ==  $item->id ? 'selected' : '' }}>{{$item->title}}</option>
+
+                                        @if (count($item->subcategory) > 0)
+                                            @include('admin.product.layouts.editmulticategory',['subcategories' => $item->subcategory])
+                                        @endif
                                       @endforeach
 
                                     </select>

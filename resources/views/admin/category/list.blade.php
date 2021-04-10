@@ -1,9 +1,9 @@
 @extends('admin.layouts.master')
 
 @section('title','Category List')
-  
+
 @section('content')
-   
+
 
     @if(session()->has('delete'))
     <div id="alert" class="alert alert-danger alert-dismissible deletefade in mb-1" role="alert">
@@ -37,7 +37,7 @@
     Categories List
   </h3>
   <div class="page">
-  <a type="button"  class="btn btn-info btn-fw" href="{{url('admin/category/create')}}">Category Add</a>
+  <a type="button"  class="btn btn-primary btn-fw" href="{{url('admin/category/create')}}">Category Add</a>
   {{-- <a type="button" class="btn btn-success btn-fw" href="#">Category CSV</a> --}}
 </div>
 </div>
@@ -49,7 +49,7 @@
       <div class="col-12">
         <div class="table-responsive">
           <div id="order-listing_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
-      
+
                 <div class="row">
                   <div class="col-sm-12">
                   <table id="order-listing" class="table dataTable no-footer" role="grid" aria-describedby="order-listing_info">
@@ -65,7 +65,7 @@
             </thead>
             <tbody>
                 @foreach ($category as $rows)
-             
+
             <tr role="row" class="odd">
                   <td class="sorting_1">{{$rows->id}}</td>
                   <td>{{$rows->title}}</td>
@@ -78,7 +78,7 @@
                       </a>
                   </td>
                   <td>
-                      
+
                         <form action="{{ url('admin/category/'.$rows->id) }}" method="POST">
                           @csrf
                           @method('DELETE')
@@ -87,13 +87,13 @@
                         </form>
                   </td>
             </tr>
-                     
+
               @endforeach
             </tbody>
           </table>
         </div>
       </div>
-     
+
     </div>
         </div>
       </div>

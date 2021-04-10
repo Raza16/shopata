@@ -15,6 +15,11 @@ app/Http/Controllers/TestController.php
 resources/views/testcategory.blade.php
 resources/views/treeview.blade.php
 resources/views/frontend/layouts/submulticategory.blade.php
+resources/views/admin/product/layouts/multicategory.blade.php
+resources/views/admin/product/layouts/editmulticategory.blade.php
+resources/views/admin/product/layouts/editmulti.blade.php
+resources/views/admin/product/layouts/multi.blade.php
+
 # resources/views/admin/category/layouts/multicategory.blade.php
 # resources/views/admin/category/layouts/multi.blade.php
 # resources/views/admin/category/layouts/editmulticategory.blade.php

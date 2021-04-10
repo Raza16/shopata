@@ -3,7 +3,7 @@
 @section('title','Brand List')
 
 @section('style')
-  
+
 @endsection
 
 @section('content')
@@ -46,8 +46,8 @@
     <h3 class="page-title">
       Brand List
     </h3>
-    <a type="button" class="btn btn-info btn-fw" href="{{url('admin/brand/create')}}">Brand Add</a>
-  
+    <a type="button" class="btn btn-primary btn-fw" href="{{url('admin/brand/create')}}">Brand Add</a>
+
   </div>
 
   <div class="card">
@@ -57,7 +57,7 @@
         <div class="col-12">
           <div class="table-responsive">
             <div id="order-listing_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
-              
+
                   <div class="row">
                     <div class="col-sm-12">
 
@@ -74,10 +74,10 @@
                               <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 65px;">Edit</th>
                               <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-label="Actions: activate to sort column ascending" style="width: 61px;">Delete</th></tr>
                         </thead>
-                        
+
                         <tbody>
                             @foreach ($brand as $rows)
-                        
+
                           <tr role="row" class="odd">
                               <td class="sorting_1">{{$rows->id}}</td>
                               <td>{{$rows->title}}</td>
@@ -98,7 +98,7 @@
                                     </form>
                               </td>
                           </tr>
-                                
+
                           @endforeach
                         </tbody>
 
@@ -106,7 +106,7 @@
 
                     </div>
                   </div>
-    
+
             </div>
           </div>
         </div>

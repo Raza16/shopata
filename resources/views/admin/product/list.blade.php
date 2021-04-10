@@ -34,13 +34,14 @@
 </div>
 @endif
 
+    <div class="page-header">
+        <h3 class="page-title">
+        Product List
+        </h3>
+        <a type="button" class="btn btn-primary btn-fw" href="{{url('admin/product/create')}}">Product Add</a>
+    </div>
 
-
-<div class="container">
-  <a type="button" class="btn btn-md btn-primary" href="product/create">Add Product </a>
   <br>
-</div>
-<br>
     <div class="col-12 grid-margin">
       <div class="card">
         <div class="card-body">

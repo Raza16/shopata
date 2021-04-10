@@ -456,7 +456,7 @@
                 <li class="nav-item"> <a class="nav-link " href="{{url('admin/product/create')}}">Product Add</a></li>
                 <li class="nav-item"> <a class="nav-link" href="{{url('admin/brand')}}">Brands</a></li>
                 <li class="nav-item"> <a class="nav-link" href="{{url('admin/category')}}">Categories</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{url('admin/variation')}}">Variation</a></li>
+                {{-- <li class="nav-item"> <a class="nav-link" href="{{url('admin/variation')}}">Variation</a></li> --}}
               </ul>
             </div>
           </li>
