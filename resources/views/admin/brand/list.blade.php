@@ -46,7 +46,7 @@
     <h3 class="page-title">
       Brand List
     </h3>
-    <a type="button" class="btn btn-primary btn-fw" href="{{url('admin/brand/create')}}">Brand Add</a>
+    <a type="button" class="btn btn-info btn-fw" href="{{url('admin/brand/create')}}"><i class="icon-plus"></i>&nbsp;Brand Add</a>
 
   </div>
 
@@ -85,15 +85,17 @@
                               <td>{{$rows->created_at->format('Y-m-d')}}</td>
                               <td>
                                   <a type="button" href="{{url('admin/brand/'.$rows->id.'/edit')}}" style="padding:10px" class="btn btn-md btn-primary btn-icon-text">
-                                      Edit
-                                      <i class="fas fa-pencil-alt btn-icon-append"></i>
+                                    <i class="ti-pencil-alt"></i>&nbsp;
+                                    Edit
+                                      {{-- <i class="fas fa-pencil-alt btn-icon-append"></i> --}}
+
                                   </a>
                               </td>
                               <td>
                                     <form action="{{ url('admin/brand/'.$rows->id) }}" method="POST">
                                       @csrf
                                       @method('DELETE')
-                                      <button type="submit" style="padding:10px" class="btn btn-md btn-danger btn-icon-text" style="padding:10px"><i class="fas fa-trash btn-icon-prepend"></i>Delete
+                                      <button type="submit" style="padding:10px" class="btn btn-md btn-danger btn-icon-text" style="padding:10px"><i class="ti-trash"></i>&nbsp; Delete
                                       </button>
                                     </form>
                               </td>

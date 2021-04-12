@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Admin\Product;
+use App\Models\Admin\Seller;
 use App\Models\Admin\Setting;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Customer\Customer;
 
 
 class AdminController extends Controller
@@ -16,10 +18,12 @@ class AdminController extends Controller
     //
     public function dashboard()
     {
-        $user   =User::all();
-        $product    =Product::all();
+        $user       =   User::all();
+        $product    =   Product::all();
+        $customer   =   Customer::all();
+        $seller     =   Seller::all();
 
-        return view('admin.dashboard',compact('user','product'));
+        return view('admin.dashboard',compact('user','product','customer','seller'));
     }
 
     public function settings()

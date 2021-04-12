@@ -20,5 +20,3 @@ resources/views/admin/product/layouts/multi.blade.php
 # resources/views/admin/category/layouts/multi.blade.php
 # resources/views/admin/category/layouts/editmulticategory.blade.php
 # resources/views/admin/category/layouts/editmulti.blade.php
-
-

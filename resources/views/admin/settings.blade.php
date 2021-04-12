@@ -167,7 +167,7 @@
 
           <div class="form-group">
             <label for="email">Admin Email</label>
-            <input type="email" class="form-control" placeholder="Email" name="email" value="{{  Auth::user()->email}}">
+            <input type="email" class="form-control" data-inputmask="'alias': 'email'"  placeholder="Email" name="email" value="{{  Auth::user()->email}}">
             @error('email')
             <p><small class="text-danger">{{ $errors->first('email') }}</small></p>
             @enderror
@@ -187,6 +187,9 @@
 @section('script')
 
     <script>
+
+
+
         $(document).ready(function() {
             var readURL = function(input) {
                 if (input.files && input.files[0]) {

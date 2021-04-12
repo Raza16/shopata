@@ -14,6 +14,8 @@
   <link rel="stylesheet" href="{{asset('backend/vendors/iconfonts/font-awesome/css/all.min.css')}}">
   <link rel="stylesheet" href="{{asset('backend/vendors/css/vendor.bundle.base.css')}}">
   <link rel="stylesheet" href="{{asset('backend/vendors/css/vendor.bundle.addons.css')}}">
+  <link rel="stylesheet" href="{{asset('backend/vendors/iconfonts/ti-icons/css/themify-icons.css')}}">
+  <link rel="stylesheet" href="{{asset('backend/vendors/iconfonts/simple-line-icon/css/simple-line-icons.css')}}">
   <!-- endinject -->
 
   <!-- End plugin css for this page -->
@@ -558,7 +560,6 @@
   <script src="{{asset('backend/js/hoverable-collapse.js')}}"></script>
   <script src="{{asset('backend/js/misc.js')}}"></script>
   <script src="{{asset('backend/js/settings.js')}}"></script>
-  <script src="{{asset('backend/js/todolist.js')}}"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
   <script src="{{asset('backend/js/dashboard.js')}}"></script>

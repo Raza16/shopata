@@ -38,7 +38,7 @@
         <h3 class="page-title">
         Product List
         </h3>
-        <a type="button" class="btn btn-primary btn-fw" href="{{url('admin/product/create')}}">Product Add</a>
+        <a type="button" class="btn btn-info btn-fw" href="{{url('admin/product/create')}}"><i class="icon-plus"></i>&nbsp; Product Add</a>
     </div>
 
   <br>
@@ -70,30 +70,31 @@
 
                 <tbody>
                   @foreach ($product as $item)
-                <tr>
+            <tr>
                     <td>{{$item->id}}</td>
                     <td><img src="{{asset('backend/images/products/'.$item->product_image)}}" alt=""></td>
                     <td>{{$item->name}}</td>
                     <td>{{$item->category_id ? $item->category->title : 'Uncategories'}}</td>
                     <td>{{$item->brand_id ? $item->brand->title : "Uncategories"}}</td>
                     <td style="text-transform: uppercase">{{$item->user->name}}</td>
-                    <td style="text-transform: uppercase">{{$item->status == 'publish' ? 'Publish' : 'Draft'}}</td>
+                    <td style="text-transform: uppercase"><label class="badge {{$item->status == 'publish' ? 'badge-info' : 'badge-warning'}} badge-pill">{{$item->status == 'publish' ? 'Publish' : 'Draft'}}</label></td>
                     <td>
                       <a href="{{url('shop/'.$item->slug)}}" style="padding:10px" target="_blank" class="btn btn-md btn-success btn-icon-text">
+                        <i class="ti-eye"></i>&nbsp;
                           View
                       </a>
                     </td>
                     <td>
                       <a href="{{url('admin/product/'.$item->id."/edit")}}" style="padding:10px" class="btn btn-md btn-primary btn-icon-text">
-                          Edit
-                          <i class="fas fa-pencil-alt btn-icon-append"></i>
+                        <i class="ti-pencil-alt"></i>&nbsp;
+                        Edit
                       </a>
                     </td>
                     <td>
                         <form action="{{url('admin/product/'.$item->id) }}" method="POST">
                           @csrf
                           @method('DELETE')
-                          <button type="submit" class="btn btn-md btn-danger btn-icon-text" style="padding:10px"><i class="fas fa-trash btn-icon-prepend"></i>Delete
+                          <button type="submit" class="btn btn-md btn-danger btn-icon-text" style="padding:10px"><i class="ti-trash"></i>&nbsp;Delete
                           </button>
                         </form>
                     </td>

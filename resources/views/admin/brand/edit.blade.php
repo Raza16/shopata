@@ -86,7 +86,7 @@
           </div>
         </div>
       </div>
-      <button type="submit" class="btn btn-primary mr-2">Update</button>
+      <button type="submit" class="btn btn-info mr-2"><i class="ti-pencil-alt"></i>&nbsp;Update</button>
     </form>
   </div>
 </div>

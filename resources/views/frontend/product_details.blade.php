@@ -26,7 +26,7 @@
                           {{-- @foreach($product as $image) --}}
                             <div style="background-image: url('{{$product->product_image ? asset('backend/images/products/'.$product->product_image) : asset('frontend/img/product_placeholder.jpg')}}'); background-size: contain;
                                 margin: auto; background-repeat: no-repeat;" class="item-box"></div>
-                    
+
                           @foreach($product_grallery as $image)
                             <div style="background-image: url('{{asset('backend/images/product_gallery/'.$image->image)}}');background-size: contain;margin: auto;background-repeat: no-repeat;" class="item-box"></div>
                             @endforeach
@@ -64,11 +64,11 @@
                     <h1>{{$product->name}}</h1>
                     <span class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i><em>4 reviews</em></span>
                     <p>
-                    
+
                       <small>{{$product->product_code ? 'SKU:'.$product->product_code : ''}}</small><br>
                       <small style="text-transform: uppercase">{{$product->stock}}</small><br>
                       {!! $product->short_description !!}
-                 
+
                     </p>
 
                     <div class="prod_options">
@@ -173,11 +173,11 @@
                                         <span id="more"></span>
                                         <br>
                                     @endif --}}
-                                  
+
                                     {{-- <button onclick="myFunction()" id="myBtn" class="btn btn-primary">Read more</button>    --}}
                                 </div>
 
-                                 
+
 
                                 @if(!empty($product->weight))
                                     <div class="col-lg-5">
@@ -201,15 +201,15 @@
                             </div>
 
                             @if($product_documents)
-                                <div class="row">
                                     @foreach($product_documents as $document)
-                                    <div class="col-4">
-                                        <div class="col-lg-4 col-md-6">
-                                        <div class="download"><a href="{{url('shop/download/'.$document->id)}}" class="btn_1">Download</a></div>
+
+                                        <div class="download">
+                                            <a href="{{url('shop/download/'.$document->id)}}" class="btn_1">{{Str::limit($document->document, 20)}}</a>
                                         </div>
-                                    </div>
+
+                                        <br>
+
                                     @endforeach
-                                </div>
                             @endif
 
                         </div>
@@ -386,7 +386,7 @@
                                 <img src="{{asset('backend/images/products/'.$product->product_image)}}" data-src="{{asset('backend/images/products/'.$product->product_image)}}" class="lazy" alt="">
                             </figure>
                             <h4>{{$product->name}}</h4>
-                          
+
                             <div class="price_panel">
                                 <span class="{{$product->sale_price ? 'new_price' : ''}}">{{$product->sale_price ? '$'.$product->sale_price : ' '}}</span>
                                 {{-- <span class="percentage">-20%</span>  --}}
@@ -465,12 +465,12 @@
             dots.style.display = "none";
             btnText.innerHTML = "Read less";
             moreText.style.display = "inline";
-          
+
             }
     }
   </script> --}}
 
   <script src="{{asset('frontend/js/carousel_with_thumbs.js')}}"></script>
 
- 
+
   @endsection

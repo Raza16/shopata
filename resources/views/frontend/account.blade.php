@@ -8,14 +8,12 @@
 
 @section('content')
 <main class="bg_gray">
-		
+
 	<div class="container margin_30">
 		<div class="page_header">
 			<div class="breadcrumbs">
 				<ul>
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Category</a></li>
-					<li>Page active</li>
+					<li><a href="{{url('/')}}">Home</a></li>
 				</ul>
 		</div>
 		<h1>Sign In or Create an Account</h1>
@@ -36,7 +34,7 @@
 							</div>
 						</div>
 						<div class="divider"><span>Or</span></div>
-						
+
 										{{-- email --}}
 						<div class="form-group">
 							<input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" placeholder="Email*">
@@ -151,7 +149,7 @@
 								</div>
 							</div>
 							<!-- /row -->
-							
+
 							<div class="row no-gutters">
 								<div class="col-6 pr-1">
 									<div class="form-group">
@@ -173,7 +171,7 @@
 								</div>
 							</div>
 							<!-- /row -->
-							
+
 						</div>
 						<!-- /private -->
 						<div class="company box" style="display: none;">

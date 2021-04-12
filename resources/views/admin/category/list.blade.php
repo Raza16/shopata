@@ -37,7 +37,7 @@
     Categories List
   </h3>
   <div class="page">
-  <a type="button"  class="btn btn-primary btn-fw" href="{{url('admin/category/create')}}">Category Add</a>
+  <a type="button"  class="btn btn-info btn-fw" href="{{url('admin/category/create')}}"><i class="icon-plus"></i>&nbsp;Category Add</a>
   {{-- <a type="button" class="btn btn-success btn-fw" href="#">Category CSV</a> --}}
 </div>
 </div>
@@ -73,8 +73,9 @@
                   <td style="text-transform:uppercase">{{$rows->user->name}}</td>
                   <td>
                       <a type="button" href="{{url('admin/category/'.$rows->id.'/edit')}}" style="padding:10px" class="btn btn-md btn-primary btn-icon-text">
-                          Edit
-                          <i class="fas fa-pencil-alt btn-icon-append"></i>
+                        <i class="ti-pencil-alt"></i>&nbsp;
+                        Edit
+                          {{-- <i class="fas fa-pencil-alt btn-icon-append"></i> --}}
                       </a>
                   </td>
                   <td>
@@ -82,7 +83,8 @@
                         <form action="{{ url('admin/category/'.$rows->id) }}" method="POST">
                           @csrf
                           @method('DELETE')
-                          <button type="submit" style="padding:10px" class="btn btn-md btn-danger btn-icon-text" style="padding:10px"><i class="fas fa-trash btn-icon-prepend"></i>Delete
+                          <button type="submit" style="padding:10px" class="btn btn-md btn-danger btn-icon-text" style="padding:10px">
+                            <i class="ti-trash"></i>&nbsp;Delete
                           </button>
                         </form>
                   </td>

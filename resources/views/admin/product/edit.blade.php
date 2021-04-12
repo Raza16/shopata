@@ -5,7 +5,7 @@
 
   @section('pageheadlinks')
   <script src="{{asset('backend/plugins/ckeditor/ckeditor.js')}}"></script>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"> --}}
 
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
@@ -84,21 +84,24 @@
                         </tbody>
                       </table>
                     </div>
-
-
-
-
+{{--
                     <div class="form-group">
                       <label for="document">Document Attach</label>
                       <input type="file" multiple="multiple" name="document[]" class="form-control document_name" id="document">
 
+                    </div> --}}
+
+                    <div class="form-group">
+                        <button type="button" class="btn btn-info btn-sm" id="add-document">Add File</button>
                     </div>
 
 
-                                                                                  {{-- seo tab --}}
+
+                    {{-- seo tab --}}
+
                     <div class="form-group">
                       <div class="card" style="background-color: #f7f7f0">
-                        <div class="card-header bg-primary" role="tab" id="heading-13">
+                        <div class="card-header bg-info" role="tab" id="heading-13">
                           <h6 class="mb-0">
                             <a data-toggle="collapse" href="#seo-13" aria-expanded="false" aria-controls="collapse-13" class="collapsed" style="text-decoration: none;color: #FFFFFF;">
                               SEO
@@ -130,15 +133,16 @@
                         </div>
                       </div>
                     </div>
-                                                                                {{-- seo tab end--}}
 
-                                                                                {{-- general info --}}
+                    {{-- seo tab end--}}
+
+                    {{-- general info --}}
 
 
                     <div class="form-group">
                         <div class="card" style="background-color: #f7f7f0">
 
-                                <div class="card-header bg-primary" role="tab" id="heading-13">
+                                <div class="card-header bg-info" role="tab" id="heading-13">
                                     <h6 class="mb-0">
                                         <a data-toggle="collapse" href="#genral-13" aria-expanded="false" aria-controls="collapse-13" class="collapsed" style="text-decoration: none;color: #FFFFFF;">
                                         General
@@ -294,16 +298,18 @@
                                 <div style="width:200px; border:1px solid #d9dee4;">
 
                                   <img style="max-width:200px;max-height:200px;
-                                  display:block;" class="for-image" src="{{$product->product_image ? asset('backend/images/products/'.$product->product_image) : 'https://via.placeholder.com/200x200?text=200+x+200'}}"/>
+                                  display:block;" class="for-image" src="{{$product->product_image ? asset('backend/images/products/'.$product->product_image) : 'https://via.placeholder.com/200x200?text=Product Image'}}"/>
 
                                     <button type="button" style="background:#d9dee4; border-radius:0px;width:200px;cursor:pointer;font-size:12px;font-weight:600;" class="upload-button btn btn-default">
                                       <i style="font-size:14px;" class="fa fa-upload" aria-hidden="true"></i> &nbsp;Upload Image</button>
 
-                                    <input style="display:none;" class="file-upload" onchange="validateImage()" type="file" name="image" accept="image/*" id="img"/>
+                                    <input style="display:none;" class="file-upload" onchange="validateImage()" type="file" name="image" accept="image/*" id="featured_img"/>
 
-                                    {{-- @error('image') --}}
-                                      <p class="text-danger" id="error" style="display:none;">Use validate Image <span class="form-control text-danger"> | jpg | jpeg | png | webp </span></p>
-                                    {{-- @enderror --}}
+                                    {{-- @error('image')
+                                    <p><small class="text-danger">{{ $errors->first('image') }}</small></p>
+                                    @enderror --}}
+
+                                      <p class="text-danger" id="error-img" style="display:none;">Use validate Image  | jpg | jpeg | png | webp | svg</p>
 
                                 </div>
 
@@ -392,7 +398,7 @@
       </div>
 
                                   <div class="col-12 form-group">
-                                    <button type="submit" name="submit" class="col-12 btn btn-primary mr-2">Update</button>
+                                    <button type="submit" name="submit" class="col-12 btn btn-info mr-2">Update</button>
                                   </div>
 
       </form>
@@ -402,7 +408,8 @@
 
 @section('script')
 
-{{-- // multiple file document  --}}
+        {{-- // multiple file document  --}}
+
     {{-- <script>
         $('#add_document').on('change', function(){
 
@@ -442,6 +449,23 @@
     </script> --}}
 
     <script>
+        $('#add-document').on('click', function(){
+            var tr = '<tr>'+
+                    // '<td style="padding-right:10px;"><input type="text" name="title[]" class="form-control" placeholder="Document Name"/></td>'+
+                    '<td style="margin:10px"><input type="file" name="document[]" class="form-control"/></td>'+
+                    '<td><button type="button" class="delete-row btn btn-default"><i style="color:red;" class="fa fa-trash"></i></button></td>'+
+                    '</tr>';
+                $('.new_document').append(tr);
+        });
+
+        $('.new_document').on('click', '.delete-row', function(){
+             $(this).parent().parent().remove();
+        });
+
+    </script>
+
+{{-- ///add file --}}
+    {{-- <script>
         $('#add_file').on('click', function(){
             var tr = '<tr>'+
                     '<td style="padding-right:10px;"><input type="text" name="title[]" class="form-control" required/></td>'+
@@ -455,7 +479,7 @@
              $(this).parent().parent().remove();
         });
 
-    </script>
+    </script> --}}
 
       {{-- delete product document --}}
         <script>
@@ -487,40 +511,6 @@
       {{-- delete product document end--}}
 
 
-          {{-- document tr loop --}}
-    {{-- <script>
-        $(function() {
-        // Multiple images preview with JavaScript
-        var multidocument = function(input, docPreviewPlaceholder) {
-
-            if (input.files) {
-                var filesAmount = input.files.length;
-
-                for (i = 0; i < filesAmount; i++) {
-                    var reader = new FileReader();
-                    // var fileName = e.target.files[0].name
-
-                    reader.onload = function(event) {
-                    // <input type="text" value="" name="document[]"  class="form-control" >
-                        $($.parseHTML('<input type="text" name="document[]"  class="form-control col-4" >')).attr('value', event.target.result).appendTo(docPreviewPlaceholder);
-                        // alert(filename);
-                    }
-
-                    reader.readAsDataURL(input.files[i]);
-                }
-            }
-
-        };
-
-        $('#document').on('change', function() {
-        multidocument(this, 'div.document_add');
-        });
-        });
-    </script> --}}
-
-  {{-- document tr loop end--}}
-
-
 
 {{-- image validation--}}
   <script type="text/javascript">
@@ -528,38 +518,22 @@
     function validateImage() {
         var formData = new FormData();
 
-        var file = document.getElementById("img").files[0];
+        var file = document.getElementById("featured_img").files[0];
 
         formData.append("Filedata", file);
         var t = file.type.split('/').pop().toLowerCase();
-        if (t != "jpeg" && t != "jpg" && t != "png" && t != "webp") {
+        if (t != "jpeg" && t != "jpg" && t != "png" && t != "webp" && t != "svg") {
             // alert('Please select a valid image file jpeg | jpg | png | webp');
-            $("#error").slideDown();;
+            $("#error-img").slideDown();
 
-            document.getElementById("img").value = '';
+            document.getElementById("featured_img").value = '';
             return false;
         }
         return true;
     }
 
-    $('#images').MultiFile({
-
-        accept:'gif|jpg|png'
-
-    });
-
   </script>
-  {{-- image validation end--}}
 
-  {{-- slug --}}
-  <script>
-    $("#name").keyup(function(){
-      var str = $(this).val();
-      var trims = $.trim(str)
-      var slug = trims.replace(/[^a-z0-9]/gi, '-').replace(/-+/g, '-').replace(/^-|-$/g, '')
-      $("#slug").val(slug.toLowerCase());
-    });
-  </script>
   {{-- image div --}}
   <script>
       // image show in div
@@ -586,87 +560,74 @@
 
     });
   </script>
-  {{-- image garllery --}}
 
+    {{-- image garllery --}}
 
+    <script>
 
+        $(function() {
+            // Multiple images preview with JavaScript
+            var multiImgPreview = function(input, imgPreviewPlaceholder) {
 
-<script>
+                if (input.files) {
+                    var filesAmount = input.files.length;
+                    // var filepath    = input.files.val();
+                    // alert(filepath);
 
-  $(function() {
-    // Multiple images preview with JavaScript
-    var multiImgPreview = function(input, imgPreviewPlaceholder) {
+                    for (i = 0; i < filesAmount; i++) {
+                        var reader = new FileReader();
 
-          if (input.files) {
-              var filesAmount = input.files.length;
-              // var filepath    = input.files.val();
-              // alert(filepath);
+                        reader.onload = function(event) {
+                            $($.parseHTML('<img width="80px" height="80px">')).attr('src', event.target.result).appendTo(imgPreviewPlaceholder);
+                        }
 
-              for (i = 0; i < filesAmount; i++) {
-                  var reader = new FileReader();
+                        reader.readAsDataURL(input.files[i]);
+                    }
+                }
 
-                  reader.onload = function(event) {
-                      $($.parseHTML('<img width="80px" height="80px">')).attr('src', event.target.result).appendTo(imgPreviewPlaceholder);
-                  }
+            };
 
-                  reader.readAsDataURL(input.files[i]);
-              }
-          }
+            $('#images').on('change', function() {
+                multiImgPreview(this, 'div.imgPreview');
+            });
 
-    };
+        });
 
-      $('#images').on('change', function() {
-          multiImgPreview(this, 'div.imgPreview');
-      });
-
-  });
-
-</script>
+    </script>
 
     <script>
 
         $(".deletegallery").click('.delete',function(){
 
-        var dataId = $(this).attr("data-id");
-        var del = this;
-        // console.log(id);
-        // alert(dataId);
-        if(confirm("Do you really want to delete")){
+            var dataId = $(this).attr("data-id");
+            var del = this;
+            // console.log(id);
+            // alert(dataId);
+            if(confirm("Do you really want to delete")){
 
-            $.ajax({
-                url:dataId,
-                type:'DELETE',
-                data:{
-                _token : $("input[name=_token]").val()
+                $.ajax({
+                    url:dataId,
+                    type:'DELETE',
+                    data:{
+                    _token : $("input[name=_token]").val()
 
-                },
-                success:function(response){
-                $(del).closest( "tr" ).remove();
-                alert(response.success);
-                }
-            });
+                    },
+                    success:function(response){
+                    $(del).closest( "tr" ).remove();
+                    alert(response.success);
+                    }
+                });
 
-        }
+            }
         });
 
     </script>
 
     {{-- delete gallery image end--}}
 
-        <script>
-            $('#category').select2({
-            selectOnClose: true
-            });
-        </script>
-
-        <script>
-            $('#brand').select2({
-            selectOnClose: true
-            });
-        </script>
 
 
-     {{-- slug --}}
+    {{-- slug --}}
     <script>
         $("#name").keyup(function(){
         var str = $(this).val();
@@ -689,23 +650,25 @@
     });
 
   </script>
-  {{-- delete gallery image --}}
-
 
   {{-- for seraching dropdown seraching --}}
+
   <script>
-      $(".select2").select2();
+
+    $(".select2").select2();
+
+    $('#brand').select2({
+        selectOnClose: true
+    });
+    $('#category').select2({
+        selectOnClose: true
+    });
+
   </script>
 
 
       {{-- //editor --}}
-      <script src="{{asset('backend/js/editorDemo.js')}}"></script>
-      <script src="{{asset('backend/js/todolist.js')}}"></script>
-      <script src="{{asset('backend/js/select2.js')}}"></script>
       {{-- ///////modal --}}
-      <script src="{{asset('backend/js/modal-demo.js')}}"></script>
-      <script src="{{asset('backend/js/dropify.js')}}"></script>
-      <script src="{{asset('backend/js/dropzone.js')}}"></script>
       <script src="{{asset('backend/js/jquery-file-upload.js')}}"></script>
 
 

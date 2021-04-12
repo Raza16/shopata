@@ -29,8 +29,11 @@ class ProductController extends Controller
     public function index()
     {
         $brand      =Brand::all();
+
         $category   =Category::all();
+
         $product    =Product::all();
+
         return view('admin.product.list',compact('brand','category','product'));
     }
 
@@ -42,7 +45,7 @@ class ProductController extends Controller
     public function create()
     {
         //
-        $brand              =Brand::all();
+        $brand              =   Brand::all();
         // $category           =Category::all();
         $category           =   Category::with('subcategory')->where('parent_id',NULL)->get();
         $variation          =   Variation::all();
@@ -63,11 +66,9 @@ class ProductController extends Controller
         //
         $this->validate($request,[
             'name' => 'required',
-            'image'=>  'image|mimes:png,jpeg,webp,jpg',
-            // 'product_documents' => 'file|max:500',
-            'document.*' => 'mimes:pdf,doc,docx',
-            // 'quantity' => 'numeric',
             'slug' =>   'required',
+            'image'=>  'image|mimes:png,jpeg,webp,jpg,svg',
+            // 'document.*' => 'mimes:pdf,doc,docx',
             'product_type' => 'required',
             'stock' => 'required',
             'status' => 'required'
@@ -98,6 +99,7 @@ class ProductController extends Controller
                     // category
                     $product->category_id           =   $request->category_id;
 
+
                     if ($request->hasFile('image')) {
                         $image = $request->file('image');
                         $name = time().'_'.$image->getClientOriginalName();
@@ -107,9 +109,6 @@ class ProductController extends Controller
                         $product->product_image = $name;
                     }
 
-
-                    // dd($product);
-                                    // $product->save();
                     if($product->save()){
 
                         foreach ($request->gallery_image ? : [] as $file) {
@@ -129,12 +128,11 @@ class ProductController extends Controller
                             $destinationPath = public_path('/backend/product_document');
                             $filePath = $destinationPath. "/". $filename;
                             $file->move($destinationPath, $filename);
-                            DB::table('product_documents')->insert([
-                                'product_id' => $product->id,
-                                'document' => $filename
-                            ]);
+
                         }
                     }
+
+                        # code...
 
                     session()->flash('submit', 'Record has been Added');
 
@@ -256,16 +254,13 @@ class ProductController extends Controller
         //
         $this->validate($request,[
             'name' => 'required',
-            'image'=>  'image|mimes:png,jpeg,webp,jpg',
-            // 'product_documents' => 'file|max:500',
-            // 'document.*' => 'mimes:pdf,doc,docx',
-            'quantity' => 'numeric',
+            'image'=>  'image|mimes:png,jpeg,webp,jpg,svg',
+
             'slug' =>   'required',
             'product_type' => 'required',
             'stock' => 'required',
             'status' => 'required',
-            // 'regular_price' => 'between:1,10',
-            // 'sale_price' => 'between:1,10'
+
 
 
         ]);
