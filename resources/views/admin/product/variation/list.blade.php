@@ -58,7 +58,10 @@
                                 <input type="text" class="form-control" id="name" name="name" value="{{old('name')}}" />
                                 <p class="card-description">Name for the attribute (shown on the front-end).</p>
                               </div>
-                              <button type="submit" class="btn btn-primary mr-2">Add</button>
+                                <button type="submit" class="btn btn-info mr-2">
+                                    <i class="icon-plus"></i>&nbsp;
+                                    Add
+                                </button>
                             </form>
                           </div>
                         </div>
@@ -86,15 +89,17 @@
                                        </td>
                                      <td>
                                       <a type="button" href="{{url('admin/variation/'.$item->id.'/edit')}}" style="padding:10px" class="btn btn-md btn-primary btn-icon-text">
+                                        <i class="ti-pencil-alt"></i>&nbsp;
                                         Edit
-                                        <i class="fas fa-pencil-alt btn-icon-append"></i>
                                     </a>
                                     </td>
                                     <td>
                                       <form action="{{ url('admin/variation/'.$item->id) }}" method="POST">
                                       @csrf
                                       @method('DELETE')
-                                      <button type="submit" style="padding:10px" class="btn btn-md btn-danger btn-icon-text" style="padding:10px" ><i class="fas fa-trash btn-icon-prepend"></i>Delete
+                                      <button type="submit" style="padding:10px" class="btn btn-md btn-danger btn-icon-text" style="padding:10px" >
+                                        <i class="ti-trash"></i>&nbsp;
+                                        Delete
                                       </button>
                                        </form>
                                     </td>

@@ -38,7 +38,9 @@
         <h3 class="page-title">
         Product List
         </h3>
-        <a type="button" class="btn btn-info btn-fw" href="{{url('admin/product/create')}}"><i class="icon-plus"></i>&nbsp; Product Add</a>
+        <a type="button" class="btn btn-info btn-fw" href="{{url('admin/product/create')}}">
+            <i class="icon-plus"></i>&nbsp;
+             Product Add</a>
     </div>
 
   <br>
@@ -94,7 +96,9 @@
                         <form action="{{url('admin/product/'.$item->id) }}" method="POST">
                           @csrf
                           @method('DELETE')
-                          <button type="submit" class="btn btn-md btn-danger btn-icon-text" style="padding:10px"><i class="ti-trash"></i>&nbsp;Delete
+                          <button type="submit" class="btn btn-md btn-danger btn-icon-text" style="padding:10px">
+                            <i class="ti-trash"></i>&nbsp;
+                            Delete
                           </button>
                         </form>
                     </td>

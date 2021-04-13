@@ -163,5 +163,5 @@ class BrandController extends Controller
         $brand->delete();
         session()->flash('delete', 'Record has been Deleted');
         return redirect('admin/brand');
-    }
+    }   
 }

@@ -92,7 +92,11 @@
           </div>
         </div>
       </div>
-      <button type="submit" class="btn btn-info mr-2">Update</button>
+
+        <div class="col-2 form-group">
+            <button type="submit" name="submit" class="col-12 btn btn-info mr-2"><i class="icon-refresh"></i>&nbsp; Update</button>
+        </div>
+      {{-- <button type="submit" class="btn btn-info mr-2">Update</button> --}}
     </form>
   </div>
 </div>

@@ -80,7 +80,10 @@
           </div>
         </div>
       </div>
-      <button type="submit" class="btn btn-info mr-2">Submit</button>
+        <div class="col-2 form-group">
+            <button type="submit" class="col-12 btn btn-info btn-fw"><i class="icon-plus"></i>&nbsp;Submit</button>
+        </div>
+      {{-- <button type="submit" class="btn btn-info mr-2"> Submit</button> --}}
     </form>
   </div>
 </div>

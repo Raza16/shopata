@@ -369,8 +369,8 @@
           </div>
         </div>
 
-        <div class="col-12 form-group">
-            <button type="submit" name="submit" class="col-12 btn btn-info btn-fw">Submit</button>
+        <div class="col-2 form-group">
+            <button type="submit" name="submit" class="col-12 btn btn-info btn-fw"><i class="icon-plus"></i>&nbsp;Submit</button>
         </div>
 
       </form>

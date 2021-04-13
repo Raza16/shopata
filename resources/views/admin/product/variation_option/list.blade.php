@@ -42,7 +42,10 @@
 
                             {{-- product image end --}}
 
-                            <button type="submit" class="btn btn-primary mr-2">Add new {{$variation->name}}</button>
+                            <button type="submit" class="btn btn-info mr-2">
+                                <i class="icon-plus"></i>&nbsp;
+                                Add new {{$variation->name}}
+                            </button>
                           </form>
                         </div>
                       </div>
@@ -62,20 +65,23 @@
                                       <tbody>
                                         @foreach ($variation_option as $item)
 
-                                      <tr>
+                                        <tr>
                                           <td>{{$item->name}}</td>
                                           <td>
                                             <a href="{{ url('admin/variation_option/'.$item->id.'/edit')}}" style="padding:10px" class="btn btn-md btn-primary btn-icon-text">
-                                              <i class="fas fa-pencil-alt btn-icon-append"></i>
+                                                <i class="ti-pencil-alt"></i>&nbsp;
+                                                Edit
                                             </a>
                                           </td>
-                                          <td>
-                                            <form action="{{ url('admin/variation_option/'.$item->id) }}" method="POST">
-                                              @csrf
-                                              @method('DELETE')
-                                              <button type="submit" style="padding:10px" class="btn btn-md btn-danger btn-icon-text" style="padding:10px" ><i class="fas fa-trash btn-icon-prepend"></i>
-                                              </button>
-                                               </form>
+                                            <td>
+                                                <form action="{{ url('admin/variation_option/'.$item->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                    <button type="submit" style="padding:10px" class="btn btn-md btn-danger btn-icon-text" style="padding:10px" >
+                                                        <i class="ti-trash"></i>&nbsp;
+                                                        Delete
+                                                    </button>
+                                                </form>
                                             </td>
                                         </tr>
 

@@ -397,9 +397,9 @@
           </div>
       </div>
 
-                                  <div class="col-12 form-group">
-                                    <button type="submit" name="submit" class="col-12 btn btn-info mr-2">Update</button>
-                                  </div>
+        <div class="col-2 form-group">
+            <button type="submit" name="submit" class="col-12 btn btn-info mr-2"><i class="icon-refresh"></i>&nbsp;Update</button>
+        </div>
 
       </form>
 

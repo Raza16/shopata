@@ -128,5 +128,8 @@
         });
     </script>
 
+    {{-- ajax based delete --}}
+
+
 @endsection
 
