@@ -368,11 +368,17 @@
 
 						<ul>
 
-							<li><i class="ti-home"></i>182 Bay Ridge Avenue <br>
-              					Brooklyn, New York 11209
+							<li>
+                                <a href="https://www.google.com/maps/place/182+Bay+Ridge+Ave,+Brooklyn,+NY+11209,+USA/@40.6366657,-74.0316613,  17z/data=!3m1!4b1!4m5!3m4!1s0x89c245562322e1d9:0x1524741d7a6a87b5!8m2!3d40.6366616!4d-74.0294726" target="_blank">
+                                    <i class="ti-home"></i>
+                                    182 Bay Ridge Avenue <br>
+                                    Brooklyn, New York 11209
+                                </a>
 							</li>
-							<li><i class="ti-headphone-alt"></i>718-412-1413</li>
-							<li><i class="ti-email"></i><a href="#0">support@shopataclick.com </a></li>
+
+							<li><a href="tel:+718-412-1413"><i class="ti-headphone-alt"></i>718-412-1413</a></li>
+
+							<li><a href="mailto:support@shopataclick.com"><i class="ti-email"></i>support@shopataclick.com</a></li>
 
 						</ul>
 
