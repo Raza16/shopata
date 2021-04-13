@@ -65,23 +65,14 @@
         <div class="col-4">
           <div class="form-group ">
 
-            <div class="form-group">
-              <label>Brand Image</label>
-              <div style="width:200px; border:1px solid #d9dee4;">
-                @if(!$brand->image)
-                  <img style="max-width:200px;max-height:200px;
-                  display:block;" class="for-image" src="https://via.placeholder.com/200x200?text=200+x+200"/>
-                  @else
-                  <img style="max-width:200px;max-height:200px;
-                  display:block;" class="for-image" src="{{asset('backend/images/brands/'.$brand->image)}}"/>
-                  @endif
-                  <button type="button" style="background:#d9dee4; border-radius:0px;width:200px;cursor:pointer;font-size:12px;font-weight:600;" class="upload-button btn btn-default"><i style="font-size:14px;" class="fa fa-upload" aria-hidden="true"></i> &nbsp;Upload Image</button>
-                  <input style="display:none;" class="file-upload" type="file" name="image" accept="image/*"/>
-              </div>
-              @error('image')
-                  <p><small class="text-danger">{{ $errors->first('image') }}</small></p>
-              @enderror
-          </div>
+            <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Brand Image</h4>
+
+                  <input type="file" class="dropify" name="image" accept="image/*" data-allowed-file-extensions="png jpg jpeg" data-default-file="{{$brand->image ? asset('backend/images/brands/'.$brand->image) : ''}}"/>
+
+                </div>
+            </div>
 
           </div>
         </div>
@@ -98,40 +89,16 @@
 
 
 @section('script')
-    <script>
-
-    $("#title").keyup(function(){
-      var str = $(this).val();
-      var trims = $.trim(str)
-      var slug = trims.replace(/[^a-z0-9]/gi, '-').replace(/-+/g, '-').replace(/^-|-$/g, '')
-      $("#slug").val(slug.toLowerCase());
-    });
-    </script>
-
 
     <script>
-      // image show in div
-    $(document).ready(function() {
-        var readURL = function(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $('.for-image').attr('src', e.target.result);
-                }
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
 
-        $(".file-upload").on('change', function(){
-            readURL(this);
+        $("#title").keyup(function(){
+        var str = $(this).val();
+        var trims = $.trim(str)
+        var slug = trims.replace(/[^a-z0-9]/gi, '-').replace(/-+/g, '-').replace(/^-|-$/g, '')
+        $("#slug").val(slug.toLowerCase());
         });
-
-        $(".upload-button").on('click', function() {
-           $(".file-upload").click();
-        });
-
-
-    });
 
     </script>
+
 @endsection

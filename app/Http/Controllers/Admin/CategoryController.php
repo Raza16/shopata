@@ -46,7 +46,7 @@ class CategoryController extends Controller
         $this->validate($request, [
             //input filde
             'title'             =>  'required|unique:categories,title',
-            'image'             =>  'mimes:jpg,bmp,png,webp'
+            'image'             =>  'mimes:jpg,jpeg,png'
         ]);
 
                         $category = new Category;
@@ -116,7 +116,7 @@ class CategoryController extends Controller
         $this->validate($request, [
             //input filde
             'title'             =>  "required|unique:categories,title,$id",
-            'image'             =>  'mimes:jpg,bmp,png,webp'
+            'image'             =>  'mimes:jpg,jpeg,png'
         ]);
 
                         $category = Category::find($id);

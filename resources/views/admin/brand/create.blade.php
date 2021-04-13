@@ -65,16 +65,12 @@
           <div class="form-group ">
 
             <div class="form-group">
-              <label>Brand Image</label>
-              <div style="width:200px; border:1px solid #d9dee4;">
-                  <img style="max-width:200px;max-height:200px;
-                  display:block;" class="for-image" src="https://via.placeholder.com/200x200?text=200+x+200"/>
-                  <button type="button" style="background:#d9dee4; border-radius:0px;width:200px;cursor:pointer;font-size:12px;font-weight:600;" class="upload-button btn btn-default"><i style="font-size:14px;" class="fa fa-upload" aria-hidden="true"></i> &nbsp;Upload Image</button>
-                  <input style="display:none;" class="file-upload" type="file" name="image" accept="image/*"/>
-              </div>
-              @error('image')
-                  <p><small class="text-danger">{{ $errors->first('image') }}</small></p>
-              @enderror
+                <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">Brand Image</h4>
+                      <input type="file" class="dropify" name="image" accept="image/*" data-allowed-file-extensions="png jpg jpeg" />
+                    </div>
+                </div>
             </div>
 
           </div>
@@ -91,30 +87,31 @@
 @endsection
 
 
+
 @section('script')
-    <script>
-      // image show in div
-      $(document).ready(function() {
-        var readURL = function(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $('.for-image').attr('src', e.target.result);
+
+        <script src="{{asset('backend/js/dropify.js')}}"></script>
+
+        {{-- <script type="text/javascript">
+
+            function validateImage() {
+                var formData = new FormData();
+
+                var file = document.getElementById("featured_img").files[0];
+
+                formData.append("Filedata", file);
+                var t = file.type.split('/').pop().toLowerCase();
+                if (t != "jpeg" && t != "jpg" && t != "png" && t != "webp" && t != "svg") {
+                    // alert('Please select a valid image file jpeg | jpg | png | webp');
+
+                    $("#error-img").css('display','block').slideDown();
+
+                    document.getElementById("featured_img").value = '';
+                    return false;
                 }
-                reader.readAsDataURL(input.files[0]);
+                return true;
             }
-        }
 
-        $(".file-upload").on('change', function(){
-            readURL(this);
-        });
+          </script> --}}
 
-        $(".upload-button").on('click', function() {
-           $(".file-upload").click();
-        });
-
-
-      });
-
-    </script>
 @endsection

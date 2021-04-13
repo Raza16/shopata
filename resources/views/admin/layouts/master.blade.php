@@ -552,6 +552,7 @@
 
   <script src="{{asset('backend/vendors/js/vendor.bundle.base.js')}}"></script>
   <script src="{{asset('backend/vendors/js/vendor.bundle.addons.js')}}"></script>
+  <script src="{{asset('backend/js/dropify.js')}}"></script>
   <!-- endinject -->
   <!-- Plugin js for this page-->
   <!-- End plugin js for this page-->

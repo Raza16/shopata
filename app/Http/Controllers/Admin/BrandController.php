@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin\Brand;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class BrandController extends Controller
 {
@@ -47,7 +47,7 @@ class BrandController extends Controller
             'title'             =>  'required|unique:brands,title',
             'meta_title'        =>  'max:60',
             'meta_description'  =>  'max:160',
-            'image'             =>  'mimes:jpg,bmp,png,webp'
+            'image'             =>  'mimes:jpg,jpeg,png'
         ]);
 
 
@@ -119,7 +119,7 @@ class BrandController extends Controller
             'title'             =>  "required|unique:brands,title,$id",
             'meta_title'        =>  'max:60',
             'meta_description'  =>  'max:160',
-            'image'             =>  'mimes:jpg,bmp,png,webp'
+            'image'             =>  'mimes:jpg,jpeg,png'
         ]);
 
 
@@ -163,5 +163,6 @@ class BrandController extends Controller
         $brand->delete();
         session()->flash('delete', 'Record has been Deleted');
         return redirect('admin/brand');
-    }   
+
+    }
 }

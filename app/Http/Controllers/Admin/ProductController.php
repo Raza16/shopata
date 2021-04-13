@@ -310,7 +310,7 @@ class ProductController extends Controller
                                 $filename =  time().'_'.$file->getClientOriginalName();
                                 $destinationPath = public_path('/backend/images/product_gallery');
                                 $filePath = $destinationPath. "/". $filename;
-                                $file->move($filePath, $filename);
+                                $file->move($destinationPath, $filename);
                                 DB::table('product_gralleries')->insert([
                                     'product_id' => $product->id,
                                     'image' => $filename

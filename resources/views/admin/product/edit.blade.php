@@ -293,23 +293,16 @@
 
                                   {{-- product image --}}
                               <div class="form-group">
-                                <label>Product Image</label>
 
-                                <div style="width:200px; border:1px solid #d9dee4;">
+                                <div class="card">
 
-                                  <img style="max-width:200px;max-height:200px;
-                                  display:block;" class="for-image" src="{{$product->product_image ? asset('backend/images/products/'.$product->product_image) : 'https://via.placeholder.com/200x200?text=Product Image'}}"/>
+                                    <div class="card-body">
 
-                                    <button type="button" style="background:#d9dee4; border-radius:0px;width:200px;cursor:pointer;font-size:12px;font-weight:600;" class="upload-button btn btn-default">
-                                      <i style="font-size:14px;" class="fa fa-upload" aria-hidden="true"></i> &nbsp;Upload Image</button>
+                                      <h4 class="card-title">Product Image</h4>
 
-                                    <input style="display:none;" class="file-upload" onchange="validateImage()" type="file" name="image" accept="image/*" id="featured_img"/>
+                                      <input type="file" class="dropify" name="image" accept="image/*" data-allowed-file-extensions="png jpg jpeg" data-default-file="{{$product->product_image ? asset('backend/images/products/'.$product->product_image) : ''}}"/>
 
-                                    {{-- @error('image')
-                                    <p><small class="text-danger">{{ $errors->first('image') }}</small></p>
-                                    @enderror --}}
-
-                                      <p class="text-danger" id="error-img" style="display:none;">Use validate Image  | jpg | jpeg | png | webp | svg</p>
+                                    </div>
 
                                 </div>
 
@@ -318,24 +311,36 @@
                                 <hr>
                                   {{-- product brand --}}
                                 <div class="form-group">
+
                                   <label class="col-8 col-form-label">Brands</label>
+
                                   <div class="col-sm-9">
+
                                     <select class="form-control select2" name="brand_id">
+
                                       <option value="" selected>UnCategories</option>
                                       @foreach ($brand as $item)
                                         <option value="{{$item->id}}" {{ $item->id == $product->brand_id ? 'selected' : ''}}>{{$item->title}}</option>
                                       @endforeach
+
                                     </select>
+
                                   </div>
+
                                 </div>
                                   {{-- product brand end --}}
                                 <hr>
                                 {{-- product categories --}}
                                 <div class="form-group">
+
                                   <label class="col-8 col-form-label">Categories</label>
+
                                   <div class="col-sm-9">
+
                                     <select class="form-control select2" name="category_id">
+
                                       <option value="" selected>UnCategories</option>
+
                                       @foreach ($category as $item)
                                         <option value="{{$item->id}}" {{ $product->category_id ==  $item->id ? 'selected' : '' }}>{{$item->title}}</option>
 
@@ -345,9 +350,11 @@
                                       @endforeach
 
                                     </select>
+
                                   </div>
 
                                 </div>
+
                                   {{-- product category end --}}
                                 <hr>
                                   {{-- product grallery image --}}
@@ -361,29 +368,43 @@
 
 
                                     <div class="form-group">
+
                                       <table class="table">
+
                                         <tbody>
+
                                           @foreach($product_grallery as $item)
                                             <tr>
+
                                                 <td class="form-group">
+
                                                   <div class="form-group">
                                                     <img src="{{asset('backend/images/product_gallery/'.$item->image)}}" alt="" width="80px" height="auto"/>
                                                   </div>
+
                                                 </td>
 
                                                 <td>
+
                                                   <button type="button" class="deletegallery delete" data-id="{{url('admin/product/gallerydelete/'.$item->id)}}" ><i style="color:red;" class="fa fa-trash"></i></button>
+
                                                 </td>
 
                                             </tr>
+
                                           @endforeach
+
                                         </tbody>
+
                                       </table>
+
                                     </div>
 
                                     <div class="form-group">
+
                                       <input type="file" name="gallery_image[]"  class="form-control"
                                       id="images" multiple="multiple" />
+
                                     </div>
 
                                     @error('gallery_image')
@@ -394,8 +415,10 @@
                                   {{-- product grallery image end--}}
 
             </div>
+
           </div>
-      </div>
+
+        </div>
 
         <div class="col-2 form-group">
             <button type="submit" name="submit" class="col-12 btn btn-info mr-2"><i class="icon-refresh"></i>&nbsp;Update</button>
@@ -408,248 +431,162 @@
 
 @section('script')
 
-        {{-- // multiple file document  --}}
+    {{-- // multiple file document  --}}
 
-    {{-- <script>
-        $('#add_document').on('change', function(){
 
-            $('.new_document').empty();
+            {{-- add product document --}}
 
-            var fp = $('#add_document');
+                <script>
 
-            var lg = fp[0].files.length;
-            var items = fp[0].files;
-
-            var  tr ="";
-
-            if(lg > 0){
-
-                for(var i = 0; i < lg ; i++ ){
-
-                    var fileName = items[i].name;
-                     tr += '<tr>'+
-                            '<td style="padding-right:10px;"><input type="text" name="title[]" class="form-control" value='+fileName+' ></td>'+
-                            '<td><button type="button" class="delete-row btn btn-default"><i style="color:red;" class="fa fa-trash"></i></button></td>'+
-                            '</tr>';
-
-                }
-
-                    $('.new_document').append(tr);
-
+                    $('#add-document').on('click', function(){
+                        var tr = '<tr>'+
+                                // '<td style="padding-right:10px;"><input type="text" name="title[]" class="form-control" placeholder="Document Name"/></td>'+
+                                '<td style="margin:10px"><input type="file" name="document[]" class="form-control"/></td>'+
+                                '<td><button type="button" class="delete-row btn btn-default"><i style="color:red;" class="fa fa-trash"></i></button></td>'+
+                                '</tr>';
+                            $('.new_document').append(tr);
+                    });
 
                     $('.new_document').on('click', '.delete-row', function(){
                         $(this).parent().parent().remove();
                     });
 
-            }
-        });
+                </script>
 
+            {{-- add product document end--}}
 
+            {{-- delete product document --}}
 
-    </script> --}}
+                <script>
+                    $(".deletedocument").click('.deletedoc',function(){
 
-    <script>
-        $('#add-document').on('click', function(){
-            var tr = '<tr>'+
-                    // '<td style="padding-right:10px;"><input type="text" name="title[]" class="form-control" placeholder="Document Name"/></td>'+
-                    '<td style="margin:10px"><input type="file" name="document[]" class="form-control"/></td>'+
-                    '<td><button type="button" class="delete-row btn btn-default"><i style="color:red;" class="fa fa-trash"></i></button></td>'+
-                    '</tr>';
-                $('.new_document').append(tr);
-        });
+                        var dataId = $(this).attr("data-id");
+                        var del = this;
+                        // console.log(id);
+                        // alert(dataId);
 
-        $('.new_document').on('click', '.delete-row', function(){
-             $(this).parent().parent().remove();
-        });
+                        if(confirm("Do you really want to delete document?")){
 
-    </script>
+                            $.ajax({
+                            url:dataId,
+                            type:'DELETE',
+                            data:{
+                                _token : $("input[name=_token]").val()
 
-{{-- ///add file --}}
-    {{-- <script>
-        $('#add_file').on('click', function(){
-            var tr = '<tr>'+
-                    '<td style="padding-right:10px;"><input type="text" name="title[]" class="form-control" required/></td>'+
-                    '<td style="margin:10px"><input type="file" name="document[]" class="form-control"/></td>'+
-                    '<td><button type="button" class="delete-row btn btn-default"><i style="color:red;" class="fa fa-trash"></i></button></td>'+
-                    '</tr>';
-                $('.new_document').append(tr);
-        });
+                                },
+                            success:function(response){
+                                $(del).closest( "tr" ).remove();
+                                alert(response.success);
+                            }
+                            });
 
-        $('.new_document').on('click', '.delete-row', function(){
-             $(this).parent().parent().remove();
-        });
+                        }
+                        });
+                </script>
 
-    </script> --}}
+            {{-- delete product document end--}}
 
-      {{-- delete product document --}}
-        <script>
-            $(".deletedocument").click('.deletedoc',function(){
+    {{-- multiple file document  --}}
 
-                var dataId = $(this).attr("data-id");
-                var del = this;
-                // console.log(id);
-                // alert(dataId);
+    {{-- multi image preview and delete --}}
 
-                if(confirm("Do you really want to delete document")){
+        {{-- image garllery preview--}}
 
-                    $.ajax({
-                    url:dataId,
-                    type:'DELETE',
-                    data:{
-                        _token : $("input[name=_token]").val()
+            <script>
 
-                        },
-                    success:function(response){
-                        $(del).closest( "tr" ).remove();
-                        alert(response.success);
-                    }
-                    });
+                $(function() {
+                    // Multiple images preview with JavaScript
+                    var multiImgPreview = function(input, imgPreviewPlaceholder) {
 
-                }
-                });
-        </script>
-      {{-- delete product document end--}}
+                        if (input.files) {
+                            var filesAmount = input.files.length;
+                            // var filepath    = input.files.val();
+                            // alert(filepath);
 
+                            for (i = 0; i < filesAmount; i++) {
+                                var reader = new FileReader();
 
+                                reader.onload = function(event) {
+                                    $($.parseHTML('<img width="80px" height="80px">')).attr('src', event.target.result).appendTo(imgPreviewPlaceholder);
+                                }
 
-{{-- image validation--}}
-  <script type="text/javascript">
-
-    function validateImage() {
-        var formData = new FormData();
-
-        var file = document.getElementById("featured_img").files[0];
-
-        formData.append("Filedata", file);
-        var t = file.type.split('/').pop().toLowerCase();
-        if (t != "jpeg" && t != "jpg" && t != "png" && t != "webp" && t != "svg") {
-            // alert('Please select a valid image file jpeg | jpg | png | webp');
-            $("#error-img").slideDown();
-
-            document.getElementById("featured_img").value = '';
-            return false;
-        }
-        return true;
-    }
-
-  </script>
-
-  {{-- image div --}}
-  <script>
-      // image show in div
-    $(document).ready(function() {
-        var readURL = function(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $('.for-image').attr('src', e.target.result);
-                }
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-
-        $(".file-upload").on('change', function(){
-          // validateImage();
-            readURL(this);
-        });
-
-        $(".upload-button").on('click', function() {
-           $(".file-upload").click();
-        });
-
-
-    });
-  </script>
-
-    {{-- image garllery --}}
-
-    <script>
-
-        $(function() {
-            // Multiple images preview with JavaScript
-            var multiImgPreview = function(input, imgPreviewPlaceholder) {
-
-                if (input.files) {
-                    var filesAmount = input.files.length;
-                    // var filepath    = input.files.val();
-                    // alert(filepath);
-
-                    for (i = 0; i < filesAmount; i++) {
-                        var reader = new FileReader();
-
-                        reader.onload = function(event) {
-                            $($.parseHTML('<img width="80px" height="80px">')).attr('src', event.target.result).appendTo(imgPreviewPlaceholder);
+                                reader.readAsDataURL(input.files[i]);
+                            }
                         }
 
-                        reader.readAsDataURL(input.files[i]);
-                    }
-                }
+                    };
 
-            };
+                    $('#images').on('change', function() {
+                        multiImgPreview(this, 'div.imgPreview');
+                    });
 
-            $('#images').on('change', function() {
-                multiImgPreview(this, 'div.imgPreview');
-            });
+                });
 
-        });
+            </script>
 
-    </script>
+        {{-- image garllery preview--}}
 
-    <script>
+        {{-- delete gallery image --}}
 
-        $(".deletegallery").click('.delete',function(){
+            <script>
 
-            var dataId = $(this).attr("data-id");
-            var del = this;
-            // console.log(id);
-            // alert(dataId);
-            if(confirm("Do you really want to delete")){
+                $(".deletegallery").click('.delete',function(){
 
-                $.ajax({
-                    url:dataId,
-                    type:'DELETE',
-                    data:{
-                    _token : $("input[name=_token]").val()
+                    var dataId = $(this).attr("data-id");
+                    var del = this;
+                    // console.log(id);
+                    // alert(dataId);
+                    if(confirm("Do you really want to delete")){
 
-                    },
-                    success:function(response){
-                    $(del).closest( "tr" ).remove();
-                    alert(response.success);
+                        $.ajax({
+                            url:dataId,
+                            type:'DELETE',
+                            data:{
+                            _token : $("input[name=_token]").val()
+
+                            },
+                            success:function(response){
+                            $(del).closest( "tr" ).remove();
+                            alert(response.success);
+                            }
+                        });
+
                     }
                 });
 
-            }
-        });
+            </script>
 
-    </script>
+        {{-- delete gallery image end--}}
 
-    {{-- delete gallery image end--}}
-
+    {{-- multi image preview and delete end--}}
 
 
     {{-- slug --}}
+
+        <script>
+            $("#name").keyup(function(){
+            var str = $(this).val();
+            var trims = $.trim(str)
+            var slug = trims.replace(/[^a-z0-9]/gi, '-').replace(/-+/g, '-').replace(/^-|-$/g, '')
+            $("#slug").val(slug.toLowerCase());
+            });
+        </script>
+
+    {{-- slug end--}}
+
+    {{-- ckeditor --}}
     <script>
-        $("#name").keyup(function(){
-        var str = $(this).val();
-        var trims = $.trim(str)
-        var slug = trims.replace(/[^a-z0-9]/gi, '-').replace(/-+/g, '-').replace(/^-|-$/g, '')
-        $("#slug").val(slug.toLowerCase());
+
+        CKEDITOR.replace( 'description', {
+
         });
+
+
+        CKEDITOR.replace( 'short_description', {
+
+        });
+
     </script>
-
-  {{-- ckeditor --}}
-  <script>
-
-    CKEDITOR.replace( 'description', {
-
-    });
-
-
-    CKEDITOR.replace( 'short_description', {
-
-    });
-
-  </script>
 
   {{-- for seraching dropdown seraching --}}
 
@@ -665,11 +602,5 @@
     });
 
   </script>
-
-
-      {{-- //editor --}}
-      {{-- ///////modal --}}
-      <script src="{{asset('backend/js/jquery-file-upload.js')}}"></script>
-
 
 @endsection

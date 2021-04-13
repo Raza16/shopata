@@ -10,11 +10,12 @@
 
                           {{-- Delete message on delete start--}}
       @if(session()->has('delete'))
-        <div id="alert" class="alert alert-danger alert-dismissible deletefade in mb-1" role="alert">
+        <div id="alert" class="alert alert-danger alert-dismissible deletefade in mb-1" style="display: none" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
             <strong>Delete!</strong> {{session('delete')}}
+
         </div>
       @endif
                            {{-- Delete message delete end--}}
@@ -95,7 +96,9 @@
                                     <form action="{{ url('admin/brand/'.$rows->id) }}" method="POST">
                                       @csrf
                                       @method('DELETE')
-                                      <button type="submit" style="padding:10px" class="btn btn-md btn-danger btn-icon-text" style="padding:10px"><i class="ti-trash"></i>&nbsp; Delete
+                                      <button type="submit" style="padding:10px" class="btn btn-md btn-danger btn-icon-text delete-brand" style="padding:10px">
+                                        <i class="ti-trash"></i>&nbsp;
+                                            Delete
                                       </button>
                                     </form>
                               </td>
@@ -127,8 +130,6 @@
             });
         });
     </script>
-
-    {{-- ajax based delete --}}
 
 
 @endsection
