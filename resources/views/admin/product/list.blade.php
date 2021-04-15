@@ -36,18 +36,18 @@
 
     <div class="page-header">
         <h3 class="page-title">
-        Product List
+        Product
         </h3>
         <a type="button" class="btn btn-info btn-fw" href="{{url('admin/product/create')}}">
             <i class="icon-plus"></i>&nbsp;
-             Product Add</a>
+            Add Product</a>
     </div>
 
   <br>
     <div class="col-12 grid-margin">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Product List </h4>
+          <h4 class="card-title">Products List </h4>
 
           {{-- <p class="page-description">Add class <code>.sortable-table</code></p> --}}
           <div class="row">
@@ -74,7 +74,7 @@
                   @foreach ($product as $item)
             <tr>
                     <td>{{$item->id}}</td>
-                    <td><img src="{{asset('backend/images/products/'.$item->product_image)}}" alt=""></td>
+                    <td><img src="{{$item->image ? asset('backend/images/products/'.$item->product_image) : '' }}" alt=""></td>
                     <td>{{$item->name}}</td>
                     <td>{{$item->category_id ? $item->category->title : 'Uncategories'}}</td>
                     <td>{{$item->brand_id ? $item->brand->title : "Uncategories"}}</td>

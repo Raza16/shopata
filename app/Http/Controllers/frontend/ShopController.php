@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Banner;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -21,13 +22,14 @@ class ShopController extends Controller
    public function home()
    {
 
-       $blog    =Blog::orderBy('updated_at','DESC')->get();
-       $product        = Product::all()->take(20);
+       $blog                   = Blog::orderBy('updated_at','DESC')->get();
+       $product                = Product::all()->take(20);
        $product_digital        = Product::where('type','digital')->get();
-       $product_featured = Product::all()->take(8);
-       $setting     = Setting::where('id',1);
+       $product_featured       = Product::all()->take(8);
+       $banners                = Banner::select('image')->get();
+    //    $setting     = Setting::where('id',1);
 
-       return view('frontend.index',compact('blog','product','product_featured','setting','product_digital'));
+       return view('frontend.index',compact('blog','product','product_featured','product_digital','banners'));
    }
 
     // shop page
@@ -156,23 +158,19 @@ class ShopController extends Controller
     public function category_search(Request $request)
     {
 
-        // $cat = $request->cat;
-
-        // $category = DB::table('products')->join('categories','categories.id','products.category_id')->where('categories.slug',$request->cat)->get();
-
-        // $category = Product::join('categories','categories.id','products.category_id')->where('categories.slug',$request->cat)->get();
-
-        // $brand          = Brand::with('products')->get();
-        // $category       = Category::with('products')->get();
-        // $product        = Product::paginate(12);
-
         $product   =   Category::with('products')->where('slug',$request->cat)->get();
 
         return view("frontend.shop",compact('product'));
 
-        // $category = Category::
-
     }
 
+    public function email_subcription(Request $request)
+    {
+        # code...
+        $email  =    $request->email;
+
+        return response()->json(['success'=>'Document Record has been deleted']);
+
+    }
 
 }

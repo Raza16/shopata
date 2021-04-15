@@ -9,7 +9,7 @@
                     <div class="col-md-6 grid-margin stretch-card">
                       <div class="card">
                         <div class="card-body">
-                          <h4 class="card-title">Update {{$variation_option->name}}</h4>
+                          <h4 class="card-title">Update</h4>
 
                           <p class="card-description">
                             Attribute terms can be assigned to products and variations.

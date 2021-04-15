@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 
-@section('title','Category Add')
+@section('title','Add Category')
 
 @section('pageheadlinks')
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -21,7 +21,7 @@
 <div class="col-12 grid-margin stretch-card">
   <div class="card">
     <div class="card-body">
-      <h4 class="card-title">Category Add</h4>
+      <h4 class="card-title">Add Category</h4>
       <form class="forms-sample" action="{{url('admin/category')}}" method="POST" enctype="multipart/form-data">
           @csrf
 

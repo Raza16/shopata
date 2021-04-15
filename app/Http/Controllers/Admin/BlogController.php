@@ -69,7 +69,7 @@ class BlogController extends Controller
             session()->flash('submit', 'Record has been Added');
 
             return redirect('admin/blog');
-            
+
     }
 
     /**
@@ -81,7 +81,7 @@ class BlogController extends Controller
     public function show($slug)
     {
         //
-        
+
         $blog = Blog::where('slug',$slug)->first();
         return view ('frontend.single_blog',compact('blog'));
 
@@ -133,7 +133,7 @@ class BlogController extends Controller
                 $image->move($destinationPath, $name);
                 $blog->image = $name;
             }
-  
+
 
             $blog->save();
 
@@ -158,7 +158,7 @@ class BlogController extends Controller
     }
 
 
-    public function uploadImage(Request $request) {	
+    public function uploadImage(Request $request) {
 
         // if ($request->hasFile('image')) {
         //     $image = $request->file('image');
@@ -173,27 +173,27 @@ class BlogController extends Controller
         //     $image =$request->file('upload');
         //     $name  =time().'_'.$image->getClientOriginalName();
         //     $destinationPath ='http://127.0.0.1:8000/'.public_path('/backend/images/blogs');
-        //     // $imagePath  = 
+        //     // $imagePath  =
         // }
 
         if($request->hasFile('upload')) {
                 $originName = $request->file('upload')->getClientOriginalName();
-                
+
                 $fileName = pathinfo($originName, PATHINFO_FILENAME);
                 $extension = $request->file('upload')->getClientOriginalExtension();
                 $fileName = $fileName.'_'.time().'.'.$extension;
-               
+
                 $request->file('upload')->move(public_path('backend/images/blogs'), $fileName);
-       
+
                 $CKEditorFuncNum = $request->input('CKEditorFuncNum');
-                $url = asset('images/'.$fileName); 
-                $msg = 'Image uploaded successfully'; 
+                $url = asset('images/'.$fileName);
+                $msg = 'Image uploaded successfully';
                 $response = "<script>window.parent.CKEDITOR.tools.callFunction($CKEditorFuncNum, '$url', '$msg')</script>";
-                   
-                @header('Content-type: text/html; charset=utf-8'); 
+
+                @header('Content-type: text/html; charset=utf-8');
                 echo $response;
             }
-        }	
+        }
 
 
 }

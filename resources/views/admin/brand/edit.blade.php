@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title','Brand Edit')
+@section('title','Edit Brand')
 
 
 @section('content')
@@ -8,8 +8,9 @@
 <div class="col-12 grid-margin stretch-card">
   <div class="card">
     <div class="card-body">
-      <h4 class="card-title">Brand Edit</h4>
+      <h4 class="card-title">Edit Brand</h4>
       <form class="forms-sample" action="{{url('admin/brand/'.$brand->id)}}" method="POST" enctype="multipart/form-data">
+        
           @csrf
           @method('PUT')
 
@@ -23,14 +24,6 @@
                 <p><small class="text-danger">{{ $errors->first('title') }}</small></p>
                 @enderror
               </div>
-
-              {{-- <div class="form-group">
-                <label for="title">slug</label>
-                <input type="text" class="form-control" id="slug" name="slug" placeholder="slug" value="{{old('title')}}" readonly>
-                @error('title')
-                <p><small class="text-danger">{{ $errors->first('slug') }}</small></p>
-                @enderror
-              </div> --}}
 
               <div class="form-group ">
                 <label for="description">Description</label>

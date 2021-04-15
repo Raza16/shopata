@@ -1,9 +1,10 @@
 @extends('admin.layouts.master')
 
 
-@section('title','Product Add')
+@section('title','Add Product')
 
   @section('pageheadlinks')
+
   <script src="{{asset('backend/plugins/ckeditor/ckeditor.js')}}"></script>
 
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -23,7 +24,7 @@
         <div class="col-8 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
-                <h3 class="card-title">Product Add</h3>
+                <h3 class="card-title">Add Product</h3>
                 <form class="forms-sample" action="{{url('admin/product')}}" method="POST" enctype="multipart/form-data" id="productadd">
                     @csrf
 
@@ -131,7 +132,6 @@
 
                     {{-- general info --}}
 
-
                     <div class="form-group">
                         <div class="card" style="background-color: #f7f7f0">
 
@@ -227,7 +227,6 @@
 
                         </div>
                     </div>
-
                                                               {{-- variation --}}
                     {{-- <div class="form-group">
                       <div class="card" style="background-color: #f7f7f0">

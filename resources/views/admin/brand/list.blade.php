@@ -45,9 +45,9 @@
 
   <div class="page-header">
     <h3 class="page-title">
-      Brand List
+      Brand
     </h3>
-    <a type="button" class="btn btn-info btn-fw" href="{{url('admin/brand/create')}}"><i class="icon-plus"></i>&nbsp;Brand Add</a>
+    <a type="button" class="btn btn-info btn-fw" href="{{url('admin/brand/create')}}"><i class="icon-plus"></i>&nbsp;Add Brand</a>
 
   </div>
 
@@ -112,6 +112,10 @@
                     </div>
                   </div>
 
+                  <div class="form-group">
+                    {{ TawkTo::widgetCode() }}
+                  </div>
+
             </div>
           </div>
         </div>
@@ -122,13 +126,33 @@
 @endsection
 
 @section('script')
+
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/5dd186ce43be710e1d1db794/default';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+
+    </script>
+    <!--End of Tawk.to Script-->
+
     <script>
+
       //--------------------------- Alert message
         $(document).ready(function() {
             $("#alert").fadeTo(500, 100).fadeOut(500, function(){
                 $("#alert").alert('close');
             });
         });
+
     </script>
 
 

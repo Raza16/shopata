@@ -32,19 +32,18 @@
     </div>
     @endif
 
-<div class="page-header">
-  <h3 class="page-title">
-    Categories List
-  </h3>
-  <div class="page">
-  <a type="button"  class="btn btn-info btn-fw" href="{{url('admin/category/create')}}"><i class="icon-plus"></i>&nbsp;Category Add</a>
-  {{-- <a type="button" class="btn btn-success btn-fw" href="#">Category CSV</a> --}}
-</div>
-</div>
+    <div class="page-header">
+        <h3 class="page-title">
+            Category
+        </h3>
+        <div class="page">
+            <a type="button"  class="btn btn-info btn-fw" href="{{url('admin/category/create')}}"><i class="icon-plus"></i>&nbsp;Add Category</a>
+        </div>
+    </div>
 
 <div class="card">
   <div class="card-body">
-    <h4 class="card-title">Data table</h4>
+    <h4 class="card-title">Categories List</h4>
     <div class="row">
       <div class="col-12">
         <div class="table-responsive">

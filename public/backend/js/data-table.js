@@ -22,9 +22,9 @@
             {extend: "csv", exportOptions: {columns:':visible'}, className: "btn btn-success btn-fw",},
             {extend: "colvis", exportOptions: {columns:':visible'}, className: "btn btn-success btn-fw",}
 
-            
+
         ],
-        
+
 
         initComplete: function () {
             // Apply the search
@@ -46,7 +46,7 @@
 
 
     $('#order-listing').each(function() {
-      
+
       var datatable = $(this);
       // SEARCH - Add the placeholder for Search and Turn this into in-line form control
       var search_input = datatable.closest('.dataTables_wrapper').find('div[id$=_filter] input');
@@ -56,7 +56,7 @@
       var length_sel = datatable.closest('.dataTables_wrapper').find('div[id$=_length] select');
       length_sel.removeClass('form-control-sm');
       ////////////////////////////////csv downlaod/////////////////////////////////////////////////////
-      
+
 
 
 

@@ -118,17 +118,21 @@
 									</li>
 
 									<li class="submenu">
+
 										<a href="javascript:void(0);" class="show-submenu">Company</a>
+
 										<ul>
 											<li><a href="{{url('blog')}}">Blogs</a></li>
-										<li><a href="{{url('help')}}">Help</a></li>
-										<li><a href="{{url('aboutus')}}">About Us</a></li>
-										<li><a href="{{url('privacypolicy')}}">Privacy Policy</a></li>
-										{{-- <li><a href="{{url('leave_review')}}">Leave A Review</a></li> --}}
-										<li><a href="{{url('privacypolicy')}}">Terms & conditions</a></li>
-										<li><a href="{{url('store_directory')}}">Store Directory</a></li>
-										{{-- <li><a href="affiliate-program.html">Become a Supplier</a></li> --}}
+                                            <li><a href="{{url('help')}}">Help</a></li>
+                                            <li><a href="{{url('aboutus')}}">About Us</a></li>
+                                            <li><a href="{{url('privacypolicy')}}">Privacy Policy</a></li>
+                                            {{-- <li><a href="{{url('leave_review')}}">Leave A Review</a></li> --}}
+                                            <li><a href="{{url('privacypolicy')}}">Terms & conditions</a></li>
+                                            <li><a href="{{url('store_directory')}}">Store Directory</a></li>
+                                            {{-- <li><a href="affiliate-program.html">Become a Supplier</a></li> --}}
 										</ul>
+
+
 									</li>
 
 									<li>
@@ -186,13 +190,22 @@
 
 												@foreach ($category as $item)
 
-                                                    <li {{$item->products->count() != 0 ? '' : 'hidden'}}
-                                                        ><span><a href="#" >{{$item->title }}</a></span>
-                                                        <ul>
-                                                            @if(count($item->subcategory))
-                                                                @include('frontend.layouts.multicategory',['subcategories' => $item->subcategory])
-                                                            @endif
-                                                        </ul>
+                                                    <li {{$item->products->count() != 0 ? '' : 'hidden'}}>
+
+                                                        <span><a href="#" >{{$item->title }}</a></span>
+
+                                                        @if ($item->subcategory->count() !=0 )
+
+                                                            <ul>
+
+                                                                @if(count($item->subcategory))
+                                                                    @include('frontend.layouts.multicategory',['subcategories' => $item->subcategory])
+                                                                @endif
+
+                                                            </ul>
+
+                                                        @endif
+
                                                     </li>
 
 												@endforeach
@@ -398,7 +411,7 @@
 
 						        <input type="email" name="email_newsletter" id="email_newsletter" class="form-control" placeholder="Your email">
 
-                                <button type="submit" id="submit-newsletter"><i class="ti-angle-double-right"></i></button>
+                                <button type="button" id="submit-newsletter"><i class="ti-angle-double-right"></i></button>
 
 						    </div>
 
@@ -523,6 +536,29 @@
                 });
 
             @endforeach
+        });
+    </script>
+
+    <script>
+
+        $("#submit-newsletter").click(function(){
+
+            var email = $("#email_newsletter").val();
+            var url   = "{{url('email_subcription')}}";
+
+            // alert(url);
+
+            $.ajax({
+                url:url,
+                type:'POST',
+                data:{
+                _token : $("input[name=_token]").val()
+                },
+                success:function(response){
+                alert(response.success);
+                }
+            });
+
         });
     </script>
 

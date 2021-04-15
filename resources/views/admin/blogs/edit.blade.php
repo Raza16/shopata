@@ -3,13 +3,13 @@
 
 
 @section('title','Blog Edit')
-    
+
 @section('pageheadlinks')
       {{-- <script src="{{asset('backend/ckeditorfullimage/ckeditor.js')}}"></script> --}}
       {{-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"> --}}
       {{-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> --}}
       {{-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> --}}
-      
+
       <!-- include summernote css/js -->
       {{-- <link rel="stylesheet" href="{{asset('backend/vendors/summernote/dist/summernote-bs4.css')}}"> --}}
       {{-- <script src="{{asset('backend/plugins/ckeditor_standard/ckeditor.js')}}"></script> --}}
@@ -26,12 +26,13 @@
         <h4 class="card-title">Blog Edit</h4>
 
         <form class="forms-sample" action="{{url('admin/blog/'.$blog->slug)}}" method="POST" enctype="multipart/form-data">
+
           @csrf
           @method('PUT')
+
           <div class="row">
+
             <div class="col-8">
-
-
 
               <div class="form-group">
                 <label for="title">Title</label>
@@ -57,13 +58,15 @@
                 @enderror
               </div>
 
-            
+
 
           {{-- heading seo --}}
 
-              <div class="form-group">
-                <h2 class="bg-primary" style="color:#fff;padding:5px;border-radius:50px;text-align:center">SEO</h2>
-              </div>
+            <div class="alert alert-fill-info" role="alert">
+                {{-- <i class="fa fa-exclamation-triangle"></i> --}}
+                {{-- Heads up! This alert needs your attention, but it's not super important. --}}
+                <h2 style="text-align: center;line-height: 14px;padding-top: 5px;">SEO</h2>
+            </div>
 
               <div class="form-group">
                 <label for="title">Meta Title</label>
@@ -72,7 +75,7 @@
                 <p><small class="text-danger">{{ $errors->first('meta_title') }}</small></p>
                 @enderror
               </div>
-              
+
               <div class="form-group">
                 <label for="title">Meta description</label>
                 <textarea type="text" rows="5" class="form-control" id="meta_description" name="meta_description" placeholder="meta description">{{$blog->meta_description}}</textarea>
@@ -81,43 +84,39 @@
                 @enderror
               </div>
 
-
-              
             </div>
 
               <div class="col-4">
+
                 <div class="form-group">
-                  <label>Blogs Image</label>
-                    <div style="width:200px; border:1px solid #d9dee4;">
-                        <img style="max-width:200px;max-height:200px;
-                        display:block;" class="for-image" src="{{$blog->image ? asset('backend/images/blogs/feature_image/'.$blog->image) : 'https://via.placeholder.com/200x200?text=200+x+200'}}"/>
-                        <button type="button" style="background:#d9dee4; border-radius:0px;width:200px;cursor:pointer;font-size:12px;font-weight:600;" class="upload-button btn btn-default"><i style="font-size:14px;" class="fa fa-upload" aria-hidden="true"></i> &nbsp;Upload Image</button>
-                        <input style="display:none;" class="file-upload" type="file" name="image" accept="image/*"/>
+                    <div class="card">
+                        <div class="card-body">
+                        <h4 class="card-title">Blog Image</h4>
+                        <input type="file" class="dropify" name="image" accept="image/*" data-allowed-file-extensions="png jpg jpeg" />
+                        </div>
                     </div>
-                  @error('image')
-                      <p><small class="text-danger">{{ $errors->first('image') }}</small></p>
-                  @enderror 
                 </div>
+
 
                 <div class="form-group">
                   <label>Category</label>
                   <select name="category_id" id="" class="form-control">
                     <option value="" selected disabled>Category</option>
                     @foreach ($category as $item)
-                        
+
                     <option value="{{$item->id}}" {{$item->id == $blog->category_id ? 'selected' : ''}}  >{{$item->title}}</option>
-                    
-                    @endforeach                    
+
+                    @endforeach
 
                   </select>
                 </div>
 
               </div>
-          
-              <div class="form-group">
-                <button class="btn btn-primary"> Submit </button>
-              </div>
-              
+
+              <div class="col-2 form-group">
+                <button type="submit" name="submit" class="col-12 btn btn-info mr-2"><i class="icon-refresh"></i>&nbsp; Update</button>
+            </div>
+
           </div>
 
         </form>
@@ -138,51 +137,24 @@
       });
     </script>
 
-{{-- // image show in div --}}
-    <script>
-        
-      $(document).ready(function() {
-          var readURL = function(input) {
-              if (input.files && input.files[0]) {
-                  var reader = new FileReader();
-                  reader.onload = function (e) {
-                      $('.for-image').attr('src', e.target.result);
-                  }
-                  reader.readAsDataURL(input.files[0]);
-              }
-          }
-      
-          $(".file-upload").on('change', function(){
-              readURL(this);
-          });
-      
-          $(".upload-button").on('click', function() {
-            $(".file-upload").click();
-          });
-      
-          
-      });
-
-    </script>
-
-    <script>
+    {{-- <script>
       $(document).ready(function(){
 
         CKEDITOR.replace( 'description', {
           height:400,
           filebrowserUploadUrl: "{{route('blog.upload',['_token' => csrf_token() ])}}", //route
           filebrowserImageUploadUrl:'public/backend/images/blogs',
-          // filebrowserUploadMethod:'form '
-          // config.filebrowserUploadMethod = 'form';
-          // filebrowserUploadUrl: "{{asset('/blog/ckeditor_upload')}}",
-          // filebrowserBrowserUrl: "{{asset('/blog/file_browser')}}"
+          filebrowserUploadMethod:'form '
+          config.filebrowserUploadMethod = 'form';
+          filebrowserUploadUrl: "{{asset('/blog/ckeditor_upload')}}",
+          filebrowserBrowserUrl: "{{asset('/blog/file_browser')}}"
         });
 
       });
-    </script>
-{{-- 
+    </script> --}}
+{{--
 <script src="{{asset('backend/vendors/summernote/dist/summernote-bs4.min.js')}}"></script>
-  
+
 <script src="{{asset('backend/js/editorDemo.js')}}"></script>
      --}}
 @endsection

@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 
-@section('title','Product Edit')
+@section('title','Edit Product')
 
   @section('pageheadlinks')
   <script src="{{asset('backend/plugins/ckeditor/ckeditor.js')}}"></script>
@@ -24,7 +24,7 @@
         <div class="col-8 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
-                <h3 class="card-title">Product Edit</h3>
+                <h3 class="card-title">Edit Product</h3>
                 <form class="forms-sample" action="{{url('admin/product/'.$product->id)}}" method="POST" enctype="multipart/form-data" id="productadd">
                     @csrf
                     @method('PUT')

@@ -11,61 +11,17 @@
 
 				<div id="carousel-home">
 					<div class="owl-carousel owl-theme">
-						<div class="owl-slide cover" style="background-image: url('{{asset('frontend/img/banners/sm1.png')}}')">
+
+                        @foreach ($banners as $banner)
+
+                        <div class="owl-slide cover" style="background-image: url('{{$banner->image ? asset('backend/images/banner/'.$banner->image) : ''}}')">
 							<div class="opacity-mask d-block align-items-center" >
-								{{-- <div class="container">
-									<div class="row justify-content-center justify-content-md-start">
-										<div class="col-lg-12 static">
-											<div class="slide-text text-center black">
-												<h2 class="owl-slide-animated owl-slide-title">Men's HIIT Class Shoe<br>New Collection</h2>
-												<p class="owl-slide-animated owl-slide-subtitle">
-													High Quality Fabric in Lowest Price
-												</p>
-												<div class="owl-slide-animated owl-slide-cta"><a class="btn_1" href="listing-grid-1-full.html" role="button">Shop Now</a></div>
-											</div>
-										</div>
-									</div>
-								</div> --}}
-							</div>
-							<!--/owl-slide-->
-						</div>
-						<!--/owl-slide-->
-						<div class="owl-slide cover" style="background-image: url('{{asset('frontend/img/banners/sm2.png')}}');">
-							<div class="opacity-mask d-block align-items-center">
-								{{-- <div class="container">
-									<div class="row justify-content-center justify-content-md-start">
-										<div class="col-lg-6 static">
-											<div class="slide-text black">
-												<h2 class="owl-slide-animated owl-slide-title">Designed with<br>your heart in mind.</h2>
-												<p class="owl-slide-animated owl-slide-subtitle">
-													Limited‑time offer
-												</p>
-												<div class="owl-slide-animated owl-slide-cta"><a class="btn_1" href="listing-grid-1-full.html" role="button">Shop Now</a></div>
-											</div>
-										</div>
-									</div>
-								</div> --}}
-							</div>
-						</div>
-						<!--/owl-slide-->
-						<div class="owl-slide cover" style="background-image: url({{asset('frontend/img/banners/sm3.png')}});">
-							<div class="opacity-mask d-block align-items-center">
-								{{-- <div class="container">
-									<div class="row justify-content-center justify-content-md-start">
-										<div class="col-lg-12 static">
-											<div class="slide-text text-center black">
-												<h2 class="owl-slide-animated owl-slide-title">Mens<br>New Collections</h2>
-												<p class="owl-slide-animated owl-slide-subtitle">
-													High Quality Fabric in Lowest Price
-												</p>
-												 <div class="owl-slide-animated owl-slide-cta"><a class="btn_1" href="listing-grid-1-full.html" role="button">Shop Now</a></div>
-											</div>
-										</div>
-									</div>
-								</div> --}}
-							</div>
-							<!--/owl-slide-->
-						</div>
+                            </div>
+                        </div>
+
+                        @endforeach
+
+
 
 					</div>
 					<div id="icon_drag_mobile"></div>

@@ -25,7 +25,7 @@
                         </div>
                         <div class="statistics-item">
                         <p>
-                            <i class="fas fa-store menu-icon"></i>
+                            <i class="fas fa-store menu-icon"></i>&nbsp;&nbsp;&nbsp;
                             Vendors
                         </p>
                         <h2>{{$seller->count()}}</h2>

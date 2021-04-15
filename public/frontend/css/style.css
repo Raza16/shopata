@@ -5654,7 +5654,7 @@ ul.list_ok li:last-child {
 }
 #toTop:after {
   font-family: 'themify';
-  content: "\e648";
+  content: "\e68a";
   position: relative;
   display: block;
   top: 50%;
@@ -6524,7 +6524,7 @@ footer .links ul li a:after {
   -moz-box-shadow: none;
   box-shadow: none;
 }
-#newsletter button[type='submit'] {
+#newsletter button[type='button'] {
   position: absolute;
   right: 0;
   color: #fff;
@@ -6548,7 +6548,7 @@ footer .links ul li a:after {
   transition: all 0.3s ease-in-out;
   outline: none;
 }
-#newsletter button[type='submit']:hover {
+#newsletter button[type='button']:hover {
   background-color: #FFC107;
   color: #222;
 }

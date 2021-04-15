@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title','Brand Add')
+@section('title','Add Brand')
 
 
 @section('content')
@@ -8,7 +8,7 @@
 <div class="col-12 grid-margin stretch-card">
   <div class="card">
     <div class="card-body">
-      <h4 class="card-title">Brand Add</h4>
+      <h4 class="card-title">Add Brand</h4>
       <form class="forms-sample" action="{{url('admin/brand')}}" method="POST" enctype="multipart/form-data">
           @csrf
 

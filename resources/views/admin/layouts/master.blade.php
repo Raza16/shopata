@@ -50,14 +50,14 @@
         <ul class="navbar-nav">
           <li class="nav-item nav-search d-none d-md-flex">
             <div class="nav-link">
-              <div class="input-group">
+              {{-- <div class="input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text">
                     <i class="fas fa-search"></i>
                   </span>
                 </div>
                 <input type="text" class="form-control" placeholder="Search" aria-label="Search">
-              </div>
+              </div> --}}
             </div>
           </li>
         </ul>
@@ -65,7 +65,7 @@
 
           <li class="nav-item dropdown d-none d-lg-flex">
             <div class="nav-link">
-              <span class="dropdown-toggle btn btn-primary" id="languageDropdown" data-toggle="dropdown">Quick Links</span>
+              <span class="dropdown-toggle btn btn-info" id="languageDropdown" data-toggle="dropdown">Quick Links</span>
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="languageDropdown">
                 <a class="dropdown-item font-weight-medium" href="{{url('admin/product/create')}}">
                   Product +
@@ -401,54 +401,69 @@
       <!-- partial -->
       <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        <ul class="nav">
-          <li class="nav-item nav-profile">
-            <div class="nav-link">
-              <div class="profile-image">
-                <img src="{{asset('backend/images/logo.svg')}}" alt="image"/>
-              </div>
-              <div class="profile-name">
-                <p class="name" style="text-transform: uppercase">
-                  {{ Auth::user()->name }}
-                </p>
-                <p class="designation" style="text-transform: uppercase">
-                 {{ Auth::user()->role->name}}
-                </p>
-              </div>
-            </div>
-          </li>
 
-          <li class="nav-item {{ request()->is('admin/dashbaord') ? 'active' : ' ' }}">
-            <a class="nav-link" href="{{url('admin/dashboard')}}">
-              <i class="fa fa-home menu-icon"></i>
-              <span class="menu-title">Dashboard</span>
-            </a>
-          </li>
-                                              {{-- blogs --}}
-          <li class="nav-item d-none d-lg-block btn {{ request()->is('admin/blog') || request()->is('admin/blog/create') ? 'active' : '' }}">
-            <a class="nav-link" data-toggle="collapse" href="#blogs" aria-expanded="false" aria-controls="blogs">
-              <i class="fab fa-blogger-b"></i>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <span class="menu-title">Blogs</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="blogs">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item">
-                   <a class="nav-link {{ request()->is('admin/blog') ? "active" : "" }}" href="{{url('admin/blog')}}">Blog list</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link {{ request()->is('admin/blog/create') ? "active" : "" }}" href="{{url('admin/blog/create')}}">Blog Add</a>
-               </li>
-              </ul>
-            </div>
-          </li>
+        <ul class="nav">
+
+            <li class="nav-item nav-profile">
+                <div class="nav-link">
+                    <div class="profile-image">
+                        <img src="{{asset('backend/images/logo.svg')}}" alt="image"/>
+                    </div>
+                    <div class="profile-name">
+                        <p class="name" style="text-transform: uppercase">
+                        {{ Auth::user()->name }}
+                        </p>
+                        <p class="designation" style="text-transform: uppercase">
+                        {{ Auth::user()->role->name}}
+                        </p>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item {{  request()->is('admin/dashbord') ? 'active' : ''}}">
+                <a class="nav-link" href="{{url('admin/dashboard')}}">
+                    <i class="fa fa-home menu-icon"></i>
+                    <span class="menu-title">Dashboard</span>
+                </a>
+            </li>
+
+            {{-- blogs --}}
+
+            <li class="nav-item d-none d-lg-block btn {{ request()->is('admin/blog') || request()->is('admin/blog/create') ?  "active" : '' }}">
+
+                <a class="nav-link" data-toggle="collapse" href="#blogs" aria-expanded="false" aria-controls="blogs">
+
+                <i class="fab fa-blogger-b" style="font-size: 20px"></i>
+                &nbsp;
+                <span class="menu-title">Blogs</span>
+
+                <i class="menu-arrow"></i>
+
+                </a>
+
+                <div class="collapse" id="blogs">
+
+                <ul class="nav flex-column sub-menu">
+
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->is('admin/blog') ? "active" : "" }}" href="{{url('admin/blog')}}">Blog list</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->is('admin/blog/create') ? "active" : "" }}" href="{{url('admin/blog/create')}}">Blog Add</a>
+                    </li>
+
+                </ul>
+
+                </div>
+
+            </li>
 
                                             {{-- products menu --}}
 
           <li class="nav-item d-none d-lg-block btn">
             <a class="nav-link" data-toggle="collapse" href="#products" aria-expanded="false" aria-controls="products">
-              <i><img src="{{asset('backend/images/product.png')}}" style="width:20px ; height:auto" alt=""> </i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <i class="ti-bag" style="font-size: 20px"></i>&nbsp;
               <span class="menu-title">Products</span>
               <i class="menu-arrow"></i>
             </a>
@@ -514,16 +529,18 @@
               </div>
             </li> --}}
 
-                                            {{-- websetting --}}
-            {{-- <li class="nav-item {{ request()->is('admin/websetting') ? 'active' : ' ' }}">
-              <a class="nav-link" href="{{url('admin/websetting/1')}}">
-                <i class="fa fa-cog"></i>&nbsp;&nbsp;&nbsp;&nbsp;
-                <span class="menu-title">Web Setting</span>
-              </a>
-            </li> --}}
-          {{-- {{ request()->is('admin/blog') ? 'active' : null}} --}}
+            {{-- banners --}}
+            <li class="nav-item d-none d-lg-block btn">
+                <a class="nav-link"  href="{{url('admin/banner')}}" >
+                  <i class="ti-id-badge" style="font-size: 25px"></i>&nbsp;
+                  <span class="menu-title">Banners</span>
+                </a>
+
+            </li>
+
 
         </ul>
+
       </nav>
       <!-- partial -->
       <div class="main-panel">
