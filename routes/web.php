@@ -3,6 +3,7 @@
 use Facade\FlareClient\Api;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Artisan;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,7 +28,9 @@ Route::group(['prefix' => '/admin'],function(){
         Auth::routes();
 
 
+
     Route::middleware(['auth', 'admin'])->group(function () {
+
 
 
 
@@ -41,7 +44,7 @@ Route::group(['prefix' => '/admin'],function(){
             Route::post('update-current-pwd', [App\Http\Controllers\Admin\AdminController::class,'updatecurrentpwd']);
 
             Route::post('update-admin-details',[App\Http\Controllers\Admin\AdminController::class,'updatedetails']);
-            
+
             // banners
             Route::resource('banner', App\Http\Controllers\Admin\BannerController::class);
 
@@ -88,6 +91,15 @@ Route::group(['prefix' => '/admin'],function(){
     });
 
 });
+
+Route::get('/migrate', function () {
+    Artisan::call('migrate', [
+       '--force' => true
+    ]);
+
+    return 'Migrate Database Successfully!';
+});
+
 
 // frontend route start
 
