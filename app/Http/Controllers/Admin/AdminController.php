@@ -19,7 +19,7 @@ class AdminController extends Controller
     public function dashboard()
     {
         $user       =   User::all();
-        $product    =   Product::all();
+        $product    =   Product::where('status','publish');
         $customer   =   Customer::all();
         $seller     =   Seller::all();
 
