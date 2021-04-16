@@ -92,13 +92,13 @@ Route::group(['prefix' => '/admin'],function(){
 
 });
 
-Route::get('/migrate', function () {
-    Artisan::call('migrate', [
-       '--force' => true
-    ]);
+// Route::get('/migrate', function () {
+//     Artisan::call('migrate', [
+//        '--force' => true
+//     ]);
 
-    return 'Migrate Database Successfully!';
-});
+//     return 'Migrate Database Successfully!';
+// });
 
 
 // frontend route start
