@@ -52,8 +52,8 @@
           {{-- <p class="page-description">Add class <code>.sortable-table</code></p> --}}
           <div class="row">
             <div class="table-sorter-wrapper col-lg-12 table-responsive">
-              <table id="order-listing" class="table dataTable no-footer" role="grid" aria-describedby="order-listing_info">
 
+              <table id="order-listing" class="table dataTable no-footer" role="grid" aria-describedby="order-listing_info">
 
                 <thead>
                   <tr>
@@ -71,42 +71,56 @@
                 </thead>
 
                 <tbody>
-                  @foreach ($product as $item)
-            <tr>
-                    <td>{{$item->id}}</td>
-                    <td><img src="{{$item->image ? asset('backend/images/products/'.$item->product_image) : '' }}" alt=""></td>
-                    <td>{{$item->name}}</td>
-                    <td>{{$item->category_id ? $item->category->title : 'Uncategories'}}</td>
-                    <td>{{$item->brand_id ? $item->brand->title : "Uncategories"}}</td>
-                    <td style="text-transform: uppercase">{{$item->user->name}}</td>
-                    <td style="text-transform: uppercase"><label class="badge {{$item->status == 'publish' ? 'badge-info' : 'badge-warning'}} badge-pill">{{$item->status == 'publish' ? 'Publish' : 'Draft'}}</label></td>
-                    <td>
-                      <a href="{{url('shop/'.$item->slug)}}" style="padding:10px" target="_blank" class="btn btn-md btn-success btn-icon-text">
-                        <i class="ti-eye"></i>&nbsp;
-                          View
-                      </a>
-                    </td>
-                    <td>
-                      <a href="{{url('admin/product/'.$item->id."/edit")}}" style="padding:10px" class="btn btn-md btn-primary btn-icon-text">
-                        <i class="ti-pencil-alt"></i>&nbsp;
-                        Edit
-                      </a>
-                    </td>
-                    <td>
-                        <form action="{{url('admin/product/'.$item->id) }}" method="POST">
-                          @csrf
-                          @method('DELETE')
-                          <button type="submit" class="btn btn-md btn-danger btn-icon-text" style="padding:10px">
-                            <i class="ti-trash"></i>&nbsp;
-                            Delete
-                          </button>
-                        </form>
-                    </td>
-                  </tr>
+
+                  @foreach ($products as $product)
+
+                    <tr>
+
+                        <td>{{$product->id}}</td>
+                        <td><img src="{{$product->product_image ?  asset('backend/images/products/'.$product->product_image) : ''  }}" alt="Product Image" ></td>
+                        <td>{{$product->name}}</td>
+                        <td>{{$product->category_id ? $product->category->title : 'Uncategories'}}</td>
+                        <td>{{$product->brand_id ? $product->brand->title : "Uncategories"}}</td>
+                        <td style="text-transform: uppercase">{{$product->user->name}}</td>
+
+                        <td style="text-transform: uppercase">
+                            <label class="badge {{$product->status == 'publish' ? 'badge-info' : 'badge-warning'}} badge-pill">
+                                {{$product->status == 'publish' ? 'Publish' : 'Draft'}}</label>
+                        </td>
+
+                        <td>
+                            <a href="{{url('shop/'.$product->slug)}}" style="padding:10px" target="_blank" class="btn btn-md btn-success btn-icon-text">
+                                <i class="ti-eye"></i>&nbsp;
+                                View
+                            </a>
+                        </td>
+
+                        <td>
+                        <a href="{{url('admin/product/'.$product->id."/edit")}}" style="padding:10px" class="btn btn-md btn-primary btn-icon-text">
+                            <i class="ti-pencil-alt"></i>&nbsp;
+                            Edit
+                        </a>
+                        </td>
+
+                        <td>
+                            <form action="{{url('admin/product/'.$product->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-md btn-danger btn-icon-text" style="padding:10px">
+                                <i class="ti-trash"></i>&nbsp;
+                                Delete
+                            </button>
+                            </form>
+                        </td>
+
+                    </tr>
+
                   @endforeach
+
                 </tbody>
 
               </table>
+
             </div>
           </div>
         </div>

@@ -28,13 +28,13 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $brand      =Brand::all();
+        $brand      =   Brand::all();
 
-        $category   =Category::all();
+        $category   =   Category::all();
 
-        $product    =Product::all();
+        $products    =   Product::all();
 
-        return view('admin.product.list',compact('brand','category','product'));
+        return view('admin.product.list',compact('brand','category','products'));
     }
 
     /**
@@ -198,7 +198,6 @@ class ProductController extends Controller
 
         $brand          =        Brand::with('products')->get();
 
-        // $category   =Category::all();
         $category           =   Category::with('subcategory')->where('parent_id',NULL)->get();
 
         $product_grallery   =   Product::find($id)->product_grallery;
@@ -206,31 +205,6 @@ class ProductController extends Controller
         $product_documents  =   Product::find($id)->document_product;
 
         $variations         =   Variation::all();
-
-
-        // foreach($category as $item){
-
-        //     printf($item->title."<br>");
-
-        //     if (count($item->subcategory) > 0) {
-        //         # code...
-        //         foreach($item->subcategory as $sub)
-        //         {
-        //             printf("=".$sub->title."<br>");
-
-        //             if (count($sub->subcategory) > 0) {
-        //                 # code...
-        //                 foreach($sub->subcategory as $subbb)
-        //                 {
-        //                     printf("==".$subbb->title."<br>");
-        //                 }
-        //             }
-        //         }
-        //     }
-
-
-        // }
-        // dd();
 
         return view('admin.product.edit',compact(
             'product',

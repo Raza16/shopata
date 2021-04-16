@@ -63,15 +63,15 @@
                   <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-label="Actions: activate to sort column ascending" style="width: 61px;">Delete</th></tr>
             </thead>
             <tbody>
-                @foreach ($category as $rows)
+                @foreach ($categories as $category)
 
             <tr role="row" class="odd">
-                  <td class="sorting_1">{{$rows->id}}</td>
-                  <td>{{$rows->title}}</td>
-                  <td>{{$rows->slug}}</td>
-                  <td style="text-transform:uppercase">{{$rows->user->name}}</td>
+                  <td class="sorting_1">{{$category->id}}</td>
+                  <td>{{$category->title}}</td>
+                  <td>{{$category->slug}}</td>
+                  <td style="text-transform:uppercase">{{$category->user->name}}</td>
                   <td>
-                      <a type="button" href="{{url('admin/category/'.$rows->id.'/edit')}}" style="padding:10px" class="btn btn-md btn-primary btn-icon-text">
+                      <a type="button" href="{{url('admin/category/'.$category->id.'/edit')}}" style="padding:10px" class="btn btn-md btn-primary btn-icon-text">
                         <i class="ti-pencil-alt"></i>&nbsp;
                         Edit
                           {{-- <i class="fas fa-pencil-alt btn-icon-append"></i> --}}
@@ -79,7 +79,7 @@
                   </td>
                   <td>
 
-                        <form action="{{ url('admin/category/'.$rows->id) }}" method="POST">
+                        <form action="{{ url('admin/category/'.$category->id) }}" method="POST">
                           @csrf
                           @method('DELETE')
                           <button type="submit" style="padding:10px" class="btn btn-md btn-danger btn-icon-text" style="padding:10px">

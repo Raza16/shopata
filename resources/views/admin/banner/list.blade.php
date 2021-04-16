@@ -101,7 +101,7 @@
 
                                 <td><img src="{{$banner->image ? asset("backend/images/banner/".$banner->image) : ''}}" alt=""></td>
 
-                                <td style="text-transform: uppercase">{{$banner->title ? $banner->title : $banner->status}}</td>
+                                <td style="text-transform: uppercase">{{$banner->status}}</td>
 
                                 <td>
 

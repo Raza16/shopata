@@ -70,22 +70,20 @@
                               <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-label="Purchased On: activate to sort column ascending" style="width: 103px;">Brand</th>
                               <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-label="Purchased On: activate to sort column ascending" style="width: 103px;">User</th>
                               <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-label="Purchased On: activate to sort column ascending" style="width: 103px;">Created At</th>
-                              {{-- <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-label="Purchased On: activate to sort column ascending" style="width: 103px;"  >Role</th>
-                              <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-label="Purchased On: activate to sort column ascending" style="width: 103px;">User</th> --}}
                               <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 65px;">Edit</th>
                               <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" aria-label="Actions: activate to sort column ascending" style="width: 61px;">Delete</th></tr>
                         </thead>
 
                         <tbody>
-                            @foreach ($brand as $rows)
+                            @foreach ($brands as $brand)
 
                           <tr role="row" class="odd">
-                              <td class="sorting_1">{{$rows->id}}</td>
-                              <td>{{$rows->title}}</td>
-                              <td style="text-transform:uppercase">{{$rows->user->name}}</td>
-                              <td>{{$rows->created_at->format('Y-m-d')}}</td>
+                              <td class="sorting_1">{{$brand->id}}</td>
+                              <td>{{$brand->title}}</td>
+                              <td style="text-transform:uppercase">{{$brand->user->name}}</td>
+                              <td>{{$brand->created_at->format('Y-m-d')}}</td>
                               <td>
-                                  <a type="button" href="{{url('admin/brand/'.$rows->id.'/edit')}}" style="padding:10px" class="btn btn-md btn-primary btn-icon-text">
+                                  <a type="button" href="{{url('admin/brand/'.$brand->id.'/edit')}}" style="padding:10px" class="btn btn-md btn-primary btn-icon-text">
                                     <i class="ti-pencil-alt"></i>&nbsp;
                                     Edit
                                       {{-- <i class="fas fa-pencil-alt btn-icon-append"></i> --}}
@@ -93,7 +91,7 @@
                                   </a>
                               </td>
                               <td>
-                                    <form action="{{ url('admin/brand/'.$rows->id) }}" method="POST">
+                                    <form action="{{ url('admin/brand/'.$brand->id) }}" method="POST">
                                       @csrf
                                       @method('DELETE')
                                       <button type="submit" style="padding:10px" class="btn btn-md btn-danger btn-icon-text delete-brand" style="padding:10px">
