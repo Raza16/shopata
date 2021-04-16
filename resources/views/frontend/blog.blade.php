@@ -8,7 +8,7 @@
   @endsection
 
 @section('content')
-  
+
 <main class="bg_gray" style="margin-bottom: 390px;">
   <div class="container margin_30">
     {{-- <div class="page_header">
@@ -100,11 +100,11 @@
             <!-- /article -->
           </div> --}}
           <!-- /col -->
-        
+
           <!-- /col -->
-       
+
           <!-- /col -->
-         
+
           <!-- /col -->
         </div>
         <!-- /row -->
@@ -161,16 +161,16 @@
           <div class="widget-title">
             <h4>Categories</h4>
           </div>
-       
+
           <ul class="cats">
             @foreach ($blog as $item)
             <li>
               <a href="#">
                   {{$item->category->title ?? ''}}
               </a>
-            </li> 
-            @endforeach    
-            
+            </li>
+            @endforeach
+
           </ul>
         </div>
         <!-- /widget -->

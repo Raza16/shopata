@@ -5,18 +5,17 @@
 @section('title','Blog Add')
 
 @section('pageheadlinks')
-      {{-- <script src="{{asset('backend/ckeditorfullimage/ckeditor.js')}}"></script> --}}
-      {{-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"> --}}
-      {{-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> --}}
-      {{-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> --}}
-
-      <!-- include summernote css/js -->
-      {{-- <link rel="stylesheet" href="{{asset('backend/vendors/summernote/dist/summernote-bs4.css')}}"> --}}
-      {{-- <script src="https://cdn.ckeditor.com/ckeditor5/25.0.0/inline/ckeditor.js"></script> --}}
-      {{-- <script src="https://cdn.ckeditor.com/ckeditor5/25.0.0/balloon/ckeditor.js"></script> --}}
-      {{-- <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script> --}}
       <script src="{{asset('backend/plugins/ckeditor/ckeditor.js')}}"></script>
-
+      <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+      <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+      <style>
+        .select2-container--default .select2-selection--single .select2-selection__rendered{
+          color: #444;
+          line-height: 18px;
+          margin-top: -9px;
+          margin-left: -20px
+        }
+      </style>
 @endsection
 
 @section('content')
@@ -86,7 +85,7 @@
                         <div class="card">
                             <div class="card-body">
                             <h4 class="card-title">Blog Image</h4>
-                            <input type="file" class="dropify" name="image" accept="image/*" data-allowed-file-extensions="png jpg jpeg" />
+                            <input type="file" class="dropify" name="image" accept="image/*" data-allowed-file-extensions="png jpg jpeg webp" />
                             </div>
                         </div>
                     </div>
@@ -95,13 +94,13 @@
 
                         <label>Category</label>
 
-                        <select name="category_id" id="" class="form-control">
+                        <select name="category_id" class="form-control select2" id="parentcat" >
 
                             <option value="" selected disabled>Category</option>
 
                             @foreach ($category as $item)
 
-                            <option value="{{$item->id}}">{{$item->title}}</option>
+                                <option value="{{$item->id}}">{{$item->title}}</option>
 
                             @endforeach
 
@@ -139,6 +138,20 @@
         var slug = trims.replace(/[^a-z0-9]/gi, '-').replace(/-+/g, '-').replace(/^-|-$/g, '')
         $("#slug").val(slug.toLowerCase());
       });
+    </script>
+
+    <script>
+
+        $('#parentcat').select2({
+            selectOnClose: true
+        });
+
+    </script>
+
+    <script>
+
+        $(".select2").select2();
+
     </script>
 
     <script>

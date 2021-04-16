@@ -14,12 +14,15 @@
 
                         @foreach ($banners as $banner)
 
-                        <div class="owl-slide cover" style="background-image: url('{{$banner->image ? asset('backend/images/banner/'.$banner->image) : ''}}')">
-							<div class="opacity-mask d-block align-items-center" >
-                            </div>
-                        </div>
+                                <div class="owl-slide cover" style="background-image: url('{{$banner->image ? asset('backend/images/banner/'.$banner->image) : ''}}')">
 
-                        @endforeach
+                                    <div class="opacity-mask d-block align-items-center" >
+                                    </div>
+
+                                </div>
+
+                       @endforeach
+
 
 
 
@@ -118,34 +121,76 @@
                             @if ($item->status == 'publish')
 
                                 <div class="col-6 col-md-4 col-xl-3">
+
                                     <div class="grid_item">
+
                                             <figure>
                                                     @if($item->sale_price)
                                                     <span class="ribbon off">-30%</span>
                                                     @endif
+
                                                     <a href="{{$item->type =='simple' ? url('shop/'.$item->slug) : url('digital') }}">
                                                             <img class="img-fluid lazy pmv" style="image-size:contain; height:200px; width:auto; margin:auto; padding:auto;"  src="{{$item->product_image ? asset('backend/images/products/'.$item->product_image) : asset('frontend/img/product_placeholder.jpg') }}" data-src="{{$item->product_image ? asset('backend/images/products/'.$item->product_image) : asset('frontend/img/product_placeholder.jpg') }}" alt="">
 
                                                     </a>
+
                                                     @if($item->sale_price)
+
                                                     <div data-countdown="2019/05/15" class="countdown"></div>
+
                                                     @endif
                                             </figure>
-                                            <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
-                                            <a href="{{$item->type =='simple' ? url('shop/'.$item->slug) : url('digital') }}">
-                                                    <h3>{{$item->name}}</h3>
-                                            </a>
-                                            <div class="price_box">
-                                                    @if(!empty($item->sale_price))
-                                                    <span class="new_price">$48.00</span>
-                                                    @endif
-                                                    <span class="{{$item->sale_price ? 'old_price' : 'new_price'}}">${{$item->regular_price}}</span>
+
+                                            <div class="rating">
+                                                <i class="icon-star voted"></i>
+                                                <i class="icon-star voted"></i>
+                                                <i class="icon-star voted"></i>
+                                                <i class="icon-star voted"></i>
+                                                <i class="icon-star"></i>
                                             </div>
+
+                                            <a href="{{$item->type =='simple' ? url('shop/'.$item->slug) : url('digital') }}">
+
+                                                    <h3>{{$item->name}}</h3>
+
+                                            </a>
+
+                                            <div class="price_box">
+
+                                                    @if(!empty($item->sale_price))
+
+                                                    <span class="new_price">$48.00</span>
+
+                                                    @endif
+
+                                                    <span class="{{$item->sale_price ? 'old_price' : 'new_price'}}">${{$item->regular_price}}</span>
+
+                                            </div>
+
                                             <ul>
-                                                    <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
-                                                    <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to compare"><i class="ti-control-shuffle"></i><span>Add to compare</span></a></li>
-                                                    <li><a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a></li>
+                                                    <li>
+                                                        <a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to favorites">
+                                                            <i class="ti-heart"></i>
+                                                            <span>Add to favorites</span>
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to compare">
+                                                            <i class="ti-control-shuffle"></i>
+                                                            <span>Add to compare</span>
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a href="#0" class="tooltip-1" data-toggle="tooltip" data-placement="left" title="Add to cart">
+                                                            <i class="ti-shopping-cart"></i>
+                                                            <span>Add to cart</span>
+                                                        </a>
+                                                    </li>
+
                                             </ul>
+
                                     </div>
                                     <!-- /grid_item -->
                                 </div>
@@ -281,7 +326,7 @@
 					</div><!-- /container -->
 				</div>
 				<!-- /bg_gray -->
-				{{-- @if($blog)
+				@if($blog)
 
 					<div class="container margin_60_35">
 						<div class="main_title">
@@ -293,7 +338,7 @@
 							@foreach ($blog as $item)
 
 								<div class="col-lg-6">
-									<a class="box_news" href="{{url('blog')}}">
+									<a class="box_news" href="{{url('blog/'.$item->slug)}}" target="_blank">
 										<figure>
 											<img src="{{asset('backend/images/blogs/feature_image/'.$item->image)}}" data-src="backend/images/blogs/feature_image/{{$item->image}}" alt="" width="400" height="266" class="lazy">
 											<figcaption><strong>{{$item->created_at->format('d')}}</strong>{{$item->created_at->format('M')}}</figcaption>
@@ -313,7 +358,7 @@
 						</div>
 						<!-- /row -->
 					</div>
-				@endif --}}
+				@endif
 		<!-- /container -->
 		</main>
 

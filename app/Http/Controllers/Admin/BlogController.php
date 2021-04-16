@@ -96,8 +96,8 @@ class BlogController extends Controller
     public function edit($slug)
     {
         //
-        $category   =Category::all();
-        $blog = Blog::where('slug',$slug)->first();
+        $category   =   Category::all();
+        $blog       =   Blog::where('slug',$slug)->first();
         return view('admin.blogs.edit',compact('blog','category'));
     }
 

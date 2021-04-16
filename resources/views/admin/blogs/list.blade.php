@@ -64,7 +64,7 @@
               <tbody>
                 @foreach ($blog as $rows)
 
-                  <tr role="row" class="odd">
+                  <tr role="row" class="odd" >
                         <td class="sorting_1">{{$rows->id}}</td>
                         <td>{{$rows->title}}</td>
                         <td>{{$rows->slug}}</td>

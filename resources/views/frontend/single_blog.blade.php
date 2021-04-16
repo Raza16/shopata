@@ -8,6 +8,7 @@
   @section('content')
   <main class="bg_gray" style="margin-bottom: 390px;">
 		<div class="container margin_30">
+
 			{{-- <div class="page_header">
 				<div class="breadcrumbs">
 					<ul>
@@ -17,6 +18,7 @@
 					</ul>
 				</div>
 			</div> --}}
+
 			<!-- /page_header -->
 			<div class="row">
 				<div class="col-lg-9">
@@ -38,7 +40,7 @@
 						<!-- /post -->
 					</div>
 					<!-- /single-post -->
-
+{{--
 					<div id="comments">
 						<h5>Comments</h5>
 						<ul>
@@ -110,7 +112,7 @@
 								</div>
 							</li>
 						</ul>
-					</div>
+					</div> --}}
 
 					<hr>
 
@@ -138,7 +140,7 @@
 					<div class="form-group">
 						<button type="submit" id="submit2" class="btn_1 add_bottom_15">Submit</button>
 					</div>
-					
+
 				</div>
 				<!-- /col -->
 
@@ -174,14 +176,14 @@
 							<h4>Categories</h4>
 						</div>
 						<ul class="cats">
-							@foreach ($latest	 as $item)
+							@foreach ($latest as $item)
 							<li>
 								<a href="#">
 										{{$item->category->title ?? ''}}
 								</a>
-							</li> 
-							@endforeach    
-							
+							</li>
+							@endforeach
+
 						</ul>
 					</div>
 					<!-- /widget -->
@@ -218,7 +220,7 @@
 							var query =$(this).val();
 							console.log(query);
 					});
-				
+
 				});
 
 

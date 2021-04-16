@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\DB;
 class ShopController extends Controller
 {
     //index page
+
    public function home()
    {
 
@@ -26,10 +27,11 @@ class ShopController extends Controller
        $product                = Product::all()->take(20);
        $product_digital        = Product::where('type','digital')->get();
        $product_featured       = Product::all()->take(8);
-       $banners                = Banner::select('image')->get();
+       $banners                = Banner::select('image')->where('status','active')->get();
     //    $setting     = Setting::where('id',1);
 
        return view('frontend.index',compact('blog','product','product_featured','product_digital','banners'));
+
    }
 
     // shop page
