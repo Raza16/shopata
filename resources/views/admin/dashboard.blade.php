@@ -39,7 +39,6 @@
                         </div>
                         <div class="statistics-item">
                         <p>
-                            {{-- <i class="ti-user" style="font-size: 16px"></i>&nbsp; --}}
                             <i class="icon-people" style="font-size: 20px"></i>&nbsp;
                             Customers
                         </p>

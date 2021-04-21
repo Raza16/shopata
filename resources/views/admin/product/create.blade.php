@@ -32,13 +32,13 @@
                         <label for="productname"><h5>Product Name</h5></label>
                         <input type="text" class="form-control" id="name" name="name" placeholder="Product Name" value="{{old('name')}}">
                         @error('title')
-                        <p><small class="text-danger">{{ $errors->first('title') }}</small></p>
-                      @enderror
+                            <p><small class="text-danger">{{ $errors->first('title') }}</small></p>
+                        @enderror
                     </div>
 
                     <div class="form-group">
                         <label for="slug"><h5>slug</h5></label>
-                        <input type="text" class="form-control" id="slug" name="slug" placeholder="slug" value="{{old('slug')}}" readonly>
+                        <input type="text" class="form-control" id="slug" name="slug" placeholder="slug" value="{{old('slug')}}" readonly required>
                         @error('slug')
                           <p><small class="text-danger">{{ $errors->first('slug') }}</small></p>
                         @enderror
@@ -309,7 +309,7 @@
                                     </select>
                                   </div>
                                 </div>
-                                  {{-- product brand end --}}
+                                {{-- product brand end --}}
                                 <hr>
                                 {{-- product categories --}}
                                 <div class="form-group">
@@ -329,7 +329,7 @@
                                   </div>
 
                                 </div>
-                                  {{-- product category end --}}
+                                {{-- product category end --}}
                                 <hr>
                                   {{-- product grallery image --}}
                                   <div class="form-group">
@@ -361,6 +361,8 @@
             <button type="submit" name="submit" class="col-12 btn btn-info btn-fw"><i class="icon-plus"></i>&nbsp;Submit</button>
         </div>
 
+        <label for="" style="text"></label>
+
       </form>
 
     </div>
@@ -372,7 +374,7 @@
     <script>
         $('#add-document').on('click', function(){
             var tr = '<tr>'+
-                    // '<td style="padding-right:10px;"><input type="text" name="title[]" class="form-control" placeholder="Document Name"/></td>'+
+                    '<td style="padding-right:10px;"><input type="text" name="title[]" class="form-control" placeholder="Document Name"/></td>'+
                     '<td style="margin:10px"><input type="file" name="document[]" class="form-control"/></td>'+
                     '<td><button type="button" class="delete-row btn btn-default"><i style="color:red;" class="fa fa-trash"></i></button></td>'+
                     '</tr>';

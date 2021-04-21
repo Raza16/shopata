@@ -109,28 +109,51 @@ class ProductController extends Controller
                         $product->product_image = $name;
                     }
 
-                    if($product->save()){
+                    // if($product->save()){
 
-                        foreach ($request->gallery_image ? : [] as $file) {
-                            $filename =  time().'_'.$file->getClientOriginalName();
-                            $destinationPath = public_path('backend/images/product_gallery');
-                            $filePath = $destinationPath. "/".  $filename;
-                            $file->move($destinationPath, $filename);
-                            DB::table('product_gralleries')->insert([
-                                'product_id' => $product->id,
-                                'image' => $filename
-                            ]);
-                        }
+                    //     foreach ($request->gallery_image ? : [] as $file) {
+                    //         $filename =  time().'_'.$file->getClientOriginalName();
+                    //         $destinationPath = public_path('backend/images/product_gallery');
+                    //         $filePath = $destinationPath. "/".  $filename;
+                    //         $file->move($destinationPath, $filename);
+                    //         DB::table('product_gralleries')->insert([
+                    //             'product_id' => $product->id,
+                    //             'image' => $filename
+                    //         ]);
+                    //     }
 
-                        foreach ($request->document ? : [] as $file) {
+                        // foreach ($request->document ? : [] as $file) {
 
-                            $filename =  time().'_'.$file->getClientOriginalName();
-                            $destinationPath = public_path('/backend/product_document');
-                            $filePath = $destinationPath. "/". $filename;
-                            $file->move($destinationPath, $filename);
+                        //     $filename =  time().'_'.$file->getClientOriginalName();
+                        //     $destinationPath = public_path('/backend/product_document');
+                        //     $filePath = $destinationPath. "/". $filename;
+                        //     $file->move($destinationPath, $filename);
+                        //     DB::table('product_documents')->insert([
+                        //         'product_id' => $product->id,
+                        //         'document' => $filename,
+                        //         // 'name'      => $request->title
+                        //     ]);
+                        // }
 
-                        }
-                    }
+
+
+                        
+
+                        dd();
+
+                        // foreach ($request->document as ) {
+
+                        //     $filename =  time().'_'.$file->getClientOriginalName();
+                        //     $destinationPath = public_path('/backend/product_document');
+                        //     $filePath = $destinationPath. "/". $filename;
+                        //     $file->move($destinationPath, $filename);
+                        //     DB::table('product_documents')->insert([
+                        //         'product_id' => $product->id,
+                        //         'document' => $filename,
+                        //         // 'name'      => $request->title
+                        //     ]);
+                        // }
+                    // }
 
                         # code...
 
