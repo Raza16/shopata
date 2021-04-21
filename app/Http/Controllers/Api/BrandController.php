@@ -12,7 +12,7 @@ class BrandController extends Controller
     public function index()
     {
         # code...
-        $brands =   Brand::all();
+        $brands =   Brand::paginate(12);
 
         $response["error"]      =   "false";
         $response["code"]       =   "200";

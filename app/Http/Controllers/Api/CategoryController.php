@@ -13,7 +13,7 @@ class CategoryController extends Controller
     public function index()
     {
         # code...
-        $categories =   Category::all();
+        $categories =   Category::paginate(12);
 
         $response["error"]  =   "false";
         $response["code"]   =   "200";
