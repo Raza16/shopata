@@ -28,7 +28,9 @@ Route::fallback(function(){
 
             // Public Api
 Route::get('brands', [App\Http\Controllers\Api\BrandController::class,'index']);
-Route::get('brands/{id}', [App\Http\Controllers\Api\BrandController::class,'show']);
+Route::get('brand/{id}', [App\Http\Controllers\Api\BrandController::class,'show']);
 
+Route::get('categories', [App\Http\Controllers\Api\CategoryController::class,'index']);
+Route::get('category/{id}', [App\Http\Controllers\Api\CategoryController::class,'show']);
 
 

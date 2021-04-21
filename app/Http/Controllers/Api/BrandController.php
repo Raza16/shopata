@@ -14,15 +14,15 @@ class BrandController extends Controller
         # code...
         $brands =   Brand::all();
 
-        $response["error"]  =   "false";
-        $response["code"]   =   "200";
-        $response["message"] =   "Operation Successfully.";
-        $response["url"]    =   url('brands');
-        $response["brands"] =   $brands;
+        $response["error"]      =   "false";
+        $response["code"]       =   "200";
+        $response["message"]    =   "Operation Successfully.";
+        $response["url"]        =   url('api/brands');
+        $response["brands"]     =   $brands;
 
         if(is_null($brands)){
 
-            return response()->json("Record not Found",404);
+            return response()->json("Record not Found!",404);
 
         }
 
@@ -33,15 +33,15 @@ class BrandController extends Controller
     public function show($id)
     {
         # code...
-            $brands     =   Brand::find($id);
+            $brand     =   Brand::find($id);
 
-            $response["error"]  =   "false";
-            $response["code"]   =   "200";
-            $response["message"] =   "Operation Successfully.";
-            $response["url"]    =   url('brands/'.$id);
-            $response["brands"] =   $brands;
+            $response["error"]      =   "false";
+            $response["code"]       =   "200";
+            $response["message"]    =   "Operation Successfully.";
+            $response["url"]        =   url('api/brand/'.$id);
+            $response["brand"]      =   $brand;
 
-            if(is_null($brands)){
+            if(is_null($brand)){
 
                 return response()->json("Record not Found!",404);
 
@@ -50,4 +50,5 @@ class BrandController extends Controller
             return response()->json($response,200);
 
     }
+
 }
