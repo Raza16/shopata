@@ -17,7 +17,7 @@ resources/views/admin/product/layouts/editmulti.blade.php
 resources/views/admin/product/layouts/multi.blade.php
 #api
 # app/Http/Controllers/Api
-app/Http/Controllers/Api/CategoryController.php
+# app/Http/Controllers/Api/CategoryController.php
 
 # migrations
 # database/migrations/2021_04_13_131534_create_mail_subscriptions_table.php

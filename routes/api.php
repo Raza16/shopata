@@ -21,16 +21,22 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 });
 
-Route::fallback(function(){
-    return response()->json([
-        'message' => 'This url not Found'], 404);
-});
 
-            // Public Api
-Route::get('brands', [App\Http\Controllers\Api\BrandController::class,'index']);
-Route::get('brand/{id}', [App\Http\Controllers\Api\BrandController::class,'show']);
 
-Route::get('categories', [App\Http\Controllers\Api\CategoryController::class,'index']);
-Route::get('category/{id}', [App\Http\Controllers\Api\CategoryController::class,'show']);
+    Route::fallback(function(){
+        return response()->json([
+            'message' => 'This url not Found !'], 404);
+    });
+
+
+                // Public Api
+
+    Route::get('brands', [App\Http\Controllers\Api\BrandController::class,'index']);
+    Route::get('brand/{id}', [App\Http\Controllers\Api\BrandController::class,'show']);
+
+    Route::get('categories', [App\Http\Controllers\Api\CategoryController::class,'index']);
+    Route::get('category/{id}', [App\Http\Controllers\Api\CategoryController::class,'show']);
+
+
 
 
