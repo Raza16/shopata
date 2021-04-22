@@ -22,7 +22,7 @@ class CategoryController extends Controller
         $response["categories"] =   $categories;
 
         if(is_null($categories)){
-            return response()->json("Record not Found!",404);
+            return response()->json("Categories not Found!",404);
         }
 
         return response()->json($response,200);
@@ -40,7 +40,7 @@ class CategoryController extends Controller
             $response["category"] =   $category;
 
             if(is_null($category)){
-                return response()->json("Record not Found!",404);
+                return response()->json("Category not Found!",404);
             }
 
             return response()->json($response,200);

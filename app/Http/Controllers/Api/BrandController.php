@@ -22,7 +22,7 @@ class BrandController extends Controller
 
         if(is_null($brands)){
 
-            return response()->json("Record not Found!",404);
+            return response()->json("Brands not Found!",404);
 
         }
 
@@ -43,7 +43,7 @@ class BrandController extends Controller
 
             if(is_null($brand)){
 
-                return response()->json("Record not Found!",404);
+                return response()->json("Brand not Found!",404);
 
             }
 

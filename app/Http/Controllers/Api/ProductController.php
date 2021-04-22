@@ -21,7 +21,7 @@ class ProductController extends Controller
         $response["products"]   =   $products;
 
         if(is_null($products)){
-            return response()->json("Record not Found!",404);
+            return response()->json("Products not Found!",404);
         }
 
         return response()->json($response,200);
@@ -40,7 +40,7 @@ class ProductController extends Controller
             $response["product"]    =   $product;
 
             if(is_null($product)){
-                return response()->json("Record not Found!",404);
+                return response()->json("Product not Found!",404);
             }
 
             return response()->json($response,200);
