@@ -21,7 +21,7 @@ class BannerController extends Controller
         $response["code"]       =   "200";
         $response["message"]    =   "Operation Successfully.";
         $response["url"]        =   url('api/banners');
-        $response["banners"]     =   $banners;
+        $response["banners"]    =   $banners;
 
         if(is_null($banners)){
 
@@ -36,13 +36,14 @@ class BannerController extends Controller
     public function show($id)
     {
         # code...
+
             $banner     =   Banner::find($id);
 
             $response["error"]      =   "false";
             $response["code"]       =   "200";
             $response["message"]    =   "Operation Successfully.";
             $response["url"]        =   url('api/banner/'.$id);
-            $response["banner"]      =   $banner;
+            $response["banner"]     =   $banner;
 
             if(is_null($banner)){
 
