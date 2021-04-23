@@ -201,15 +201,18 @@
                             </div>
 
                             @if($product_documents)
-                                    @foreach($product_documents as $document)
 
+                                    @foreach($product_documents as $document)
                                         <div class="download">
+
                                             <a href="{{url('shop/download/'.$document->id)}}" class="btn_1">{{Str::limit($document->document, 20)}}</a>
+
                                         </div>
 
                                         <br>
 
                                     @endforeach
+
                             @endif
 
                         </div>
@@ -454,7 +457,7 @@
   {{-- <script>
     function myFunction() {
         var dots = document.getElementById("dots");
-        var moreText = document.getElementById("more");
+        var moreText = document.getElementById("more");s
         var btnText = document.getElementById("myBtn");
 
         if (dots.style.display === "none") {
@@ -469,6 +472,8 @@
             }
     }
   </script> --}}
+
+
 
   <script src="{{asset('frontend/js/carousel_with_thumbs.js')}}"></script>
 

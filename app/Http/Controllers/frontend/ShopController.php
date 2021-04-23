@@ -14,7 +14,9 @@ use App\Models\Admin\Product;
 use App\Models\Admin\ProductGallery;
 use App\Models\Admin\ProductDocument;
 use App\Models\Admin\Setting;
+use Exception;
 use Illuminate\Support\Facades\DB;
+use PhpParser\Node\Stmt\Catch_;
 
 class ShopController extends Controller
 {

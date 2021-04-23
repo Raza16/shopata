@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Artisan;
 
 // Auth::routes();
 
+
 Route::group(['prefix' => '/admin'],function(){
 
         //route for login admin/login
