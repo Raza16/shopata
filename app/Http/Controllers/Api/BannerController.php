@@ -20,7 +20,7 @@ class BannerController extends Controller
         $response["error"]      =   "false";
         $response["code"]       =   "200";
         $response["message"]    =   "Operation Successfully.";
-        $response["url"]        =   url('api/banner');
+        $response["url"]        =   url('api/banners');
         $response["banners"]     =   $banners;
 
         if(is_null($banners)){
