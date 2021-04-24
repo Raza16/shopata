@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Product;
+use App\Models\Admin\ProductGallery;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -12,7 +13,7 @@ class ProductController extends Controller
     public function index()
     {
         # code...
-        $products   =   Product::paginate(12);
+        $products   =   Product::with("product_grallery")->paginate(12);
 
         $response["error"]      =   "false";
         $response["code"]       =   "200";
@@ -31,7 +32,7 @@ class ProductController extends Controller
     public function show($id)
     {
         # code...
-            $product     =   Product::find($id);
+            $product     =   Product::with("product_grallery")->find($id);
 
             $response["error"]      =   "false";
             $response["code"]       =   "200";

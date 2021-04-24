@@ -10,4 +10,7 @@ class ProductGallery extends Model
     use HasFactory;
 
     protected $table ="product_gralleries";
+
+
+    
 }
