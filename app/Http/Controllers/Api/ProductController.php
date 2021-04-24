@@ -25,7 +25,7 @@ class ProductController extends Controller
         $response["message"]            =   "Operation Successfully.";
         $response["url"]                =   url('api/products');
         $response["image-url"]          =   url("backend/images/products");
-        $response["gallery-image-url"]  =   url("backend/images/products");
+        $response["gallery-image-url"]  =   url("backend/images/product_gallery");
         $response["document-url"]       =   url("backend/product_document");
         $response["products"]           =   $products;
 
