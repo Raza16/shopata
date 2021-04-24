@@ -137,7 +137,7 @@ class ProductController extends Controller
 
 
 
-                        
+
 
                         dd();
 
@@ -217,9 +217,9 @@ class ProductController extends Controller
     public function edit($id)
     {
         //
-        $product        =        Product::find($id);
+        $product            =        Product::find($id);
 
-        $brand          =        Brand::with('products')->get();
+        $brand              =        Brand::with('products')->get();
 
         $category           =   Category::with('subcategory')->where('parent_id',NULL)->get();
 
