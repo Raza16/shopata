@@ -49,10 +49,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     Route::get('categories', [App\Http\Controllers\Api\CategoryController::class,'index']);
     Route::get('category/{id}', [App\Http\Controllers\Api\CategoryController::class,'show']);
 
-
     Route::get('products', [App\Http\Controllers\Api\ProductController::class,'index']);
     Route::get('product/{id}', [App\Http\Controllers\Api\ProductController::class,'show']);
-
 
     Route::get('banners', [App\Http\Controllers\Api\BannerController::class,'index']);
     Route::get('banner/{id}', [App\Http\Controllers\Api\BannerController::class,'show']);

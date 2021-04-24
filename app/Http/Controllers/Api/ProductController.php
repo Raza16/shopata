@@ -13,7 +13,12 @@ class ProductController extends Controller
     public function index()
     {
         # code...
-        $products   =   Product::with(["product_grallery","document_product"])->paginate(12);
+        $products   =   Product::with([
+            "product_grallery",
+            "document_product",
+            "category",
+            "brand"
+            ])->paginate(12);
 
         $response["error"]      =   "false";
         $response["code"]       =   "200";
@@ -32,7 +37,7 @@ class ProductController extends Controller
     public function show($id)
     {
         # code...
-            $product     =   Product::with(["product_grallery","document_product"])->find($id);
+            $product     =   Product::with(["product_grallery","document_product","category","brand"])->find($id);
 
             $response["error"]      =   "false";
             $response["code"]       =   "200";
