@@ -24,6 +24,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
     Route::fallback(function(){
         return response()->json([
+            'error'   =>  '404',
             'message' => 'This url not Found !'], 404);
     });
 
