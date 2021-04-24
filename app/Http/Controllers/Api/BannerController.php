@@ -21,7 +21,7 @@ class BannerController extends Controller
         $response["code"]       =   "200";
         $response["message"]    =   "Operation Successfully.";
         $response["url"]        =   url('api/banners');
-        $response["image-url"]  =   url('backend/images/banner/');
+        $response["image-url"]  =   url('backend/images/banner/')."/";
         $response["banners"]    =   $banners;
 
         if(is_null($banners)){
@@ -44,7 +44,7 @@ class BannerController extends Controller
             $response["code"]       =   "200";
             $response["message"]    =   "Operation Successfully.";
             $response["url"]        =   url('api/banner/'.$id);
-            $response["image-url"]  =   url('backend/images/banner/');
+            $response["image-url"]  =   url('backend/images/banner/')."/";
             $response["banner"]     =   $banner;
 
             if(is_null($banner)){

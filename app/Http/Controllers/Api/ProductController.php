@@ -24,9 +24,9 @@ class ProductController extends Controller
         $response["code"]               =   "200";
         $response["message"]            =   "Operation Successfully.";
         $response["url"]                =   url('api/products');
-        $response["image-url"]          =   url("backend/images/products");
-        $response["gallery-image-url"]  =   url("backend/images/product_gallery");
-        $response["document-url"]       =   url("backend/product_document");
+        $response["image-url"]          =   url("backend/images/products")."/";
+        $response["gallery-image-url"]  =   url("backend/images/product_gallery/")."/";
+        $response["document-url"]       =   url("backend/product_document/")."/";
         $response["products"]           =   $products;
 
         if(is_null($products)){
@@ -46,9 +46,9 @@ class ProductController extends Controller
             $response["code"]               =   "200";
             $response["message"]            =   "Operation Successfully.";
             $response["url"]                =   url('api/product/'.$id);
-            $response["image-url"]          =   url("backend/images/products");
-            $response["gallery-image-url"]  =   url("backend/images/product_gallery");
-            $response["document-url"]       =   url("backend/product_document");
+            $response["image-url"]          =   url("backend/images/products/")."/";
+            $response["gallery-image-url"]  =   url("backend/images/product_gallery/")."/";
+            $response["document-url"]       =   url("backend/product_document/")."/";
             $response["product"]    =   $product;
 
             if(is_null($product)){
