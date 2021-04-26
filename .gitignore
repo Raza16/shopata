@@ -1,5 +1,6 @@
 .env
 .vscode/
+.idea/
 public/backend/images/brands
 public/backend/images/banner
 public/backend/images/blogs
