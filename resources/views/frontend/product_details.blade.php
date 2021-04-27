@@ -181,8 +181,6 @@
                                     {{-- <button onclick="myFunction()" id="myBtn" class="btn btn-primary">Read more</button>    --}}
                                 </div>
 
-
-
                                 @if(!empty($product->weight))
                                     <div class="col-lg-5">
                                         <h3>Specifications</h3>
