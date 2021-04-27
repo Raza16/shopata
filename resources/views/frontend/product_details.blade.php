@@ -1,6 +1,11 @@
 @extends('frontend.layouts.master')
 
 
+    @section('meta')
+        <meta name="title" content="{{$product->meta_title}}">
+        <meta name="description" content="{{$product->meta_description}}">
+    @endsection
+
   @section('title','Shop | '.$product->name)
 
   @section('pagecss')
