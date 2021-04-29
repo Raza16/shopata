@@ -273,9 +273,6 @@
 												<li>
 													<a href="{{url('track_order')}}"><i class="ti-truck"></i>Track your Order</a>
 												</li>
-												{{-- <li>
-													<a href="account.html"><i class="ti-package"></i>My Orders</a>
-												</li> --}}
 												<li>
 													<a href="{{url('account')}}"><i class="ti-user"></i>My Profile</a>
 												</li>
@@ -454,10 +451,6 @@
 
 									<option value="English" selected>English</option>
 
-									{{-- <option value="French">French</option>
-									<option value="Spanish">Spanish</option>
-									<option value="Russian">Russian</option> --}}
-
 								</select>
 
 							</div>
@@ -468,7 +461,6 @@
 							<div class="styled-select currency-selector">
 								<select>
 									<option value="US Dollars" selected>US Dollars</option>
-									{{-- <option value="Euro">Euro</option> --}}
 								</select>
 							</div>
 						</li>
@@ -539,7 +531,7 @@
         });
     </script>
 
-    <script>
+    {{-- <script>
 
         $("#submit-newsletter").click(function(){
 
@@ -560,7 +552,7 @@
             });
 
         });
-    </script>
+    </script> --}}
 
 	 @yield('script')
 

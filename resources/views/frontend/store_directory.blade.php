@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('title','Store Directory')
-    
+
 @section('pagecss')
 <link href="{{asset('frontend/css/about.css')}}" rel="stylesheet">
 @endsection
@@ -67,13 +67,14 @@
               </ul>
               <ul class="col-md-3 border-top border-color-1 mb-4 mb-md-0">
                   {{-- <li><a href="#">15 inch</a></li> --}}
-                  <li><a href="#">Computer Components</a>
-                      <ul>
+                  <li>
+                      <a href="#">Computer Components</a>
+                        <ul>
                           <li><a href="#">Computer Cases</a></li>
-                          <li<a href="#">Desktops
+                          <li><a href="#">Desktops</a>
                           <li><a href="#">Monitors</a></li>
                           <li><a href="#">Software</a></li>
-                      </li<a></ul>
+                        </ul>
                   </li>
                   <li><a href="#">Gadgets &amp; Accesories</a></li>
                   <li><a href="#">Printers &amp; Ink</a>
