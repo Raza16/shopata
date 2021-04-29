@@ -326,7 +326,7 @@
 					</div><!-- /container -->
 				</div>
 				<!-- /bg_gray -->
-				@if($blog)
+				@if($blog ? [] : '' )
 
 					<div class="container margin_60_35">
 						<div class="main_title">
@@ -344,20 +344,18 @@
 											<figcaption><strong>{{$item->created_at->format('d')}}</strong>{{$item->created_at->format('M')}}</figcaption>
 										</figure>
 										<ul>
-
 											<li>{{$item->created_at->format('Y,M,d')}}</li>
 										</ul>
 										<h4>{{$item->title}}</h4>
-
 									</a>
 								</div>
-
 
 							@endforeach
 
 						</div>
 						<!-- /row -->
 					</div>
+
 				@endif
 		<!-- /container -->
 		</main>

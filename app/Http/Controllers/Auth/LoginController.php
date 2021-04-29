@@ -33,16 +33,13 @@ class LoginController extends Controller
         public function redirectTo(){
 
             if (!Auth::check()) {
-                return $this->redirectTo = '/admin/login';
+                return $this->redirectTo = url('/admin/login');
             }
 
             if (Auth::user()->role_id == 1) {
-                return $this->redirectTo = '/admin/dashboard';
+                return $this->redirectTo = url('/admin/dashboard');
             }
 
-            if (Auth::user()->role_id == 5) {
-                return $this->redirectTo = '/';
-            }
 
         }
 

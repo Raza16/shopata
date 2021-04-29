@@ -443,17 +443,17 @@
 
                 <div class="collapse" id="blogs">
 
-                <ul class="nav flex-column sub-menu">
+                    <ul class="nav flex-column sub-menu">
 
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->is('admin/blog') ? "active" : "" }}" href="{{url('admin/blog')}}">Blog list</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->is('admin/blog') ? "active" : "" }}" href="{{url('admin/blog')}}">Blog list</a>
+                        </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->is('admin/blog/create') ? "active" : "" }}" href="{{url('admin/blog/create')}}">Blog Add</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->is('admin/blog/create') ? "active" : "" }}" href="{{url('admin/blog/create')}}">Blog Add</a>
+                        </li>
 
-                </ul>
+                    </ul>
 
                 </div>
 
