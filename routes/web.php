@@ -27,12 +27,7 @@ Route::group(['prefix' => '/admin'],function(){
         //route for login admin/login
         Auth::routes();
 
-
-
     Route::middleware(['auth', 'admin'])->group(function () {
-
-
-
 
             Route::get('dashboard', [App\Http\Controllers\Admin\AdminController::class,'dashboard']);
 
