@@ -1,14 +1,14 @@
 /*
  * Copyright (C) 2012 PrimeBox (info@primebox.co.uk)
- * 
+ *
  * This work is licensed under the Creative Commons
  * Attribution 3.0 Unported License. To view a copy
  * of this license, visit
  * http://creativecommons.org/licenses/by/3.0/.
- * 
+ *
  * Documentation available at:
  * http://www.primebox.co.uk/projects/cookie-bar/
- * 
+ *
  * When using this software you use it at your own risk. We hold
  * no responsibility for any damage caused by using this plugin
  * or the documentation provided.
@@ -22,6 +22,8 @@
 		}else{
 			var doReturn = false;
 		}
+        // var url =  url('privacypolicy');
+
 		var defaults = {
 			message: 'We use cookies to track usage and preferences.', //Message displayed on bar
 			acceptButton: true, //Set to true to show accept/enable button
@@ -32,7 +34,7 @@
 			declineFunction: function(cookieValue){if(cookieValue=='enabled' || cookieValue=='accepted') window.location = window.location.href;}, //Function to run after decline
 			policyButton: true, //Set to true to show Privacy Policy button
 			policyText: 'Privacy Policy', //Text on Privacy Policy button
-			policyURL: '#', //URL of Privacy Policy
+			policyURL:  'privacypolicy', //URL of Privacy Policy
 			autoEnable: true, //Set to true for cookies to be accepted automatically. Banner still shows
 			acceptOnContinue: false, //Set to true to accept cookies when visitor moves to another page
 			acceptOnScroll: false, //Set to true to accept cookies when visitor scrolls X pixels up or down
@@ -50,14 +52,14 @@
 			referrer: String(document.referrer) //Where visitor has come from
 		};
 		var options = $.extend(defaults,options);
-		
+
 		//Sets expiration date for cookie
 		var expireDate = new Date();
 		expireDate.setTime(expireDate.getTime()+(options.expireDays*86400000));
 		expireDate = expireDate.toGMTString();
-		
+
 		var cookieEntry = 'cb-enabled={value}; expires='+expireDate+'; path=/';
-		
+
 		//Retrieves current cookie preference
 		var i,cookieValue='',aCookie,aCookies=document.cookie.split('; ');
 		for (i=0;i<aCookies.length;i++){
@@ -97,7 +99,7 @@
 		}else{
 			//Sets up enable/accept button if required
 			var message = options.message.replace('{policy_url}',options.policyURL);
-			
+
 			if(options.acceptButton){
 				var acceptButton = '<a href="" class="cb-enable">'+options.acceptText+'</a>';
 			}else{
@@ -130,7 +132,7 @@
 			}else{
 				var zindex = '';
 			}
-			
+
 			//Displays the cookie bar if arguments met
 			if(options.forceShow || cookieValue=='enabled' || cookieValue==''){
 				if(options.append){
@@ -139,7 +141,7 @@
 					$(options.element).prepend('<div id="cookie-bar"'+fixed+zindex+'><p>'+message+acceptButton+declineButton+policyButton+'</p></div>');
 				}
 			}
-			
+
 			var removeBar = function(func){
 				if(options.acceptOnScroll) $(document).off('scroll');
 				if(typeof(func)==='function') func(cookieValue);
@@ -175,7 +177,7 @@
 			var anyClick = function(e){
 				if(!$(e.target).hasClass('cb-policy')) cookieAccept();
 			};
-			
+
 			$('#cookie-bar .cb-enable').click(function(){cookieAccept();return false;});
 			$('#cookie-bar .cb-disable').click(function(){cookieDecline();return false;});
 			if(options.acceptOnScroll){

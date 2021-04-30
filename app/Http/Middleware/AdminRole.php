@@ -17,28 +17,31 @@ class AdminRole
      */
     public function handle(Request $request, Closure $next)
     {
-        // if (!Auth::check()) {
-        //     # code...
-        //     return redirect('/admin/login');
-        // }
+        if (!Auth::check()) {
+            # code...
+            return redirect('/admin/login');
+        }
 
-        // if (Auth::user()->role_id == 1) {
-
-        //     return $next($request);
-
-        // }
-
-        $roles=[
+         $roles=[
             'admin'     =>   [1],
             'vendor'    =>   [2,5],
             'customer'  =>   [5]
         ];
 
         if (!in_array(auth()->user()->role_id,$roles)) {
-            abort(403);
+
+            return $next($request);
+
         }
 
-        return $next($request);
+
+
+        // if (!in_array(auth()->user()->role_id,$roles)) {
+        //     return redirect('/admin/login');
+        //     // return redirect()->back();
+        // }
+
+        // return $next($request);
 
     }
 }

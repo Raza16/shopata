@@ -54,12 +54,12 @@ class BrandController extends Controller
                 $brand = new Brand;
             //      tb_col                       input_filed
                 $brand->title               =  $request->title;
-                // $brand->slug               =  $request->slug;
+                // $brand->slug             =  $request->slug;
                 $brand->description         =  $request->description;
                 $brand->meta_title          =  $request->meta_title;
                 $brand->meta_keyword        =  $request->meta_keyword;
                 $brand->meta_description    =  $request->meta_description;
-                $brand->user_id            =   Auth::user()->id;
+                $brand->user_id             =   Auth::user()->id;
 
                 if ($request->hasFile('image')) {
                     $image = $request->file('image');

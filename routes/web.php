@@ -27,64 +27,81 @@ use Illuminate\Support\Facades\Artisan;
 
         //route for login admin/login
 
-    Route::'middleware'  => 'AdminRole:admin','prefix' => '/admin' ],function() {
+        Route::group(['prefix' => '/admin'],function(){
 
+            //route for login admin/login
             Auth::routes();
 
-            Route::get('dashboard', [App\Http\Controllers\Admin\AdminController::class,'dashboard']);
+            Route::middleware(['auth', 'admin'])->group(function () {
 
-            //settings
-            Route::get('settings', [App\Http\Controllers\Admin\AdminController::class,'settings']);
+                    Route::get('dashboard', [App\Http\Controllers\Admin\AdminController::class,'dashboard']);
 
-            Route::post('check-current-pwd', [App\Http\Controllers\Admin\AdminController::class,'checkcurrentpwd']);
+                    //settings
+                    Route::get('settings', [App\Http\Controllers\Admin\AdminController::class,'settings']);
 
-            Route::post('update-current-pwd', [App\Http\Controllers\Admin\AdminController::class,'updatecurrentpwd']);
+                    Route::post('check-current-pwd', [App\Http\Controllers\Admin\AdminController::class,'checkcurrentpwd']);
 
-            Route::post('update-admin-details',[App\Http\Controllers\Admin\AdminController::class,'updatedetails']);
+                    Route::post('update-current-pwd', [App\Http\Controllers\Admin\AdminController::class,'updatecurrentpwd']);
 
-            // banners
-            Route::resource('banner', App\Http\Controllers\Admin\BannerController::class);
+                    Route::post('update-admin-details',[App\Http\Controllers\Admin\AdminController::class,'updatedetails']);
 
-            Route::get('websetting/{id}',[App\Http\Controllers\Admin\AdminController::class,'websetting']);
-            Route::put('websetting/update/{id}',[App\Http\Controllers\Admin\AdminController::class,'websettings']);
+                    // banners
+                    Route::resource('banner', App\Http\Controllers\Admin\BannerController::class);
 
-            // pages
-            Route::get('pages',[App\Http\Controllers\Admin\SettingController::class,'pages']);
-            // privacy policy
-            Route::get('privacy',[App\Http\Controllers\Admin\SettingController::class,'privacypolicy']);
-            //  Terms & Conditions
-            Route::get('terms_condition',[App\Http\Controllers\Admin\SettingController::class,'terms_condition']);
+                    // Route::get('websetting',[App\Http\Controllers\Admin\AdminController::class,'websetting']);
+                    Route::get('websetting/{id}',[App\Http\Controllers\Admin\AdminController::class,'websetting']);
+                    Route::put('websetting/update/{id}',[App\Http\Controllers\Admin\AdminController::class,'websettings']);
 
-            //  blogs
-            Route::post('upload_image',[App\Http\Controllers\Admin\BlogController::class,'uploadImage'])->name('upload');
+                        // pages
+                    Route::get('pages',[App\Http\Controllers\Admin\SettingController::class,'pages']);
+                        // privacy policy
+                    Route::get('privacy',[App\Http\Controllers\Admin\SettingController::class,'privacypolicy']);
+                        //  Terms & Conditions
+                    Route::get('terms_condition',[App\Http\Controllers\Admin\SettingController::class,'terms_condition']);
 
-            Route::resource('blog', App\Http\Controllers\Admin\BlogController::class);
+                        //  blogs
+                    Route::post('upload_image',[App\Http\Controllers\Admin\BlogController::class,'uploadImage'])->name('upload');
 
-            //brand controller
-            Route::resource('brand', App\Http\Controllers\Admin\BrandController::class);
+                    Route::resource('blog', App\Http\Controllers\Admin\BlogController::class);
 
-            //category controller
-            Route::resource('category', App\Http\Controllers\Admin\CategoryController::class);
+                        //brand controller
+                    Route::resource('brand', App\Http\Controllers\Admin\BrandController::class);
 
-            //product controller
-            Route::resource('product', App\Http\Controllers\Admin\ProductController::class);
-            Route::delete('product/gallerydelete/{id}',[App\Http\Controllers\Admin\ProductController::class,'deletegallery']);
-            Route::delete('product/documentdelete/{id}',[App\Http\Controllers\Admin\ProductController::class,'deletedocument']);
-            Route::get('variation-get/{id}', [App\Http\Controllers\Admin\ProductController::class,'variationoption'] );
+                        //category controller
+                    Route::resource('category', App\Http\Controllers\Admin\CategoryController::class);
 
-            // variation
-            Route::resource('variation', App\Http\Controllers\Admin\ProductAttributeController::class);
+                        //product controller
+                    Route::resource('product', App\Http\Controllers\Admin\ProductController::class);
+                    Route::delete('product/gallerydelete/{id}',[App\Http\Controllers\Admin\ProductController::class,'deletegallery']);
+                    Route::delete('product/documentdelete/{id}',[App\Http\Controllers\Admin\ProductController::class,'deletedocument']);
+                    Route::get('variation-get/{id}', [App\Http\Controllers\Admin\ProductController::class,'variationoption'] );
 
-            // product attributes option
-            Route::get('product_att_option/{id}/product_attribute_option',[App\Http\Controllers\Admin\ProductAttributeOptionController::class,'product_attribute_option'] );
+                        // variation
+                    Route::resource('variation', App\Http\Controllers\Admin\ProductAttributeController::class);
 
-            Route::resource('variation_option', App\Http\Controllers\Admin\ProductAttributeOptionController::class);
+                        // product attributes option
+                    Route::get('product_att_option/{id}/product_attribute_option',[App\Http\Controllers\Admin\ProductAttributeOptionController::class,'product_attribute_option'] );
 
-            // vendor
-            Route::resource('vendor', App\Http\Controllers\Admin\VendorController::class);
+                    Route::resource('variation_option', App\Http\Controllers\Admin\ProductAttributeOptionController::class);
 
+                        // vendor
+                    Route::resource('vendor', App\Http\Controllers\Admin\VendorController::class);
+
+
+            });
 
     });
+
+
+
+    // Route::middleware(['auth', 'customer'])->group(function () {
+
+    //     Route::get('customer', function () {
+    //         return 'customer';
+    //     });
+
+    // });
+
 
 // });
 
@@ -100,6 +117,9 @@ use Illuminate\Support\Facades\Artisan;
 
 
 // frontend route start
+
+ Route::resource('account', App\Http\Controllers\frontend\Auth\RegisterController::class);
+
 
  Route::get('/', [App\Http\Controllers\frontend\ShopController::class,'home']);
 
@@ -147,9 +167,9 @@ use Illuminate\Support\Facades\Artisan;
         return view('frontend.store_directory');
     });
 
-    Route::get('account', function () {
-        return view('frontend.account');
-    });
+    // Route::get('account', function () {
+    //     return view('frontend.account');
+    // });
 
 
 
