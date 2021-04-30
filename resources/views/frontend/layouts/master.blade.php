@@ -273,9 +273,6 @@
 												<li>
 													<a href="{{url('track_order')}}"><i class="ti-truck"></i>Track your Order</a>
 												</li>
-												{{-- <li>
-													<a href="account.html"><i class="ti-package"></i>My Orders</a>
-												</li> --}}
 												<li>
 													<a href="{{url('account')}}"><i class="ti-user"></i>My Profile</a>
 												</li>
