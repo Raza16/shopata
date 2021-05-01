@@ -72,7 +72,7 @@
 
                 <tbody>
 
-                  @foreach ($products as $product)
+                  @forelse ($products as $product)
 
                     <tr>
 
@@ -115,7 +115,13 @@
 
                     </tr>
 
-                  @endforeach
+                    @empty
+
+                    <tr>
+                        <td>No Product Found.</td>
+                    </tr>
+
+                  @endforelse
 
                 </tbody>
 

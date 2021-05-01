@@ -90,8 +90,6 @@
 
 @section('script')
 
-        <script src="{{asset('backend/js/dropify.js')}}"></script>
-
         {{-- <script type="text/javascript">
 
             function validateImage() {
@@ -112,6 +110,6 @@
                 return true;
             }
 
-          </script> --}}
+        </script> --}}
 
 @endsection

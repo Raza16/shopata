@@ -32,8 +32,8 @@
                         <label for="productname"><h5>Product Name</h5></label>
                         <input type="text" class="form-control" id="name" name="name" placeholder="Product Name" value="{{old('name')}}">
                         @error('title')
-                        <p><small class="text-danger">{{ $errors->first('title') }}</small></p>
-                      @enderror
+                            <p><small class="text-danger">{{ $errors->first('title') }}</small></p>
+                        @enderror
                     </div>
 
                     <div class="form-group">
@@ -147,7 +147,6 @@
                                 <div class="card-body">
                                     <div class="row">
 
-
                                         <div class="form-group col-6">
                                             <label for="quantity">Product Type</label>
                                             <select name="product_type" id="product_type" class="form-control">
@@ -159,7 +158,7 @@
 
                                         <div class="form-group col-6">
                                             <label for="regular_price">Regular Price</label>
-                                            <input type="number" step="0.02" class="form-control" id="regular_price" name="regular_price" placeholder="$0.00" value="{{old('regular_price')}}">
+                                            <input type="number" class="form-control" id="regular_price" name="regular_price" placeholder="$0.00" value="{{old('regular_price')}}">
                                             @error('regular_price')
                                             <p><small class="text-danger">{{ $errors->first('regular_price') }}</small></p>
                                             @enderror
@@ -270,13 +269,12 @@
             </div>
         </div>
 
-
         <div class="col-4 grid-margin stretch-card">
           <div class="card">
             <div class="card-body">
                               {{-- active or inactive --}}
                               <div class="form-group">
-                                <label for="status">Draft</label>
+                                <label for="status">Status</label>
                                 <select name="status" class="form-control">
                                   <option value="publish"  class="form-group">Publish</option>
                                   <option value="draft" class="form-group">Draft</option>
@@ -290,7 +288,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                       <h4 class="card-title">Product Image</h4>
-                                      <input type="file" class="dropify" name="image" accept="image/*" data-allowed-file-extensions="png jpg jpeg"/>
+                                      <input type="file" class="dropify" name="image" accept="image/*" data-allowed-file-extensions="png jpg jpeg svg webp" />
                                     </div>
                                 </div>
 
@@ -316,14 +314,22 @@
                                   <label class="col-8 col-form-label">Categories</label>
                                   <div class="col-sm-9">
                                     <select class="form-control select2" name="category_id">
+
                                       <option value="" selected>UnCategories</option>
-                                      @foreach ($category as $item)
+
+                                      @forelse ($category as $item)
+
                                         <option value="{{$item->id}}">{{$item->title}}</option>
 
                                         @if (count($item->subcategory) > 0)
                                             @include('admin.product.layouts.multicategory',['subcategories' => $item->subcategory])
                                         @endif
-                                      @endforeach
+
+                                        @empty
+
+                                            <option disabled>No Categories Found</option>
+
+                                      @endforelse
 
                                     </select>
                                   </div>
@@ -340,10 +346,9 @@
                                       <div class="imgPreview"> </div>
                                     </div>
 
-
                                     <div class="form-group">
                                       <input type="file" name="gallery_image[]"  class="form-control"
-                                      id="images" multiple="multiple" />
+                                      id="images" multiple="multiple" accept="image/*"/>
                                     </div>
 
                                     @error('gallery_image')
@@ -354,7 +359,9 @@
                                   {{-- product grallery image end--}}
 
             </div>
+
           </div>
+
         </div>
 
         <div class="col-2 form-group">
@@ -367,7 +374,6 @@
   @endsection
 
 @section('script')
-
 
     <script>
         $('#add-document').on('click', function(){
@@ -490,7 +496,6 @@
             });
         </script>
 
-
      {{-- slug --}}
     <script>
         $("#name").keyup(function(){
@@ -503,29 +508,15 @@
 
   {{-- ckeditor --}}
   <script>
-
     CKEDITOR.replace( 'description', {
-
     });
-
-
     CKEDITOR.replace( 'short_description', {
-
     });
-
   </script>
-  {{-- delete gallery image --}}
-
 
   {{-- for seraching dropdown seraching --}}
   <script>
       $(".select2").select2();
   </script>
-
-
-      {{-- //editor --}}
-      {{-- ///////modal --}}
-      <script src="{{asset('backend/js/jquery-file-upload.js')}}"></script>
-
 
 @endsection

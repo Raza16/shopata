@@ -50,22 +50,25 @@
                     <select class="form-control select2" name="parent_id" id="parent_id">
                     <option value="">UnCategories</option>
 
-                    @foreach ($parent_id as $item)
+                    @forelse ($parent_id as $item)
 
                         <option value="{{$item->id}}">{{$item->title}}</option>
 
-                        @if (count($item->subcategory) > 0)
-                            @include('admin.category.layouts.multicategory',['subcategories' => $item->subcategory])
-                        @endif
+                            @if (count($item->subcategory) > 0)
+                                @include('admin.category.layouts.multicategory',['subcategories' => $item->subcategory])
+                            @endif
 
-                        @endforeach
+                    @empty
+
+                        <option disabled>No Category Found.</option>
+
+                    @endforelse
 
                     </select>
 
                 </div>
 
               @endif
-
 
         </div>
 
@@ -103,10 +106,7 @@
   </div>
 </div>
 
-
 @endsection
-
-
 
 @section('script')
 

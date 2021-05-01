@@ -44,7 +44,6 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
         $brand              =   Brand::all();
         // $category           =Category::all();
         $category           =   Category::with('subcategory')->where('parent_id',NULL)->get();
@@ -73,7 +72,7 @@ class ProductController extends Controller
             'stock' => 'required',
             'status' => 'required'
         ]);
-                        $product            =     new  Product();
+                        $product                    =   new  Product();
                 // // tbl                                input filed
                     $product->user_id               =   Auth::user()->id;
                     $product->name  	            =   $request->name;
@@ -98,16 +97,18 @@ class ProductController extends Controller
                     $product->brand_id              =   $request->brand_id;
                     // category
                     $product->category_id           =   $request->category_id;
+                    // $product->product_image = $request->product_image;
 
-
-                    if ($request->hasFile('image')) {
-                        $image = $request->file('image');
+                    if ($request->hasFile('product_image')) {
+                        $image = $request->file('product_image');
                         $name = time().'_'.$image->getClientOriginalName();
                         $destinationPath = public_path('/backend/images/products');
                         $imagePath = $destinationPath. "/".  $name;
-                        $image->move($destinationPath, $name);
+                        // $image->move($destinationPath, $name);
                         $product->product_image = $name;
                     }
+
+                    dd($product);
 
                     if($product->save()){
 
