@@ -13,12 +13,13 @@ class CategoryController extends Controller
     public function index()
     {
         # code...
-        $categories =   Category::paginate(12);
+        $categories =   Category::with('subcategory')->paginate(12);
 
-        $response["error"]  =   "false";
-        $response["code"]   =   "200";
-        $response["message"] =   "Operation Successfully.";
-        $response["url"]    =   url('api/categories');
+        $response["error"]      =   "false";
+        $response["code"]       =   "200";
+        $response["message"]    =   "Operation Successfully.";
+        $response["image"]      =   url('backend/images/category').'/';
+        $response["url"]        =   url('api/categories');
         $response["categories"] =   $categories;
 
         if(is_null($categories)){
