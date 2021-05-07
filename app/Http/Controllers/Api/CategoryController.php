@@ -34,11 +34,12 @@ class CategoryController extends Controller
         # code...
             $category     =   Category::find($id);
 
-            $response["error"]  =   "false";
-            $response["code"]   =   "200";
-            $response["message"] =   "Operation Successfully.";
-            $response["url"]    =   url('api/category/'.$id);
-            $response["category"] =   $category;
+            $response["error"]      =   "false";
+            $response["code"]       =   "200";
+            $response["message"]    =   "Operation Successfully.";
+            $response["image"]      =   url('backend/images/category').'/';
+            $response["url"]        =   url('api/category/'.$id);
+            $response["category"]   =   $category;
 
             if(is_null($category)){
                 return response()->json("Category not Found!",404);
