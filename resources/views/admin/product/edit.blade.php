@@ -7,16 +7,16 @@
   <script src="{{asset('backend/plugins/ckeditor/ckeditor.js')}}"></script>
   {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"> --}}
 
-  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-  <style>
+  {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> --}}
+  {{-- <style>
     .select2-container--default .select2-selection--single .select2-selection__rendered{
       color: #444;
       line-height: 18px;
       margin-top: -9px;
       margin-left: -20px
     }
-  </style>
+  </style> --}}
   @endsection
 
   @section('content')
@@ -315,15 +315,21 @@
                                   <label class="col-8 col-form-label">Brands</label>
 
                                   <div class="col-sm-9">
-
-                                    <select class="form-control select2" name="brand_id">
+                                    <select class="js-example-basic-single w-100 select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                                        <option value="AL">Alabama</option>
+                                        <option value="WY">Wyoming</option>
+                                        <option value="AM">America</option>
+                                        <option value="CA">Canada</option>
+                                        <option value="RU">Russia</option>
+                                      </select>
+                                      {{-- <select class="js-example-basic-single w-100 select2-show-accessible" tabindex="-1" aria-hidden="true" name="brand_id">
 
                                       <option value="" selected>UnCategories</option>
                                       @foreach ($brand as $item)
                                         <option value="{{$item->id}}" {{ $item->id == $product->brand_id ? 'selected' : ''}}>{{$item->title}}</option>
                                       @endforeach
 
-                                    </select>
+                                    </select> --}}
 
                                   </div>
 
@@ -592,14 +598,16 @@
 
   <script>
 
-    $(".select2").select2();
+    // $(".select2").select2();
 
-    $('#brand').select2({
-        selectOnClose: true
-    });
-    $('#category').select2({
-        selectOnClose: true
-    });
+    // $('#brand').select2({
+    //     selectOnClose: true
+    // });
+    // $('#category').select2({
+    //     selectOnClose: true
+    // });
+
+    <script src="{{asset('backend/js/select2.js')}}"></script>
 
   </script>
 

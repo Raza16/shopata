@@ -84,10 +84,6 @@
                       </table>
                     </div>
 
-                    {{-- <div class="form-group">
-                      <label for="document">Document Attach</label>
-                      <input type="file" multiple="multiple" name="document[]" class="form-control document_name" id="document">
-                    </div> --}}
                     <div class="form-group">
                         <button type="button" class="btn btn-info btn-sm" id="add-document">Add File</button>
                     </div>
@@ -374,7 +370,7 @@
     <script>
         $('#add-document').on('click', function(){
             var tr = '<tr>'+
-                    '<td style="padding-right:10px;"><input type="text" name="title[]" class="form-control" placeholder="Document Name"/></td>'+
+                    // '<td style="padding-right:10px;"><input type="text" name="title[]" class="form-control" placeholder="Document Name"/></td>'+
                     '<td style="margin:10px"><input type="file" name="document[]" class="form-control"/></td>'+
                     '<td><button type="button" class="delete-row btn btn-default"><i style="color:red;" class="fa fa-trash"></i></button></td>'+
                     '</tr>';

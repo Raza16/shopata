@@ -28,13 +28,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $brand      =   Brand::all();
-
-        $category   =   Category::all();
 
         $products    =   Product::all();
 
-        return view('admin.product.list',compact('brand','category','products'));
+        return view('admin.product.list',compact('products'));
     }
 
     /**
@@ -134,6 +131,8 @@ class ProductController extends Controller
                                 // 'name'      => $request->title
                             ]);
                         }
+
+                    }
 
 
                         // foreach ($request->document as ) {

@@ -36,11 +36,12 @@
 
     <div class="page-header">
         <h3 class="page-title">
-        Product
+            Product
         </h3>
         <a type="button" class="btn btn-info btn-fw" href="{{url('admin/product/create')}}">
             <i class="icon-plus"></i>&nbsp;
-            Add Product</a>
+            Add Product
+        </a>
     </div>
 
   <br>
@@ -49,7 +50,6 @@
         <div class="card-body">
           <h4 class="card-title">Products List </h4>
 
-          {{-- <p class="page-description">Add class <code>.sortable-table</code></p> --}}
           <div class="row">
             <div class="table-sorter-wrapper col-lg-12 table-responsive">
 
