@@ -8,7 +8,11 @@
     <link rel="stylesheet" href="{{asset('backend/vendors/css/vendor.bundle.base.css')}}">
     <link rel="stylesheet" href="{{asset('backend/vendors/css/vendor.bundle.addons.css')}}">
     <!-- endinject -->
+    {{-- icons --}}
+    <link rel="stylesheet" href="{{asset('backend/vendors/iconfonts/ti-icons/css/themify-icons.css')}}">
+    {{-- icon end --}}
     <!-- plugin css for this page -->
+    @yield('css')
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" href="{{asset('backend/css/style.css')}}">
