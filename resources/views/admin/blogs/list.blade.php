@@ -62,7 +62,7 @@
                 </tr>
               </thead>
               <tbody>
-                @foreach ($blog as $rows)
+                @forelse ($blog as $rows)
 
                   <tr role="row" class="odd" >
                         <td class="sorting_1">{{$rows->id}}</td>
@@ -86,7 +86,13 @@
                         </td>
                   </tr>
 
-              @endforeach
+                @empty
+
+                  <tr>
+                      <td>No Blogs Found.</td>
+                  </tr>
+
+              @endforelse
           </tbody>
 
 

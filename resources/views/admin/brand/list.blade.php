@@ -75,34 +75,42 @@
                         </thead>
 
                         <tbody>
-                            @foreach ($brands as $brand)
 
-                          <tr role="row" class="odd">
-                              <td class="sorting_1">{{$brand->id}}</td>
-                              <td>{{$brand->title}}</td>
-                              <td style="text-transform:uppercase">{{$brand->user->name}}</td>
-                              <td>{{$brand->created_at->format('Y-m-d')}}</td>
-                              <td>
-                                  <a type="button" href="{{url('admin/brand/'.$brand->id.'/edit')}}" style="padding:10px" class="btn btn-md btn-primary btn-icon-text">
-                                    <i class="ti-pencil-alt"></i>&nbsp;
-                                    Edit
-                                      {{-- <i class="fas fa-pencil-alt btn-icon-append"></i> --}}
+                            @forelse ($brands as $brand)
 
-                                  </a>
-                              </td>
-                              <td>
-                                    <form action="{{ url('admin/brand/'.$brand->id) }}" method="POST">
-                                      @csrf
-                                      @method('DELETE')
-                                      <button type="submit" style="padding:10px" class="btn btn-md btn-danger btn-icon-text delete-brand" style="padding:10px">
-                                        <i class="ti-trash"></i>&nbsp;
-                                            Delete
-                                      </button>
-                                    </form>
-                              </td>
-                          </tr>
+                                <tr role="row" class="odd">
+                                    <td class="sorting_1">{{$brand->id}}</td>
+                                    <td>{{$brand->title}}</td>
+                                    <td style="text-transform:uppercase">{{$brand->user->name}}</td>
+                                    <td>{{$brand->created_at->format('Y-m-d')}}</td>
+                                    <td>
+                                        <a type="button" href="{{url('admin/brand/'.$brand->id.'/edit')}}" style="padding:10px" class="btn btn-md btn-primary btn-icon-text">
+                                            <i class="ti-pencil-alt"></i>&nbsp;
+                                            Edit
+                                            {{-- <i class="fas fa-pencil-alt btn-icon-append"></i> --}}
 
-                          @endforeach
+                                        </a>
+                                    </td>
+                                    <td>
+                                            <form action="{{ url('admin/brand/'.$brand->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" style="padding:10px" class="btn btn-md btn-danger btn-icon-text delete-brand" style="padding:10px">
+                                                <i class="ti-trash"></i>&nbsp;
+                                                    Delete
+                                            </button>
+                                            </form>
+                                    </td>
+                                </tr>
+
+                            @empty
+
+                                <tr>
+                                    <td>No Brands Found.</td>
+                                </tr>
+
+                            @endforelse
+
                         </tbody>
 
                       </table>

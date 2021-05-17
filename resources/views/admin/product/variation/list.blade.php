@@ -81,30 +81,40 @@
                                   </thead>
 
                                   <tbody>
-                                    @foreach ($variation as $item)
-                                  <tr>
-                                      <td>{{$item->id}}</td>
-                                      <td>{{$item->name}}</td>
-                                      <td> <a href="{{ url('admin/variation_option/'.$item->id)}}">configure terms</a>
-                                       </td>
-                                     <td>
-                                      <a type="button" href="{{url('admin/variation/'.$item->id.'/edit')}}" style="padding:10px" class="btn btn-md btn-primary btn-icon-text">
-                                        <i class="ti-pencil-alt"></i>&nbsp;
-                                        Edit
-                                    </a>
-                                    </td>
-                                    <td>
-                                      <form action="{{ url('admin/variation/'.$item->id) }}" method="POST">
-                                      @csrf
-                                      @method('DELETE')
-                                      <button type="submit" style="padding:10px" class="btn btn-md btn-danger btn-icon-text" style="padding:10px" >
-                                        <i class="ti-trash"></i>&nbsp;
-                                        Delete
-                                      </button>
-                                       </form>
-                                    </td>
-                                  </tr>
-                                    @endforeach
+
+                                    @forelse ($variation as $item)
+
+                                        <tr>
+                                            <td>{{$item->id}}</td>
+                                            <td>{{$item->name}}</td>
+                                            <td> <a href="{{ url('admin/variation_option/'.$item->id)}}">configure terms</a>
+                                            </td>
+                                            <td>
+                                            <a type="button" href="{{url('admin/variation/'.$item->id.'/edit')}}" style="padding:10px" class="btn btn-md btn-primary btn-icon-text">
+                                                <i class="ti-pencil-alt"></i>&nbsp;
+                                                Edit
+                                            </a>
+                                            </td>
+                                            <td>
+                                            <form action="{{ url('admin/variation/'.$item->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" style="padding:10px" class="btn btn-md btn-danger btn-icon-text" style="padding:10px" >
+                                                <i class="ti-trash"></i>&nbsp;
+                                                Delete
+                                            </button>
+                                            </form>
+                                            </td>
+                                        </tr>
+
+                                    @empty
+
+                                        <tr>
+                                            <td>No Variation Found.</td>
+                                        </tr>
+
+                                    @endforelse
+
                                   </tbody>
 
                             </table>
