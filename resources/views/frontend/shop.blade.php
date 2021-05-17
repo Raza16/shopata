@@ -1,11 +1,14 @@
-  @extends('frontend.layouts.master')
-
+    @extends('frontend.layouts.master')
 
     @section('title','Shop Buy')
 
     @section('pagecss')
-    <link href="{{asset('frontend/css/listing.css')}}" rel="stylesheet">
-    <style id="theia-sticky-sidebar-stylesheet-TSS">.theiaStickySidebar:after {content: ""; display: table; clear: both;}</style>
+        <link href="{{asset('frontend/css/listing.css')}}" rel="stylesheet">
+        <link href="{{asset('frontend/css/blog.css')}}" rel="stylesheet">
+        <style id="theia-sticky-sidebar-stylesheet-TSS">.theiaStickySidebar:after {content: ""; display: table; clear: both;}</style>
+        {{-- search --}}
+        <link href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     @endsection
 
     @section('content')
@@ -27,9 +30,7 @@
             </div>
             <img src="https://via.placeholder.com/200x200?text=S" class="img-fluid" alt="">
           </div> --}}
-
           <div id="stick_here" style="height: 0px;"></div>
-
           {{-- <div class="toolbox elemento_stick">
 
             <div class="container">
@@ -60,38 +61,27 @@
             </div>
 
           </div> --}}
-
           <div class="container margin_30" style="transform: none;">
             <div class="row" style="transform: none;">
                 <div class="col-lg-9">
-                  @if(!empty($product))
-
+                  @if(!empty($products))
                     <div class="row small-gutters">
-
-                      @foreach($product as $item)
-
-                        @if ($item->status == 'publish')
-
-
+                      @forelse($products as $product)
+                        @if ($product->status == 'publish')
                             <div class="col-6 col-md-4" >
-
                                 <div class="grid_item" style="">
-                                    @if(empty($item->sale_price == null))
-                                    <span class="ribbon off">{{$item->sale_price}}</span>
-                                    @endif
+                                    <span class="ribbon off" {{$product->sale_price ? '' : 'hidden'}}>{{"$".$product->sale_price}}</span>
                                     <figure>
-                                    <a href="{{$item->type =='simple' || $item->type =='variable' ? url('shop/'.$item->slug) : url('digital/'.$item->slug) }}">
-                                        <img class="img-fluid lazy loaded" style="image-size: contain; height:250px; width:auto;" src="{{$item->product_image ? asset('backend/images/products/'.$item->product_image) : asset('frontend/img/product_placeholder.jpg') }}" data-src="{{ $item->product_image ? asset('backend/images/products/'.$item->product_image) : 'https://via.placeholder.com/200x200?text=Product Image'}}" alt="" data-was-processed="true">
+                                    <a href="{{$product->type =='simple' || $product->type =='variable' ? url('shop/'.$product->slug) : url('digital/'.$product->slug) }}">
+                                        <img class="img-fluid lazy loaded" style="image-size: contain; height:250px; width:auto;" src="{{$product->product_image ? asset('backend/images/products/'.$product->product_image) : asset('frontend/img/product_placeholder.jpg') }}" data-src="{{ $product->product_image ? asset('backend/images/products/'.$product->product_image) : 'https://via.placeholder.com/200x200?text=Product Image'}}" alt="" data-was-processed="true">
                                     </a>
                                     </figure>
-                                    <a href="{{$item->type =='simple' || $item->type =='variable'  ? url('shop/'.$item->slug) : url('digital/'.$item->slug) }}">
-                                    <h3>{{$item->name}}</h3>
+                                    <a href="{{$product->type =='simple' || $product->type =='variable'  ? url('shop/'.$product->slug) : url('digital/'.$product->slug) }}">
+                                    <h3>{{$product->name}}</h3>
                                     </a>
-                                    <div class="price_box">
-                                    @if(empty($item->sale_price == null ))
-                                    <span class="new_price">{{$item->sale_price}}</span>
-                                    @endif
-                                    <span class=" {{$item->sale_price ? 'old_price' : 'new_price'}} ">{{$item->regular_price == 0.00 ? '' : '$'.$item->regular_price}}</span>
+                                    <div class="price_box" {{$product->sale_price ? '' : 'hidden'}}>
+                                    <span class="new_price">${{$product->sale_price}}</span>
+                                    <span class=" {{$product->sale_price ? 'old_price' : 'new_price'}} ">{{$product->regular_price == 0.00 ? '' : '$'.$product->regular_price}}</span>
                                     </div>
                                     <ul>
                                     <li>
@@ -114,175 +104,102 @@
                                     </li>
                                     </ul>
                                 </div>
-
+                            </div>
+                        @endif
+                      @endforeach
+                    </div>
+                    {{ $products->links('frontend.layouts.pagination') }}
+                  @else
+                    <div class="row small-gutters">
+                        <h1 style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif"><b>Product Not Found</b></h1>
+                    </div>
+                  @endif
+                </div>
+                <aside class="col-lg-3" id="sidebar_fixed" style="position: relative; overflow: visible; box-sizing: border-box; min-height: 1px;">
+                    <div class="theiaStickySidebar" style="padding-top: 0px; padding-bottom: 1px; position: static; transform: none; left: 994.5px; top: 0px;">
+                        <div class="filter_col">
+                            <div class="inner_bt"><a href="#" class="open_filters"><i class="ti-close"></i></a></div>
+                            <div class="filter_type version_2">
+                            <h4><a href="#filter_1" data-toggle="collapse" class="opened">Categories</a></h4>
+                            <div class="collapse show" id="filter_1">
+                                <ul>
+                                    @foreach($categories as $category)
+                                    <li>
+                                        <label class="container_check" {{$category->products->count() != 0  ? '' : 'hidden' }}>{{$category->title}} <small {{$category->products->count() != 0 ? $category->products->count() : 'hidden' }}>{{$category->products->count()}}</small>
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                        </label>
+                                    </li>
+                                    @endforeach
+                                </ul>
+                            </div>
                             </div>
 
-                        @endif
+                            <div class="filter_type version_2">
+                            <h4><a href="#filter_3" data-toggle="collapse" class="closed">Brands</a></h4>
+                            <div class="collapse" id="filter_3">
+                                <ul>
+                                @foreach ($brands as $brand)
+                                <li>
+                                <label class="container_check">{{$brand->title}} <small>{{$brand->products->count()}}</small>
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                </label>
+                                </li>
+                                @endforeach
+                                </ul>
+                            </div>
+                            </div>
+                            {{-- <div class="filter_type version_2">
+                            <h4><a href="#filter_4" data-toggle="collapse" class="closed">Price</a></h4>
+                            <div class="collapse" id="filter_4">
+                                <ul>
+                                <li>
+                                <label class="container_check">$0 — $50<small>08</small>
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                </label>
+                                </li>
+                                <li>
+                                <label class="container_check">$50 — $100<small>08</small>
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                </label>
+                                </li>
+                                <li>
+                                <label class="container_check">$100 — $150<small>05</small>
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                </label>
+                                </li>
+                                <li>
+                                <label class="container_check">$150 — $200<small>18</small>
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                </label>
+                                </li>
+                                </ul>
+                            </div>
+                            </div> --}}
 
-                      @endforeach
+                            {{-- <div class="buttons">
+                                <a href="#0" class="btn_1">Filter</a> <a href="#0" class="btn_1 gray">Reset</a>
+                            </div> --}}
+                        </div>
 
-                    </div>
+                        <div class="resize-sensor" style="position: absolute; inset: 0px; overflow: hidden; z-index: -1; visibility: hidden;">
+                            <div class="resize-sensor-expand" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;">
 
-                  @else
-                  <div class="row small-gutters">
+                            <div style="position: absolute; left: 0px; top: 0px; transition: all 0s ease 0s; width: 315px; height: 1208px;"></div>
 
-                      <h1 style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif"><b>Product Not Found</b></h1>
-
-                  </div>
-
-                  @endif
-
-                    {{-- {{$product}} --}}
-
-                    {{ $product->links('frontend.layouts.pagination') }}
-
-                  {{-- <div class="pagination__wrapper">
-                    <ul class="pagination">
-                      <li><a href="#0" class="prev" title="previous page">❮</a></li>
-                      <li>
-                      <a href="#0" class="active">1</a>
-                      </li>
-                      <li>
-                      <a href="#0">2</a>
-                      </li>
-                      <li>
-                      <a href="#0">3</a>
-                      </li>
-                      <li>
-                      <a href="#0">4</a>
-                      </li>
-                      <li><a href="#0" class="next" title="next page">❯</a></li>
-                    </ul>
-                  </div> --}}
-
-                </div>
-
-              <aside class="col-lg-3" id="sidebar_fixed" style="position: relative; overflow: visible; box-sizing: border-box; min-height: 1px;">
-
-              <div class="theiaStickySidebar" style="padding-top: 0px; padding-bottom: 1px; position: static; transform: none; left: 994.5px; top: 0px;">
-
-                <div class="filter_col">
-
-                    <div class="inner_bt"><a href="#" class="open_filters"><i class="ti-close"></i></a></div>
-
-                    <div class="filter_type version_2">
-                      <h4><a href="#filter_1" data-toggle="collapse" class="opened">Categories</a></h4>
-                      <div class="collapse show" id="filter_1">
-                        <ul>
-
-                            @foreach($category as $citem)
-                            <li>
-                            <label class="container_check" {{$citem->products->count() != 0  ? '' : 'hidden' }}>{{$citem->title}} <small {{$citem->products->count() != 0 ? $citem->products->count() : 'hidden' }}>{{$citem->products->count()}}</small>
-                            <input type="checkbox">
-                            <span class="checkmark"></span>
-                            </label>
-                            </li>
-                            @endforeach
-
-
-                        </ul>
-                      </div>
+                            </div>
+                            <div class="resize-sensor-shrink" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;">
+                            <div style="position: absolute; left: 0; top: 0; transition: 0s; width: 200%; height: 200%">
+                            </div>
+                            </div>
+                        </div>
 
                     </div>
-
-                    {{-- <div class="filter_type version_2">
-                      <h4><a href="#filter_2" data-toggle="collapse" class="opened">Color</a></h4>
-                      <div class="collapse show" id="filter_2">
-                        <ul>
-                          <li>
-                          <label class="container_check">Blue <small>06</small>
-                          <input type="checkbox">
-                          <span class="checkmark"></span>
-                          </label>
-                          </li>
-                          <li>
-                          <label class="container_check">Red <small>12</small>
-                          <input type="checkbox">
-                          <span class="checkmark"></span>
-                          </label>
-                          </li>
-                          <li>
-                          <label class="container_check">Orange <small>17</small>
-                          <input type="checkbox">
-                          <span class="checkmark"></span>
-                          </label>
-                          </li>
-                          <li>
-                          <label class="container_check">Black <small>43</small>
-                          <input type="checkbox">
-                          <span class="checkmark"></span>
-                          </label>
-                          </li>
-                        </ul>
-                      </div>
-                    </div> --}}
-
-                    <div class="filter_type version_2">
-                      <h4><a href="#filter_3" data-toggle="collapse" class="closed">Brands</a></h4>
-                      <div class="collapse" id="filter_3">
-                        <ul>
-                          @foreach ($brand as $bitem)
-                          <li>
-                          <label class="container_check">{{$bitem->title}} <small>{{$bitem->products->count()}}</small>
-                          <input type="checkbox">
-                          <span class="checkmark"></span>
-                          </label>
-                          </li>
-                          @endforeach
-                        </ul>
-                      </div>
-                    </div>
-
-                    {{-- <div class="filter_type version_2">
-                      <h4><a href="#filter_4" data-toggle="collapse" class="closed">Price</a></h4>
-                      <div class="collapse" id="filter_4">
-                        <ul>
-                          <li>
-                          <label class="container_check">$0 — $50<small>08</small>
-                          <input type="checkbox">
-                          <span class="checkmark"></span>
-                          </label>
-                          </li>
-                          <li>
-                          <label class="container_check">$50 — $100<small>08</small>
-                          <input type="checkbox">
-                          <span class="checkmark"></span>
-                          </label>
-                          </li>
-                          <li>
-                          <label class="container_check">$100 — $150<small>05</small>
-                          <input type="checkbox">
-                          <span class="checkmark"></span>
-                          </label>
-                          </li>
-                          <li>
-                          <label class="container_check">$150 — $200<small>18</small>
-                          <input type="checkbox">
-                          <span class="checkmark"></span>
-                          </label>
-                          </li>
-                        </ul>
-                      </div>
-                    </div> --}}
-
-                      {{-- <div class="buttons">
-                        <a href="#0" class="btn_1">Filter</a> <a href="#0" class="btn_1 gray">Reset</a>
-                      </div> --}}
-                </div>
-
-                  <div class="resize-sensor" style="position: absolute; inset: 0px; overflow: hidden; z-index: -1; visibility: hidden;">
-                    <div class="resize-sensor-expand" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;">
-
-                    <div style="position: absolute; left: 0px; top: 0px; transition: all 0s ease 0s; width: 315px; height: 1208px;"></div>
-
-                    </div>
-                    <div class="resize-sensor-shrink" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;">
-                      <div style="position: absolute; left: 0; top: 0; transition: 0s; width: 200%; height: 200%">
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
                 </aside>
 
             </div>
@@ -291,12 +208,9 @@
 
     </main>
 
-
     @endsection
 
-
-
     @section('script')
-    <script src="{{asset('frontend/js/sticky_sidebar.min.js')}}"></script>
-    <script src="{{asset('frontend/js/specific_listing.js')}}"></script>
+        <script src="{{asset('frontend/js/sticky_sidebar.min.js')}}"></script>
+        <script src="{{asset('frontssend/js/specific_listing.js')}}"></script>
     @endsection

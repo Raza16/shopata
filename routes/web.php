@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\frontend\ShopController;
 use Facade\FlareClient\Api;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Artisan;
@@ -139,6 +141,9 @@ use Illuminate\Support\Facades\Artisan;
  });
 
 
+    //search
+    Route::get('livesearch',[\App\Http\Controllers\frontend\ShopController::class,'']);
+
     // shop page start
     Route::get('shop',[App\Http\Controllers\frontend\ShopController::class,'shop']);
 
@@ -153,7 +158,9 @@ use Illuminate\Support\Facades\Artisan;
     //  leave review
     Route::get('leave/{slug}',[App\Http\Controllers\frontend\ShopController::class, 'leave_review']);
     // categoryController
-    Route::get('shops/{category}',[App\Http\Controllers\frontend\ShopController::class,'categories']);
+    // Route::get('shops/{category}',[App\Http\Controllers\frontend\ShopController::class,'categories']);
+
+    Route::get('search',[\App\Http\Controllers\frontend\ShopController::class,'search']);
 
     // blog
     Route::get('blog',[App\Http\Controllers\frontend\ShopController::class,'blog']);
