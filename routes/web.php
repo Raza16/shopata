@@ -1,11 +1,11 @@
 <?php
 
-use App\Http\Controllers\frontend\ShopController;
+// use App\Http\Controllers\frontend\ShopController;
 use Facade\FlareClient\Api;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Artisan;
+// use Illuminate\Support\Facades\Artisan;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,13 +17,13 @@ use Illuminate\Support\Facades\Artisan;
 |
 */
 
+
 // Route::get('/', function () {
 //     return view('welcome');
 
 // });
 
 // Auth::routes();
-
 
 // Route::group(['prefix' => '/admin'],function(){
 
@@ -94,8 +94,6 @@ use Illuminate\Support\Facades\Artisan;
 
     });
 
-
-
     // Route::middleware(['auth', 'customer'])->group(function () {
 
     //     Route::get('customer', function () {
@@ -104,10 +102,7 @@ use Illuminate\Support\Facades\Artisan;
 
     // });
 
-
 // });
-
-
 
 // Route::get('/migrate', function () {
 //     Artisan::call('migrate', [
@@ -117,13 +112,9 @@ use Illuminate\Support\Facades\Artisan;
 //     return 'Migrate Database Successfully!';
 // });
 
-
 // frontend route start
 
- Route::resource('account', App\Http\Controllers\frontend\Auth\RegisterController::class);
-
-
- Route::get('/', [App\Http\Controllers\frontend\ShopController::class,'home']);
+//  Route::resource('account', App\Http\Controllers\frontend\Auth\RegisterController::class);
 
 //  Route::post('email_subcription',[App\Http\Controllers\frontend\ShopController::class,'email_subcription']);
 
@@ -140,32 +131,19 @@ use Illuminate\Support\Facades\Artisan;
         return view('frontend.help');
  });
 
-
-    //search
-    // Route::get('livesearch',[\App\Http\Controllers\frontend\ShopController::class,'']);
+    Route::get('/', [App\Http\Controllers\frontend\ShopController::class, 'home']);
 
     // shop page start
-    Route::get('shop',[App\Http\Controllers\frontend\ShopController::class,'shop']);
-
-    //  simple product
-    Route::get('shop/{slug}',[App\Http\Controllers\frontend\ShopController::class,'singleshop']);
-
-    //  digital product
-    Route::get('digital/{slug}',[App\Http\Controllers\frontend\ShopController::class,'singleshop']);
-
+    // Route::get('shop',[App\Http\Controllers\frontend\ShopController::class,'shop']);
+    // Route::get('shop/{slug}',[App\Http\Controllers\frontend\ShopController::class,'singleshop']);
+    // Route::get('digital/{slug}',[App\Http\Controllers\frontend\ShopController::class,'singleshop']);
     //  download
-    Route::get('shop/download/{id}',[App\Http\Controllers\frontend\ShopController::class,'getDownload']);
+    // Route::get('shop/download/{id}',[App\Http\Controllers\frontend\ShopController::class,'getDownload']);
     //  leave review
-    Route::get('leave/{slug}',[App\Http\Controllers\frontend\ShopController::class, 'leave_review']);
-    // categoryController
-    // Route::get('shops/{category}',[App\Http\Controllers\frontend\ShopController::class,'categories']);
-
-    Route::get('search',[\App\Http\Controllers\frontend\ShopController::class,'search']);
-
-    // blog
-    Route::get('blog',[App\Http\Controllers\frontend\BlogController::class,'blog']);
-
-    Route::get('blog/{slug}',[App\Http\Controllers\frontend\BlogController::class,'single_blog']);
+    // Route::get('leave/{slug}',[App\Http\Controllers\frontend\ShopController::class, 'leave_review']);
+    // // blog
+    // Route::get('blog',[App\Http\Controllers\frontend\BlogController::class,'blog']);
+    // Route::get('blog/{slug}',[App\Http\Controllers\frontend\BlogController::class,'single_blog']);
 
     Route::get('leave_review', function () {
         return view('frontend.leave_review');
@@ -174,20 +152,10 @@ use Illuminate\Support\Facades\Artisan;
         return view('frontend.store_directory');
     });
 
-    // Route::get('account', function () {
-    //     return view('frontend.account');
-    // });
-
-
-
     Route::get('track_order', function () {
         return view('frontend.track_order');
     });
 
-    Route::get('shop/category/{cat}',[\App\Http\Controllers\frontend\ShopController::class,'shop']);
+    // Route::get('test',[App\Http\Controllers\TestController::class,'cate']);
 
-
-    Route::get('test',[App\Http\Controllers\TestController::class,'cate']);
-
-
-    Route::get('test',[App\Http\Controllers\TestController::class,'cate'])->name('category');
+    // Route::get('test',[App\Http\Controllers\TestController::class,'cate'])->name('category');

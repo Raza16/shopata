@@ -15,8 +15,8 @@ use App\Models\Admin\ProductGallery;
 use App\Models\Admin\ProductDocument;
 use App\Models\Admin\Setting;
 use Exception;
-use Illuminate\Support\Facades\DB;
-use PhpParser\Node\Stmt\Catch_;
+// use Illuminate\Support\Facades\DB;
+// use PhpParser\Node\Stmt\Catch_;
 
 class ShopController extends Controller
 {
@@ -24,157 +24,130 @@ class ShopController extends Controller
 
    public function home()
    {
-
-       $blog                   = Blog::orderBy('updated_at','DESC')->get();
-       $product                = Product::all()->take(20);
-       $product_digital        = Product::where('type','digital')->get();
-       $product_featured       = Product::all()->take(8);
-       $banners                = Banner::select('image')->where('status','active')->get();
-    //    $setting     = Setting::where('id',1);
-
-       return view('frontend.index',compact('blog','product','product_featured','product_digital','banners'));
-
+       return 'done';
+    //    $blog                   = Blog::orderBy('updated_at','DESC')->get();
+    //    $product                = Product::all()->take(20);
+    //    $product_digital        = Product::where('type','digital')->get();
+    //    $product_featured       = Product::all()->take(8);
+    //    $banners                = Banner::select('image')->where('status','active')->get();
+    // //    $setting     = Setting::where('id',1);
+    //    return view('frontend.index',compact('blog','product','product_featured','product_digital','banners'));
    }
 
     // shop page
-        public function shop(Request $request)
-        {
-
-                $brand          = Brand::with('products')->get();
-                $category       = Category::with('products')->get();
-
-                $product        = Product::paginate(12);
-
-
-                $c_serach   =   Category::with('products')->where('slug',$request->cat)->get();
-
-
-                return view ('frontend.shop',compact('brand','category','product'));
-
-    }
+    //     public function shop(Request $request)
+    //     {
+    //             $brand          = Brand::with('products')->get();
+    //             $category       = Category::with('products')->get();
+    //             $product        = Product::paginate(12);
+    //             $c_serach   =   Category::with('products')->where('slug',$request->cat)->get();
+    //             return view ('frontend.shop',compact('brand','category','product'));
+    // }
 
     // store directory
-
-        public function categories($category)
-        {
-            # code...
-            $categorys      = Category::all();
-            $brand          = Brand::all();
-
-            $category = Category::with('products')->findOrFail( $category );
-            return view('frontend.category', [
-                'category' => $category,
-                'categorys'=> $categorys,
-                'brand'    => $brand
-            ]);
-            // return view ('frontend.category');
-    }
+    //     public function categories($category)
+    //     {
+    //         # code...
+    //         $categorys      = Category::all();
+    //         $brand          = Brand::all();
+    //         $category = Category::with('products')->findOrFail( $category );
+    //         return view('frontend.category', [
+    //             'category' => $category,
+    //             'categorys'=> $categorys,
+    //             'brand'    => $brand
+    //         ]);
+    //         // return view ('frontend.category');
+    // }
 
     // product details
-        public function singleshop($slug)
-        {
-            $product    =Product::where('slug',$slug)->first();
-            // gallery
-            $gall = $product->id;
-            //category
-            $category= $product->category_id;
-            //grallery
-            $product_grallery = Product::find($gall)->product_grallery;
-            // document
-            $product_documents  =Product::find($gall)->document_product;
-            // related
-            $product_related  = Product::where('category_id',$category)->get();
+    //     public function singleshop($slug)
+    //     {
+    //         $product    =Product::where('slug',$slug)->first();
+    //         // gallery
+    //         $gall = $product->id;
+    //         //category
+    //         $category= $product->category_id;
+    //         //grallery
+    //         $product_grallery = Product::find($gall)->product_grallery;
+    //         // document
+    //         $product_documents  =Product::find($gall)->document_product;
+    //         // related
+    //         $product_related  = Product::where('category_id',$category)->get();
 
-            if($product->type == 'simple' || $product->type == 'variable'){
-                return view('frontend.product_details',compact('product','product_grallery','product_related','product_documents'));
-            }else{
-                return view('frontend.digital_product',compact('product','product_grallery','product_related','product_documents'));
+    //         if($product->type == 'simple' || $product->type == 'variable'){
+    //             return view('frontend.product_details',compact('product','product_grallery','product_related','product_documents'));
+    //         }else{
+    //             return view('frontend.digital_product',compact('product','product_grallery','product_related','product_documents'));
 
-            }
-    }
+    //         }
+    // }
 
     // leave_review
 
-        public function leave_review($slug)
-        {
-            # code...
-            $review =Product::where('slug',$slug)->first();
+        // public function leave_review($slug)
+        // {
+        //     # code...
+        //     $review =Product::where('slug',$slug)->first();
 
-            return view ('frontend.leave_review',compact('review'));
-    }
-
+        //     return view ('frontend.leave_review',compact('review'));
+        // }
 
     // download product document
-        public function getDownload($id)
-        {
-            $document = ProductDocument::find($id);
-
-            $file = public_path()."/backend/product_document/".$document->document;
-
-            $headers = array(
-
-                'Content-Type: application/*',
-            );
-
-            return response()->download($file, $document->document, $headers);
-    }
-
+        // public function getDownload($id)
+        // {
+        //     $document = ProductDocument::find($id);
+        //     $file = public_path()."/backend/product_document/".$document->document;
+        //     $headers = array(
+        //         'Content-Type: application/*',
+        //     );
+        //     return response()->download($file, $document->document, $headers);
+        // }
 
     //store directroy
-
-    public function store(){
-
-        $category   =Category::all();
-
-        return view('frontend.store_directory',compact('category'));
-    }
+    // public function store(){
+    //     $category   =Category::all();
+    //     return view('frontend.store_directory',compact('category'));
+    // }
 
     // blog page
-        public function blog()
-        {
-            $blog       = Blog::orderBy('updated_at','DESC')->get();
-            $latest     = Blog::orderBy('updated_at','DESC')->take(5)->get();
-            $category   = Category::all()->take(7);
+        // public function blog()
+        // {
+        //     $blog       = Blog::orderBy('updated_at','DESC')->get();
+        //     $latest     = Blog::orderBy('updated_at','DESC')->take(5)->get();
+        //     $category   = Category::all()->take(7);
 
-            return view ('frontend.blog',compact('blog','latest'));
-        }
+        //     return view ('frontend.blog',compact('blog','latest'));
+        // }
         // single blog
-        public function single_blog($slug)
-        {
-            $blog   = Blog::where('slug',$slug)->first();
-            $latest = Blog::orderBy('updated_at','DESC')->take(7)->get();
+        // public function single_blog($slug)
+        // {
+        //     $blog   = Blog::where('slug',$slug)->first();
+        //     $latest = Blog::orderBy('updated_at','DESC')->take(7)->get();
 
-            return view ('frontend.single_blog',compact('blog','latest'));
-        }
+        //     return view ('frontend.single_blog',compact('blog','latest'));
+        // }
 
     //////////////////////// show on master.blade.php
 
-        public function compose(View $view)
-        {
-                $product        = Product::where('status','publish')->get();
-                $category       = Category::with('products')->where('parent_id',NUll)->get();
-                $cat            = Category::with('products')->get();
-                $view->with("category",$category)->with("cat",$cat)->with("product",$product);
-    }
+        // public function compose(View $view)
+        // {
+        //         $product        = Product::where('status','publish')->get();
+        //         $category       = Category::with('products')->where('parent_id',NUll)->get();
+        //         $cat            = Category::with('products')->get();
+        //         $view->with("category",$category)->with("cat",$cat)->with("product",$product);
+        // }
 
+    // public function category_search(Request $request)
+    // {
+    //     $product   =   Category::with('products')->where('slug',$request->cat)->get();
+    //     return view("frontend.shop",compact('product'));
+    // }
 
-
-    public function category_search(Request $request)
-    {
-
-        $product   =   Category::with('products')->where('slug',$request->cat)->get();
-
-        return view("frontend.shop",compact('product'));
-
-    }
-
-    public function email_subcription(Request $request)
-    {
-        # code...
-        $email  =    $request->email;
-
-        return response()->json(['success'=>'Document Record has been deleted']);
-
-    }
+    // public function email_subcription(Request $request)
+    // {
+    //     # code...
+    //     $email  =    $request->email;
+    //     return response()->json(['success'=>'Document Record has been deleted']);
+    // }
 
 }
