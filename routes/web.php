@@ -125,7 +125,7 @@ use Illuminate\Support\Facades\Artisan;
 
  Route::get('/', [App\Http\Controllers\frontend\ShopController::class,'home']);
 
- Route::post('email_subcription',[App\Http\Controllers\frontend\ShopController::class,'email_subcription']);
+//  Route::post('email_subcription',[App\Http\Controllers\frontend\ShopController::class,'email_subcription']);
 
  Route::get('contactus',function(){
         return view('frontend.contactus');
@@ -142,7 +142,7 @@ use Illuminate\Support\Facades\Artisan;
 
 
     //search
-    Route::get('livesearch',[\App\Http\Controllers\frontend\ShopController::class,'']);
+    // Route::get('livesearch',[\App\Http\Controllers\frontend\ShopController::class,'']);
 
     // shop page start
     Route::get('shop',[App\Http\Controllers\frontend\ShopController::class,'shop']);
@@ -163,9 +163,9 @@ use Illuminate\Support\Facades\Artisan;
     Route::get('search',[\App\Http\Controllers\frontend\ShopController::class,'search']);
 
     // blog
-    Route::get('blog',[App\Http\Controllers\frontend\ShopController::class,'blog']);
+    Route::get('blog',[App\Http\Controllers\frontend\BlogController::class,'blog']);
 
-    Route::get('blog/{slug}',[App\Http\Controllers\frontend\ShopController::class,'single_blog']);
+    Route::get('blog/{slug}',[App\Http\Controllers\frontend\BlogController::class,'single_blog']);
 
     Route::get('leave_review', function () {
         return view('frontend.leave_review');

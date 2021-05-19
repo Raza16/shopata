@@ -126,14 +126,9 @@ class AdminController extends Controller
         # code...
         $this->validate($request,[
             'title' => 'required',
-            // 'site_url'=>'required',
-
-
         ]);
 
-                        $setting    = Setting::find($id);
-                        //table             input filed
-
+                            $setting    = Setting::find($id);
                         $setting->title                 = $request->title;
                         $setting->tagline               = $request->tagline;
                         $setting->site_url              = $request->site_url;
@@ -158,18 +153,8 @@ class AdminController extends Controller
                             $image->move($destinationPath, $name);
                             $setting->favicon = $name;
                         }
-
-
-
-                        // dd($setting->logo);
-                                // dd($setting);
                     session()->flash('update', 'Record has been Updated');
-
                                 $setting->save();
-
-
-
-
                         return redirect()->back();
     }
 
