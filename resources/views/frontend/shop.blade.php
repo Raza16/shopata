@@ -125,7 +125,7 @@
                                 <ul>
                                     @foreach($categories as $category)
                                     <li>
-                                        <label class="container_check" {{$category->products->count() != 0  ? '' : 'hidden' }}>{{$category->title}} <small {{$category->products->count() != 0 ? $category->products->count() : 'hidden' }}>{{$category->products->count()}}</small>
+                                        <label class="container_check" >{{$category->title}}
                                         <input type="checkbox">
                                         <span class="checkmark"></span>
                                         </label>

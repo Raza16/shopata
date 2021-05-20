@@ -37,7 +37,7 @@
                                             <h3>Top Selling</h3>
                                             <ul>
                                                 @foreach ($cat as $item)
-                                                <li {{$item->products->count() != 0 ? '' : 'hidden'}} id="category-{{$item->slug}}"><a href="#"  >{{$item->title}}</a></li>
+                                                <li><a href="#" class="cat-id" data-id="{{$item->slug}}">{{$item->title}}</a></li>
                                                 @endforeach
                                             </ul>
                                         </div>
@@ -250,5 +250,20 @@
     </div>
 
     <!-- /main_nav -->
-
 </header>
+
+@push('script')
+    <script>
+            $(document).ready(function(){
+                $(".cat-id").click(function(){
+                    var data_id=$(this).attr('data-id');
+                    alert(data_id);
+                });
+            })
+    </script>
+@endpush
+
+
+{{-- <script>
+    alert('hello')
+</script> --}}

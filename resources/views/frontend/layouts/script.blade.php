@@ -15,18 +15,5 @@
 		});
 	</script>
 
-    <script>
-        $(document).ready(function(){
 
-            @foreach ($cat as $item)
 
-                $("#category-{{$item->slug}}").click(function(){
-                    // alert('hello');
-                    var id  =   $("#category-{{$item->slug}}").val();
-                    // var url =   ""
-                    alert(id);
-                });
-
-            @endforeach
-        });
-    </script>

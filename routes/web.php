@@ -2,7 +2,6 @@
 
 // use App\Http\Controllers\frontend\ShopController;
 // use Facade\FlareClient\Api;
-// use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 // use Illuminate\Support\Facades\Artisan;
@@ -88,32 +87,23 @@ use Illuminate\Support\Facades\Auth;
 
                         // vendor
                     Route::resource('vendor', App\Http\Controllers\Admin\VendorController::class);
-
-
             });
-
     });
-
     // Route::middleware(['auth', 'customer'])->group(function () {
-
     //     Route::get('customer', function () {
     //         return 'customer';
     //     });
-
     // });
-
 // });
 
 // Route::get('/migrate', function () {
 //     Artisan::call('migrate', [
 //        '--force' => true
 //     ]);
-
 //     return 'Migrate Database Successfully!';
 // });
 
 // frontend route start
-
 //  Route::resource('account', App\Http\Controllers\frontend\Auth\RegisterController::class);
 
 //  Route::post('email_subcription',[App\Http\Controllers\frontend\ShopController::class,'email_subcription']);
@@ -134,9 +124,10 @@ use Illuminate\Support\Facades\Auth;
     Route::get('/', [App\Http\Controllers\frontend\ShopController::class, 'home']);
 
     // shop page start
-    // Route::get('shop',[App\Http\Controllers\frontend\ShopController::class,'shop']);
-    // Route::get('shop/{slug}',[App\Http\Controllers\frontend\ShopController::class,'singleshop']);
-    // Route::get('digital/{slug}',[App\Http\Controllers\frontend\ShopController::class,'singleshop']);
+    Route::get('shop',[App\Http\Controllers\frontend\ShopController::class,'shop']);
+    // Route::get('shop/{cat}',[App\Http\Controllers\frontend\ShopController::class,'shop']);
+    Route::get('shop/{slug}',[App\Http\Controllers\frontend\ShopController::class,'singleshop']);
+    Route::get('digital/{slug}',[App\Http\Controllers\frontend\ShopController::class,'singleshop']);
     //  download
     // Route::get('shop/download/{id}',[App\Http\Controllers\frontend\ShopController::class,'getDownload']);
     //  leave review

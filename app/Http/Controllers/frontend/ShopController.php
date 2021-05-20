@@ -14,7 +14,7 @@ use App\Models\Admin\Product;
 use App\Models\Admin\ProductGallery;
 use App\Models\Admin\ProductDocument;
 use App\Models\Admin\Setting;
-use Illuminate\Support\Facades\DB;
+use DB;
 
 class ShopController extends Controller
 {
@@ -37,17 +37,22 @@ class ShopController extends Controller
         public function shop(Request $request)
         {
 
-                $brand          = Brand::with('products')->get();
-                $category       = Category::with('products')->get();
+                $brands      = Brand::with('products')->get();
 
-                $product        = Product::paginate(12);
+                // $categories  = Product::with('category')->get();
+                $categories = DB::table('products')
+                ->join('categories','categories.id','=','products.category_id')
+                ->select('categories.title')->groupBy('categories.title')->get();
 
+                // foreach ($categories as $category) {
+                //     # code...
+                //     print_r($category->title.'<br>');
+                // }
+                // dd();
 
-                $c_serach   =   Category::with('products')->where('slug',$request->cat)->get();
+                $products    = Product::paginate(12);
 
-
-                return view ('frontend.shop',compact('brand','category','product'));
-
+                return view ('frontend.shop',compact('brands','categories','products'));
     }
 
     // store directory
@@ -57,7 +62,6 @@ class ShopController extends Controller
             # code...
             $categorys      = Category::all();
             $brand          = Brand::all();
-
             $category = Category::with('products')->findOrFail( $category );
             return view('frontend.category', [
                 'category' => $category,
@@ -86,7 +90,6 @@ class ShopController extends Controller
                 return view('frontend.product_details',compact('product','product_grallery','product_related','product_documents'));
             }else{
                 return view('frontend.digital_product',compact('product','product_grallery','product_related','product_documents'));
-
             }
     }
 
@@ -126,7 +129,7 @@ class ShopController extends Controller
         return view('frontend.store_directory',compact('category'));
     }
 
-    // blog page
+        // blog page
         public function blog()
         {
             $blog       = Blog::orderBy('updated_at','DESC')->get();
@@ -144,34 +147,31 @@ class ShopController extends Controller
             return view ('frontend.single_blog',compact('blog','latest'));
         }
 
-    //////////////////////// show on master.blade.php
+        //////////////////////// show on master.blade.php
 
         public function compose(View $view)
         {
                 $product        = Product::where('status','publish')->get();
                 $category       = Category::with('products')->where('parent_id',NUll)->get();
                 $cat            = Category::with('products')->get();
+                $cat            = DB::table('products')
+                ->join('categories','categories.id','=','products.category_id')
+                ->select('categories.title','categories.slug')
+                ->groupBy('categories.title','categories.slug')->get();
                 $view->with("category",$category)->with("cat",$cat)->with("product",$product);
-    }
+        }
 
-
-
-    public function category_search(Request $request)
-    {
-
-        $product   =   Category::with('products')->where('slug',$request->cat)->get();
-
-        return view("frontend.shop",compact('product'));
-
-    }
+    // public function category_search(Request $request)
+    // {
+    //     $product   =   Category::with('products')->where('slug',$request->cat)->get();
+    //     return view("frontend.shop",compact('product'));
+    // }
 
     public function email_subcription(Request $request)
     {
         # code...
         $email  =    $request->email;
-
         return response()->json(['success'=>'Document Record has been deleted']);
-
     }
 
 }

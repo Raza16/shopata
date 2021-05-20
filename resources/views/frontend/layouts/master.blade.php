@@ -14,7 +14,8 @@
     @yield('pop')
 	<!-- /Newsletter Popup -->
     @include('frontend.layouts.script')
-	 @yield('script')
+	 @stack('script')
+
 <div id="mm-blocker" class="mm-slideout"></div>
 </body>
 </html>
