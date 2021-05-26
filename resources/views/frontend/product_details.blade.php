@@ -480,8 +480,6 @@
     }
   </script> --}}
 
-
-
   <script src="{{asset('frontend/js/carousel_with_thumbs.js')}}"></script>
 
 

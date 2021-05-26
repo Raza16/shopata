@@ -14,7 +14,7 @@ use App\Models\Admin\Product;
 use App\Models\Admin\ProductGallery;
 use App\Models\Admin\ProductDocument;
 use App\Models\Admin\Setting;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class ShopController extends Controller
 {
@@ -37,7 +37,11 @@ class ShopController extends Controller
         public function shop(Request $request)
         {
 
-                $brands      = Brand::with('products')->get();
+                // $brands      = Brand::with('products')->get();
+                $brands =   DB::table('products')
+                ->join('brands','brands.id','=','products.brand_id')
+                ->select('brands.title')
+                ->groupBy('brands.title')->get();
 
                 // $categories  = Product::with('category')->get();
                 $categories = DB::table('products')
@@ -49,8 +53,22 @@ class ShopController extends Controller
                 //     print_r($category->title.'<br>');
                 // }
                 // dd();
+                if ($request->slug) {
+                //     # code...
+                //     $products   =   Product::where('slug','atm-machines')->paginate(12);
+                        $products   = DB::table('products')
+                        ->join('categories','categories.id','=','products.category_id')
+                        ->select('categories.id','products.id','products.*','categories.title')
+                        ->where('categories.slug','=',$request->slug)->paginate(12);
 
-                $products    = Product::paginate(12);
+                }else{
+                    $products    = Product::paginate(12);
+                }
+                // $products   =   Category::with('products')->where('slug','atm-machines')->paginate(12);
+                // $products   = DB::table('products')
+                // ->join('categories','categories.id','=','products.category_id')
+                // ->select('categories.id','products.id','products.*','categories.title')
+                // ->where('categories.slug','=',$request->slug)->paginate(12);
 
                 return view ('frontend.shop',compact('brands','categories','products'));
     }
@@ -74,7 +92,7 @@ class ShopController extends Controller
     // product details
         public function singleshop($slug)
         {
-            $product    =Product::where('slug',$slug)->first();
+            $product    = Product::where('slug',$slug)->first();
             // gallery
             $gall = $product->id;
             //category

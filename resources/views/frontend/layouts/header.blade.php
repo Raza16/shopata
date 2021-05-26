@@ -257,7 +257,8 @@
             $(document).ready(function(){
                 $(".cat-id").click(function(){
                     var data_id=$(this).attr('data-id');
-                    alert(data_id);
+                    // alert(data_id);
+                    location.href="";
                 });
             })
     </script>

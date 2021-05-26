@@ -125,13 +125,12 @@ use Illuminate\Support\Facades\Auth;
 
     // shop page start
     Route::get('shop',[App\Http\Controllers\frontend\ShopController::class,'shop']);
-    // Route::get('shop/{cat}',[App\Http\Controllers\frontend\ShopController::class,'shop']);
     Route::get('shop/{slug}',[App\Http\Controllers\frontend\ShopController::class,'singleshop']);
     Route::get('digital/{slug}',[App\Http\Controllers\frontend\ShopController::class,'singleshop']);
     //  download
-    // Route::get('shop/download/{id}',[App\Http\Controllers\frontend\ShopController::class,'getDownload']);
+    Route::get('shop/download/{id}',[App\Http\Controllers\frontend\ShopController::class,'getDownload']);
     //  leave review
-    // Route::get('leave/{slug}',[App\Http\Controllers\frontend\ShopController::class, 'leave_review']);
+    Route::get('leave/{slug}',[App\Http\Controllers\frontend\ShopController::class, 'leave_review']);
     // // blog
     // Route::get('blog',[App\Http\Controllers\frontend\BlogController::class,'blog']);
     // Route::get('blog/{slug}',[App\Http\Controllers\frontend\BlogController::class,'single_blog']);

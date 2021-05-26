@@ -1,3 +1,4 @@
+
 <footer class="revealed">
 
     <div class="container">
@@ -35,7 +36,7 @@
 
                         @if(count($cat)>0)
                             @foreach($cat as $ca)
-                                <li><a href="#" {{$ca->products->count() != 0 ? '' : 'hidden'}}>{{$ca->title}}</a></li>
+                                <li><a href="#">{{$ca->title}}</a></li>
                             @endforeach
                         @else
 
@@ -96,11 +97,8 @@
                         <h5>Follow Us</h5>
 
                         <ul>
-                            <li><a href="#0"><img src="{{asset('/data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==')}}" data-src="{{asset('frontend/img/twitter_icon.svg')}}" alt="" class="lazy"></a></li>
-                            <li><a href="#0"><img src="{{asset('data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==')}}" data-src="{{asset('frontend/img/facebook_icon.svg')}}" alt="" class="lazy"></a></li>
-                            <li><a href="#0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="{{asset('frontend/img/instagram_icon.svg')}}" alt="" class="lazy"></a></li>
-                            <li><a href="#0"><img src="{{asset('data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==')}}" data-src="{{asset('frontend/img/youtube_icon.svg')}}" alt="" class="lazy"></a></li>
-
+                            <li><a href="#0"><img src="{{asset('frontend/img/twitter_icon.svg')}}"  alt="" class="lazy"></a></li>
+                            <li><a href="#0"><img src="{{asset('frontend/img/facebook_icon.svg')}}" alt="" class="lazy"></a></li>
                         </ul>
 
                     </div>
@@ -142,7 +140,7 @@
                         </div>
                     </li>
 
-                    <li><img src="{{asset('data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==')}}" data-src="{{asset('frontend/img/cards_all.svg')}}" alt="" width="198" height="30" class="lazy"></li>
+                    <li><img src="{{asset('frontend/img/cards_all.svg')}}"  alt="" width="198" height="30" class="lazy"></li>
 
                 </ul>
 

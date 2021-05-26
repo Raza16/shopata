@@ -141,7 +141,7 @@
                                 <ul>
                                 @foreach ($brands as $brand)
                                 <li>
-                                <label class="container_check">{{$brand->title}} <small>{{$brand->products->count()}}</small>
+                                <label class="container_check">{{$brand->title}}
                                 <input type="checkbox">
                                 <span class="checkmark"></span>
                                 </label>
