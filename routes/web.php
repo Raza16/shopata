@@ -100,7 +100,6 @@ use Illuminate\Support\Facades\Auth;
 
 // frontend route start
 //  Route::resource('account', App\Http\Controllers\frontend\Auth\RegisterController::class);
-
 //  Route::post('email_subcription',[App\Http\Controllers\frontend\ShopController::class,'email_subcription']);
 
  Route::get('contactus',function(){
@@ -120,6 +119,7 @@ use Illuminate\Support\Facades\Auth;
 
     // shop page start
     Route::get('shop',[App\Http\Controllers\frontend\ShopController::class,'shop']);
+    Route::get('shop/{slug}', [App\Http\Controllers\frontend\ShopController::class,'shop']);
     Route::get('product/{slug}',[App\Http\Controllers\frontend\ShopController::class,'singleshop']);
     Route::get('digital/{slug}',[App\Http\Controllers\frontend\ShopController::class,'singleshop']);
     //  download

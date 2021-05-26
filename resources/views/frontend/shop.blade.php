@@ -126,7 +126,7 @@
                                     @foreach($categories as $category)
                                     <li>
                                         <label class="container_check" >{{$category->title}}
-                                        <input type="checkbox">
+                                        <input type="checkbox" class="category">
                                         <span class="checkmark"></span>
                                         </label>
                                     </li>
@@ -210,7 +210,16 @@
 
     @endsection
 
-    @section('script')
+    @push('script')
         <script src="{{asset('frontend/js/sticky_sidebar.min.js')}}"></script>
-        <script src="{{asset('frontssend/js/specific_listing.js')}}"></script>
-    @endsection
+        <script src="{{asset('frontend/js/specific_listing.js')}}"></script>
+        <script>
+            $(document).ready(function(){
+
+                $('.category').change(function(){
+                    alert('hello');
+                });
+
+            });
+        </script>
+    @endpush

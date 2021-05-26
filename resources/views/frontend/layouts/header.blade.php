@@ -37,7 +37,7 @@
                                             <h3>Top Selling</h3>
                                             <ul>
                                                 @foreach ($cat as $item)
-                                                <li><a href="#" class="cat-id" data-id="{{$item->slug}}">{{$item->title}}</a></li>
+                                                <li><a href="{{url('shop/'.$item->slug)}}" data-id="{{$item->slug}}">{{$item->title}}</a></li>
                                                 @endforeach
                                             </ul>
                                         </div>
@@ -257,8 +257,8 @@
             $(document).ready(function(){
                 $(".cat-id").click(function(){
                     var data_id=$(this).attr('data-id');
-                    // alert(data_id);
-                    location.href="";
+                    alert(data_id);
+                    // location.href="";
                 });
             })
     </script>

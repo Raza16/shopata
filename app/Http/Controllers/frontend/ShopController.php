@@ -46,12 +46,12 @@ class ShopController extends Controller
                 // $categories  = Product::with('category')->get();
                 $categories = DB::table('products')
                 ->join('categories','categories.id','=','products.category_id')
-                ->select('categories.title')
-                ->groupBy('categories.title')->get();
+                ->select('categories.title','categories.id','categories.slug')
+                ->groupBy('categories.title','categories.id','categories.slug')->get();
 
                 if ($request->slug) {
                         $products   = DB::table('products')
-                        ->join('categories','categories.id','=','products.category_id')
+                        ->leftjoin('categories','categories.id','=','products.category_id')
                         ->select('categories.id','products.id','products.*','categories.title')
                         ->where('categories.slug','=',$request->slug)->paginate(12);
                 }else{
