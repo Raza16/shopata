@@ -132,7 +132,7 @@
 
                                             <li {{$item->products->count() != 0 ? '' : 'hidden'}}>
 
-                                                <span><a href="#" >{{$item->title }}</a></span>
+                                                <span><a href="{{url('shop/'.$item->slug)}}">{{$item->title }}</a></span>
 
                                                 @if ($item->subcategory->count() !=0 )
 
