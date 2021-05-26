@@ -46,29 +46,17 @@ class ShopController extends Controller
                 // $categories  = Product::with('category')->get();
                 $categories = DB::table('products')
                 ->join('categories','categories.id','=','products.category_id')
-                ->select('categories.title')->groupBy('categories.title')->get();
+                ->select('categories.title')
+                ->groupBy('categories.title')->get();
 
-                // foreach ($categories as $category) {
-                //     # code...
-                //     print_r($category->title.'<br>');
-                // }
-                // dd();
                 if ($request->slug) {
-                //     # code...
-                //     $products   =   Product::where('slug','atm-machines')->paginate(12);
                         $products   = DB::table('products')
                         ->join('categories','categories.id','=','products.category_id')
                         ->select('categories.id','products.id','products.*','categories.title')
                         ->where('categories.slug','=',$request->slug)->paginate(12);
-
                 }else{
                     $products    = Product::paginate(12);
                 }
-                // $products   =   Category::with('products')->where('slug','atm-machines')->paginate(12);
-                // $products   = DB::table('products')
-                // ->join('categories','categories.id','=','products.category_id')
-                // ->select('categories.id','products.id','products.*','categories.title')
-                // ->where('categories.slug','=',$request->slug)->paginate(12);
 
                 return view ('frontend.shop',compact('brands','categories','products'));
     }

@@ -36,7 +36,6 @@ use Illuminate\Support\Facades\Auth;
             Route::middleware(['auth', 'admin'])->group(function () {
 
                     Route::get('dashboard', [App\Http\Controllers\Admin\AdminController::class,'dashboard']);
-
                     //settings
                     Route::get('settings', [App\Http\Controllers\Admin\AdminController::class,'settings']);
 
@@ -76,15 +75,11 @@ use Illuminate\Support\Facades\Auth;
                     Route::delete('product/gallerydelete/{id}',[App\Http\Controllers\Admin\ProductController::class,'deletegallery']);
                     Route::delete('product/documentdelete/{id}',[App\Http\Controllers\Admin\ProductController::class,'deletedocument']);
                     Route::get('variation-get/{id}', [App\Http\Controllers\Admin\ProductController::class,'variationoption'] );
-
                         // variation
                     Route::resource('variation', App\Http\Controllers\Admin\ProductAttributeController::class);
-
                         // product attributes option
                     Route::get('product_att_option/{id}/product_attribute_option',[App\Http\Controllers\Admin\ProductAttributeOptionController::class,'product_attribute_option'] );
-
                     Route::resource('variation_option', App\Http\Controllers\Admin\ProductAttributeOptionController::class);
-
                         // vendor
                     Route::resource('vendor', App\Http\Controllers\Admin\VendorController::class);
             });
@@ -125,10 +120,10 @@ use Illuminate\Support\Facades\Auth;
 
     // shop page start
     Route::get('shop',[App\Http\Controllers\frontend\ShopController::class,'shop']);
-    Route::get('shop/{slug}',[App\Http\Controllers\frontend\ShopController::class,'singleshop']);
+    Route::get('product/{slug}',[App\Http\Controllers\frontend\ShopController::class,'singleshop']);
     Route::get('digital/{slug}',[App\Http\Controllers\frontend\ShopController::class,'singleshop']);
     //  download
-    Route::get('shop/download/{id}',[App\Http\Controllers\frontend\ShopController::class,'getDownload']);
+    Route::get('product/download/{id}',[App\Http\Controllers\frontend\ShopController::class,'getDownload']);
     //  leave review
     Route::get('leave/{slug}',[App\Http\Controllers\frontend\ShopController::class, 'leave_review']);
     // // blog

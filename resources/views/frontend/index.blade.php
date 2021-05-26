@@ -99,7 +99,7 @@
 									<li>Large Scale Touch Screen Display</li>
 										<li>Signature Capture</li>
 						</ul>
-						<a href="{{url('shop/valor-vl100-tabletop-terminal')}}" style="color:#fff" class="btn_1 mt-2 mb-4" >GET IT NOW</a>
+						<a href="{{url('product/valor-vl100-tabletop-terminal')}}" style="color:#fff" class="btn_1 mt-2 mb-4" >GET IT NOW</a>
 
 					</div>
 
@@ -129,7 +129,7 @@
                                                     <span class="ribbon off">-30%</span>
                                                     @endif
 
-                                                    <a href="{{$item->type =='simple' ? url('shop/'.$item->slug) : url('digital') }}">
+                                                    <a href="{{$item->type =='simple' ? url('product/'.$item->slug) : url('digital/'.$item->slug) }}">
                                                             <img class="img-fluid lazy pmv" style="image-size:contain; height:200px; width:auto; margin:auto; padding:auto;"  src="{{$item->product_image ? asset('backend/images/products/'.$item->product_image) : asset('frontend/img/product_placeholder.jpg') }}" data-src="{{$item->product_image ? asset('backend/images/products/'.$item->product_image) : asset('frontend/img/product_placeholder.jpg') }}" alt="">
 
                                                     </a>
@@ -149,7 +149,7 @@
                                                 <i class="icon-star"></i>
                                             </div>
 
-                                            <a href="{{$item->type =='simple' ? url('shop/'.$item->slug) : url('digital') }}">
+                                            <a href="{{$item->type =='simple' ? url('product/'.$item->slug) : url('digital') }}">
 
                                                     <h3>{{$item->name}}</h3>
 
@@ -226,12 +226,12 @@
                                     <div class="grid_item">
                                         {{-- <span class="ribbon new">{{$feature->}}</span> --}}
                                         <figure>
-                                            <a href="{{$digital->type =='simple' || $digital->type =='variable'  ? url('shop/'.$digital->slug) : url('digital/'.$digital->slug) }}">
+                                            <a href="{{$digital->type =='simple' || $digital->type =='variable'  ? url('product/'.$digital->slug) : url('digital/'.$digital->slug) }}">
                                                 <img class="owl-lazy" style="width:auto; height:200px; margin:auto;" src="{{$digital->product_image ? asset('backend/images/products/'.$digital->product_image) : asset('frontend/img/product_placeholder.jpg')}}" data-src="{{$digital->product_image ? asset('backend/images/products/'.$digital->product_image) : asset('frontend/img/product_placeholder.jpg')}}" alt="">
                                             </a>
                                         </figure>
                                         <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
-                                        <a href="{{$digital->type =='simple' || $digital->type =='variable'  ? url('shop/'.$digital->slug) : url('digital/'.$digital->slug) }}">
+                                        <a href="{{$digital->type =='simple' || $digital->type =='variable'  ? url('product/'.$digital->slug) : url('digital/'.$digital->slug) }}">
                                             <h3>{{$digital->name}}</h3>
                                         </a>
                                         <div class="price_box">
@@ -270,12 +270,12 @@
                                     <div class="grid_item">
                                         {{-- <span class="ribbon new">{{$feature->}}</span> --}}
                                         <figure>
-                                            <a href="{{url('shop/'.$feature->slug)}}">
+                                            <a href="{{url('product/'.$feature->slug)}}">
                                                 <img class="owl-lazy" style="width:auto; height:200px; margin:auto;" src="{{$feature->product_image ? asset('backend/images/products/'.$feature->product_image) : asset('frontend/img/product_placeholder.jpg')}}" data-src="{{$feature->product_image ? asset('backend/images/products/'.$feature->product_image) : asset('frontend/img/product_placeholder.jpg')}}" alt="">
                                             </a>
                                         </figure>
                                         <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
-                                        <a href="{{url('shop/'.$feature->slug)}}">
+                                        <a href="{{url('product/'.$feature->slug)}}">
                                             <h3>{{$feature->name}}</h3>
                                         </a>
                                         <div class="price_box">

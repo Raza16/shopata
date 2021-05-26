@@ -72,7 +72,7 @@
                                 <div class="grid_item" style="">
                                     <span class="ribbon off" {{$product->sale_price ? '' : 'hidden'}}>{{"$".$product->sale_price}}</span>
                                     <figure>
-                                    <a href="{{$product->type =='simple' || $product->type =='variable' ? url('shop/'.$product->slug) : url('digital/'.$product->slug) }}">
+                                    <a href="{{$product->type =='simple' || $product->type =='variable' ? url('product/'.$product->slug) : url('digital/'.$product->slug) }}">
                                         <img class="img-fluid lazy loaded" style="image-size: contain; height:250px; width:auto;" src="{{$product->product_image ? asset('backend/images/products/'.$product->product_image) : asset('frontend/img/product_placeholder.jpg') }}" data-src="{{ $product->product_image ? asset('backend/images/products/'.$product->product_image) : 'https://via.placeholder.com/200x200?text=Product Image'}}" alt="" data-was-processed="true">
                                     </a>
                                     </figure>
