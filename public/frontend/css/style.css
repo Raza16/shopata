@@ -7398,7 +7398,6 @@ img.mfp-img {
  }
 
 }
-
   .container{
       max-width:1300px;
   }
@@ -7406,5 +7405,20 @@ img.mfp-img {
   .owl-dots{
     visibility:hidden !important;
     display:none !important;
-
   }
+
+  /* search-bar li */
+
+  .results > ul{
+    background-color: #f2f2f2;
+    margin-top: 10px;
+    line-height: 40px;
+    list-style-type: none;
+    text-align: center;
+  } 
+
+  /* search-bar li mobile */
+
+
+
+

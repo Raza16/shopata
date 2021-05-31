@@ -57,9 +57,8 @@ class ShopController extends Controller
                 }else{
                     $products    = Product::paginate(12);
                 }
-
                 return view ('frontend.shop',compact('brands','categories','products'));
-    }
+        }
 
     // store directory
 
@@ -68,14 +67,13 @@ class ShopController extends Controller
             # code...
             $categorys      = Category::all();
             $brand          = Brand::all();
-            $category = Category::with('products')->findOrFail( $category );
+            $category       = Category::with('products')->findOrFail( $category );
             return view('frontend.category', [
                 'category' => $category,
                 'categorys'=> $categorys,
                 'brand'    => $brand
             ]);
-            // return view ('frontend.category');
-    }
+        }
 
     // product details
         public function singleshop($slug)
@@ -97,7 +95,7 @@ class ShopController extends Controller
             }else{
                 return view('frontend.digital_product',compact('product','product_grallery','product_related','product_documents'));
             }
-    }
+        }
 
     // leave_review
 
@@ -107,8 +105,7 @@ class ShopController extends Controller
             $review =Product::where('slug',$slug)->first();
 
             return view ('frontend.leave_review',compact('review'));
-    }
-
+        }
 
     // download product document
         public function getDownload($id)
@@ -123,17 +120,16 @@ class ShopController extends Controller
             );
 
             return response()->download($file, $document->document, $headers);
-    }
-
+        }
 
     //store directroy
 
-    public function store(){
+        public function store(){
 
-        $category   =Category::all();
+            $category   =Category::all();
 
-        return view('frontend.store_directory',compact('category'));
-    }
+            return view('frontend.store_directory',compact('category'));
+        }
 
         // blog page
         public function blog()
@@ -155,8 +151,8 @@ class ShopController extends Controller
 
         //////////////////////// show on master.blade.php
 
-        public function compose(View $view)
-        {
+        public function compose(View $view){
+
                 $product        = Product::where('status','publish')->get();
                 $category       = Category::with('products')->where('parent_id',NUll)->get();
                 $cat            = Category::with('products')->get();
@@ -165,19 +161,42 @@ class ShopController extends Controller
                 ->select('categories.title','categories.slug')
                 ->groupBy('categories.title','categories.slug')->get();
                 $view->with("category",$category)->with("cat",$cat)->with("product",$product);
+
         }
 
-    // public function category_search(Request $request)
+    // public function email_subcription(Request $request)
     // {
-    //     $product   =   Category::with('products')->where('slug',$request->cat)->get();
-    //     return view("frontend.shop",compact('product'));
+    //     $email  =    $request->email;
+    //     return response()->json(['success'=>'Document Record has been deleted']);
     // }
 
-    public function email_subcription(Request $request)
-    {
-        # code...
-        $email  =    $request->email;
-        return response()->json(['success'=>'Document Record has been deleted']);
+    public function autoComplete(Request $request) {
+
+        if($request->ajax()) {
+
+            $data = Product::where('name', 'LIKE', $request->product.'%')
+                ->get();
+
+            $output = '';
+
+            if (count($data)>0) {
+
+                $output = '<ul class="list-group" style="display: block; position: relative; z-index: 1">';
+
+                foreach ($data as $row){
+
+                    $output .= '<li class="list-group-item" >'.$row->name.'</li>';
+                }
+
+                $output .= '</ul>';
+            }
+            else {
+
+                $output .= '<li class="list-group-item">'.'No results'.'</li>';
+            }
+
+            return $output;
+        }
     }
 
 }

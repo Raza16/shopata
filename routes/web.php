@@ -116,7 +116,8 @@ use Illuminate\Support\Facades\Auth;
  });
 
     Route::get('/', [App\Http\Controllers\frontend\ShopController::class, 'home']);
-
+    // Route::get('searchajax', [App\Http\Controllers\frontend\ShopController::class,'autoComplete']);
+    Route::get('search',[App\Http\Controllers\frontend\ShopController::class,'autoComplete']);
     // shop page start
     Route::get('shop',[App\Http\Controllers\frontend\ShopController::class,'shop']);
     Route::get('shop/{slug}', [App\Http\Controllers\frontend\ShopController::class,'shop']);
