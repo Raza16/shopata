@@ -13,7 +13,7 @@
     </div>
 
     @push('script')
-        {{-- <script type="text/javascript">
+        <script type="text/javascript">
             $(document).ready(function () {
 
                 $('#product').on('keyup',function() {
@@ -42,8 +42,6 @@
                     $('#product_list').html("");
                 });
             });
-        </script> --}}
-        <script>
-            $('#search').suggestionBox().loadSuggestions();
         </script>
+
     @endpush
