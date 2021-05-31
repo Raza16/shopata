@@ -55,3 +55,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
     Route::get('banners', [App\Http\Controllers\Api\BannerController::class,'index']);
     Route::get('banner/{id}', [App\Http\Controllers\Api\BannerController::class,'show']);
+
+    Route::get('product_search/{name}',[App\Http\Controllers\Api\ProductController::class,'search']);

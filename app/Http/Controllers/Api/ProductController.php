@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin\Product;
 use App\Models\Admin\ProductGallery;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class ProductController extends Controller
 {
@@ -56,6 +57,26 @@ class ProductController extends Controller
             }
 
             return response()->json($response,200);
+
+    }
+
+    public function search($name)
+    {
+
+        $products = Product::where('name', 'like', $name.'%')
+                        ->get();
+        if (count($products)>0) {
+            $response["error"]              =   "false";
+            $response["code"]               =   "200";
+            $response["message"]            =   "Operation Successfully.";
+            $response = $products;
+            return response()->json($response,200);
+        }else{
+            $response["error"]              =   "true";
+            $response["code"]               =   "404";
+            $response["message"]            =   "No product found";
+            return response()->json($response);
+        }
 
     }
 }

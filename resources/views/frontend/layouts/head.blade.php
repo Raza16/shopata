@@ -34,5 +34,8 @@
     <!-- YOUR CUSTOM CSS -->
     <link href="{{asset('frontend/css/custom.css')}}" rel="stylesheet">
 
+    {{-- search --}}
+    <link rel="stylesheet" href="{{asset('frontend/js/search/dist/css/suggestion-box.min.css')}}">
+
 
 </head>

@@ -198,6 +198,10 @@ class ShopController extends Controller
 
             return $output;
         }
+        // $data = Product::where('name', 'LIKE', $request->product.'%')->get();
+
+        // return response()->json($data);
+
     }
 
 }

@@ -15,5 +15,5 @@
 		});
 	</script>
 
-
-
+    {{-- search --}}
+    <script src="{{asset('frontend/js/search/dist/js/suggestion-box.min.js')}}"></script>

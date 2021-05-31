@@ -13,34 +13,37 @@
     </div>
 
     @push('script')
-    <script type="text/javascript">
-        $(document).ready(function () {
+        {{-- <script type="text/javascript">
+            $(document).ready(function () {
 
-            $('#product').on('keyup',function() {
-                var query = $(this).val();
-                var url = '{{ url('search') }}';
-                $.ajax({
+                $('#product').on('keyup',function() {
+                    var query = $(this).val();
+                    var url = '{{ url('search') }}';
+                    $.ajax({
 
-                    url:url,
+                        url:url,
 
-                    type:"GET",
+                        type:"GET",
 
-                    data:{'product':query},
+                        data:{'product':query},
 
-                    success:function (data) {
+                        success:function (data) {
 
-                        $('#product_list').html(data);
-                    }
+                            $('#product_list').html(data);
+                        }
+                    });
+                    // end of ajax call
                 });
-                // end of ajax call
-            });
 
-            $(document).on('click', 'li', function(){
+                $(document).on('click', 'li', function(){
 
-                var value = $(this).text();
-                $('#product').val(value);
-                $('#product_list').html("");
+                    var value = $(this).text();
+                    $('#product').val(value);
+                    $('#product_list').html("");
+                });
             });
-        });
-    </script>
+        </script> --}}
+        <script>
+            $('#search').suggestionBox().loadSuggestions();
+        </script>
     @endpush
