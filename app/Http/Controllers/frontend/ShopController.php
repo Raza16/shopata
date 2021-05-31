@@ -185,7 +185,8 @@ class ShopController extends Controller
 
                 foreach ($data as $row){
 
-                    $output .= '<li class="list-group-item" >'.$row->name.'</li>';
+                    $output .= '<li class="list-group-item" ><a href="product/'.$row->slug.'">'.$row->name.'</a></li>';
+
                 }
 
                 $output .= '</ul>';
