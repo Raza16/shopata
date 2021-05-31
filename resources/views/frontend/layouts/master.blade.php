@@ -8,13 +8,16 @@
 		<!-- /header -->
     @yield('content')
 	<!-- /main -->
+    @include('frontend.layouts.footer')
+
 	<!--/footer-->
 	</div>
-	<div id="toTop" class="visible"></div>
 	<!-- page -->
     @yield('pop')
+
 	<!-- /Newsletter Popup -->
-    @include('frontend.layouts.footer')
+
+	<div id="toTop" class="visible"></div>
 
     @include('frontend.layouts.script')
     @stack('script')
