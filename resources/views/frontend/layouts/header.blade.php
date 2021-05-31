@@ -240,7 +240,7 @@
             </div>
             <!-- /row -->
         </div>
-    
+
         @include('frontend.layouts.mobile_search')
         <!-- /search_mobile -->
     </div>

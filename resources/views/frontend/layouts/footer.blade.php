@@ -36,7 +36,7 @@
 
                         @if(count($cat)>0)
                             @foreach($cat as $ca)
-                                <li><a href="#">{{$ca->title}}</a></li>
+                                <li><a href="{{'shop/'.$ca->slug}}">{{$ca->title}}</a></li>
                             @endforeach
                         @else
 

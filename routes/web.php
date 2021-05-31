@@ -116,7 +116,6 @@ use Illuminate\Support\Facades\Auth;
  });
 
     Route::get('/', [App\Http\Controllers\frontend\ShopController::class, 'home']);
-    // Route::get('searchajax', [App\Http\Controllers\frontend\ShopController::class,'autoComplete']);
     Route::get('search',[App\Http\Controllers\frontend\ShopController::class,'autoComplete']);
     // shop page start
     Route::get('shop',[App\Http\Controllers\frontend\ShopController::class,'shop']);
@@ -128,8 +127,8 @@ use Illuminate\Support\Facades\Auth;
     //  leave review
     Route::get('leave/{slug}',[App\Http\Controllers\frontend\ShopController::class, 'leave_review']);
     // // blog
-    // Route::get('blog',[App\Http\Controllers\frontend\BlogController::class,'blog']);
-    // Route::get('blog/{slug}',[App\Http\Controllers\frontend\BlogController::class,'single_blog']);
+    Route::get('blog',[App\Http\Controllers\frontend\BlogController::class,'blog']);
+    Route::get('blog/{slug}',[App\Http\Controllers\frontend\BlogController::class,'single_blog']);
 
     Route::get('leave_review', function () {
         return view('frontend.leave_review');
