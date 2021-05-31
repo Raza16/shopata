@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     @include('frontend.layouts.head')
- 
+
 <body>
 	<div id="page">
         @include('frontend.layouts.header')
@@ -14,9 +14,10 @@
 	<!-- page -->
     @yield('pop')
 	<!-- /Newsletter Popup -->
+    @include('frontend.layouts.footer')
+
     @include('frontend.layouts.script')
     @stack('script')
-    @include('frontend.layouts.footer')
 
 <div id="mm-blocker" class="mm-slideout"></div>
 </body>
